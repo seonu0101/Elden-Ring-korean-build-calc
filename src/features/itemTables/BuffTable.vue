@@ -36,7 +36,8 @@ const attackValue = (b: BuffItem) =>
   Math.round((Math.max(...DAMAGE_TYPES.map((d) => SUMMARY.get(b.id)!.attack[d].multiplier)) - 1) * 10000) / 100
 const takenValue = (b: BuffItem) =>
   Math.round((1 - Math.min(...NEGATION_TYPES.map((t) => SUMMARY.get(b.id)!.damageTaken[t].multiplier))) * 10000) / 100
-const duration = (b: BuffItem) => Math.max(0, ...b.effects.map((e) => e.duration ?? 0))
+/** 지속 시간(초): 아이템 전체 값(일부 영약)이 있으면 그것, 없으면 효과 중 가장 긴 값 */
+const duration = (b: BuffItem) => b.duration ?? Math.max(0, ...b.effects.map((e) => e.duration ?? 0))
 const stackText = (b: BuffItem) =>
   STACK_GROUPS.filter((g) => g.matches(b))
     .map((g) => g.label)

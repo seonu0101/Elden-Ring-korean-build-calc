@@ -46,6 +46,22 @@ describe('버프 표', () => {
     wrapper.unmount()
   })
 
+  it('일부 영약은 아이템 전체 지속 시간(원본 effectDuration)을 쓴다', async () => {
+    const wrapper = mountTable()
+    await wrapper.find('[data-testid="search"]').setValue('Thorny Cracked Tear')
+    expect(rows(wrapper)[0]!.find('[data-testid="cell-duration"]').text()).toBe('180')
+    await wrapper.find('[data-testid="search"]').setValue('Oil-Soaked Tear')
+    expect(rows(wrapper)[0]!.find('[data-testid="cell-duration"]').text()).toBe('60')
+    expect(BUFFS.filter((b) => b.duration).map((b) => `${b.name}:${b.duration}`).sort()).toEqual([
+      'Cerulean-Sapping Cracked Tear:45',
+      'Crimson-Sapping Cracked Tear:45',
+      'Oil-Soaked Tear:60',
+      'Thorny Cracked Tear:180',
+      'Viridian Hidden Tear:15',
+    ])
+    wrapper.unmount()
+  })
+
   it('공격력 칸으로 정렬하면 큰 값부터', async () => {
     const wrapper = mountTable()
     await wrapper.find('[data-testid="sort-attack"]').trigger('click')

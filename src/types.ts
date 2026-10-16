@@ -142,6 +142,8 @@ export interface BuffItem {
   /** 무기에 거는 버프인지 (인챈트 등) */
   weaponBuff: boolean
   effects: TalismanEffect[]
+  /** 아이템 전체의 지속 시간(초). 일부 영약만 효과가 아니라 여기에 있다 (원본 effectDuration) */
+  duration?: number
   content: number
 }
 

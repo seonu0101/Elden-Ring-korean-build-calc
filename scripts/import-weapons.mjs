@@ -396,6 +396,8 @@ async function importBuffs(ast, url) {
     category: raw.category ?? '',
     weaponBuff: Boolean(raw.is_weapon_buff),
     effects: raw.effects.map(toEffect),
+    // 일부 영약은 효과가 아니라 아이템에 지속 시간(effectDuration)이 있다
+    ...(typeof raw.effectDuration === 'number' && raw.effectDuration > 0 ? { duration: raw.effectDuration } : {}),
     content: Array.isArray(raw.dlc) ? (raw.dlc[0] ?? 0) : 0,
   })
   const buffs = [...spells.filter(hasEffects).map((s) => toBuff(s, 'spell')), ...tools.filter(isBuffItem).map((t) => toBuff(t, 'item'))]
