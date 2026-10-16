@@ -35,15 +35,29 @@ npm run preview        # 빌드 결과 확인 (http://localhost:4173/calc/)
 npm run import:weapons # 무기 데이터 다시 가져오기
 ```
 
-## 배포 (er-sin.com/calc)
+## 배포
 
-빌드하면 모든 경로 앞에 `/calc/`가 붙는다 (`vite.config.ts`의 `base`).
+빌드하면 모든 경로 앞에 `/calc/`가 붙고 결과물은 `dist/calc/`에 생긴다 (`vite.config.ts`의 `base`·`outDir`).
 
-- **GitHub Pages**: 저장소 이름을 `calc`로 하면 `https://<아이디>.github.io/calc/`에서 열린다.
-  `main`에 push하면 `.github/workflows/deploy.yml`이 테스트 → 빌드 → 배포한다.
-  처음 한 번 저장소 Settings → Pages → Source를 "GitHub Actions"로 바꾼다.
-- **Netlify**: GitHub 저장소를 Netlify 사이트에 연결하면 `netlify.toml` 설정대로 빌드된다.
+### GitHub Pages
 
+공개 주소: https://seonu0101.github.io/Elden-Ring-korean-build-calc/
+
+`.github/workflows/pages.yml`은 `main`에 올리면 아래 순서로 검사하고 배포한다.
+
+1. Node.js 24에서 `npm ci`로 잠금 파일대로 의존성을 설치한다.
+2. `npm test`로 테스트를 돌린다.
+3. `npm run build -- --base "/Elden-Ring-korean-build-calc/"`로 타입 검사와 빌드를 한다 (저장소 이름을 경로로 쓴다).
+4. 모두 통과하면 `dist/calc/`의 내용을 GitHub Pages에 올린다.
+
+Pull Request에서는 검사와 빌드만 하고 공개 사이트는 바꾸지 않는다. 실패하면 직전에 성공한 배포가 그대로 남는다.
+저장소 Settings → Pages → Source는 **GitHub Actions**로 둔다.
+
+무기·방어구·탈리스만 데이터와 이미지는 저장소에 넣어 둔 것을 쓴다. CI에서 원본 사이트를 다시 가져오지 않는다.
+
+### Netlify (er-sin.com/calc)
+
+GitHub 저장소를 Netlify 사이트에 연결하면 `netlify.toml` 설정대로 `/calc/` 경로로 빌드된다.
 er-sin.com 사이트에서는 `/calc/*`를 배포한 사이트로 프록시한다 (status 200).
 
 ## 아이템 이미지
