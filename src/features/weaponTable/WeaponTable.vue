@@ -58,6 +58,25 @@ const scalingMode = ref<'both' | 'grade' | 'value'>('both')
 const affinity = ref<AffinityMode>(['Standard'])
 const visibleCount = ref(PAGE_SIZE)
 
+/** 정렬·강화·내 스탯·변질 줄을 접어서 표를 넓게 볼 수 있다. 접은 상태는 기억한다. */
+const COLLAPSED_KEY = 'er-planner/weapon-table/options-collapsed'
+const collapsed = ref(loadCollapsed())
+function loadCollapsed() {
+  try {
+    return localStorage.getItem(COLLAPSED_KEY) === 'true'
+  } catch {
+    return false
+  }
+}
+watch(collapsed, (v) => {
+  try {
+    localStorage.setItem(COLLAPSED_KEY, String(v))
+  } catch {
+    // 저장소를 쓸 수 없으면 기억하지 않는다
+  }
+})
+const sortLabel = computed(() => SORT_OPTIONS.find((o) => o.key === sortKey.value)?.label ?? sortKey.value)
+
 /**
  * 능력치·한손/양손·강화 단계는 스탯 화면과 같은 설정을 쓴다.
  * 여기서 강화를 바꾸면 스탯 화면에도, 스탯 화면에서 바꾸면 여기에도 반영된다.
@@ -273,9 +292,28 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
         </button>
       </div>
       <button type="button" class="btn" @click="resetFilters">초기화</button>
+      <button
+        type="button"
+        class="btn"
+        :aria-expanded="!collapsed"
+        aria-controls="wt-options"
+        data-testid="toggle-options"
+        @click="collapsed = !collapsed"
+      >
+        {{ collapsed ? '▸ 세부 설정 펼치기' : '▾ 세부 설정 접기' }}
+      </button>
       <button type="button" class="btn wt__csv" :disabled="rows.length === 0" @click="downloadCsv">CSV 내보내기</button>
     </div>
 
+    <p v-if="collapsed" class="wt__summary" data-testid="options-summary">
+      <span>변질 <b>{{ affinityTitle }}</b></span>
+      <span>강화 <b>{{ upgradeLabel }}</b></span>
+      <span v-if="applyStats">내 스탯 <b>{{ statsLabel }}</b> · <b>{{ twoHanded ? '양손' : '한손' }}</b></span>
+      <span v-else>내 스탯 <b>미적용</b></span>
+      <span>정렬 <b>{{ sortLabel }} {{ sortDirection === 'asc' ? '↑' : '↓' }}</b></span>
+    </p>
+
+    <div v-show="!collapsed" id="wt-options" class="wt__options">
     <div class="wt__filters">
       <span class="wt__label">정렬</span>
       <select
@@ -433,6 +471,7 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
       {{ AFFINITY_LABELS[single] }}({{ single }}) 변질이 가능한 무기 {{ affinityCounts[single] }}개만 보여줍니다.
       전설 무기처럼 변질할 수 없는 무기는 일반에서만 보입니다. 다른 변질 버튼을 누르면 함께 볼 수 있습니다.
     </p>
+    </div>
 
     <!-- 모바일은 표 대신 카드 목록 (정렬·필터·강화 설정은 같다) -->
     <WeaponCardList
@@ -442,8 +481,8 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
       :owned-counts="ownedCounts"
       @add="addToInventory"
     />
-    <div v-else class="wt__scroll">
-      <table class="wt__table">
+    <div v-else class="wt__scroll" :class="{ 'is-tall': collapsed }">
+      <table class="wt__table" :class="{ 'is-expanded': expanded }">
         <thead>
           <tr class="wt__group-row">
             <th :colspan="expanded ? 4 : 3" class="wt__sticky"></th>
@@ -537,7 +576,7 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
           <tr
             v-for="{ w, affinity: a, level, st, attack, continued } in visibleRows"
             :key="`${w.id}:${a}`"
-            :class="{ 'is-continued': continued }"
+            :class="{ 'is-continued': continued, 'is-group-start': !continued }"
             data-testid="weapon-row"
           >
             <th scope="row" class="wt__sticky wt__name-col">
@@ -568,7 +607,7 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
             >
               {{ st.damage[d] ?? '–' }}
             </td>
-            <td class="num strong" data-testid="attack-total">{{ rowAttackTotal({ st, attack }) }}</td>
+            <td class="num strong wt__total" data-testid="attack-total">{{ rowAttackTotal({ st, attack }) }}</td>
             <td
               v-for="s in STAT_KEYS"
               :key="`scl-${s}`"
@@ -746,7 +785,7 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
 }
 .wt__level-tag {
   margin-left: 4px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 400;
   color: var(--text-muted);
 }
@@ -807,16 +846,36 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
+.wt__scroll.is-tall {
+  max-height: 85vh;
+}
+.wt__options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.wt__summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin: -8px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.wt__summary b {
+  font-weight: 600;
+  color: var(--text);
+}
 .wt__table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  font-size: 12px;
+  font-size: 14px;
   font-variant-numeric: tabular-nums;
 }
 .wt__table th,
 .wt__table td {
-  padding: 6px 8px;
+  padding: 8px 10px;
   border-bottom: 1px solid var(--border);
   text-align: left;
   white-space: nowrap;
@@ -830,14 +889,14 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
   color: var(--text-muted);
 }
 .wt__table thead tr:nth-child(2) th {
-  top: 27px;
+  top: 30px;
 }
 .wt__sort {
   display: inline-flex;
   align-items: center;
   gap: 2px;
   padding: 0;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: inherit;
   background: none;
@@ -862,7 +921,9 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
   opacity: 1;
 }
 .wt__group-row th {
-  font-size: 11px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 20px;
   border-bottom: none;
 }
 .wt__group {
@@ -888,10 +949,10 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
 .wt__table tbody tr:hover th {
   background: var(--muted-surface);
 }
-/* 모든 변질 보기에서 같은 무기의 두 번째 행부터는 이름을 흐리게 */
-.wt__table tbody tr.is-continued th {
-  color: var(--text-faint);
-  font-weight: 400;
+/* 변질을 펼친 표에서는 무기가 바뀌는 곳마다 굵은 구분선을 긋는다. 이름은 모든 행에서 똑같이 진하게 보인다. */
+.wt__table.is-expanded tbody tr.is-group-start:not(:first-child) th,
+.wt__table.is-expanded tbody tr.is-group-start:not(:first-child) td {
+  border-top: 2px solid var(--border-strong);
 }
 .wt__table tbody tr.is-continued .wt__tag {
   display: none;
@@ -899,7 +960,7 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
 .wt__tag {
   margin-left: 4px;
   padding: 0 5px;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
   color: var(--text-muted);
   border: 1px solid var(--border-strong);
@@ -918,7 +979,20 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
   color: var(--text-faint);
 }
 .strong {
-  font-weight: 600;
+  font-weight: 700;
+}
+/* 숫자 칸: 값이 있으면 또렷하게, 없는 칸(–)은 흐리게 */
+.wt__table td.num {
+  font-weight: 500;
+}
+.wt__table td.num.faint {
+  font-weight: 400;
+}
+.wt__table td.wt__total {
+  font-size: 15px;
+  background: var(--muted-surface);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
 }
 .nowrap {
   white-space: nowrap;
@@ -931,7 +1005,7 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
 }
 .wt__value {
   margin-left: 3px;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-muted);
 }
 .wt__guard-full {
@@ -941,7 +1015,7 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
   display: inline-block;
   min-width: 16px;
   margin-right: 4px;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-muted);
 }
 .wt__add {
