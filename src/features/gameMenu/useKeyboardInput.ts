@@ -29,7 +29,7 @@ export function keyToAction(event: Pick<KeyboardEvent, 'key' | 'ctrlKey' | 'altK
   return KEY_ACTIONS[event.key] ?? null
 }
 
-function isTypingTarget(target: EventTarget | null): boolean {
+export function isTypingTarget(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) return false
   return (
     target instanceof HTMLInputElement ||

@@ -1,20 +1,26 @@
 <script setup lang="ts">
-import { nextTick, onMounted, ref, watch } from 'vue'
+import { nextTick, onMounted, reactive, ref, watch } from 'vue'
 import EquipmentSummary from '@/components/EquipmentSummary.vue'
+import { useIsMobile } from '@/composables/useIsMobile'
 import { nameLanguage } from '@/data/names'
+import { useViewHotkeys } from '@/features/appNav/appNavigation'
 import BuffPanel from '@/features/buffs/BuffPanel.vue'
 import DamageCalculator from '@/features/damage/DamageCalculator.vue'
+import CurveGraphPanel from '@/features/formulas/CurveGraphPanel.vue'
 import FormulaReference from '@/features/formulas/FormulaReference.vue'
 import GameMenuSimulator from '@/features/gameMenu/GameMenuSimulator.vue'
 import ArmorTable from '@/features/itemTables/ArmorTable.vue'
 import BuffTable from '@/features/itemTables/BuffTable.vue'
 import TalismanTable from '@/features/itemTables/TalismanTable.vue'
+import StartingClassPanel from '@/features/stats/StartingClassPanel.vue'
 import StatsView from '@/features/stats/StatsView.vue'
 import WeaponTable from '@/features/weaponTable/WeaponTable.vue'
 
 type View = 'equipment' | 'weapons' | 'armor' | 'talismans' | 'buffs' | 'stats' | 'formulas'
 const VIEWS: readonly View[] = ['equipment', 'weapons', 'armor', 'talismans', 'buffs', 'stats', 'formulas']
 const VIEW_KEY = 'er-planner/view'
+
+const isMobile = useIsMobile()
 
 function loadView(): View {
   try {
@@ -26,13 +32,22 @@ function loadView(): View {
 }
 
 const view = ref<View>(loadView())
+/**
+ * 한 번 열어 본 화면은 그대로 두고 숨기기만 해서, 돌아왔을 때 검색어·필터·커서가 남아 있게 한다.
+ * 장비 화면의 키 입력은 GameMenuSimulator의 enabled로 막는다 (다른 화면에서는 가로채지 않는다).
+ */
+const visited = reactive(new Set<View>([view.value]))
 watch(view, (v) => {
+  visited.add(v)
   try {
     localStorage.setItem(VIEW_KEY, v)
   } catch {
     // 저장소를 쓸 수 없으면 기억하지 않는다
   }
 })
+
+// 어느 화면에서든: 키보드 [ / ] 로 이전·다음 화면, 게임패드 Select(View)로 다음 화면
+useViewHotkeys(VIEWS, view)
 
 /**
  * 모바일에서는 메뉴가 옆으로 밀리는 한 줄이라, 고른 탭이 보이도록 메뉴만 옆으로 굴린다.
@@ -88,6 +103,9 @@ watch(view, () => nextTick(showActiveTab))
           계산식
         </button>
       </nav>
+      <span v-if="!isMobile" class="app__hint" data-testid="nav-hint" title="입력창에 글을 쓰는 중에는 움직이지 않습니다">
+        <kbd>[</kbd> <kbd>]</kbd> 화면 이동 · 패드 <kbd>Select</kbd> 다음 화면
+      </span>
       <div class="app__lang" role="group" aria-label="아이템 이름 언어" title="아이템·무기군 이름 언어 (공식 한국어 이름이 없는 아이템은 영어로 보입니다)">
         <button
           type="button"
@@ -110,31 +128,33 @@ watch(view, () => nextTick(showActiveTab))
       </div>
     </header>
 
-    <!-- 시뮬레이터는 장비 화면에서만 마운트해서, 표를 볼 때는 키 입력을 가로채지 않게 한다 -->
-    <main v-if="view === 'equipment'" class="app__layout">
+    <!-- 열어 본 화면은 숨기기만 한다(v-show). 시뮬레이터는 enabled로 장비 화면에서만 키를 받는다 -->
+    <main v-if="visited.has('equipment')" v-show="view === 'equipment'" class="app__layout">
       <div class="app__column">
-        <GameMenuSimulator />
+        <GameMenuSimulator :enabled="view === 'equipment'" />
         <BuffPanel />
         <DamageCalculator />
       </div>
       <EquipmentSummary />
     </main>
-    <main v-else-if="view === 'weapons'">
+    <main v-if="visited.has('weapons')" v-show="view === 'weapons'">
       <WeaponTable />
     </main>
-    <main v-else-if="view === 'armor'">
+    <main v-if="visited.has('armor')" v-show="view === 'armor'">
       <ArmorTable />
     </main>
-    <main v-else-if="view === 'talismans'">
+    <main v-if="visited.has('talismans')" v-show="view === 'talismans'">
       <TalismanTable />
     </main>
-    <main v-else-if="view === 'buffs'">
+    <main v-if="visited.has('buffs')" v-show="view === 'buffs'">
       <BuffTable />
     </main>
-    <main v-else-if="view === 'formulas'">
+    <main v-if="visited.has('formulas')" v-show="view === 'formulas'">
+      <CurveGraphPanel />
       <FormulaReference />
     </main>
-    <main v-else>
+    <main v-if="visited.has('stats')" v-show="view === 'stats'">
+      <StartingClassPanel />
       <StatsView />
     </main>
   </div>
@@ -153,6 +173,7 @@ watch(view, () => nextTick(showActiveTab))
   max-width: 1160px;
 }
 .app__header {
+  container: app-header / inline-size;
   display: flex;
   align-items: center;
   gap: 24px;
@@ -167,6 +188,12 @@ watch(view, () => nextTick(showActiveTab))
 .app__nav {
   display: flex;
   gap: 4px;
+}
+.app__hint {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-faint);
+  white-space: nowrap;
 }
 .app__nav button {
   padding: 4px 12px;
@@ -191,6 +218,22 @@ watch(view, () => nextTick(showActiveTab))
   border-radius: 999px;
   overflow: hidden;
   flex-shrink: 0;
+}
+.app__hint + .app__lang {
+  margin-left: 0;
+}
+/* 헤더에 메뉴 7개·키 안내·언어 버튼이 한 줄로 들어갈 만큼 넓을 때만 키 안내를 보여준다.
+   화면마다 본문 폭이 달라서(장비 960px, 표 1400px) 창 크기가 아니라 헤더 폭으로 판단한다. */
+@container app-header (max-width: 1080px) {
+  .app__hint {
+    display: none;
+  }
+  .app__hint + .app__lang {
+    margin-left: auto;
+  }
+}
+.app__nav button {
+  white-space: nowrap;
 }
 .app__lang button {
   padding: 3px 10px;

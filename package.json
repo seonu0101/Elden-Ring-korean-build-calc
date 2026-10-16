@@ -11,6 +11,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "import:weapons": "node scripts/import-weapons.mjs",
+    "import:starting-classes": "node scripts/import-starting-classes.mjs",
     "copy:item-images": "node scripts/copy-item-images.mjs",
     "glossary": "node scripts/export-glossary.mjs",
     "import:korean-names": "node scripts/import-korean-names.mjs",
