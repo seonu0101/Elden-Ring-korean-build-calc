@@ -7,6 +7,7 @@ import { availableAffinities, weaponStats } from '@/features/weaponTable/weaponT
 import { DAMAGE_TYPES, STAT_KEYS, STATUS_TYPES } from '@/types'
 import type { AffinityName, WeaponItem } from '@/types'
 import { upgradeStats } from '@/data/upgrade'
+import { itemName } from '@/data/names'
 
 const props = defineProps<{
   /** 칸 이름 (예: 오른손 무기 1). 직접 고른 무기면 비워 둔다. */
@@ -57,7 +58,7 @@ function signed(n: number) {
     <header class="card__header">
       <div class="card__title">
         <span v-if="slotTitle" class="card__slot">{{ slotTitle }}</span>
-        <span class="card__name">{{ weapon.name }}</span>
+        <span class="card__name">{{ itemName(weapon) }}</span>
         <span class="card__level">+{{ result.level }}</span>
       </div>
       <select

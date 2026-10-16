@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { itemImageUrl } from '@/data/images'
+import { itemName } from '@/data/names'
 import type { Item } from '@/types'
 
 const props = defineProps<{
@@ -29,19 +30,19 @@ watch(
   <div
     class="tile"
     :class="{ 'tile--empty': !item, 'tile--image': imageUrl }"
-    :title="item?.name ?? placeholder"
+    :title="item ? itemName(item) : placeholder"
   >
     <img
       v-if="imageUrl"
       class="tile__image"
       :src="imageUrl"
-      :alt="item?.name"
+      :alt="item ? itemName(item) : undefined"
       loading="lazy"
       draggable="false"
       data-testid="item-image"
       @error="imageFailed = true"
     />
-    <span v-else-if="item" class="tile__name">{{ item.name }}</span>
+    <span v-else-if="item" class="tile__name">{{ itemName(item) }}</span>
     <span v-else class="tile__placeholder">{{ placeholder }}</span>
     <span v-if="equipped" class="tile__dot" aria-label="장착 중" />
     <span v-else-if="equippedElsewhere" class="tile__dot tile__dot--other" aria-label="다른 칸에 장착 중" />

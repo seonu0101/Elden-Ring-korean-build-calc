@@ -8,6 +8,7 @@ import { curveAt, curvePieces, curveShape } from '@/data/curves'
 import { calculateDamage } from '@/data/damage'
 import { combineEffects } from '@/data/effects'
 import { BUFFS_BY_ID, ITEMS_BY_ID } from '@/data/items'
+import { itemName } from '@/data/names'
 import { reinforcementRates } from '@/data/upgrade'
 import { STACK_GROUPS } from '@/data/buffStacking'
 import type { BuffItem, WeaponItem } from '@/types'
@@ -196,7 +197,7 @@ const SECTIONS = [
         <li>곡선 번호는 무기·변질마다 데이터에 정해져 있습니다 (일반 #0, 중후 #1, 예리 #2, 상질 #8, 마력·화염·벼락·신성 #4 등). 능력치는 소수점 버림.</li>
       </ul>
       <div class="fr__example" data-testid="fr-attack-example">
-        <div class="fr__example-title">예: Longsword 일반 +25, 근력 20 · 기량 20 (물리)</div>
+        <div class="fr__example-title">예: {{ itemName(LONGSWORD) }} 일반 +25, 근력 20 · 기량 20 (물리)</div>
         <div>기본값 = {{ num(exPhys.raw) }} × {{ num(exPhys.rate) }} = {{ num(exAttack.damage.physical.base) }}</div>
         <div v-for="t in exPhys.terms" :key="t.stat">
           {{ t.stat === 'strength' ? '근력' : '기량' }} 줄 = {{ num(t.coefficient) }} × {{ num(t.scalingRate) }} × {{ num(t.graph) }} =
@@ -230,7 +231,7 @@ const SECTIONS = [
         <li>신비 보정이 없는 무기는 신비 계수가 0이라 기본값 그대로입니다.</li>
       </ul>
       <div class="fr__example" data-testid="fr-status-example">
-        <div class="fr__example-title">예: Uchigatana 피 +25, 신비 30 (출혈)</div>
+        <div class="fr__example-title">예: {{ itemName(UCHIGATANA) }} 피 +25, 신비 30 (출혈)</div>
         <div>
           보정 배율 = {{ num(exBleedDetail.coefficient) }} × {{ num(exBleedDetail.scalingRate) }} × {{ num(exBleedDetail.graph) }} =
           {{ num(exBleedDetail.multiplier) }}
@@ -319,10 +320,10 @@ const SECTIONS = [
         <li>받는 피해 배율은 탈리스만·버프의 경감 효과로 정해집니다 (아래 9번). 피해가 늘면 경감률이 음수가 될 수 있습니다.</li>
       </ul>
       <div class="fr__example" data-testid="fr-negation-example">
-        <div class="fr__example-title">예: 물리 경감 10%와 20% 방어구, 황금 맹세(받는 피해 ×0.9)</div>
+        <div class="fr__example-title">예: 물리 경감 10%와 20% 방어구, {{ itemName(GOLDEN_VOW) }}(받는 피해 ×0.9)</div>
         <div>100 × (1 − 0.9 × 0.8 × 0.9) = <b>{{ num(exNegation, 3) }}%</b></div>
         <div class="fr__example-sub">
-          + 샤브리리의 외침(×1.3)까지: 100 × (1 − 0.9 × 0.8 × {{ num(exEffects.damageTaken.physical.multiplier) }}) =
+          + {{ itemName(SHABRIRI) }}(×1.3)까지: 100 × (1 − 0.9 × 0.8 × {{ num(exEffects.damageTaken.physical.multiplier) }}) =
           <b>{{ num(exNegationBuffed, 3) }}%</b>
         </div>
       </div>
@@ -355,7 +356,7 @@ const SECTIONS = [
         <li>모션 값은 공격 동작마다의 배율입니다 (약공격 100% 등). 반격·약점 부위·패리 치명타 배율은 넣지 않았습니다.</li>
       </ul>
       <div class="fr__example" data-testid="fr-damage-example">
-        <div class="fr__example-title">예: 위 Longsword 물리 공격 {{ num(exPhysAttack) }}, 상대 방어력 120 · 경감률 20%</div>
+        <div class="fr__example-title">예: 위 {{ itemName(LONGSWORD) }} 물리 공격 {{ num(exPhysAttack) }}, 상대 방어력 120 · 경감률 20%</div>
         <div>r = {{ num(exPhysAttack) }} / 120 = {{ num(exDamagePart.ratio) }} ({{ exDamagePart.step.range }})</div>
         <div>f = {{ exDamagePart.step.expr }} = {{ num(exDamagePart.multiplier) }}</div>
         <div>
@@ -386,7 +387,7 @@ const SECTIONS = [
         </li>
       </ul>
       <div class="fr__example" data-testid="fr-effects-example">
-        <div class="fr__example-title">예: 황금 맹세(Golden Vow) + 샤브리리의 외침(Howl of Shabriri)</div>
+        <div class="fr__example-title">예: {{ itemName(GOLDEN_VOW) }} + {{ itemName(SHABRIRI) }}</div>
         <div>
           공격력 = {{ exEffects.attack.physical.parts.map((p) => num(p.value)).join(' × ') }} =
           <b>×{{ num(exEffects.attack.physical.multiplier) }}</b> (+{{ num((exEffects.attack.physical.multiplier - 1) * 100, 2) }}%)
@@ -396,7 +397,7 @@ const SECTIONS = [
           <b>×{{ num(exEffects.damageTaken.physical.multiplier) }}</b>
         </div>
         <div class="fr__example-sub">
-          Longsword 예시(물리 {{ num(exAttack.damage.physical.base + exAttack.damage.physical.scaling) }})에 적용: ⌊{{
+          {{ itemName(LONGSWORD) }} 예시(물리 {{ num(exAttack.damage.physical.base + exAttack.damage.physical.scaling) }})에 적용: ⌊{{
             num(exAttack.damage.physical.base + exAttack.damage.physical.scaling)
           }}
           × {{ num(exEffects.attack.physical.multiplier) }}⌋ = <b>{{ exBuffedAttack }}</b>

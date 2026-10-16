@@ -309,7 +309,7 @@ function toWeapon(raw) {
     name: raw.name,
     weaponType: raw.category,
     weight: raw.weight,
-    // 원본 데이터의 dlc 값: [0] 본편, [1] Shadow of the Erdtree, [2] 그 밖의 추가 무기(8개)
+    // 원본 데이터의 dlc 값: [0] 본편, [1] Shadow of the Erdtree, [2] 타니쉬드 에디션(Tarnished Pack, 무기 8개·방어구 18개)
     content: Array.isArray(raw.dlc) ? (raw.dlc[0] ?? 0) : 0,
     requirements: pick(raw.requirements, STATS),
     ...toStats(standard),

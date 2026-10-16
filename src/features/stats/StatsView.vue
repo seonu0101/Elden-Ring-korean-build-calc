@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 import { MAX_STAT, calculateAttack } from '@/data/attackPower'
 import { WEAPONS } from '@/data/items'
+import { itemName, koreanName, nameLanguage } from '@/data/names'
 import { MAX_REGULAR_LEVEL, MAX_SOMBER_LEVEL, levelFor } from '@/data/upgrade'
 import { EQUIPMENT_GRID } from '@/features/gameMenu/layout'
 import { weaponStats } from '@/features/weaponTable/weaponTable'
@@ -42,7 +43,11 @@ const equippedCards = computed(() =>
 
 // 장착하지 않은 무기도 골라서 계산해 볼 수 있다.
 const pickQuery = ref('')
-const pickedWeapon = computed(() => WEAPONS.find((w) => w.name.toLowerCase() === pickQuery.value.trim().toLowerCase()) ?? null)
+/** 한국어·영어 이름 어느 쪽으로 써도 찾는다 */
+const pickedWeapon = computed(() => {
+  const q = pickQuery.value.trim().toLowerCase()
+  return WEAPONS.find((w) => w.name.toLowerCase() === q || koreanName(w)?.toLowerCase() === q) ?? null
+})
 const pickedAffinity = ref<AffinityName>('Standard')
 const pickedCard = computed(() => {
   const w = pickedWeapon.value
@@ -190,12 +195,12 @@ function numberFrom(event: Event) {
           v-model="pickQuery"
           class="sv__input sv__search"
           list="sv-weapon-names"
-          placeholder="무기 이름 (예: Uchigatana)"
+          :placeholder="nameLanguage === 'ko' ? '무기 이름 (예: 타도)' : '무기 이름 (예: Uchigatana)'"
           aria-label="계산할 무기"
           data-testid="pick-weapon"
         />
         <datalist id="sv-weapon-names">
-          <option v-for="w in WEAPONS" :key="w.id" :value="w.name" />
+          <option v-for="w in WEAPONS" :key="w.id" :value="itemName(w)" />
         </datalist>
       </div>
       <div v-if="pickedCard" class="sv__cards">

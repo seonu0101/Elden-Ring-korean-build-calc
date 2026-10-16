@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { WEAPONS } from '@/data/items'
+import { itemName, nameLanguage, weaponTypeName } from '@/data/names'
 import {
   AFFINITY_LABELS,
   CONTENT_LABELS,
@@ -93,7 +94,10 @@ const statsLabel = computed(() =>
   STAT_KEYS.map((s) => `${STAT_SHORT_LABELS[s]} ${statsStore.combatStats[s]}`).join(' · '),
 )
 
-const types = weaponTypes(WEAPONS)
+/** 무기군 목록: 화면에 보이는 이름 순서 */
+const types = computed(() =>
+  weaponTypes(WEAPONS).sort((a, b) => weaponTypeName(a).localeCompare(weaponTypeName(b), nameLanguage.value)),
+)
 const affinityCounts = Object.fromEntries(AFFINITIES.map((a) => [a, countWithAffinity(WEAPONS, a)])) as Record<
   AffinityName,
   number
@@ -223,13 +227,13 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
         v-model="query"
         class="wt__input wt__search"
         type="search"
-        placeholder="이름 검색"
+        placeholder="이름 검색 (한국어·영어)"
         aria-label="이름 검색"
         data-testid="search"
       />
       <select v-model="weaponType" class="wt__input" aria-label="무기군" data-testid="type-filter">
         <option :value="null">모든 무기군</option>
-        <option v-for="t in types" :key="t" :value="t">{{ t }}</option>
+        <option v-for="t in types" :key="t" :value="t">{{ weaponTypeName(t) }}</option>
       </select>
       <div class="wt__segment" role="group" aria-label="구분">
         <button
@@ -525,12 +529,12 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
             data-testid="weapon-row"
           >
             <th scope="row" class="wt__sticky wt__name-col">
-              {{ w.name }}
+              {{ itemName(w) }}
               <span class="wt__level-tag" data-testid="level-tag">+{{ level }}</span>
               <span v-if="w.content !== 0" class="wt__tag">{{ CONTENT_LABELS[w.content] }}</span>
             </th>
             <td v-if="expanded" class="nowrap" data-testid="affinity-cell">{{ AFFINITY_LABELS[a] }}</td>
-            <td class="muted">{{ w.weaponType }}</td>
+            <td class="muted">{{ weaponTypeName(w.weaponType) }}</td>
             <td class="num">{{ w.weight.toFixed(1) }}</td>
             <td
               v-for="s in STAT_KEYS"
@@ -586,7 +590,7 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
                 <button
                   type="button"
                   class="wt__add"
-                  :aria-label="`${w.name} 인벤토리에 추가`"
+                  :aria-label="`${itemName(w)} 인벤토리에 추가`"
                   title="인벤토리에 추가"
                   data-testid="add-weapon"
                   @click="addToInventory(w)"

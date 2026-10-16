@@ -3,6 +3,7 @@
 // 마지막 칸은 기본으로 "보유 / +"(인벤토리 추가)이고, action 슬롯으로 바꿀 수 있다 (버프 표는 켜기 버튼).
 import { computed, ref, watch } from 'vue'
 import { CONTENT_LABELS } from '@/data/labels'
+import { itemName } from '@/data/names'
 import { useCharacterStore } from '@/stores/character'
 import { columnGroups, defaultDirection, filterItems, itemsToCsv, sortItems } from './itemTable'
 import type { ContentFilter, SortDirection, TableColumn, TableItem, TypeFilter } from './itemTable'
@@ -117,7 +118,7 @@ function resetFilters() {
         v-model="query"
         class="it__input it__search"
         type="search"
-        placeholder="이름 검색"
+        placeholder="이름 검색 (한국어·영어)"
         aria-label="이름 검색"
         data-testid="search"
       />
@@ -198,7 +199,7 @@ function resetFilters() {
         <tbody>
           <tr v-for="item in visibleRows" :key="item.id" data-testid="item-row">
             <th scope="row" class="it__sticky it__name-col">
-              {{ item.name }}
+              {{ itemName(item) }}
               <span v-if="item.content" class="it__tag">{{ CONTENT_LABELS[item.content] }}</span>
             </th>
             <td
@@ -215,7 +216,7 @@ function resetFilters() {
               <button
                 type="button"
                 class="it__add"
-                :aria-label="`${item.name} 인벤토리에 추가`"
+                :aria-label="`${itemName(item)} 인벤토리에 추가`"
                 title="인벤토리에 추가"
                 data-testid="add-item"
                 @click="store.addItem(item.id)"

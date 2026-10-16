@@ -6,6 +6,7 @@ import { calculateDamage, DAMAGE_CALC_STORAGE_KEY, PHYSICAL_ATTACK_LABELS, PHYSI
 import type { PhysicalAttackType } from '@/data/damage'
 import { characterDefense, damageNegation } from '@/data/defense'
 import { DAMAGE_LABELS, NEGATION_LABELS } from '@/data/labels'
+import { itemName } from '@/data/names'
 import { levelFor } from '@/data/upgrade'
 import { EQUIPMENT_GRID } from '@/features/gameMenu/layout'
 import { weaponStats } from '@/features/weaponTable/weaponTable'
@@ -161,7 +162,7 @@ function setNumber(target: Record<string, number>, key: string, event: Event) {
         <label class="dc__field">
           <span>무기</span>
           <select v-model="settings.slot" class="dc__input" data-testid="damage-weapon">
-            <option v-for="w in weapons" :key="w.label" :value="w.label">{{ w.label }} {{ w.item.name }}</option>
+            <option v-for="w in weapons" :key="w.label" :value="w.label">{{ w.label }} {{ itemName(w.item) }}</option>
           </select>
         </label>
         <label class="dc__field">

@@ -4,6 +4,7 @@ import ItemTile from '@/components/ItemTile.vue'
 import { calculateAttack, partTotal } from '@/data/attackPower'
 import { AFFINITY_LABELS, DAMAGE_LABELS, STAT_LABELS, STATUS_LABELS, scalingGrade, scalingValue } from '@/data/labels'
 import { talismanEffectText } from '@/data/talismanEffects'
+import { itemName, weaponTypeName } from '@/data/names'
 import { levelFor, upgradeStats } from '@/data/upgrade'
 import { weaponStats } from '@/features/weaponTable/weaponTable'
 import { useCharacterStore } from '@/stores/character'
@@ -199,12 +200,12 @@ const kindLabel ={ weapon: '무기', protector: '방어구', talisman: '탈리�
       <p v-if="notice" class="gms__notice" role="alert" data-testid="equip-notice">{{ notice }}</p>
       <template v-if="focusedItem">
         <div class="gms__detail-name">
-          {{ focusedItem.name }}
+          {{ itemName(focusedItem) }}
           <span v-if="focusedIsEquipped" class="gms__badge">장착 중</span>
         </div>
         <div class="gms__detail-meta">
           <span>{{ kindLabel[focusedItem.kind] }}</span>
-          <span v-if="focusedItem.kind === 'weapon'">{{ focusedItem.weaponType }}</span>
+          <span v-if="focusedItem.kind === 'weapon'">{{ weaponTypeName(focusedItem.weaponType) }}</span>
           <span>무게 {{ focusedItem.weight.toFixed(1) }}</span>
           <span v-if="focusedItem.kind === 'protector'">강인도 {{ focusedItem.poise }}</span>
         </div>

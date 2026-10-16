@@ -12,7 +12,9 @@
     "test:watch": "vitest",
     "import:weapons": "node scripts/import-weapons.mjs",
     "copy:item-images": "node scripts/copy-item-images.mjs",
-    "glossary": "node scripts/export-glossary.mjs"
+    "glossary": "node scripts/export-glossary.mjs",
+    "import:korean-names": "node scripts/import-korean-names.mjs",
+    "names": "node scripts/export-names.mjs"
   },
   "dependencies": {
     "pinia": "^4.1.0",

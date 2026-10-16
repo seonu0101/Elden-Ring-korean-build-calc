@@ -1,0 +1,1600 @@
+﻿종류,id,영어,한국어,구분
+무기,dagger,Dagger,대거,본편
+무기,black-knife,Black Knife,검은 칼날,본편
+무기,parrying-dagger,Parrying Dagger,패링 대거,본편
+무기,misericorde,Miséricorde,자비의 단검,본편
+무기,reduvia,Reduvia,레두비아,본편
+무기,crystal-knife,Crystal Knife,결정 나이프,본편
+무기,celebrants-sickle,Celebrant's Sickle,축제의 손낫,본편
+무기,glintstone-kris,Glintstone Kris,휘석 크리스,본편
+무기,scorpions-stinger,Scorpion's Stinger,전갈의 침,본편
+무기,great-knife,Great Knife,대형 나이프,본편
+무기,wakizashi,Wakizashi,협차,본편
+무기,cinquedea,Cinquedea,친퀘디아,본편
+무기,ivory-sickle,Ivory Sickle,상아 손낫,본편
+무기,bloodstained-dagger,Bloodstained Dagger,피투성이 단도,본편
+무기,erdsteel-dagger,Erdsteel Dagger,황동 단도,본편
+무기,blade-of-calling,Blade of Calling,사명의 칼날,본편
+무기,main-gauche,Main-gauche,맹고슈,DLC
+무기,fire-knights-shortsword,Fire Knight's Shortsword,불의 기사 단검,DLC
+무기,longsword,Longsword,롱 소드,본편
+무기,short-sword,Short Sword,숏 소드,본편
+무기,broadsword,Broadsword,브로드 소드,본편
+무기,lordsworns-straight-sword,Lordsworn's Straight Sword,군주군의 직검,본편
+무기,weathered-straight-sword,Weathered Straight Sword,낡은 직검,본편
+무기,ornamental-straight-sword,Ornamental Straight Sword,의장 직검,본편
+무기,golden-epitaph,Golden Epitaph,황금 묘비,본편
+무기,nox-flowing-sword,Nox Flowing Sword,녹스의 유체검,본편
+무기,inseparable-sword,Inseparable Sword,나뉘지 않는 쌍생아의 검,본편
+무기,coded-sword,Coded Sword,비문자 검,본편
+무기,sword-of-night-and-flame,Sword of Night and Flame,밤과 불꽃의 검,본편
+무기,crystal-sword,Crystal Sword,결정검,본편
+무기,carian-knights-sword,Carian Knight's Sword,카리아의 기사검,본편
+무기,sword-of-st-trina,Sword of St. Trina,트리나의 검,본편
+무기,miquellan-knights-sword,Miquellan Knight's Sword,미켈라의 기사검,본편
+무기,cane-sword,Cane Sword,지팡이검,본편
+무기,regalia-of-eochaid,Regalia of Eochaid,에오히드의 보검,본편
+무기,nobles-slender-sword,Noble's Slender Sword,귀인의 세검,본편
+무기,warhawks-talon,Warhawk's Talon,전쟁매의 발톱검,본편
+무기,lazuli-glintstone-sword,Lazuli Glintstone Sword,라줄리의 휘석검,본편
+무기,rotten-crystal-sword,Rotten Crystal Sword,부패한 결정검,본편
+무기,velvet-sword-of-st-trina,Velvet Sword of St. Trina,트리나의 보랏빛 검,DLC
+무기,star-lined-sword,Star-Lined Sword,연성검,DLC
+무기,carian-sorcery-sword,Carian Sorcery Sword,카리아의 마술검,DLC
+무기,stone-sheathed-sword,Stone-Sheathed Sword,돌칼집의 검,DLC
+무기,sword-of-light,Sword of Light,라이트 소드,DLC
+무기,sword-of-darkness,Sword of Darkness,다크 소드,DLC
+무기,bastard-sword,Bastard Sword,바스타드 소드,본편
+무기,forked-greatsword,Forked Greatsword,두갈래 대검,본편
+무기,iron-greatsword,Iron Greatsword,철 대검,본편
+무기,lordsworns-greatsword,Lordsworn's Greatsword,군주군의 대검,본편
+무기,knights-greatsword,Knight's Greatsword,기사 대검,본편
+무기,flamberge,Flamberge,플랑베르주,본편
+무기,ordoviss-greatsword,Ordovis's Greatsword,오르도비스의 대검,본편
+무기,alabaster-lords-sword,Alabaster Lord's Sword,백왕의 검,본편
+무기,banished-knights-greatsword,Banished Knight's Greatsword,땅 잃은 기사의 대검,본편
+무기,dark-moon-greatsword,Dark Moon Greatsword,암월의 대검,본편
+무기,sacred-relic-sword,Sacred Relic Sword,신이 남긴 검,본편
+무기,helphens-steeple,Helphen's Steeple,헬펜의 첨탑,본편
+무기,blasphemous-blade,Blasphemous Blade,모독의 성검,본편
+무기,marais-executioners-sword,Marais Executioner's Sword,마레 가의 집행검,본편
+무기,sword-of-milos,Sword of Milos,미에로스의 검,본편
+무기,golden-order-greatsword,Golden Order Greatsword,황금률의 대검,본편
+무기,claymore,Claymore,클레이모어,본편
+무기,gargoyles-greatsword,Gargoyle's Greatsword,가고일의 대검,본편
+무기,deaths-poker,Death's Poker,죽음부지깽이,본편
+무기,gargoyles-blackblade,Gargoyle's Blackblade,가고일의 흑검,본편
+무기,sword-lance,Sword Lance,소드랜스,DLC
+무기,greatsword-of-damnation,Greatsword of Damnation,겁벌의 대검,DLC
+무기,lizard-greatsword,Lizard Greatsword,큰 도마뱀 대검,DLC
+무기,greatsword-of-solitude,Greatsword of Solitude,고립 감옥의 대검,DLC
+무기,leontiels-greatsword,Leontiel's Greatsword,레오티엘의 대검,타니쉬드 에디션
+무기,greatsword,Greatsword,그레이트 소드,본편
+무기,watchdogs-greatsword,Watchdog's Greatsword,파수견의 대검,본편
+무기,malikeths-black-blade,Maliketh's Black Blade,말리케스의 흑검,본편
+무기,trolls-golden-sword,Troll's Golden Sword,트롤의 황금검,본편
+무기,zweihander,Zweihander,츠바이헨더,본편
+무기,starscourge-greatsword,Starscourge Greatsword,별 부수는 대검,본편
+무기,royal-greatsword,Royal Greatsword,왕가의 그레이트 소드,본편
+무기,godslayers-greatsword,Godslayer's Greatsword,신 사냥의 검,본편
+무기,ruins-greatsword,Ruins Greatsword,유적의 대검,본편
+무기,grafted-blade-greatsword,Grafted Blade Greatsword,검 잇기의 대검,본편
+무기,troll-knights-sword,Troll Knight's Sword,거인의 마법검,본편
+무기,ancient-meteoric-ore-greatsword,Ancient Meteoric Ore Greatsword,옛 운철 대검,DLC
+무기,fire-knights-greatsword,Fire Knight's Greatsword,불의 기사 대검,DLC
+무기,greatsword-of-radahn-lord,Greatsword of Radahn (Lord),라단의 대검(왕),DLC
+무기,moonrithylls-knight-sword,Moonrithyll's Knight Sword,문리델의 기사검,DLC
+무기,greatsword-of-radahn-light,Greatsword of Radahn (Light),라단의 대검(빛),DLC
+무기,estoc,Estoc,에스톡,본편
+무기,cleanrot-knights-sword,Cleanrot Knight's Sword,귀부기사의 검,본편
+무기,rapier,Rapier,레이피어,본편
+무기,rogiers-rapier,Rogier's Rapier,로지에르의 자검,본편
+무기,antspur-rapier,Antspur Rapier,개미가시 레이피어,본편
+무기,frozen-needle,Frozen Needle,빙결의 침,본편
+무기,nobles-estoc,Noble's Estoc,귀인의 에스톡,본편
+무기,bloody-helice,Bloody Helice,피의 헬리케,본편
+무기,godskin-stitcher,Godskin Stitcher,신의 살갗 대자검,본편
+무기,great-epee,Great Épée,그레이트 에페,본편
+무기,dragon-kings-cragblade,Dragon King's Cragblade,용왕의 바위검,본편
+무기,queeligns-greatsword,Queelign's Greatsword,퀼라인의 대검,DLC
+무기,falchion,Falchion,펄션,본편
+무기,beastmans-curved-sword,Beastman's Curved Sword,수인의 곡도,본편
+무기,shotel,Shotel,쇼텔,본편
+무기,shamshir,Shamshir,샴시르,본편
+무기,bandits-curved-sword,Bandit's Curved Sword,산적의 곡도,본편
+무기,magma-blade,Magma Blade,용암도,본편
+무기,flowing-curved-sword,Flowing Curved Sword,유수의 곡검,본편
+무기,wing-of-astel,Wing of Astel,아스테르의 날개,본편
+무기,scavengers-curved-sword,Scavenger's Curved Sword,시체 뒤지는 자의 곡검,본편
+무기,eclipse-shotel,Eclipse Shotel,일식의 쇼텔,본편
+무기,serpent-gods-curved-sword,Serpent-God's Curved Sword,뱀신의 곡도,본편
+무기,mantis-blade,Mantis Blade,당랑도,본편
+무기,scimitar,Scimitar,시미터,본편
+무기,grossmesser,Grossmesser,그로스메서,본편
+무기,spirit-sword,Spirit Sword,영의 검,DLC
+무기,falx,Falx,팔스,DLC
+무기,dancing-blade-of-ranah,Dancing Blade of Ranah,라나의 무도검,DLC
+무기,horned-warriors-sword,Horned Warrior's Sword,뿔 전사의 곡검,DLC
+무기,onyx-lords-greatsword,Onyx Lord's Greatsword,흑왕의 대검,본편
+무기,dismounter,Dismounter,참마도,본편
+무기,bloodhounds-fang,Bloodhound's Fang,사냥개의 긴 이빨,본편
+무기,magma-wyrms-scalesword,Magma Wyrm's Scalesword,토룡의 비늘검,본편
+무기,zamor-curved-sword,Zamor Curved Sword,자미엘의 곡검,본편
+무기,omen-cleaver,Omen Cleaver,흉조의 아이 대도,본편
+무기,monks-flameblade,Monk's Flameblade,승병의 화염도,본편
+무기,beastmans-cleaver,Beastman's Cleaver,수인의 대곡도,본편
+무기,morgotts-cursed-sword,Morgott's Cursed Sword,모르고트의 저주검,본편
+무기,putrescence-cleaver,Putrescence Cleaver,수렁의 큰 나대,DLC
+무기,freyjas-greatsword,Freyja's Greatsword,프레이야의 대검,DLC
+무기,horned-warriors-greatsword,Horned Warrior's Greatsword,뿔 전사의 대곡검,DLC
+무기,hefty-scimitar,Hefty Scimitar,헤비 시미터,타니쉬드 에디션
+무기,uchigatana,Uchigatana,타도,본편
+무기,nagakiba,Nagakiba,긴 이빨,본편
+무기,hand-of-malenia,Hand of Malenia,말레니아의 의수도,본편
+무기,meteoric-ore-blade,Meteoric Ore Blade,운철도,본편
+무기,rivers-of-blood,Rivers of Blood,시산혈하,본편
+무기,moonveil,Moonveil,명도 월은,본편
+무기,dragonscale-blade,Dragonscale Blade,용비늘도,본편
+무기,serpentbone-blade,Serpentbone Blade,뱀 뼈의 도,본편
+무기,sword-of-night,Sword of Night,밤의 칼날,DLC
+무기,twinblade,Twinblade,트윈 블레이드,본편
+무기,godskin-peeler,Godskin Peeler,신의 살갗 쌍날검,본편
+무기,twinned-knight-swords,Twinned Knight Swords,트윈 나이트소드,본편
+무기,eleonoras-poleblade,Eleonora's Poleblade,엘레오노라의 쌍치도,본편
+무기,gargoyles-twinblade,Gargoyle's Twinblade,가고일의 쌍날검,본편
+무기,gargoyles-black-blades,Gargoyle's Black Blades,가고일의 흑쌍날검,본편
+무기,euporia,Euporia,에우포리에,DLC
+무기,black-steel-twinblade,Black Steel Twinblade,흑철 쌍날검,DLC
+무기,mace,Mace,메이스,본편
+무기,club,Club,곤봉,본편
+무기,curved-club,Curved Club,굽은 곤봉,본편
+무기,warpick,Warpick,워 피크,본편
+무기,morning-star,Morning Star,모닝스타,본편
+무기,varres-bouquet,Varré's Bouquet,바레의 꽃다발,본편
+무기,spiked-club,Spiked Club,이빨 달린 곤봉,본편
+무기,hammer,Hammer,해머,본편
+무기,monks-flamemace,Monk's Flamemace,승병의 화염망치,본편
+무기,envoys-horn,Envoy's Horn,사자들의 피리,본편
+무기,scepter-of-the-all-knowing,Scepter of the All-Knowing,온 지혜의 왕홀,본편
+무기,nox-flowing-hammer,Nox Flowing Hammer,녹스의 유체망치,본편
+무기,ringed-finger,Ringed Finger,반지손가락,본편
+무기,stone-club,Stone Club,돌 곤봉,본편
+무기,marikas-hammer,Marika's Hammer,마리카의 망치,본편
+무기,flowerstone-gavel,Flowerstone Gavel,꽃바위 망치,DLC
+무기,large-club,Large Club,라지 클럽,본편
+무기,greathorn-hammer,Greathorn Hammer,큰 뿔 망치,본편
+무기,battle-hammer,Battle Hammer,배틀 해머,본편
+무기,great-mace,Great Mace,그레이트 메이스,본편
+무기,curved-great-club,Curved Great Club,큰 굽은 곤봉,본편
+무기,celebrants-skull,Celebrant's Skull,축제의 큰 두개,본편
+무기,pickaxe,Pickaxe,곡괭이,본편
+무기,beastclaw-greathammer,Beastclaw Greathammer,짐승 발톱 대형 망치,본편
+무기,envoys-long-horn,Envoy's Long Horn,사자들의 긴 피리,본편
+무기,cranial-vessel-candlestand,Cranial Vessel Candlestand,존안의 촛대,본편
+무기,great-stars,Great Stars,그레이트스타즈,본편
+무기,brick-hammer,Brick Hammer,적석 망치,본편
+무기,devourers-scepter,Devourer's Scepter,세계 먹는 자의 왕홀,본편
+무기,rotten-battle-hammer,Rotten Battle Hammer,부패한 배틀 해머,본편
+무기,smithscript-greathammer,Smithscript Greathammer,유문의 대형 망치,DLC
+무기,anvil-hammer,Anvil Hammer,모루 해머,DLC
+무기,black-steel-greathammer,Black Steel Greathammer,흑철 대형 망치,DLC
+무기,bloodfiends-arm,Bloodfiend's Arm,혈귀의 팔,DLC
+무기,nightrider-flail,Nightrider Flail,밤 기병의 철퇴,본편
+무기,flail,Flail,철퇴,본편
+무기,family-heads,Family Heads,가족의 머리,본편
+무기,bastards-stars,Bastard's Stars,떨어진 별들,본편
+무기,chainlink-flail,Chainlink Flail,편곤,본편
+무기,serpent-flail,Serpent Flail,불뱀 철퇴,DLC
+무기,golden-order-flail,Golden Order Flail,황금률의 철퇴,타니쉬드 에디션
+무기,battle-axe,Battle Axe,배틀 액스,본편
+무기,forked-hatchet,Forked Hatchet,두갈래 손도끼,본편
+무기,hand-axe,Hand Axe,핸드 액스,본편
+무기,jawbone-axe,Jawbone Axe,치열 도끼,본편
+무기,iron-cleaver,Iron Cleaver,철 나대,본편
+무기,ripple-blade,Ripple Blade,파문의 검,본편
+무기,celebrants-cleaver,Celebrant's Cleaver,축제의 나대,본편
+무기,icerind-hatchet,Icerind Hatchet,빙각의 도끼,본편
+무기,highland-axe,Highland Axe,하이랜드 액스,본편
+무기,sacrificial-axe,Sacrificial Axe,산 제물 도끼,본편
+무기,rosus-axe,Rosus' Axe,로제스의 도끼,본편
+무기,stormhawk-axe,Stormhawk Axe,폭풍 매 도끼,본편
+무기,smithscript-axe,Smithscript Axe,유문 도끼,DLC
+무기,death-knights-twin-axes,Death Knight's Twin Axes,죽음 기사의 쌍도끼,DLC
+무기,messmer-soldiers-axe,Messmer Soldier's Axe,메스메르 병사의 도끼,DLC
+무기,forked-tongue-hatchet,Forked-Tongue Hatchet,두 갈래 혀 손도끼,DLC
+무기,greataxe,Greataxe,그레이트 액스,본편
+무기,warped-axe,Warped Axe,일그러진 도끼,본편
+무기,great-omenkiller-cleaver,Great Omenkiller Cleaver,흉조잡이의 큰 나대,본편
+무기,crescent-moon-axe,Crescent Moon Axe,초승달도끼,본편
+무기,axe-of-godrick,Axe of Godrick,고드릭의 왕 도끼,본편
+무기,longhaft-axe,Longhaft Axe,긴 자루 나대,본편
+무기,rusted-anchor,Rusted Anchor,녹슨 닻,본편
+무기,executioners-greataxe,Executioner's Greataxe,요참의 큰 나대,본편
+무기,winged-greathorn,Winged Greathorn,날개의 큰 뿔,본편
+무기,butchering-knife,Butchering Knife,해체 식칼,본편
+무기,gargoyles-great-axe,Gargoyle's Great Axe,가고일의 대형 도끼,본편
+무기,gargoyles-black-axe,Gargoyle's Black Axe,가고일의 흑도끼,본편
+무기,death-knights-longhaft-axe,Death Knight's Longhaft Axe,죽음 기사의 긴 자루 도끼,DLC
+무기,bonny-butchering-knife,Bonny Butchering Knife,보니의 부엌칼,본편
+무기,short-spear,Short Spear,숏 스피어,본편
+무기,spear,Spear,스피어,본편
+무기,crystal-spear,Crystal Spear,결정창,본편
+무기,claymans-harpoon,Clayman's Harpoon,진흙인간의 작살,본편
+무기,cleanrot-spear,Cleanrot Spear,귀부기사의 창,본편
+무기,partisan,Partisan,파르티잔,본편
+무기,celebrants-rib-rake,Celebrant's Rib-Rake,축제 늑골 쇠스랑,본편
+무기,pike,Pike,파이크,본편
+무기,torchpole,Torchpole,막대기 토치,본편
+무기,bolt-of-gransax,Bolt of Gransax,그랑삭스의 벼락,본편
+무기,cross-naginata,Cross-Naginata,십문자치도,본편
+무기,death-ritual-spear,Death Ritual Spear,죽음 의례의 창,본편
+무기,inquisitors-girandole,Inquisitor's Girandole,책문 촛대,본편
+무기,spiked-spear,Spiked Spear,가시몽둥이,본편
+무기,iron-spear,Iron Spear,철 창,본편
+무기,rotten-crystal-spear,Rotten Crystal Spear,부패한 결정창,본편
+무기,smithscript-spear,Smithscript Spear,유문 창,DLC
+무기,swift-spear,Swift Spear,속창,DLC
+무기,bloodfiends-fork,Bloodfiend's Fork,혈귀의 포크,DLC
+무기,bloodfiends-sacred-spear,Bloodfiend's Sacred Spear,혈귀의 성창,DLC
+무기,mohgwyns-sacred-spear,Mohgwyn's Sacred Spear,모그윈의 성창,본편
+무기,silurias-tree,Siluria's Tree,실루리아의 나무창,본편
+무기,serpent-hunter,Serpent-Hunter,큰 뱀 사냥꾼,본편
+무기,vykes-war-spear,Vyke's War Spear,바이크의 전투 창,본편
+무기,lance,Lance,랜스,본편
+무기,treespear,Treespear,트리 스피어,본편
+무기,spear-of-the-impaler,Spear of the Impaler,가시공의 창,DLC
+무기,messmer-soldiers-spear,Messmer Soldier's Spear,메스메르 병사의 창,DLC
+무기,barbed-staff-spear,Barbed Staff-Spear,역가시 지팡이창,DLC
+무기,halberd,Halberd,할버드,본편
+무기,pests-glaive,Pest's Glaive,벌레의 글레이브,본편
+무기,lucerne,Lucerne,루체른,본편
+무기,banished-knights-halberd,Banished Knight's Halberd,땅 잃은 기사의 도끼창,본편
+무기,commanders-standard,Commander's Standard,노장의 군기,본편
+무기,nightrider-glaive,Nightrider Glaive,밤 기병의 글레이브,본편
+무기,ripple-crescent-halberd,Ripple Crescent Halberd,일그러진 파문 도끼창,본편
+무기,vulgar-militia-saw,Vulgar Militia Saw,천한 병사의 톱,본편
+무기,golden-halberd,Golden Halberd,황금 할버드,본편
+무기,glaive,Glaive,글레이브,본편
+무기,lorettas-war-sickle,Loretta's War Sickle,로레타의 전투 낫,본편
+무기,guardians-swordspear,Guardian's Swordspear,수호자의 검창,본편
+무기,vulgar-militia-shotel,Vulgar Militia Shotel,천한 병사의 쇼텔,본편
+무기,dragon-halberd,Dragon Halberd,용 할버드,본편
+무기,gargoyles-halberd,Gargoyle's Halberd,가고일의 도끼창,본편
+무기,gargoyles-black-halberd,Gargoyle's Black Halberd,가고일의 흑도끼창,본편
+무기,spirit-glaive,Spirit Glaive,영혼의 글레이브,DLC
+무기,poleblade-of-the-bud,Poleblade of the Bud,꽃봉오리 치도,DLC
+무기,scythe,Scythe,대낫,본편
+무기,grave-scythe,Grave Scythe,묘지의 대낫,본편
+무기,halo-scythe,Halo Scythe,광륜의 대낫,본편
+무기,winged-scythe,Winged Scythe,날개낫,본편
+무기,obsidian-lamina,Obsidian Lamina,흑요의 라미나,DLC
+무기,whip,Whip,채찍,본편
+무기,thorned-whip,Thorned Whip,가시 채찍,본편
+무기,magma-whip-candlestick,Magma Whip Candlestick,용암 채찍의 촛대,본편
+무기,hoslows-petal-whip,Hoslow's Petal Whip,호슬로의 꽃잎,본편
+무기,giants-red-braid,Giant's Red Braid,거인의 적발,본편
+무기,urumi,Urumi,우루미,본편
+무기,tooth-whip,Tooth Whip,이빨 채찍,DLC
+무기,caestus,Caestus,세스타스,본편
+무기,spiked-caestus,Spiked Caestus,스파이크 세스타스,본편
+무기,grafted-dragon,Grafted Dragon,접목된 비룡,본편
+무기,iron-ball,Iron Ball,철구권,본편
+무기,star-fist,Star Fist,가시 철구권,본편
+무기,katar,Katar,카타르,본편
+무기,clinging-bone,Clinging Bone,매달리는 손뼈,본편
+무기,veterans-prosthesis,Veteran's Prosthesis,노장의 의족,본편
+무기,cipher-pata,Cipher Pata,비문자의 파타,본편
+무기,thiolliers-hidden-needle,Thiollier's Hidden Needle,티에리에의 숨긴 침,DLC
+무기,pata,Pata,파타,DLC
+무기,poisoned-hand,Poisoned Hand,독의 손,DLC
+무기,madding-hand,Madding Hand,미친 손,DLC
+무기,golem-fist,Golem Fist,골렘의 주먹,DLC
+무기,shield-of-night,Shield of Night,밤의 방패,DLC
+무기,hookclaws,Hookclaws,갈고리 발톱,본편
+무기,venomous-fang,Venomous Fang,독사의 이빨,본편
+무기,bloodhound-claws,Bloodhound Claws,사냥개의 발톱,본편
+무기,raptor-talons,Raptor Talons,맹금의 발톱,본편
+무기,claws-of-night,Claws of Night,밤의 손톱,DLC
+무기,prelates-inferno-crozier,Prelate's Inferno Crozier,주교의 대형 화염 망치,본편
+무기,watchdogs-staff,Watchdog's Staff,파수견의 석장,본편
+무기,great-club,Great Club,그레이트 클럽,본편
+무기,envoys-greathorn,Envoy's Greathorn,사자들의 부채피리,본편
+무기,duelist-greataxe,Duelist Greataxe,투사의 대형 도끼,본편
+무기,axe-of-godfrey,Axe of Godfrey,고드프리의 왕 도끼,본편
+무기,dragon-greatclaw,Dragon Greatclaw,대룡조,본편
+무기,staff-of-the-avatar,Staff of the Avatar,화신의 의장,본편
+무기,fallingstar-beast-jaw,Fallingstar Beast Jaw,성수의 턱,본편
+무기,ghizas-wheel,Ghiza's Wheel,기자의 수레바퀴,본편
+무기,giant-crusher,Giant-Crusher,거인 부수기,본편
+무기,golems-halberd,Golem's Halberd,골렘의 도끼창,본편
+무기,trolls-hammer,Troll's Hammer,트롤 해머,본편
+무기,rotten-staff,Rotten Staff,부패한 의장,본편
+무기,rotten-greataxe,Rotten Greataxe,부패한 대형 도끼,본편
+무기,devonias-hammer,Devonia's Hammer,데보니아의 대형 망치,DLC
+무기,shadow-sunflower-blossom,Shadow Sunflower Blossom,큰 영륜초 꽃,DLC
+무기,gazing-finger,Gazing Finger,바라보는 손가락,DLC
+무기,torch,Torch,횃불,본편
+무기,steel-wire-torch,Steel-Wire Torch,강선 토치,본편
+무기,st-trinas-torch,St. Trina's Torch,트리나의 등불,본편
+무기,ghostflame-torch,Ghostflame Torch,영혼 불 토치,본편
+무기,beast-repellent-torch,Beast-Repellent Torch,짐승 쫓는 횃불,본편
+무기,sentrys-torch,Sentry's Torch,보초의 횃불,본편
+무기,nanayas-torch,Nanaya's Torch,나나야의 등불,DLC
+무기,lamenting-visage,Lamenting Visage,한탄하는 목,DLC
+무기,buckler,Buckler,버클러,본편
+무기,perfumers-shield,Perfumer's Shield,조향사의 방패,본편
+무기,man-serpents-shield,Man-Serpent's Shield,뱀인간의 방패,본편
+무기,rickety-shield,Rickety Shield,거의 망가진 나무 방패,본편
+무기,pillory-shield,Pillory Shield,멍에 방패,본편
+무기,beastmans-jar-shield,Beastman's Jar-Shield,수인의 항아리 방패,본편
+무기,red-thorn-roundshield,Red Thorn Roundshield,붉은 가시 목제 방패,본편
+무기,scripture-wooden-shield,Scripture Wooden Shield,성구의 목제 방패,본편
+무기,riveted-wooden-shield,Riveted Wooden Shield,쇠 압정 목제 방패,본편
+무기,blue-white-wooden-shield,Blue-White Wooden Shield,청백 목제 방패,본편
+무기,rift-shield,Rift Shield,갈라짐의 방패,본편
+무기,iron-roundshield,Iron Roundshield,철제 원형 방패,본편
+무기,gilded-iron-shield,Gilded Iron Shield,금장 철제 방패,본편
+무기,ice-crest-shield,Ice Crest Shield,얼음 문양 방패,본편
+무기,smoldering-shield,Smoldering Shield,그을림의 방패,본편
+무기,spiralhorn-shield,Spiralhorn Shield,뿔 회오리 방패,본편
+무기,coil-shield,Coil Shield,똬리 방패,본편
+무기,smithscript-shield,Smithscript Shield,유문 방패,DLC
+무기,kite-shield,Kite Shield,카이트 실드,본편
+무기,marred-leather-shield,Marred Leather Shield,침식된 가죽 방패,본편
+무기,marred-wooden-shield,Marred Wooden Shield,침식된 목제 방패,본편
+무기,banished-knights-shield,Banished Knight's Shield,땅 잃은 기사의 방패,본편
+무기,albinauric-shield,Albinauric Shield,백금의 방패,본편
+무기,sun-realm-shield,Sun Realm Shield,태양 도읍의 방패,본편
+무기,silver-mirrorshield,Silver Mirrorshield,백은의 방패,본편
+무기,round-shield,Round Shield,라운드 실드,본편
+무기,scorpion-kite-shield,Scorpion Kite Shield,전갈의 카이트 실드,본편
+무기,twinbird-kite-shield,Twinbird Kite Shield,쌍조의 카이트 실드,본편
+무기,blue-gold-kite-shield,Blue-Gold Kite Shield,청금의 카이트 실드,본편
+무기,brass-shield,Brass Shield,놋쇠 방패,본편
+무기,great-turtle-shell,Great Turtle Shell,큰 거북의 등딱지,본편
+무기,shield-of-the-guilty,Shield of the Guilty,죄인의 방패,본편
+무기,carian-knights-shield,Carian Knight's Shield,카리아의 기사 방패,본편
+무기,large-leather-shield,Large Leather Shield,라지 레더 실드,본편
+무기,horse-crest-wooden-shield,Horse Crest Wooden Shield,말 문양 우드 실드,본편
+무기,candletree-wooden-shield,Candletree Wooden Shield,촛불나무 우드 실드,본편
+무기,flame-crest-wooden-shield,Flame Crest Wooden Shield,화염 문양 우드 실드,본편
+무기,hawk-crest-wooden-shield,Hawk Crest Wooden Shield,매 문양 우드 실드,본편
+무기,beast-crest-heater-shield,Beast Crest Heater Shield,짐승 문양 히터 실드,본편
+무기,red-crest-heater-shield,Red Crest Heater Shield,붉은 문양 히터 실드,본편
+무기,blue-crest-heater-shield,Blue Crest Heater Shield,푸른 문양 히터 실드,본편
+무기,eclipse-crest-heater-shield,Eclipse Crest Heater Shield,일식 문양 히터 실드,본편
+무기,inverted-hawk-heater-shield,Inverted Hawk Heater Shield,뒤집힌 매 히터 실드,본편
+무기,heater-shield,Heater Shield,히터 실드,본편
+무기,black-leather-shield,Black Leather Shield,블랙 레더 실드,본편
+무기,messmer-soldier-shield,Messmer Soldier Shield,메스메르 병사의 방패,DLC
+무기,wolf-crest-shield,Wolf Crest Shield,늑대 문양 방패,DLC
+무기,serpent-crest-shield,Serpent Crest Shield,뱀 문양 방패,DLC
+무기,golden-lion-shield,Golden Lion Shield,황금 사자 방패,DLC
+무기,silver-grooved-shield,Silver Grooved Shield,홈 파인 은 방패,타니쉬드 에디션
+무기,dragon-towershield,Dragon Towershield,용의 타워 실드,본편
+무기,distinguished-greatshield,Distinguished Greatshield,명가의 대형 방패,본편
+무기,crucible-hornshield,Crucible Hornshield,도가니의 뿔 방패,본편
+무기,dragonclaw-shield,Dragonclaw Shield,용 발톱의 방패,본편
+무기,briar-greatshield,Briar Greatshield,철가시 대형 방패,본편
+무기,erdtree-greatshield,Erdtree Greatshield,황금 나무의 대형 방패,본편
+무기,golden-beast-crest-shield,Golden Beast Crest Shield,짐승 문양 황금 방패,본편
+무기,jellyfish-shield,Jellyfish Shield,해파리의 방패,본편
+무기,fingerprint-stone-shield,Fingerprint Stone Shield,지문석의 방패,본편
+무기,icon-shield,Icon Shield,신성화의 방패,본편
+무기,one-eyed-shield,One-Eyed Shield,외눈 방패,본편
+무기,visage-shield,Visage Shield,안면 방패,본편
+무기,spiked-palisade-shield,Spiked Palisade Shield,압정 벽 방패,본편
+무기,manor-towershield,Manor Towershield,성관의 타워 실드,본편
+무기,crossed-tree-towershield,Crossed-Tree Towershield,교차수 타워 실드,본편
+무기,inverted-hawk-towershield,Inverted Hawk Towershield,뒤집힌 매 타워 실드,본편
+무기,ants-skull-plate,Ant's Skull Plate,개미의 두갑,본편
+무기,redmane-greatshield,Redmane Greatshield,붉은 사자의 대형 방패,본편
+무기,eclipse-crest-greatshield,Eclipse Crest Greatshield,일식 문양 대형 방패,본편
+무기,cuckoo-greatshield,Cuckoo Greatshield,뻐꾸기 대형 방패,본편
+무기,golden-greatshield,Golden Greatshield,황금의 대형 방패,본편
+무기,gilded-greatshield,Gilded Greatshield,금장 대형 방패,본편
+무기,haligtree-crest-greatshield,Haligtree Crest Greatshield,성수 문양 대형 방패,본편
+무기,wooden-greatshield,Wooden Greatshield,목제 대형 방패,본편
+무기,lordsworns-shield,Lordsworn's Shield,군주군의 방패,본편
+무기,black-steel-greatshield,Black Steel Greatshield,흑철 대형 방패,DLC
+무기,verdigris-greatshield,Verdigris Greatshield,녹청 대형 방패,DLC
+무기,glintstone-staff,Glintstone Staff,휘석 지팡이,본편
+무기,crystal-staff,Crystal Staff,결정 지팡이,본편
+무기,gelmir-glintstone-staff,Gelmir Glintstone Staff,겔미어의 휘석 지팡이,본편
+무기,demi-human-queens-staff,Demi-Human Queen's Staff,아인 여왕의 지팡이,본편
+무기,carian-regal-scepter,Carian Regal Scepter,카리아의 왕홀,본편
+무기,diggers-staff,Digger's Staff,채석 지팡이,본편
+무기,astrologers-staff,Astrologer's Staff,별점 지팡이,본편
+무기,carian-glintblade-staff,Carian Glintblade Staff,카리아의 휘검 지팡이,본편
+무기,prince-of-deaths-staff,Prince of Death's Staff,죽음의 왕자의 지팡이,본편
+무기,albinauric-staff,Albinauric Staff,백금 지팡이,본편
+무기,academy-glintstone-staff,Academy Glintstone Staff,학원의 휘석 지팡이,본편
+무기,carian-glintstone-staff,Carian Glintstone Staff,카리아의 휘석 지팡이,본편
+무기,azurs-glintstone-staff,Azur's Glintstone Staff,아줄의 휘석 지팡이,본편
+무기,lusats-glintstone-staff,Lusat's Glintstone Staff,루사트의 휘석 지팡이,본편
+무기,meteorite-staff,Meteorite Staff,운석 지팡이,본편
+무기,staff-of-the-guilty,Staff of the Guilty,죄인의 지팡이,본편
+무기,rotten-crystal-staff,Rotten Crystal Staff,부패한 결정 지팡이,본편
+무기,staff-of-loss,Staff of Loss,상실의 지팡이,본편
+무기,staff-of-the-great-beyond,Staff of the Great Beyond,위대한 저편의 지팡이,DLC
+무기,maternal-staff,Maternal Staff,어머니의 지팡이,DLC
+무기,finger-seal,Finger Seal,손가락의 성인,본편
+무기,godslayers-seal,Godslayer's Seal,신 사냥의 성인,본편
+무기,giants-seal,Giant's Seal,거인의 성인,본편
+무기,gravel-stone-seal,Gravel Stone Seal,조약돌의 성인,본편
+무기,clawmark-seal,Clawmark Seal,발톱 자국의 성인,본편
+무기,golden-order-seal,Golden Order Seal,황금률의 성인,본편
+무기,erdtree-seal,Erdtree Seal,황금 나무의 성인,본편
+무기,dragon-communion-seal,Dragon Communion Seal,용찬의 표식,본편
+무기,frenzied-flame-seal,Frenzied Flame Seal,미친 불의 성인,본편
+무기,dryleaf-seal,Dryleaf Seal,낙엽의 성인,DLC
+무기,fire-knights-seal,Fire Knight's Seal,불의 기사의 성인,DLC
+무기,spiraltree-seal,Spiraltree Seal,나선 나무의 성인,DLC
+무기,shortbow,Shortbow,숏 보우,본편
+무기,misbegotten-shortbow,Misbegotten Shortbow,혼종의 숏 보우,본편
+무기,red-branch-shortbow,Red Branch Shortbow,붉은 나무 숏 보우,본편
+무기,harp-bow,Harp Bow,하프 보우,본편
+무기,composite-bow,Composite Bow,컴포지트 보우,본편
+무기,bone-bow,Bone Bow,뼈 활,DLC
+무기,longbow,Longbow,롱보우,본편
+무기,albinauric-bow,Albinauric Bow,백금의 활,본편
+무기,horn-bow,Horn Bow,뿔 활,본편
+무기,erdtree-bow,Erdtree Bow,황금 나무의 활,본편
+무기,serpent-bow,Serpent Bow,뱀 활,본편
+무기,pulley-bow,Pulley Bow,도르래 활,본편
+무기,black-bow,Black Bow,검은 활,본편
+무기,ansbachs-longbow,Ansbach's Longbow,안스바흐의 장궁,DLC
+무기,lion-greatbow,Lion Greatbow,사자의 대궁,본편
+무기,golem-greatbow,Golem Greatbow,골렘의 대궁,본편
+무기,erdtree-greatbow,Erdtree Greatbow,황금 나무의 대궁,본편
+무기,greatbow,Greatbow,대궁,본편
+무기,igons-greatbow,Igon's Greatbow,에이곤의 대궁,DLC
+무기,soldiers-crossbow,Soldier's Crossbow,병사의 석궁,본편
+무기,light-crossbow,Light Crossbow,라이트 크로스보우,본편
+무기,heavy-crossbow,Heavy Crossbow,헤비 크로스보우,본편
+무기,pulley-crossbow,Pulley Crossbow,도르래 석궁,본편
+무기,full-moon-crossbow,Full Moon Crossbow,월륜의 석궁,본편
+무기,arbalest,Arbalest,아바레스트,본편
+무기,crepuss-black-key-crossbow,Crepus's Black-Key Crossbow,크레푸스의 흑건,본편
+무기,repeating-crossbow,Repeating Crossbow,연노,DLC
+무기,spread-crossbow,Spread Crossbow,산탄 크로스보우,DLC
+무기,hand-ballista,Hand Ballista,핸디 발리스타,본편
+무기,jar-cannon,Jar Cannon,대포 항아리,본편
+무기,rabbaths-cannon,Rabbath's Cannon,라바스의 대포,DLC
+무기,dryleaf-arts,Dryleaf Arts,낙엽 격투,DLC
+무기,danes-footwork,Dane's Footwork,단류 발차기술,DLC
+무기,firespark-perfume-bottle,Firespark Perfume Bottle,불꽃의 조향병,DLC
+무기,chilling-perfume-bottle,Chilling Perfume Bottle,냉기의 조향병,DLC
+무기,frenzyflame-perfume-bottle,Frenzyflame Perfume Bottle,미친 불의 조향병,DLC
+무기,lightning-perfume-bottle,Lightning Perfume Bottle,벼락의 조향병,DLC
+무기,deadly-poison-perfume-bottle,Deadly Poison Perfume Bottle,맹독의 조향병,DLC
+무기,dueling-shield,Dueling Shield,듀얼링 실드,DLC
+무기,carian-thrusting-shield,Carian Thrusting Shield,카리아의 관통 방패,DLC
+무기,ritual-thrusting-shield,Ritual Thrusting Shield,봉투용 관통 방패,타니쉬드 에디션
+무기,smithscript-dagger,Smithscript Dagger,유문 단검,DLC
+무기,backhand-blade,Backhand Blade,역수검,DLC
+무기,smithscript-cirque,Smithscript Cirque,유문 차크람,DLC
+무기,curseblades-cirque,Curseblade's Cirque,주검사의 차크람,DLC
+무기,reverse-bladed-sword,Reverse-Bladed Sword,역날 곡검,타니쉬드 에디션
+무기,great-katana,Great Katana,대도,DLC
+무기,dragon-hunters-great-katana,Dragon-Hunter's Great Katana,용 사냥꾼의 대도,DLC
+무기,rakshasas-great-katana,Rakshasa's Great Katana,나찰의 대도,DLC
+무기,reed-great-katana,Reed Great Katana,갈대의 대형 도,타니쉬드 에디션
+무기,milady,Milady,레이디 소드,DLC
+무기,ledas-sword,Leda's Sword,레다의 검,DLC
+무기,rellanas-twin-blades,Rellana's Twin Blades,렐라나의 쌍검,DLC
+무기,idus-sword,Idus Sword,이데스의 검,타니쉬드 에디션
+무기,beast-claw,Beast Claw,짐승 발톱,DLC
+무기,red-bears-claw,Red Bear's Claw,붉은곰의 발톱,DLC
+방어구,iron-helmet,Iron Helmet,철제 투구,본편
+방어구,scale-armor,Scale Armor,스케일 아머,본편
+방어구,iron-gauntlets,Iron Gauntlets,철 장갑,본편
+방어구,leather-trousers,Leather Trousers,가죽 바지,본편
+방어구,kaiden-helm,Kaiden Helm,카이덴의 투구,본편
+방어구,kaiden-armor,Kaiden Armor,카이덴의 갑옷,본편
+방어구,kaiden-gauntlets,Kaiden Gauntlets,카이덴의 장갑,본편
+방어구,kaiden-trousers,Kaiden Trousers,카이덴의 바지,본편
+방어구,drake-knight-helm,Drake Knight Helm,용기사의 투구,본편
+방어구,drake-knight-armor,Drake Knight Armor,용기사의 갑옷,본편
+방어구,drake-knight-gauntlets,Drake Knight Gauntlets,용기사의 장갑,본편
+방어구,drake-knight-greaves,Drake Knight Greaves,용기사의 각반,본편
+방어구,drake-knight-helm-altered,Drake Knight Helm (Altered),용기사의 투구(경장),본편
+방어구,drake-knight-armor-altered,Drake Knight Armor (Altered),용기사의 갑옷(경장),본편
+방어구,scaled-helm,Scaled Helm,비늘 투구,본편
+방어구,scaled-armor,Scaled Armor,비늘 갑옷,본편
+방어구,scaled-gauntlets,Scaled Gauntlets,비늘 장갑,본편
+방어구,scaled-greaves,Scaled Greaves,비늘 각반,본편
+방어구,scaled-armor-altered,Scaled Armor (Altered),비늘 갑옷(경장),본편
+방어구,perfumer-hood,Perfumer Hood,조향사의 후드,본편
+방어구,perfumer-robe,Perfumer Robe,조향사의 로브,본편
+방어구,perfumer-gloves,Perfumer Gloves,조향사의 장갑,본편
+방어구,perfumer-sarong,Perfumer Sarong,조향사의 허리끈,본편
+방어구,perfumer-robe-altered,Perfumer Robe (Altered),조향사의 로브(경장),본편
+방어구,travelers-hat,Traveler's Hat,여행 모자,본편
+방어구,perfumers-traveling-garb,Perfumer's Traveling Garb,조향사의 여행복,본편
+방어구,travelers-gloves,Traveler's Gloves,여행 장갑,본편
+방어구,travelers-slops,Traveler's Slops,여행 바지,본편
+방어구,perfumers-traveling-garb-altered,Perfumer's Traveling Garb (Altered),조향사의 여행복(경장),본편
+방어구,alberichs-pointed-hat,Alberich's Pointed Hat,알베리히의 뾰족모자,본편
+방어구,alberichs-robe,Alberich's Robe,알베리히의 옷,본편
+방어구,alberichs-bracers,Alberich's Bracers,알베리히의 장갑,본편
+방어구,alberichs-trousers,Alberich's Trousers,알베리히의 바지,본편
+방어구,alberichs-pointed-hat-altered,Alberich's Pointed Hat (Altered),알베리히의 뾰족모자(경장),본편
+방어구,alberichs-robe-altered,Alberich's Robe (Altered),알베리히의 옷(경장),본편
+방어구,spellblades-pointed-hat,Spellblade's Pointed Hat,마술검사의 뾰족모자,본편
+방어구,spellblades-traveling-attire,Spellblade's Traveling Attire,마술검사의 여행복,본편
+방어구,spellblades-gloves,Spellblade's Gloves,마술검사의 장갑,본편
+방어구,spellblades-trousers,Spellblade's Trousers,마술검사의 바지,본편
+방어구,spellblades-traveling-attire-altered,Spellblade's Traveling Attire (Altered),마술검사의 여행복(경장),본편
+방어구,bull-goat-helm,Bull-Goat Helm,큰 산양 투구,본편
+방어구,bull-goat-armor,Bull-Goat Armor,큰 산양 갑옷,본편
+방어구,bull-goat-gauntlets,Bull-Goat Gauntlets,큰 산양 장갑,본편
+방어구,bull-goat-greaves,Bull-Goat Greaves,큰 산양 각반,본편
+방어구,iron-kasa,Iron Kasa,철 삿갓,본편
+방어구,ronins-armor,Ronin's Armor,떠돌이의 갑옷,본편
+방어구,ronins-gauntlets,Ronin's Gauntlets,떠돌이의 장갑,본편
+방어구,ronins-greaves,Ronin's Greaves,떠돌이의 각반,본편
+방어구,ronins-armor-altered,Ronin's Armor (Altered),떠돌이의 갑옷(경장),본편
+방어구,guilty-hood,Guilty Hood,죄인의 후드,본편
+방어구,cloth-garb,Cloth Garb,천옷,본편
+방어구,cloth-trousers,Cloth Trousers,천 바지,본편
+방어구,black-wolf-mask,Black Wolf Mask,검은 늑대의 가면,본편
+방어구,blaidds-armor,Blaidd's Armor,블라이드의 갑옷,본편
+방어구,blaidds-gauntlets,Blaidd's Gauntlets,블라이드의 장갑,본편
+방어구,blaidds-greaves,Blaidd's Greaves,블라이드의 각반,본편
+방어구,blaidds-armor-altered,Blaidd's Armor (Altered),블라이드의 갑옷(경장),본편
+방어구,black-knife-hood,Black Knife Hood,검은 칼날의 후드,본편
+방어구,black-knife-armor,Black Knife Armor,검은 칼날의 갑옷,본편
+방어구,black-knife-gauntlets,Black Knife Gauntlets,검은 칼날의 장갑,본편
+방어구,black-knife-greaves,Black Knife Greaves,검은 칼날의 각반,본편
+방어구,black-knife-armor-altered,Black Knife Armor (Altered),검은 칼날의 갑옷(경장),본편
+방어구,exile-hood,Exile Hood,유배병의 후드,본편
+방어구,exile-armor,Exile Armor,유배병의 갑옷,본편
+방어구,exile-gauntlets,Exile Gauntlets,유배병의 장갑,본편
+방어구,exile-greaves,Exile Greaves,유배병의 각반,본편
+방어구,banished-knight-helm,Banished Knight Helm,땅 잃은 기사의 투구,본편
+방어구,banished-knight-armor,Banished Knight Armor,땅 잃은 기사의 갑옷,본편
+방어구,banished-knight-gauntlets,Banished Knight Gauntlets,땅 잃은 기사의 장갑,본편
+방어구,banished-knight-greaves,Banished Knight Greaves,땅 잃은 기사의 각반,본편
+방어구,banished-knight-helm-altered,Banished Knight Helm (Altered),땅 잃은 기사의 투구(경장),본편
+방어구,banished-knight-armor-altered,Banished Knight Armor (Altered),땅 잃은 기사의 갑옷(경장),본편
+방어구,briar-helm,Briar Helm,철가시 투구,본편
+방어구,briar-armor,Briar Armor,철가시 갑옷,본편
+방어구,briar-gauntlets,Briar Gauntlets,철가시 장갑,본편
+방어구,briar-greaves,Briar Greaves,철가시 각반,본편
+방어구,briar-armor-altered,Briar Armor (Altered),철가시 갑옷(경장),본편
+방어구,page-hood,Page Hood,시종의 후드,본편
+방어구,page-garb,Page Garb,시종의 옷,본편
+방어구,page-trousers,Page Trousers,시종의 바지,본편
+방어구,page-garb-altered,Page Garb (Altered),시종의 옷(경장),본편
+방어구,nights-cavalry-helm,Night's Cavalry Helm,밤 기병의 투구,본편
+방어구,nights-cavalry-armor,Night's Cavalry Armor,밤 기병의 갑옷,본편
+방어구,nights-cavalry-gauntlets,Night's Cavalry Gauntlets,밤 기병의 장갑,본편
+방어구,nights-cavalry-greaves,Night's Cavalry Greaves,밤 기병의 각반,본편
+방어구,nights-cavalry-helm-altered,Night's Cavalry Helm (Altered),밤 기병의 투구(경장),본편
+방어구,nights-cavalry-armor-altered,Night's Cavalry Armor (Altered),밤 기병의 갑옷(경장),본편
+방어구,blue-silver-mail-hood,Blue Silver Mail Hood,창은의 후드,본편
+방어구,blue-silver-mail-armor,Blue Silver Mail Armor,창은의 갑옷,본편
+방어구,blue-silver-bracelets,Blue Silver Bracelets,창은의 팔찌,본편
+방어구,blue-silver-mail-skirt,Blue Silver Mail Skirt,창은의 스커트,본편
+방어구,blue-silver-mail-armor-altered,Blue Silver Mail Armor (Altered),창은의 갑옷(경장),본편
+방어구,nomadic-merchants-chapeau,Nomadic Merchant's Chapeau,방랑 상인의 모자,본편
+방어구,nomadic-merchants-finery,Nomadic Merchant's Finery,방랑 상인의 옷,본편
+방어구,nomadic-merchants-trousers,Nomadic Merchant's Trousers,방랑 상인의 바지,본편
+방어구,nomadic-merchants-finery-altered,Nomadic Merchant's Finery (Altered),방랑 상인의 옷(경장),본편
+방어구,malformed-dragon-helm,Malformed Dragon Helm,이형의 용 투구,본편
+방어구,malformed-dragon-armor,Malformed Dragon Armor,이형의 용 갑옷,본편
+방어구,malformed-dragon-gauntlets,Malformed Dragon Gauntlets,이형의 용 장갑,본편
+방어구,malformed-dragon-greaves,Malformed Dragon Greaves,이형의 용 각반,본편
+방어구,tree-sentinel-helm,Tree Sentinel Helm,트리 가드의 투구,본편
+방어구,tree-sentinel-armor,Tree Sentinel Armor,트리 가드의 갑옷,본편
+방어구,tree-sentinel-gauntlets,Tree Sentinel Gauntlets,트리 가드의 장갑,본편
+방어구,tree-sentinel-greaves,Tree Sentinel Greaves,트리 가드의 각반,본편
+방어구,tree-sentinel-armor-altered,Tree Sentinel Armor (Altered),트리 가드의 갑옷(경장),본편
+방어구,royal-knight-helm,Royal Knight Helm,친위기사의 투구,본편
+방어구,royal-knight-armor,Royal Knight Armor,친위기사의 갑옷,본편
+방어구,royal-knight-gauntlets,Royal Knight Gauntlets,친위기사의 장갑,본편
+방어구,royal-knight-greaves,Royal Knight Greaves,친위기사의 각반,본편
+방어구,royal-knight-armor-altered,Royal Knight Armor (Altered),친위기사의 갑옷(경장),본편
+방어구,nox-monk-hood,Nox Monk Hood,녹스 승려의 후드,본편
+방어구,nox-monk-armor,Nox Monk Armor,녹스 승려의 갑옷,본편
+방어구,nox-bracelets,Nox Bracelets,녹스 승려의 팔찌,본편
+방어구,nox-greaves,Nox Greaves,녹스 승려의 각반,본편
+방어구,nox-monk-hood-altered,Nox Monk Hood (Altered),녹스 승려의 후드(경장),본편
+방어구,nox-monk-armor-altered,Nox Monk Armor (Altered),녹스 승려의 갑옷(경장),본편
+방어구,nox-swordstress-crown,Nox Swordstress Crown,녹스 검사의 모자,본편
+방어구,nox-swordstress-armor,Nox Swordstress Armor,녹스 검사의 갑옷,본편
+방어구,night-maiden-twin-crown,Night Maiden Twin Crown,밤 무녀의 쌍관,본편
+방어구,night-maiden-armor,Night Maiden Armor,밤 무녀의 갑옷,본편
+방어구,nox-swordstress-crown-altered,Nox Swordstress Crown (Altered),녹스 검사의 모자(경장),본편
+방어구,nox-swordstress-armor-altered,Nox Swordstress Armor (Altered),녹스 검사의 갑옷(경장),본편
+방어구,great-horned-headband,Great Horned Headband,큰 뿔 머리띠,본편
+방어구,fur-raiment,Fur Raiment,모피옷,본편
+방어구,fur-leggings,Fur Leggings,모피 각반,본편
+방어구,shining-horned-headband,Shining Horned Headband,빛의 뿔 머리띠,본편
+방어구,shaman-furs,Shaman Furs,사제의 모피,본편
+방어구,shaman-leggings,Shaman Leggings,사제의 각반,본편
+방어구,duelist-helm,Duelist Helm,투사의 투구,본편
+방어구,gravekeeper-cloak,Gravekeeper Cloak,묘지기의 망토,본편
+방어구,duelist-greaves,Duelist Greaves,투사의 각반,본편
+방어구,gravekeeper-cloak-altered,Gravekeeper Cloak (Altered),묘지기의 망토(경장),본편
+방어구,sanguine-noble-hood,Sanguine Noble Hood,피의 귀족의 후드,본편
+방어구,sanguine-noble-robe,Sanguine Noble Robe,피의 귀족의 로브,본편
+방어구,sanguine-noble-waistcloth,Sanguine Noble Waistcloth,피의 귀족의 허리띠,본편
+방어구,guardian-mask,Guardian Mask,지키는 자의 가면,본편
+방어구,guardian-garb-full-bloom,Guardian Garb (Full Bloom),지키는 자의 옷(꽃),본편
+방어구,guardian-bracers,Guardian Bracers,지키는 자의 장갑,본편
+방어구,guardian-greaves,Guardian Greaves,지키는 자의 각반,본편
+방어구,guardian-garb,Guardian Garb,지키는 자의 옷,본편
+방어구,cleanrot-helm,Cleanrot Helm,귀부기사의 투구,본편
+방어구,cleanrot-armor,Cleanrot Armor,귀부기사의 갑옷,본편
+방어구,cleanrot-gauntlets,Cleanrot Gauntlets,귀부기사의 장갑,본편
+방어구,cleanrot-greaves,Cleanrot Greaves,귀부기사의 각반,본편
+방어구,cleanrot-helm-altered,Cleanrot Helm (Altered),귀부기사의 투구(경장),본편
+방어구,cleanrot-armor-altered,Cleanrot Armor (Altered),귀부기사의 갑옷(경장),본편
+방어구,fire-monk-hood,Fire Monk Hood,불 승병의 투구,본편
+방어구,fire-monk-armor,Fire Monk Armor,불 승병의 갑옷,본편
+방어구,fire-monk-gauntlets,Fire Monk Gauntlets,불 승병의 장갑,본편
+방어구,fire-monk-greaves,Fire Monk Greaves,불 승병의 각반,본편
+방어구,blackflame-monk-hood,Blackflame Monk Hood,흑염 승병의 투구,본편
+방어구,blackflame-monk-armor,Blackflame Monk Armor,흑염 승병의 갑옷,본편
+방어구,blackflame-monk-gauntlets,Blackflame Monk Gauntlets,흑염 승병의 장갑,본편
+방어구,blackflame-monk-greaves,Blackflame Monk Greaves,흑염 승병의 각반,본편
+방어구,fire-prelate-helm,Fire Prelate Helm,불 주교의 투구,본편
+방어구,fire-prelate-armor,Fire Prelate Armor,불 주교의 갑옷,본편
+방어구,fire-prelate-gauntlets,Fire Prelate Gauntlets,불 주교의 장갑,본편
+방어구,fire-prelate-greaves,Fire Prelate Greaves,불 주교의 각반,본편
+방어구,fire-prelate-armor-altered,Fire Prelate Armor (Altered),불 주교의 갑옷(경장),본편
+방어구,aristocrat-headband,Aristocrat Headband,귀인의 머리띠,본편
+방어구,aristocrat-garb,Aristocrat Garb,귀인의 옷,본편
+방어구,aristocrat-boots,Aristocrat Boots,귀인의 부츠,본편
+방어구,aristocrat-garb-altered,Aristocrat Garb (Altered),귀인의 옷(경장),본편
+방어구,aristocrat-hat,Aristocrat Hat,귀인의 모자,본편
+방어구,aristocrat-coat,Aristocrat Coat,귀인의 코트,본편
+방어구,old-aristocrat-cowl,Old Aristocrat Cowl,늙은 귀인의 두건,본편
+방어구,old-aristocrat-gown,Old Aristocrat Gown,늙은 귀인의 긴 옷,본편
+방어구,old-aristocrat-shoes,Old Aristocrat Shoes,늙은 귀인의 단화,본편
+방어구,vulgar-militia-helm,Vulgar Militia Helm,천한 병사의 투구,본편
+방어구,vulgar-militia-armor,Vulgar Militia Armor,천한 병사의 갑옷,본편
+방어구,vulgar-militia-gauntlets,Vulgar Militia Gauntlets,천한 병사의 장갑,본편
+방어구,vulgar-militia-greaves,Vulgar Militia Greaves,천한 병사의 각반,본편
+방어구,sage-hood,Sage Hood,현자의 후드,본편
+방어구,sage-robe,Sage Robe,현자의 로브,본편
+방어구,sage-trousers,Sage Trousers,현자의 바지,본편
+방어구,pumpkin-helm,Pumpkin Helm,호박 투구,본편
+방어구,elden-lord-crown,Elden Lord Crown,엘데 왕의 관,본편
+방어구,elden-lord-armor,Elden Lord Armor,엘데 왕의 갑옷,본편
+방어구,elden-lord-bracers,Elden Lord Bracers,엘데 왕의 장갑,본편
+방어구,elden-lord-greaves,Elden Lord Greaves,엘데 왕의 각반,본편
+방어구,elden-lord-armor-altered,Elden Lord Armor (Altered),엘데 왕의 갑옷(경장),본편
+방어구,radahns-redmane-helm,Radahn's Redmane Helm,라단의 적발 투구,본편
+방어구,radahns-lion-armor,Radahn's Lion Armor,라단의 사자 갑옷,본편
+방어구,radahns-gauntlets,Radahn's Gauntlets,라단의 장갑,본편
+방어구,radahns-greaves,Radahn's Greaves,라단의 각반,본편
+방어구,radahns-lion-armor-altered,Radahn's Lion Armor (Altered),라단의 사자 갑옷(경장),본편
+방어구,lord-of-bloods-robe,Lord of Blood's Robe,피의 군주의 옷,본편
+방어구,lord-of-bloods-robe-altered,Lord of Blood's Robe (Altered),피의 군주의 옷(경장),본편
+방어구,queens-crescent-crown,Queen's Crescent Crown,여왕의 월관,본편
+방어구,queens-robe,Queen's Robe,여왕의 로브,본편
+방어구,queens-bracelets,Queen's Bracelets,여왕의 팔찌,본편
+방어구,queens-leggings,Queen's Leggings,여왕의 바지,본편
+방어구,godskin-apostle-hood,Godskin Apostle Hood,신의 살갗의 사도 후드,본편
+방어구,godskin-apostle-robe,Godskin Apostle Robe,신의 살갗의 사도 로브,본편
+방어구,godskin-apostle-bracelets,Godskin Apostle Bracelets,사도의 팔찌,본편
+방어구,godskin-apostle-trousers,Godskin Apostle Trousers,사도의 바지,본편
+방어구,godskin-noble-hood,Godskin Noble Hood,신의 살갗의 귀인 후드,본편
+방어구,godskin-noble-robe,Godskin Noble Robe,신의 살갗의 귀인 로브,본편
+방어구,godskin-noble-bracelets,Godskin Noble Bracelets,귀인의 팔찌,본편
+방어구,godskin-noble-trousers,Godskin Noble Trousers,귀인의 바지,본편
+방어구,depraved-perfumer-headscarf,Depraved Perfumer Headscarf,타락 조향사의 모자,본편
+방어구,depraved-perfumer-robe,Depraved Perfumer Robe,타락 조향사의 로브,본편
+방어구,depraved-perfumer-gloves,Depraved Perfumer Gloves,타락 조향사의 장갑,본편
+방어구,depraved-perfumer-trousers,Depraved Perfumer Trousers,타락 조향사의 바지,본편
+방어구,depraved-perfumer-robe-altered,Depraved Perfumer Robe (Altered),타락 조향사의 로브(경장),본편
+방어구,crucible-axe-helm,Crucible Axe Helm,도가니의 도끼 투구,본편
+방어구,crucible-axe-armor,Crucible Axe Armor,도가니의 도끼 갑옷,본편
+방어구,crucible-gauntlets,Crucible Gauntlets,도가니의 장갑,본편
+방어구,crucible-greaves,Crucible Greaves,도가니의 각반,본편
+방어구,crucible-tree-helm,Crucible Tree Helm,도가니의 나무 투구,본편
+방어구,crucible-tree-armor,Crucible Tree Armor,도가니의 나무 갑옷,본편
+방어구,crucible-axe-armor-altered,Crucible Axe Armor (Altered),도가니의 도끼 갑옷(경장),본편
+방어구,crucible-tree-armor-altered,Crucible Tree Armor (Altered),도가니의 나무 갑옷(경장),본편
+방어구,lusats-glintstone-crown,Lusat's Glintstone Crown,루사트의 휘석 머리,본편
+방어구,lusats-robe,Lusat's Robe,루사트의 로브,본편
+방어구,lusats-manchettes,Lusat's Manchettes,루사트의 팔 보호대,본편
+방어구,old-sorcerers-legwraps,Old Sorcerer's Legwraps,옛 마술사의 다리 보호대,본편
+방어구,azurs-glintstone-crown,Azur's Glintstone Crown,아줄의 휘석 머리,본편
+방어구,azurs-glintstone-robe,Azur's Glintstone Robe,아줄의 로브,본편
+방어구,azurs-manchettes,Azur's Manchettes,아줄의 팔 보호대,본편
+방어구,all-knowing-helm,All-Knowing Helm,온 지혜의 투구,본편
+방어구,all-knowing-armor,All-Knowing Armor,온 지혜의 갑옷,본편
+방어구,all-knowing-gauntlets,All-Knowing Gauntlets,온 지혜의 장갑,본편
+방어구,all-knowing-greaves,All-Knowing Greaves,온 지혜의 각반,본편
+방어구,all-knowing-armor-altered,All-Knowing Armor (Altered),온 지혜의 갑옷(경장),본편
+방어구,twinned-helm,Twinned Helm,쌍생아의 투구,본편
+방어구,twinned-armor,Twinned Armor,쌍생아의 갑옷,본편
+방어구,twinned-gauntlets,Twinned Gauntlets,쌍생아의 장갑,본편
+방어구,twinned-greaves,Twinned Greaves,쌍생아의 각반,본편
+방어구,twinned-armor-altered,Twinned Armor (Altered),쌍생아의 갑옷(경장),본편
+방어구,prophet-blindfold,Prophet Blindfold,예언자의 눈가리개,본편
+방어구,corhyns-robe,Corhyn's Robe,콜린의 로브,본편
+방어구,prophet-trousers,Prophet Trousers,예언자의 바지,본편
+방어구,prophet-robe-altered,Prophet Robe (Altered),예언자의 로브(경장),본편
+방어구,prophet-robe,Prophet Robe,예언자의 로브,본편
+방어구,astrologer-hood,Astrologer Hood,점성술 후드,본편
+방어구,astrologer-robe,Astrologer Robe,점성술 로브,본편
+방어구,astrologer-gloves,Astrologer Gloves,점성술 장갑,본편
+방어구,astrologer-trousers,Astrologer Trousers,점성술 바지,본편
+방어구,astrologer-robe-altered,Astrologer Robe (Altered),점성술 로브(경장),본편
+방어구,lionels-helm,Lionel's Helm,라이오넬의 투구,본편
+방어구,lionels-armor,Lionel's Armor,라이오넬의 갑옷,본편
+방어구,lionels-gauntlets,Lionel's Gauntlets,라이오넬의 장갑,본편
+방어구,lionels-greaves,Lionel's Greaves,라이오넬의 각반,본편
+방어구,lionels-armor-altered,Lionel's Armor (Altered),라이오넬의 갑옷(경장),본편
+방어구,hoslows-helm,Hoslow's Helm,호슬로의 투구,본편
+방어구,hoslows-armor,Hoslow's Armor,호슬로의 갑옷,본편
+방어구,hoslows-gauntlets,Hoslow's Gauntlets,호슬로의 장갑,본편
+방어구,hoslows-greaves,Hoslow's Greaves,호슬로의 각반,본편
+방어구,dialloss-mask,Diallos's Mask,디아로스의 투구,본편
+방어구,hoslows-armor-altered,Hoslow's Armor (Altered),호슬로의 갑옷(경장),본편
+방어구,vagabond-knight-helm,Vagabond Knight Helm,방랑기사의 투구,본편
+방어구,vagabond-knight-armor,Vagabond Knight Armor,방랑기사의 갑옷,본편
+방어구,vagabond-knight-gauntlets,Vagabond Knight Gauntlets,방랑기사의 장갑,본편
+방어구,vagabond-knight-greaves,Vagabond Knight Greaves,방랑기사의 각반,본편
+방어구,vagabond-knight-armor-altered,Vagabond Knight Armor (Altered),방랑기사의 갑옷(경장),본편
+방어구,blue-cloth-cowl,Blue Cloth Cowl,푸른 천 두건,본편
+방어구,blue-cloth-vest,Blue Cloth Vest,푸른 천 조끼,본편
+방어구,warrior-gauntlets,Warrior Gauntlets,검사의 장갑,본편
+방어구,warrior-greaves,Warrior Greaves,검사의 각반,본편
+방어구,white-mask,White Mask,흰 가면,본편
+방어구,war-surgeon-gown,War Surgeon Gown,종군의사의 백의,본편
+방어구,war-surgeon-gloves,War Surgeon Gloves,종군의사의 장갑,본편
+방어구,war-surgeon-trousers,War Surgeon Trousers,종군의사의 바지,본편
+방어구,war-surgeon-gown-altered,War Surgeon Gown (Altered),종군의사의 백의(경장),본편
+방어구,royal-remains-helm,Royal Remains Helm,왕의 유해의 투구,본편
+방어구,royal-remains-armor,Royal Remains Armor,왕의 유해의 갑옷,본편
+방어구,royal-remains-gauntlets,Royal Remains Gauntlets,왕의 유해의 장갑,본편
+방어구,royal-remains-greaves,Royal Remains Greaves,왕의 유해의 각반,본편
+방어구,beast-champion-helm,Beast Champion Helm,짐승 모임 투구,본편
+방어구,beast-champion-armor,Beast Champion Armor,짐승 모임 갑옷,본편
+방어구,beast-champion-gauntlets,Beast Champion Gauntlets,짐승 모임 장갑,본편
+방어구,beast-champion-greaves,Beast Champion Greaves,짐승 모임 각반,본편
+방어구,beast-champion-armor-altered,Beast Champion Armor (Altered),짐승 모임 갑옷(경장),본편
+방어구,champion-headband,Champion Headband,용사의 머리띠,본편
+방어구,champion-pauldron,Champion Pauldron,용사의 어깨갑옷,본편
+방어구,champion-bracers,Champion Bracers,용사의 장갑,본편
+방어구,champion-gaiters,Champion Gaiters,용사의 각반,본편
+방어구,crimson-hood,Crimson Hood,심홍색 후드,본편
+방어구,nobles-traveling-garb,Noble's Traveling Garb,귀족의 여행복,본편
+방어구,nobles-gloves,Noble's Gloves,귀족의 장갑,본편
+방어구,nobles-trousers,Noble's Trousers,귀족의 바지,본편
+방어구,navy-hood,Navy Hood,진남색 후드,본편
+방어구,malikeths-helm,Maliketh's Helm,말리케스의 투구,본편
+방어구,malikeths-armor,Maliketh's Armor,말리케스의 갑옷,본편
+방어구,malikeths-gauntlets,Maliketh's Gauntlets,말리케스의 장갑,본편
+방어구,malikeths-greaves,Maliketh's Greaves,말리케스의 각반,본편
+방어구,malikeths-armor-altered,Maliketh's Armor (Altered),말리케스의 갑옷(경장),본편
+방어구,malenias-winged-helm,Malenia's Winged Helm,말레니아의 날개 투구,본편
+방어구,malenias-armor,Malenia's Armor,말레니아의 갑옷,본편
+방어구,malenias-gauntlet,Malenia's Gauntlet,말레니아의 장갑,본편
+방어구,malenias-greaves,Malenia's Greaves,말레니아의 각반,본편
+방어구,malenias-armor-altered,Malenia's Armor (Altered),말레니아의 갑옷(경장),본편
+방어구,veterans-helm,Veteran's Helm,노장의 투구,본편
+방어구,veterans-armor,Veteran's Armor,노장의 갑옷,본편
+방어구,veterans-gauntlets,Veteran's Gauntlets,노장의 장갑,본편
+방어구,veterans-greaves,Veteran's Greaves,노장의 각반,본편
+방어구,veterans-armor-altered,Veteran's Armor (Altered),노장의 갑옷(경장),본편
+방어구,bloodhound-knight-helm,Bloodhound Knight Helm,사냥개기사의 투구,본편
+방어구,bloodhound-knight-armor,Bloodhound Knight Armor,사냥개기사의 갑옷,본편
+방어구,bloodhound-knight-gauntlets,Bloodhound Knight Gauntlets,사냥개기사의 장갑,본편
+방어구,bloodhound-knight-greaves,Bloodhound Knight Greaves,사냥개기사의 각반,본편
+방어구,bloodhound-knight-armor-altered,Bloodhound Knight Armor (Altered),사냥개기사의 갑옷(경장),본편
+방어구,festive-hood,Festive Hood,축제 후드,본편
+방어구,festive-garb,Festive Garb,축제 예복,본편
+방어구,festive-hood-altered,Festive Hood (Altered),축제 후드(경장),본편
+방어구,festive-garb-altered,Festive Garb (Altered),축제 예복(경장),본편
+방어구,blue-festive-hood,Blue Festive Hood,파란 축제 후드,본편
+방어구,blue-festive-garb,Blue Festive Garb,파란 축제 옷,본편
+방어구,commoners-headband,Commoner's Headband,시민의 모자,본편
+방어구,commoners-garb,Commoner's Garb,시민의 웃옷,본편
+방어구,commoners-shoes,Commoner's Shoes,시민의 신발,본편
+방어구,commoners-headband-altered,Commoner's Headband (Altered),시민의 모자(경장),본편
+방어구,commoners-garb-altered,Commoner's Garb (Altered),시민의 웃옷(경장),본편
+방어구,commoners-simple-garb,Commoner's Simple Garb,시민의 옷,본편
+방어구,commoners-simple-garb-altered,Commoner's Simple Garb (Altered),시민의 옷(경장),본편
+방어구,envoy-crown,Envoy Crown,사자들의 큰 머리,본편
+방어구,twinsage-glintstone-crown,Twinsage Glintstone Crown,쌍현의 휘석 머리,본편
+방어구,raya-lucarian-robe,Raya Lucarian Robe,레아 루카리아의 로브,본편
+방어구,sorcerer-manchettes,Sorcerer Manchettes,마술사의 팔 보호대,본편
+방어구,sorcerer-leggings,Sorcerer Leggings,마술사의 다리 보호대,본편
+방어구,olivinus-glintstone-crown,Olivinus Glintstone Crown,올리비니스의 휘석 머리,본편
+방어구,lazuli-glintstone-crown,Lazuli Glintstone Crown,라줄리의 휘석 머리,본편
+방어구,karolos-glintstone-crown,Karolos Glintstone Crown,카롤로스의 휘석 머리,본편
+방어구,witchs-glintstone-crown,Witch's Glintstone Crown,마녀의 휘석 머리,본편
+방어구,marionette-soldier-helm,Marionette Soldier Helm,인형 병사 투구,본편
+방어구,marionette-soldier-armor,Marionette Soldier Armor,인형 병사 갑옷,본편
+방어구,marionette-soldier-birdhelm,Marionette Soldier Birdhelm,인형 병사 새 투구,본편
+방어구,raging-wolf-helm,Raging Wolf Helm,전투광의 투구,본편
+방어구,raging-wolf-armor,Raging Wolf Armor,전투광의 갑옷,본편
+방어구,raging-wolf-gauntlets,Raging Wolf Gauntlets,전투광의 장갑,본편
+방어구,raging-wolf-greaves,Raging Wolf Greaves,전투광의 각반,본편
+방어구,raging-wolf-armor-altered,Raging Wolf Armor (Altered),전투광의 갑옷(경장),본편
+방어구,land-of-reeds-helm,Land of Reeds Helm,갈대의 땅의 투구,본편
+방어구,land-of-reeds-armor,Land of Reeds Armor,갈대의 땅의 갑옷,본편
+방어구,land-of-reeds-gauntlets,Land of Reeds Gauntlets,갈대의 땅의 장갑,본편
+방어구,land-of-reeds-greaves,Land of Reeds Greaves,갈대의 땅의 각반,본편
+방어구,land-of-reeds-armor-altered,Land of Reeds Armor (Altered),갈대의 땅의 갑옷(경장),본편
+방어구,okina-mask,Okina Mask,노인 가면,본편
+방어구,white-reed-armor,White Reed Armor,정예부대 갑옷,본편
+방어구,white-reed-gauntlets,White Reed Gauntlets,정예부대 장갑,본편
+방어구,white-reed-greaves,White Reed Greaves,정예부대 각반,본편
+방어구,confessor-hood,Confessor Hood,밀사의 후드,본편
+방어구,confessor-armor,Confessor Armor,밀사의 옷,본편
+방어구,confessor-gloves,Confessor Gloves,밀사의 장갑,본편
+방어구,confessor-boots,Confessor Boots,밀사의 부츠,본편
+방어구,confessor-hood-altered,Confessor Hood (Altered),밀사의 후드(경장),본편
+방어구,confessor-armor-altered,Confessor Armor (Altered),밀사의 옷(경장),본편
+방어구,prisoner-iron-mask,Prisoner Iron Mask,포로의 철 가면,본편
+방어구,prisoner-clothing,Prisoner Clothing,포로복,본편
+방어구,prisoner-trousers,Prisoner Trousers,포로 바지,본편
+방어구,blackguards-iron-mask,Blackguard's Iron Mask,불량배의 철 가면,본편
+방어구,traveling-maiden-hood,Traveling Maiden Hood,여행 무녀의 후드,본편
+방어구,traveling-maiden-robe,Traveling Maiden Robe,여행 무녀의 로브,본편
+방어구,traveling-maiden-gloves,Traveling Maiden Gloves,여행 무녀의 장갑,본편
+방어구,traveling-maiden-boots,Traveling Maiden Boots,여행 무녀의 부츠,본편
+방어구,traveling-maiden-robe-altered,Traveling Maiden Robe (Altered),여행 무녀의 로브(경장),본편
+방어구,finger-maiden-fillet,Finger Maiden Fillet,손가락 무녀의 모자,본편
+방어구,finger-maiden-robe,Finger Maiden Robe,손가락 무녀의 로브,본편
+방어구,finger-maiden-shoes,Finger Maiden Shoes,손가락 무녀의 신발,본편
+방어구,finger-maiden-robe-altered,Finger Maiden Robe (Altered),손가락 무녀의 로브(경장),본편
+방어구,preceptors-big-hat,Preceptor's Big Hat,마술 교수의 큰 모자,본편
+방어구,preceptors-long-gown,Preceptor's Long Gown,마술 교수의 긴 옷,본편
+방어구,preceptors-gloves,Preceptor's Gloves,마술 교수의 장갑,본편
+방어구,preceptors-trousers,Preceptor's Trousers,마술 교수의 바지,본편
+방어구,mask-of-confidence,Mask of Confidence,비닉의 가면,본편
+방어구,preceptors-long-gown-altered,Preceptor's Long Gown (Altered),마술 교수의 긴 옷(경장),본편
+방어구,skeletal-mask,Skeletal Mask,뼈 가면,본편
+방어구,raptors-black-feathers,Raptor's Black Feathers,맹금의 검은 깃털,본편
+방어구,bandit-manchettes,Bandit Manchettes,도적의 팔 보호대,본편
+방어구,bandit-boots,Bandit Boots,도적의 부츠,본편
+방어구,bandit-garb,Bandit Garb,도적의 조끼,본편
+방어구,eccentrics-hood,Eccentric's Hood,기이한 기사의 후드,본편
+방어구,eccentrics-armor,Eccentric's Armor,기이한 기사의 갑옷,본편
+방어구,eccentrics-manchettes,Eccentric's Manchettes,기이한 기사의 팔띠,본편
+방어구,eccentrics-breeches,Eccentric's Breeches,기이한 기사의 바지,본편
+방어구,eccentrics-hood-altered,Eccentric's Hood (Altered),기이한 기사의 후드(경장),본편
+방어구,fingerprint-helm,Fingerprint Helm,손가락 자국의 투구,본편
+방어구,fingerprint-armor,Fingerprint Armor,손가락 자국의 갑옷,본편
+방어구,fingerprint-gauntlets,Fingerprint Gauntlets,손가락 자국의 장갑,본편
+방어구,fingerprint-greaves,Fingerprint Greaves,손가락 자국의 각반,본편
+방어구,fingerprint-armor-altered,Fingerprint Armor (Altered),손가락 자국의 갑옷(경장),본편
+방어구,consorts-mask,Consort's Mask,측비의 가면,본편
+방어구,consorts-robe,Consort's Robe,측비의 로브,본편
+방어구,consorts-trousers,Consort's Trousers,측비의 바지,본편
+방어구,rulers-mask,Ruler's Mask,영주의 가면,본편
+방어구,rulers-robe,Ruler's Robe,영주의 로브,본편
+방어구,upper-class-robe,Upper-Class Robe,상류의 로브,본편
+방어구,marais-mask,Marais Mask,마레 가의 가면,본편
+방어구,marais-robe,Marais Robe,마레 가의 로브,본편
+방어구,bloodsoaked-manchettes,Bloodsoaked Manchettes,피가 밴 팔띠,본편
+방어구,bloodsoaked-mask,Bloodsoaked Mask,피가 밴 복면,본편
+방어구,officials-attire,Official's Attire,관리의 옷,본편
+방어구,omen-helm,Omen Helm,흉조의 투구,본편
+방어구,omen-armor,Omen Armor,흉조의 갑옷,본편
+방어구,omen-gauntlets,Omen Gauntlets,흉조의 장갑,본편
+방어구,omen-greaves,Omen Greaves,흉조의 각반,본편
+방어구,carian-knight-helm,Carian Knight Helm,카리아 기사의 투구,본편
+방어구,carian-knight-armor,Carian Knight Armor,카리아 기사의 갑옷,본편
+방어구,carian-knight-gauntlets,Carian Knight Gauntlets,카리아 기사의 장갑,본편
+방어구,carian-knight-greaves,Carian Knight Greaves,카리아 기사의 각반,본편
+방어구,carian-knight-armor-altered,Carian Knight Armor (Altered),카리아 기사의 갑옷(경장),본편
+방어구,hierodas-glintstone-crown,Hierodas Glintstone Crown,야로다스의 휘석 머리,본편
+방어구,errant-sorcerer-robe,Errant Sorcerer Robe,외톨이 마술사의 로브,본편
+방어구,errant-sorcerer-manchettes,Errant Sorcerer Manchettes,외톨이 마술사의 팔 보호대,본편
+방어구,errant-sorcerer-boots,Errant Sorcerer Boots,외톨이 마술사의 부츠,본편
+방어구,errant-sorcerer-robe-altered,Errant Sorcerer Robe (Altered),외톨이 마술사의 로브(경장),본편
+방어구,haima-glintstone-crown,Haima Glintstone Crown,하이마의 휘석 머리,본편
+방어구,battlemage-robe,Battlemage Robe,전쟁마술사의 로브,본편
+방어구,battlemage-manchettes,Battlemage Manchettes,전쟁마술사의 팔 보호대,본편
+방어구,battlemage-legwraps,Battlemage Legwraps,전쟁마술사의 다리 보호대,본편
+방어구,snow-witch-hat,Snow Witch Hat,눈 마녀의 뾰족모자,본편
+방어구,snow-witch-robe,Snow Witch Robe,눈 마녀의 로브,본편
+방어구,snow-witch-skirt,Snow Witch Skirt,눈 마녀의 스커트,본편
+방어구,snow-witch-robe-altered,Snow Witch Robe (Altered),눈 마녀의 로브(경장),본편
+방어구,travelers-clothes,Traveler's Clothes,여행 옷,본편
+방어구,travelers-manchettes,Traveler's Manchettes,여행 팔띠,본편
+방어구,travelers-boots,Traveler's Boots,여행 부츠,본편
+방어구,juvenile-scholar-cap,Juvenile Scholar Cap,유년 학도의 모자,본편
+방어구,juvenile-scholar-robe,Juvenile Scholar Robe,유년 학도의 로브,본편
+방어구,radiant-gold-mask,Radiant Gold Mask,빛나는 금가면,본편
+방어구,goldmasks-rags,Goldmask's Rags,금가면의 누더기천,본편
+방어구,gold-bracelets,Gold Bracelets,금 팔 보호대,본편
+방어구,gold-waistwrap,Gold Waistwrap,금 허리띠,본편
+방어구,fell-omen-cloak,Fell Omen Cloak,끔찍한 흉조의 망토,본편
+방어구,albinauric-mask,Albinauric Mask,백금의 복면,본편
+방어구,dirty-chainmail,Dirty Chainmail,더러워진 체인 메일,본편
+방어구,zamor-mask,Zamor Mask,자미엘의 가면,본편
+방어구,zamor-armor,Zamor Armor,자미엘의 갑옷,본편
+방어구,zamor-bracelets,Zamor Bracelets,자미엘의 팔 보호대,본편
+방어구,zamor-legwraps,Zamor Legwraps,자미엘의 다리 보호대,본편
+방어구,imp-head-cat,Imp Head (Cat),임프 머리(고양이),본편
+방어구,imp-head-fanged,Imp Head (Fanged),임프 머리(아귀),본편
+방어구,imp-head-long-tongued,Imp Head (Long-Tongued),임프 머리(설귀),본편
+방어구,imp-head-corpse,Imp Head (Corpse),임프 머리(망자),본편
+방어구,imp-head-wolf,Imp Head (Wolf),임프 머리(늑대),본편
+방어구,imp-head-elder,Imp Head (Elder),임프 머리(장로),본편
+방어구,silver-tear-mask,Silver Tear Mask,은 물방울 가면,본편
+방어구,chain-coif,Chain Coif,체인 헬름,본편
+방어구,chain-armor,Chain Armor,체인 아머,본편
+방어구,gauntlets,Gauntlets,건틀렛,본편
+방어구,chain-leggings,Chain Leggings,체인 레깅스,본편
+방어구,greathelm,Greathelm,그레이트 헬름,본편
+방어구,eye-surcoat,Eye Surcoat,눈동자 서코트,본편
+방어구,tree-surcoat,Tree Surcoat,나무 서코트,본편
+방어구,octopus-head,Octopus Head,문어머리,본편
+방어구,jar,Jar,항아리머리,본편
+방어구,mushroom-head,Mushroom Head,버섯머리,본편
+방어구,mushroom-body,Mushroom Body,버섯몸,본편
+방어구,mushroom-arms,Mushroom Arms,버섯팔,본편
+방어구,mushroom-legs,Mushroom Legs,버섯다리,본편
+방어구,nox-mirrorhelm,Nox Mirrorhelm,녹스의 거울 투구,본편
+방어구,ijis-mirrorhelm,Iji's Mirrorhelm,이지의 거울 투구,본편
+방어구,black-hood,Black Hood,검은 천 후드,본편
+방어구,leather-armor,Leather Armor,가죽 갑옷,본편
+방어구,leather-gloves,Leather Gloves,가죽 장갑,본편
+방어구,leather-boots,Leather Boots,가죽 부츠,본편
+방어구,bandit-mask,Bandit Mask,도적의 마스크,본편
+방어구,knight-helm,Knight Helm,기사의 투구,본편
+방어구,knight-armor,Knight Armor,기사의 갑옷,본편
+방어구,knight-gauntlets,Knight Gauntlets,기사의 장갑,본편
+방어구,knight-greaves,Knight Greaves,기사의 각반,본편
+방어구,greathood,Greathood,그레이트 후드,본편
+방어구,godrick-soldier-helm,Godrick Soldier Helm,고드릭 병사의 투구,본편
+방어구,tree-and-beast-surcoat,Tree-and-Beast Surcoat,큰 나무와 짐승 서코트,본편
+방어구,godrick-soldier-gauntlets,Godrick Soldier Gauntlets,고드릭 병사의 장갑,본편
+방어구,godrick-soldier-greaves,Godrick Soldier Greaves,고드릭 병사의 각반,본편
+방어구,raya-lucarian-helm,Raya Lucarian Helm,레아 루카리아 병사의 투구,본편
+방어구,cuckoo-surcoat,Cuckoo Surcoat,뻐꾸기 서코트,본편
+방어구,raya-lucarian-gauntlets,Raya Lucarian Gauntlets,레아 루카리아 병사의 장갑,본편
+방어구,raya-lucarian-greaves,Raya Lucarian Greaves,레아 루카리아 병사의 각반,본편
+방어구,leyndell-soldier-helm,Leyndell Soldier Helm,로데일 병사의 투구,본편
+방어구,erdtree-surcoat,Erdtree Surcoat,황금 나무 서코트,본편
+방어구,leyndell-soldier-gauntlets,Leyndell Soldier Gauntlets,로데일 병사의 장갑,본편
+방어구,leyndell-soldier-greaves,Leyndell Soldier Greaves,로데일 병사의 각반,본편
+방어구,radahn-soldier-helm,Radahn Soldier Helm,라단 병사의 투구,본편
+방어구,redmane-surcoat,Redmane Surcoat,적사자 서코트,본편
+방어구,radahn-soldier-gauntlets,Radahn Soldier Gauntlets,라단 병사의 장갑,본편
+방어구,radahn-soldier-greaves,Radahn Soldier Greaves,라단 병사의 각반,본편
+방어구,mausoleum-surcoat,Mausoleum Surcoat,영묘 서코트,본편
+방어구,mausoleum-gauntlets,Mausoleum Gauntlets,영묘 병사의 장갑,본편
+방어구,mausoleum-greaves,Mausoleum Greaves,영묘 병사의 각반,본편
+방어구,haligtree-helm,Haligtree Helm,성수 병사의 투구,본편
+방어구,haligtree-crest-surcoat,Haligtree Crest Surcoat,성수 문양 서코트,본편
+방어구,haligtree-gauntlets,Haligtree Gauntlets,성수 병사의 장갑,본편
+방어구,haligtree-greaves,Haligtree Greaves,성수 병사의 각반,본편
+방어구,gelmir-knight-helm,Gelmir Knight Helm,겔미어 기사의 투구,본편
+방어구,gelmir-knight-armor,Gelmir Knight Armor,겔미어 기사의 갑옷,본편
+방어구,gelmir-knight-gauntlets,Gelmir Knight Gauntlets,겔미어 기사의 장갑,본편
+방어구,gelmir-knight-greaves,Gelmir Knight Greaves,겔미어 기사의 각반,본편
+방어구,gelmir-knight-armor-altered,Gelmir Knight Armor (Altered),겔미어 기사의 갑옷(경장),본편
+방어구,godrick-knight-helm,Godrick Knight Helm,고드릭 기사의 투구,본편
+방어구,godrick-knight-armor,Godrick Knight Armor,고드릭 기사의 갑옷,본편
+방어구,godrick-knight-gauntlets,Godrick Knight Gauntlets,고드릭 기사의 장갑,본편
+방어구,godrick-knight-greaves,Godrick Knight Greaves,고드릭 기사의 각반,본편
+방어구,godrick-knight-armor-altered,Godrick Knight Armor (Altered),고드릭 기사의 갑옷(경장),본편
+방어구,cuckoo-knight-helm,Cuckoo Knight Helm,뻐꾸기 기사의 투구,본편
+방어구,cuckoo-knight-armor,Cuckoo Knight Armor,뻐꾸기 기사의 갑옷,본편
+방어구,cuckoo-knight-gauntlets,Cuckoo Knight Gauntlets,뻐꾸기 기사의 장갑,본편
+방어구,cuckoo-knight-greaves,Cuckoo Knight Greaves,뻐꾸기 기사의 각반,본편
+방어구,cuckoo-knight-armor-altered,Cuckoo Knight Armor (Altered),뻐꾸기 기사의 갑옷(경장),본편
+방어구,leyndell-knight-helm,Leyndell Knight Helm,로데일 기사의 투구,본편
+방어구,leyndell-knight-armor,Leyndell Knight Armor,로데일 기사의 갑옷,본편
+방어구,leyndell-knight-gauntlets,Leyndell Knight Gauntlets,로데일 기사의 장갑,본편
+방어구,leyndell-knight-greaves,Leyndell Knight Greaves,로데일 기사의 각반,본편
+방어구,leyndell-knight-armor-altered,Leyndell Knight Armor (Altered),로데일 기사의 갑옷(경장),본편
+방어구,redmane-knight-helm,Redmane Knight Helm,적사자 기사의 투구,본편
+방어구,redmane-knight-armor,Redmane Knight Armor,적사자 기사의 갑옷,본편
+방어구,redmane-knight-gauntlets,Redmane Knight Gauntlets,적사자 기사의 장갑,본편
+방어구,redmane-knight-greaves,Redmane Knight Greaves,적사자 기사의 각반,본편
+방어구,redmane-knight-armor-altered,Redmane Knight Armor (Altered),적사자 기사의 갑옷(경장),본편
+방어구,mausoleum-knight-armor,Mausoleum Knight Armor,영묘 기사의 갑옷,본편
+방어구,mausoleum-knight-gauntlets,Mausoleum Knight Gauntlets,영묘 기사의 장갑,본편
+방어구,mausoleum-knight-greaves,Mausoleum Knight Greaves,영묘 기사의 각반,본편
+방어구,mausoleum-knight-armor-altered,Mausoleum Knight Armor (Altered),영묘 기사의 갑옷(경장),본편
+방어구,haligtree-knight-helm,Haligtree Knight Helm,성수 기사의 투구,본편
+방어구,haligtree-knight-armor,Haligtree Knight Armor,성수 기사의 갑옷,본편
+방어구,haligtree-knight-gauntlets,Haligtree Knight Gauntlets,성수 기사의 장갑,본편
+방어구,haligtree-knight-greaves,Haligtree Knight Greaves,성수 기사의 각반,본편
+방어구,haligtree-knight-armor-altered,Haligtree Knight Armor (Altered),성수 기사의 갑옷(경장),본편
+방어구,foot-soldier-cap,Foot Soldier Cap,졸병의 철 모자,본편
+방어구,chain-draped-tabard,Chain-Draped Tabard,사슬 어깨망토 천 갑옷,본편
+방어구,foot-soldier-gauntlets,Foot Soldier Gauntlets,졸병의 장갑,본편
+방어구,foot-soldier-greaves,Foot Soldier Greaves,졸병의 각반,본편
+방어구,foot-soldier-helmet,Foot Soldier Helmet,졸병의 투구 덮개,본편
+방어구,foot-soldier-tabard,Foot Soldier Tabard,졸병의 천 갑옷,본편
+방어구,gilded-foot-soldier-cap,Gilded Foot Soldier Cap,졸병의 금 모자,본편
+방어구,leather-draped-tabard,Leather-Draped Tabard,가죽 어깨망토 천 갑옷,본편
+방어구,foot-soldier-helm,Foot Soldier Helm,졸병의 헬름,본편
+방어구,scarlet-tabard,Scarlet Tabard,붉은 천 갑옷,본편
+방어구,bloodsoaked-tabard,Bloodsoaked Tabard,피에 젖은 천 갑옷,본편
+방어구,sacred-crown-helm,Sacred Crown Helm,성관의 철 투구,본편
+방어구,ivory-draped-tabard,Ivory-Draped Tabard,상아 어깨망토 천 갑옷,본편
+방어구,omensmirk-mask,Omensmirk Mask,흉조를 비웃는 가면,본편
+방어구,omenkiller-robe,Omenkiller Robe,흉조잡이의 로브,본편
+방어구,omenkiller-long-gloves,Omenkiller Long Gloves,흉조잡이의 긴 장갑,본편
+방어구,omenkiller-boots,Omenkiller Boots,흉조잡이의 부츠,본편
+방어구,ash-of-war-scarab,Ash-of-War Scarab,전회 스카라베,본편
+방어구,incantation-scarab,Incantation Scarab,기도 스카라베,본편
+방어구,glintstone-scarab,Glintstone Scarab,휘석 스카라베,본편
+방어구,crimson-tear-scarab,Crimson Tear Scarab,붉은 물방울 스카라베,본편
+방어구,cerulean-tear-scarab,Cerulean Tear Scarab,푸른 물방울 스카라베,본편
+방어구,deathbed-dress,Deathbed Dress,동침의 드레스,본편
+방어구,fias-hood,Fia's Hood,피아의 후드,본편
+방어구,fias-robe,Fia's Robe,피아의 로브,본편
+방어구,fias-robe-altered,Fia's Robe (Altered),피아의 로브(경장),본편
+방어구,highwayman-hood,Highwayman Hood,강도의 후드,본편
+방어구,highwayman-cloth-armor,Highwayman Cloth Armor,강도의 천 갑옷,본편
+방어구,highwayman-gauntlets,Highwayman Gauntlets,강도의 장갑,본편
+방어구,high-page-hood,High Page Hood,상류 시종의 후드,본편
+방어구,high-page-clothes,High Page Clothes,상류 시종의 옷,본편
+방어구,high-page-clothes-altered,High Page Clothes (Altered),상류 시종의 옷(경장),본편
+방어구,rotten-duelist-helm,Rotten Duelist Helm,부패한 투사의 투구,본편
+방어구,rotten-gravekeeper-cloak,Rotten Gravekeeper Cloak,부패한 묘지기의 망토,본편
+방어구,rotten-duelist-greaves,Rotten Duelist Greaves,부패한 투사의 각반,본편
+방어구,rotten-gravekeeper-cloak-altered,Rotten Gravekeeper Cloak (Altered),부패한 묘지기의 망토(경장),본편
+방어구,mushroom-crown,Mushroom Crown,버섯 왕관,본편
+방어구,black-dumpling,Black Dumpling,검은 경단,본편
+방어구,lazuli-robe,Lazuli Robe,라줄리의 로브,본편
+방어구,danes-hat,Dane's Hat,단의 모자,DLC
+방어구,dryleaf-robe,Dryleaf Robe,낙엽파의 로브,DLC
+방어구,dryleaf-arm-wraps,Dryleaf Arm Wraps,낙엽파의 팔띠,DLC
+방어구,dryleaf-cuissardes,Dryleaf Cuissardes,낙엽파의 부츠,DLC
+방어구,dryleaf-robe-altered,Dryleaf Robe (Altered),낙엽파의 로브(경장),DLC
+방어구,gaiuss-helm,Gaius's Helm,가이우스의 투구,DLC
+방어구,gaiuss-armor,Gaius's Armor,가이우스의 갑옷,DLC
+방어구,gaiuss-gauntlets,Gaius's Gauntlets,가이우스의 장갑,DLC
+방어구,gaiuss-greaves,Gaius's Greaves,가이우스의 각반,DLC
+방어구,oathseeker-knight-helm,Oathseeker Knight Helm,서약기사의 투구,DLC
+방어구,ledas-armor,Leda's Armor,레다의 갑옷,DLC
+방어구,oathseeker-knight-gauntlets,Oathseeker Knight Gauntlets,서약기사의 장갑,DLC
+방어구,oathseeker-knight-greaves,Oathseeker Knight Greaves,서약기사의 각반,DLC
+방어구,oathseeker-knight-armor,Oathseeker Knight Armor,서약기사의 갑옷,DLC
+방어구,verdigris-helm,Verdigris Helm,녹청 투구,DLC
+방어구,verdigris-armor,Verdigris Armor,녹청 갑옷,DLC
+방어구,verdigris-gauntlets,Verdigris Gauntlets,녹청 장갑,DLC
+방어구,verdigris-greaves,Verdigris Greaves,녹청 각반,DLC
+방어구,pelt-of-ralva,Pelt of Ralva,랄바의 모피,DLC
+방어구,iron-rivet-armor,Iron Rivet Armor,철 못 갑옷,DLC
+방어구,iron-rivet-gauntlets,Iron Rivet Gauntlets,철 못 장갑,DLC
+방어구,iron-rivet-greaves,Iron Rivet Greaves,철 못 각반,DLC
+방어구,fang-helm,Fang Helm,엄니 투구,DLC
+방어구,thiolliers-mask,Thiollier's Mask,티에리에의 가면,DLC
+방어구,thiolliers-garb,Thiollier's Garb,티에리에의 옷,DLC
+방어구,thiolliers-gloves,Thiollier's Gloves,티에리에의 긴 장갑,DLC
+방어구,thiolliers-trousers,Thiollier's Trousers,티에리에의 바지,DLC
+방어구,thiolliers-garb-altered,Thiollier's Garb (Altered),티에리에의 옷(경장),DLC
+방어구,high-priest-hat,High Priest Hat,대사제의 모자,DLC
+방어구,high-priest-robe,High Priest Robe,대사제의 긴 옷,DLC
+방어구,high-priest-gloves,High Priest Gloves,대사제의 긴 장갑,DLC
+방어구,high-priest-undergarments,High Priest Undergarments,대사제의 속바지,DLC
+방어구,finger-robe,Finger Robe,손가락의 긴 옷,DLC
+방어구,caterpillar-mask,Caterpillar Mask,털벌레 가면,DLC
+방어구,braided-cord-robe,Braided Cord Robe,엮은 밧줄 로브,DLC
+방어구,braided-arm-wraps,Braided Arm Wraps,밧줄 팔띠,DLC
+방어구,soiled-loincloth,Soiled Loincloth,꾀죄죄한 속옷,DLC
+방어구,dancers-hood,Dancer's Hood,무희의 후드,DLC
+방어구,dancers-dress,Dancer's Dress,무희의 드레스,DLC
+방어구,dancers-bracer,Dancer's Bracer,무희의 장갑,DLC
+방어구,dancers-trousers,Dancer's Trousers,무희의 바지,DLC
+방어구,dancers-dress-altered,Dancer's Dress (Altered),무희의 드레스(경장),DLC
+방어구,helm-of-night,Helm of Night,밤의 투구,DLC
+방어구,armor-of-night,Armor of Night,밤의 갑옷,DLC
+방어구,gauntlets-of-night,Gauntlets of Night,밤의 장갑,DLC
+방어구,greaves-of-night,Greaves of Night,밤의 각반,DLC
+방어구,igons-helm,Igon's Helm,에이곤의 투구,DLC
+방어구,igons-armor,Igon's Armor,에이곤의 갑옷,DLC
+방어구,igons-gauntlets,Igon's Gauntlets,에이곤의 장갑,DLC
+방어구,igons-loincloth,Igon's Loincloth,에이곤의 허리끈,DLC
+방어구,igons-helm-altered,Igon's Helm (Altered),에이곤의 투구(경장),DLC
+방어구,igons-armor-altered,Igon's Armor (Altered),에이곤의 갑옷(경장),DLC
+방어구,wise-mans-mask,Wise Man's Mask,늙은 현자의 가면,DLC
+방어구,ansbachs-attire,Ansbach's Attire,안스바흐의 옷,DLC
+방어구,ansbachs-manchettes,Ansbach's Manchettes,안스바흐의 팔띠,DLC
+방어구,ansbachs-boots,Ansbach's Boots,안스바흐의 부츠,DLC
+방어구,ansbachs-attire-altered,Ansbach's Attire (Altered),안스바흐의 옷(경장),DLC
+방어구,freyjas-helm,Freyja's Helm,프레이야의 투구,DLC
+방어구,freyjas-armor,Freyja's Armor,프레이야의 갑옷,DLC
+방어구,freyjas-gauntlets,Freyja's Gauntlets,프레이야의 장갑,DLC
+방어구,freyjas-greaves,Freyja's Greaves,프레이야의 정강이받이,DLC
+방어구,freyjas-armor-altered,Freyja's Armor (Altered),프레이야의 갑옷(경장),DLC
+방어구,helm-of-solitude,Helm of Solitude,고립 감옥의 투구,DLC
+방어구,armor-of-solitude,Armor of Solitude,고립 감옥의 갑옷,DLC
+방어구,gauntlets-of-solitude,Gauntlets of Solitude,고립 감옥의 장갑,DLC
+방어구,greaves-of-solitude,Greaves of Solitude,고립 감옥의 각반,DLC
+방어구,armor-of-solitude-altered,Armor of Solitude (Altered),고립 감옥의 갑옷(경장),DLC
+방어구,messmer-soldier-helm,Messmer Soldier Helm,메스메르 병사의 투구,DLC
+방어구,messmer-soldier-armor,Messmer Soldier Armor,메스메르 병사의 갑옷,DLC
+방어구,messmer-soldier-gauntlets,Messmer Soldier Gauntlets,메스메르 병사의 장갑,DLC
+방어구,messmer-soldier-greaves,Messmer Soldier Greaves,메스메르 병사의 각반,DLC
+방어구,messmer-soldier-armor-altered,Messmer Soldier Armor (Altered),메스메르 병사의 갑옷(경장),DLC
+방어구,black-knight-helm,Black Knight Helm,흑기사의 투구,DLC
+방어구,black-knight-armor,Black Knight Armor,흑기사의 갑옷,DLC
+방어구,black-knight-gauntlets,Black Knight Gauntlets,흑기사의 장갑,DLC
+방어구,black-knight-greaves,Black Knight Greaves,흑기사의 각반,DLC
+방어구,rakshasa-helm,Rakshasa Helm,나찰의 투구,DLC
+방어구,rakshasa-armor,Rakshasa Armor,나찰의 갑옷,DLC
+방어구,rakshasa-gauntlets,Rakshasa Gauntlets,나찰의 장갑,DLC
+방어구,rakshasa-greaves,Rakshasa Greaves,나찰의 각반,DLC
+방어구,fire-knight-helm,Fire Knight Helm,불의 기사의 투구,DLC
+방어구,fire-knight-armor,Fire Knight Armor,불의 기사의 갑옷,DLC
+방어구,fire-knight-gauntlets,Fire Knight Gauntlets,불의 기사의 장갑,DLC
+방어구,fire-knight-greaves,Fire Knight Greaves,불의 기사의 각반,DLC
+방어구,fire-knight-armor-altered,Fire Knight Armor (Altered),불의 기사의 갑옷(경장),DLC
+방어구,death-mask-helm,Death Mask Helm,죽은 얼굴 투구,DLC
+방어구,winged-serpent-helm,Winged Serpent Helm,날개 달린 뱀 투구,DLC
+방어구,salzas-hood,Salza's Hood,잘차의 후드,DLC
+방어구,leather-headband,Leather Headband,가죽 머리띠,DLC
+방어구,gloried-attire,Gloried Attire,영예의 옷,DLC
+방어구,leather-arm-wraps,Leather Arm Wraps,가죽 팔띠,DLC
+방어구,leather-leg-wraps,Leather Leg Wraps,가죽 각반,DLC
+방어구,leather-crown,Leather Crown,가죽 투구,DLC
+방어구,highland-attire,Highland Attire,고지의 옷,DLC
+방어구,death-knight-helm,Death Knight Helm,죽음 기사의 투구,DLC
+방어구,death-knight-armor,Death Knight Armor,죽음 기사의 갑옷,DLC
+방어구,death-knight-gauntlets,Death Knight Gauntlets,죽음 기사의 장갑,DLC
+방어구,death-knight-greaves,Death Knight Greaves,죽음 기사의 각반,DLC
+방어구,curseblade-mask,Curseblade Mask,주검사의 가면,DLC
+방어구,ascetics-loincloth,Ascetic's Loincloth,수행자의 허리끈,DLC
+방어구,ascetics-wrist-guards,Ascetic's Wrist Guards,수행자의 팔찌,DLC
+방어구,ascetics-ankle-guards,Ascetic's Ankle Guards,수행자의 발찌,DLC
+방어구,messmers-helm,Messmer's Helm,메스메르의 투구,DLC
+방어구,messmers-armor,Messmer's Armor,메스메르의 갑옷,DLC
+방어구,messmers-gauntlets,Messmer's Gauntlets,메스메르의 장갑,DLC
+방어구,messmers-greaves,Messmer's Greaves,메스메르의 각반,DLC
+방어구,messmers-helm-altered,Messmer's Helm (Altered),메스메르의 투구(경장),DLC
+방어구,gravebird-helm,Gravebird Helm,묘지기 새의 투구,DLC
+방어구,gravebirds-blackquill-armor,Gravebird's Blackquill Armor,묘지기 새의 깃털 갑옷,DLC
+방어구,gravebird-bracelets,Gravebird Bracelets,묘지기 새의 팔찌,DLC
+방어구,gravebird-anklets,Gravebird Anklets,묘지기 새의 발찌,DLC
+방어구,gravebird-armor,Gravebird Armor,묘지기 새의 갑옷,DLC
+방어구,common-soldier-helm,Common Soldier Helm,졸병의 투구,DLC
+방어구,common-soldier-cloth-armor,Common Soldier Cloth Armor,졸병의 천 갑옷,DLC
+방어구,common-soldier-gauntlets,Common Soldier Gauntlets,졸병의 장갑,DLC
+방어구,common-soldier-greaves,Common Soldier Greaves,졸병의 각반,DLC
+방어구,horned-warrior-helm,Horned Warrior Helm,뿔 전사의 투구,DLC
+방어구,horned-warrior-armor,Horned Warrior Armor,뿔 전사의 갑옷,DLC
+방어구,horned-warrior-gauntlets,Horned Warrior Gauntlets,뿔 전사의 장갑,DLC
+방어구,horned-warrior-greaves,Horned Warrior Greaves,뿔 전사의 각반,DLC
+방어구,divine-beast-helm,Divine Beast Helm,신수의 투구,DLC
+방어구,divine-beast-warrior-armor,Divine Beast Warrior Armor,신수 전사의 갑옷,DLC
+방어구,divine-bird-helm,Divine Bird Helm,신조의 투구,DLC
+방어구,divine-bird-warrior-armor,Divine Bird Warrior Armor,신조 전사의 갑옷,DLC
+방어구,divine-bird-warrior-gauntlets,Divine Bird Warrior Gauntlets,신조 전사의 장갑,DLC
+방어구,divine-bird-warrior-greaves,Divine Bird Warrior Greaves,신조 전사의 각반,DLC
+방어구,rellanas-helm,Rellana's Helm,렐라나의 투구,DLC
+방어구,rellanas-armor,Rellana's Armor,렐라나의 갑옷,DLC
+방어구,rellanas-gloves,Rellana's Gloves,렐라나의 장갑,DLC
+방어구,rellanas-greaves,Rellana's Greaves,렐라나의 각반,DLC
+방어구,young-lions-helm,Young Lion's Helm,젊은 사자의 투구,DLC
+방어구,young-lions-armor,Young Lion's Armor,젊은 사자의 갑옷,DLC
+방어구,young-lions-gauntlets,Young Lion's Gauntlets,젊은 사자의 장갑,DLC
+방어구,young-lions-greaves,Young Lion's Greaves,젊은 사자의 각반,DLC
+방어구,young-lions-armor-altered,Young Lion's Armor (Altered),젊은 사자의 갑옷(경장),DLC
+방어구,circlet-of-light,Circlet of Light,빛의 관,DLC
+방어구,shadow-militiaman-helm,Shadow Militiaman Helm,그림자 천한 병사의 투구,DLC
+방어구,shadow-militiaman-armor,Shadow Militiaman Armor,그림자 천한 병사의 갑옷,DLC
+방어구,shadow-militiaman-gauntlets,Shadow Militiaman Gauntlets,그림자 천한 병사의 장갑,DLC
+방어구,shadow-militiaman-greaves,Shadow Militiaman Greaves,그림자 천한 병사의 각반,DLC
+방어구,divine-beast-head,Divine Beast Head,신수의 머리,DLC
+방어구,st-trinas-blossom,St. Trina's Blossom,트리나의 한 송이 꽃,DLC
+방어구,crucible-hammer-helm,Crucible Hammer-Helm,도가니의 망치 투구,DLC
+방어구,greatjar,Greatjar,큰 항아리머리,DLC
+방어구,imp-head-lion,Imp Head (Lion),임프 머리(사자),DLC
+방어구,broken-gold-mask,Broken Gold Mask,파쇄된 금가면,타니쉬드 에디션
+방어구,gold-tattoo-chest,Gold Tattoo (Chest),황금의 문신(몸통),타니쉬드 에디션
+방어구,gold-tattoo-arm,Gold Tattoo (Arm),황금의 문신(팔),타니쉬드 에디션
+방어구,gold-tattoo-leg,Gold Tattoo (Leg),황금의 문신(다리),타니쉬드 에디션
+방어구,silver-grooved-helm,Silver Grooved Helm,홈 파인 은 투구,타니쉬드 에디션
+방어구,silver-grooved-armor,Silver Grooved Armor,홈 파인 은 갑옷,타니쉬드 에디션
+방어구,silver-grooved-gauntlets,Silver Grooved Gauntlets,홈 파인 은 장갑,타니쉬드 에디션
+방어구,silver-grooved-greaves,Silver Grooved Greaves,홈 파인 은 각반,타니쉬드 에디션
+방어구,silver-grooved-armor-altered,Silver Grooved Armor (Altered),홈 파인 은 갑옷(경장),타니쉬드 에디션
+방어구,leontiels-hat,Leontiel's Hat,레오티엘의 모자,타니쉬드 에디션
+방어구,leontiels-armor,Leontiel's Armor,레오티엘의 갑옷,타니쉬드 에디션
+방어구,leontiels-leather-gloves,Leontiel's Leather Gloves,레오티엘의 가죽 장갑,타니쉬드 에디션
+방어구,leontiels-boots,Leontiel's Boots,레오티엘의 부츠,타니쉬드 에디션
+방어구,leontiels-hat-altered,Leontiel's Hat (Altered),레오티엘의 모자(경장),타니쉬드 에디션
+방어구,steel-helm,Steel Helm,강철 투구,타니쉬드 에디션
+방어구,steel-armor,Steel Armor,강철 갑옷,타니쉬드 에디션
+방어구,steel-gauntlets,Steel Gauntlets,강철 장갑,타니쉬드 에디션
+방어구,steel-greaves,Steel Greaves,강철 각반,타니쉬드 에디션
+탈리스만,crimson-amber-medallion,Crimson Amber Medallion,붉은 호박 메달리온,본편
+탈리스만,crimson-amber-medallion-1,Crimson Amber Medallion +1,붉은 호박 메달리온+1,본편
+탈리스만,crimson-amber-medallion-2,Crimson Amber Medallion +2,붉은 호박 메달리온+2,본편
+탈리스만,cerulean-amber-medallion,Cerulean Amber Medallion,푸른 호박 메달리온,본편
+탈리스만,cerulean-amber-medallion-1,Cerulean Amber Medallion +1,푸른 호박 메달리온+1,본편
+탈리스만,cerulean-amber-medallion-2,Cerulean Amber Medallion +2,푸른 호박 메달리온+2,본편
+탈리스만,viridian-amber-medallion,Viridian Amber Medallion,녹색 호박 메달리온,본편
+탈리스만,viridian-amber-medallion-1,Viridian Amber Medallion +1,녹색 호박 메달리온+1,본편
+탈리스만,viridian-amber-medallion-2,Viridian Amber Medallion +2,녹색 호박 메달리온+2,본편
+탈리스만,arsenal-charm,Arsenal Charm,무구 덩어리 부적,본편
+탈리스만,arsenal-charm-1,Arsenal Charm +1,무구 덩어리 부적+1,본편
+탈리스만,great-jars-arsenal,Great-Jar's Arsenal,큰 항아리의 무구 덩어리,본편
+탈리스만,erdtrees-favor,Erdtree's Favor,황금 나무의 은총,본편
+탈리스만,erdtrees-favor-1,Erdtree's Favor +1,황금 나무의 은총+1,본편
+탈리스만,erdtrees-favor-2,Erdtree's Favor +2,황금 나무의 은총+2,본편
+탈리스만,radagons-scarseal,Radagon's Scarseal,라다곤의 각인,본편
+탈리스만,radagons-soreseal,Radagon's Soreseal,라다곤의 문드러진 각인,본편
+탈리스만,starscourge-heirloom,Starscourge Heirloom,별 부수기의 전승,본편
+탈리스만,prosthesis-wearer-heirloom,Prosthesis-Wearer Heirloom,의수 검사의 전승,본편
+탈리스만,stargazer-heirloom,Stargazer Heirloom,별 보는 소녀의 전승,본편
+탈리스만,two-fingers-heirloom,Two Fingers Heirloom,두 손가락의 전승,본편
+탈리스만,silver-scarab,Silver Scarab,은 스카라베,본편
+탈리스만,gold-scarab,Gold Scarab,금 스카라베,본편
+탈리스만,moon-of-nokstella,Moon of Nokstella,녹스텔라의 달,본편
+탈리스만,green-turtle-talisman,Green Turtle Talisman,녹색 거북 탈리스만,본편
+탈리스만,stalwart-horn-charm,Stalwart Horn Charm,강건의 뿔 장식,본편
+탈리스만,stalwart-horn-charm-1,Stalwart Horn Charm +1,강건의 뿔 장식+1,본편
+탈리스만,immunizing-horn-charm,Immunizing Horn Charm,면역의 뿔 장식,본편
+탈리스만,immunizing-horn-charm-1,Immunizing Horn Charm +1,면역의 뿔 장식+1,본편
+탈리스만,clarifying-horn-charm,Clarifying Horn Charm,이성의 뿔 장식,본편
+탈리스만,clarifying-horn-charm-1,Clarifying Horn Charm +1,이성의 뿔 장식+1,본편
+탈리스만,prince-of-deaths-pustule,Prince of Death's Pustule,죽음의 왕자의 부스럼,본편
+탈리스만,prince-of-deaths-cyst,Prince of Death's Cyst,죽음의 왕자의 업창,본편
+탈리스만,mottled-necklace,Mottled Necklace,얼룩색 목걸이,본편
+탈리스만,mottled-necklace-1,Mottled Necklace +1,얼룩색 목걸이+1,본편
+탈리스만,bull-goats-talisman,Bull-Goat's Talisman,큰 산양 탈리스만,본편
+탈리스만,marikas-scarseal,Marika's Scarseal,마리카의 각인,본편
+탈리스만,marikas-soreseal,Marika's Soreseal,마리카의 문드러진 각인,본편
+탈리스만,warrior-jar-shard,Warrior Jar Shard,전사 항아리의 파편,본편
+탈리스만,shard-of-alexander,Shard of Alexander,알렉산더의 파편,본편
+탈리스만,millicents-prosthesis,Millicent's Prosthesis,밀리센트의 의수,본편
+탈리스만,magic-scorpion-charm,Magic Scorpion Charm,마력 전갈,본편
+탈리스만,lightning-scorpion-charm,Lightning Scorpion Charm,벼락 전갈,본편
+탈리스만,fire-scorpion-charm,Fire Scorpion Charm,화염 전갈,본편
+탈리스만,sacred-scorpion-charm,Sacred Scorpion Charm,신성한 전갈,본편
+탈리스만,red-feathered-branchsword,Red-Feathered Branchsword,붉은 날개 칠지인,본편
+탈리스만,ritual-sword-talisman,Ritual Sword Talisman,봉투검의 탈리스만,본편
+탈리스만,spear-talisman,Spear Talisman,창의 탈리스만,본편
+탈리스만,hammer-talisman,Hammer Talisman,망치의 탈리스만,본편
+탈리스만,winged-sword-insignia,Winged Sword Insignia,유익검의 휘장,본편
+탈리스만,rotten-winged-sword-insignia,Rotten Winged Sword Insignia,부패 익검의 휘장,본편
+탈리스만,dagger-talisman,Dagger Talisman,단검의 탈리스만,본편
+탈리스만,arrows-reach-talisman,Arrow's Reach Talisman,먼 화살의 탈리스만,본편
+탈리스만,blue-dancer-charm,Blue Dancer Charm,푸른 무희,본편
+탈리스만,twinblade-talisman,Twinblade Talisman,쌍날검의 탈리스만,본편
+탈리스만,axe-talisman,Axe Talisman,도끼의 탈리스만,본편
+탈리스만,lance-talisman,Lance Talisman,랜스의 탈리스만,본편
+탈리스만,arrows-sting-talisman,Arrow's Sting Talisman,튼튼한 화살의 탈리스만,본편
+탈리스만,lord-of-bloods-exultation,Lord of Blood's Exultation,피의 군주의 환희,본편
+탈리스만,kindred-of-rots-exultation,Kindred of Rot's Exultation,부패 권속의 환희,본편
+탈리스만,claw-talisman,Claw Talisman,손톱의 탈리스만,본편
+탈리스만,roar-medallion,Roar Medallion,포효의 메달리온,본편
+탈리스만,curved-sword-talisman,Curved Sword Talisman,곡검의 탈리스만,본편
+탈리스만,companion-jar,Companion Jar,벗 항아리,본편
+탈리스만,perfumers-talisman,Perfumer's Talisman,조향사의 탈리스만,본편
+탈리스만,graven-school-talisman,Graven-School Talisman,마술사 구 탈리스만,본편
+탈리스만,graven-mass-talisman,Graven-Mass Talisman,마술사 덩어리 탈리스만,본편
+탈리스만,faithfuls-canvas-talisman,Faithful's Canvas Talisman,신도의 서포,본편
+탈리스만,flocks-canvas-talisman,Flock's Canvas Talisman,모인 신도의 서포,본편
+탈리스만,old-lords-talisman,Old Lord's Talisman,옛 왕의 탈리스만,본편
+탈리스만,radagon-icon,Radagon Icon,라다곤의 초상,본편
+탈리스만,primal-glintstone-blade,Primal Glintstone Blade,원휘석 칼날,본편
+탈리스만,godfrey-icon,Godfrey Icon,고드프리의 초상,본편
+탈리스만,dragoncrest-shield-talisman,Dragoncrest Shield Talisman,용 표식 방패의 탈리스만,본편
+탈리스만,dragoncrest-shield-talisman-1,Dragoncrest Shield Talisman +1,용 표식 방패의 탈리스만+1,본편
+탈리스만,dragoncrest-shield-talisman-2,Dragoncrest Shield Talisman +2,용 표식 방패의 탈리스만+2,본편
+탈리스만,dragoncrest-greatshield-talisman,Dragoncrest Greatshield Talisman,용 표식 대형 방패의 탈리스만,본편
+탈리스만,spelldrake-talisman,Spelldrake Talisman,마력 용 표식의 탈리스만,본편
+탈리스만,spelldrake-talisman-1,Spelldrake Talisman +1,마력 용 표식의 탈리스만+1,본편
+탈리스만,spelldrake-talisman-2,Spelldrake Talisman +2,마력 용 표식의 탈리스만+2,본편
+탈리스만,flamedrake-talisman,Flamedrake Talisman,염룡 표식의 탈리스만,본편
+탈리스만,flamedrake-talisman-1,Flamedrake Talisman +1,염룡 표식의 탈리스만+1,본편
+탈리스만,flamedrake-talisman-2,Flamedrake Talisman +2,염룡 표식의 탈리스만+2,본편
+탈리스만,boltdrake-talisman,Boltdrake Talisman,뇌룡 표식의 탈리스만,본편
+탈리스만,boltdrake-talisman-1,Boltdrake Talisman +1,뇌룡 표식의 탈리스만+1,본편
+탈리스만,boltdrake-talisman-2,Boltdrake Talisman +2,뇌룡 표식의 탈리스만+2,본편
+탈리스만,haligdrake-talisman,Haligdrake Talisman,성룡 표식의 탈리스만,본편
+탈리스만,haligdrake-talisman-1,Haligdrake Talisman +1,성룡 표식의 탈리스만+1,본편
+탈리스만,haligdrake-talisman-2,Haligdrake Talisman +2,성룡 표식의 탈리스만+2,본편
+탈리스만,pearldrake-talisman,Pearldrake Talisman,진주룡 표식의 탈리스만,본편
+탈리스만,pearldrake-talisman-1,Pearldrake Talisman +1,진주룡 표식의 탈리스만+1,본편
+탈리스만,pearldrake-talisman-2,Pearldrake Talisman +2,진주룡 표식의 탈리스만+2,본편
+탈리스만,crucible-scale-talisman,Crucible Scale Talisman,도가니 비늘의 탈리스만,본편
+탈리스만,crucible-feather-talisman,Crucible Feather Talisman,도가니 날개의 탈리스만,본편
+탈리스만,blue-feathered-branchsword,Blue-Feathered Branchsword,푸른 날개 칠지인,본편
+탈리스만,ritual-shield-talisman,Ritual Shield Talisman,봉투방패의 탈리스만,본편
+탈리스만,greatshield-talisman,Greatshield Talisman,대형 방패의 탈리스만,본편
+탈리스만,crucible-knot-talisman,Crucible Knot Talisman,도가니 혹의 탈리스만,본편
+탈리스만,crimson-seed-talisman,Crimson Seed Talisman,붉은 종자의 탈리스만,본편
+탈리스만,cerulean-seed-talisman,Cerulean Seed Talisman,푸른 종자의 탈리스만,본편
+탈리스만,blessed-dew-talisman,Blessed Dew Talisman,은혜의 물방울의 탈리스만,본편
+탈리스만,takers-cameo,Taker's Cameo,약탈의 카메오,본편
+탈리스만,godskin-swaddling-cloth,Godskin Swaddling Cloth,신의 살갗의 강보,본편
+탈리스만,assassins-crimson-dagger,Assassin's Crimson Dagger,붉은 흉악한 칼날,본편
+탈리스만,assassins-cerulean-dagger,Assassin's Cerulean Dagger,푸른 흉악한 칼날,본편
+탈리스만,crepuss-vial,Crepus's Vial,크레푸스의 작은 병,본편
+탈리스만,concealing-veil,Concealing Veil,몸 가리는 베일,본편
+탈리스만,carian-filigreed-crest,Carian Filigreed Crest,카리아의 휘장,본편
+탈리스만,longtail-cat-talisman,Longtail Cat Talisman,긴 꼬리 고양이 탈리스만,본편
+탈리스만,shabriris-woe,Shabriri's Woe,샤브리리의 화,본편
+탈리스만,daedicars-woe,Daedicar's Woe,디디카의 화,본편
+탈리스만,sacrificial-twig,Sacrificial Twig,희생의 가는 가지,본편
+탈리스만,furled-fingers-trick-mirror,Furled Finger's Trick-Mirror,갈고리 손가락의 위장 거울,본편
+탈리스만,hosts-trick-mirror,Host's Trick-Mirror,주인의 위장 거울,본편
+탈리스만,ancestral-spirits-horn,Ancestral Spirit's Horn,선조령의 뿔,본편
+탈리스만,crimson-amber-medallion-3,Crimson Amber Medallion +3,붉은 호박 메달리온+3,DLC
+탈리스만,cerulean-amber-medallion-3,Cerulean Amber Medallion +3,푸른 호박 메달리온+3,DLC
+탈리스만,viridian-amber-medallion-3,Viridian Amber Medallion +3,녹색 호박 메달리온+3,DLC
+탈리스만,two-headed-turtle-talisman,Two-Headed Turtle Talisman,쌍두 거북 탈리스만,DLC
+탈리스만,stalwart-horn-charm-2,Stalwart Horn Charm +2,강건의 뿔 장식+2,DLC
+탈리스만,immunizing-horn-charm-2,Immunizing Horn Charm +2,면역의 뿔 장식+2,DLC
+탈리스만,clarifying-horn-charm-2,Clarifying Horn Charm +2,이성의 뿔 장식+2,DLC
+탈리스만,mottled-necklace-2,Mottled Necklace +2,얼룩색 목걸이+2,DLC
+탈리스만,spelldrake-talisman-3,Spelldrake Talisman +3,마력 용 표식의 탈리스만+3,DLC
+탈리스만,flamedrake-talisman-3,Flamedrake Talisman +3,염룡 표식의 탈리스만+3,DLC
+탈리스만,boltdrake-talisman-3,Boltdrake Talisman +3,뇌룡 표식의 탈리스만+3,DLC
+탈리스만,golden-braid,Golden Braid,황금의 땋은 머리카락,DLC
+탈리스만,pearldrake-talisman-3,Pearldrake Talisman +3,진주룡 표식의 탈리스만+3,DLC
+탈리스만,crimson-seed-talisman-1,Crimson Seed Talisman +1,붉은 종자의 탈리스만+1,DLC
+탈리스만,cerulean-seed-talisman-1,Cerulean Seed Talisman +1,푸른 종자의 탈리스만+1,DLC
+탈리스만,blessed-blue-dew-talisman,Blessed Blue Dew Talisman,은혜의 푸른 물방울 탈리스만,DLC
+탈리스만,fine-crucible-feather-talisman,Fine Crucible Feather Talisman,도가니 얇은 날개의 탈리스만,DLC
+탈리스만,outer-god-heirloom,Outer God Heirloom,외부의 신 전승,DLC
+탈리스만,shattered-stone-talisman,Shattered Stone Talisman,깨진 돌의 탈리스만,DLC
+탈리스만,two-handed-sword-talisman,Two-Handed Sword Talisman,양손검의 탈리스만,DLC
+탈리스만,crusade-insignia,Crusade Insignia,성전의 휘장,DLC
+탈리스만,aged-ones-exultation,Aged One's Exultation,노인의 환희,DLC
+탈리스만,arrows-soaring-sting-talisman,Arrow's Soaring Sting Talisman,먼 튼튼한 화살의 탈리스만,DLC
+탈리스만,pearl-shield-talisman,Pearl Shield Talisman,진주 방패의 탈리스만,DLC
+탈리스만,dried-bouquet,Dried Bouquet,마른 꽃다발,DLC
+탈리스만,smithing-talisman,Smithing Talisman,단조술의 탈리스만,DLC
+탈리스만,ailment-talisman,Ailment Talisman,병의 탈리스만,DLC
+탈리스만,retaliatory-crossed-tree,Retaliatory Crossed-Tree,되받아 치는 교차수,DLC
+탈리스만,lacerating-crossed-tree,Lacerating Crossed-Tree,꿰뚫는 교차수,DLC
+탈리스만,sharpshot-talisman,Sharpshot Talisman,조준하는 활의 탈리스만,DLC
+탈리스만,st-trinas-smile,St. Trina's Smile,트리나의 미소,DLC
+탈리스만,talisman-of-the-dread,Talisman of the Dread,폭룡의 탈리스만,DLC
+탈리스만,enraged-divine-beast,Enraged Divine Beast,미친 듯이 날뛰는 신수,DLC
+탈리스만,beloved-stardust,Beloved Stardust,사랑스러운 별가루,DLC
+탈리스만,talisman-of-lords-bestowal,Talisman of Lord's Bestowal,왕의 수여 탈리스만,DLC
+탈리스만,verdigris-discus,Verdigris Discus,녹청 원반,DLC
+탈리스만,rellanas-cameo,Rellana's Cameo,렐라나의 카메오,DLC
+탈리스만,blade-of-mercy,Blade of Mercy,자비의 칼날,DLC
+탈리스만,talisman-of-all-crucibles,Talisman of All Crucibles,모든 도가니의 탈리스만,DLC
+버프,item-acid-spraymist,Acid Spraymist,산 분무,본편
+버프,item-albinauric-pot,Albinauric Pot,백금 항아리,본편
+버프,item-ancient-dragons-blessing,Ancient Dragon's Blessing,고룡의 은총,DLC
+버프,item-baldachins-blessing,Baldachin's Blessing,휘장의 은총,본편
+버프,item-bewitching-branch,Bewitching Branch,유혹의 나뭇가지,본편
+버프,item-blood-grease,Blood Grease,피기름,본편
+버프,item-bloodboil-aromatic,Bloodboil Aromatic,광열의 향약,본편
+버프,item-bloodsucking-cracked-tear,Bloodsucking Cracked Tear,흡혈의 깨진 물방울,DLC
+버프,item-boiled-crab,Boiled Crab,삶은 게,본편
+버프,item-boiled-prawn,Boiled Prawn,삶은 새우,본편
+버프,item-cerulean-crystal-tear,Cerulean Crystal Tear,푸른 결정 물방울,본편
+버프,item-cerulean-hidden-tear,Cerulean Hidden Tear,푸른 숨겨진 물방울,본편
+버프,item-cerulean-sapping-cracked-tear,Cerulean-Sapping Cracked Tear,푸른 흡수의 깨진 물방울,DLC
+버프,item-charming-branch,Charming Branch,매료의 나뭇가지,DLC
+버프,item-clarifying-cured-meat,Clarifying Cured Meat,이성의 육포,본편
+버프,item-clarifying-white-cured-meat,Clarifying White Cured Meat,이성의 흰 육포,본편
+버프,item-crimson-bubbletear,Crimson Bubbletear,붉은 거품 물방울,본편
+버프,item-crimson-crystal-tear,Crimson Crystal Tear,붉은 결정 물방울,본편
+버프,item-crimson-sapping-cracked-tear,Crimson-Sapping Cracked Tear,붉은 흡수의 깨진 물방울,DLC
+버프,item-crimsonburst-crystal-tear,Crimsonburst Crystal Tear,샘솟는 붉은 결정 물방울,본편
+버프,item-crimsonspill-crystal-tear,Crimsonspill Crystal Tear,넘친 붉은 결정 물방울,본편
+버프,item-crimsonwhorl-bubbletear,Crimsonwhorl Bubbletear,붉은 소용돌이 거품 물방울,본편
+버프,item-dappled-cured-meat,Dappled Cured Meat,얼룩색 육포,본편
+버프,item-dappled-white-cured-meat,Dappled White Cured Meat,얼룩색 흰 육포,본편
+버프,item-dexterity-knot-crystal-tear,Dexterity-knot Crystal Tear,기량의 혹 결정 물방울,본편
+버프,item-dragon-communion-flesh,Dragon Communion Flesh,용찬의 고기 덩어리,DLC
+버프,item-dragon-communion-grease,Dragon Communion Grease,용찬기름,DLC
+버프,item-dragonbolt-grease,Dragonbolt Grease,용뢰기름,DLC
+버프,item-dragonscale-flesh,Dragonscale Flesh,역린의 고기 덩어리,DLC
+버프,item-dragonwound-grease,Dragonwound Grease,용상기름,본편
+버프,item-drawstring-blood-grease,Drawstring Blood Grease,끈 달린 피기름,본편
+버프,item-drawstring-dragonbolt-grease,Drawstring Dragonbolt Grease,끈 달린 용뢰기름,DLC
+버프,item-drawstring-eternal-sleep-grease,Drawstring Eternal Sleep Grease,끈 달린 영면기름,DLC
+버프,item-drawstring-fire-grease,Drawstring Fire Grease,끈 달린 불기름,본편
+버프,item-drawstring-golden-grease,Drawstring Golden Grease,끈 달린 황금기름,DLC
+버프,item-drawstring-holy-grease,Drawstring Holy Grease,끈 달린 신성기름,본편
+버프,item-drawstring-lightning-grease,Drawstring Lightning Grease,끈 달린 벼락기름,본편
+버프,item-drawstring-magic-grease,Drawstring Magic Grease,끈 달린 마력기름,본편
+버프,item-drawstring-messmerfire-grease,Drawstring Messmerfire Grease,끈 달린 메스메르의 불기름,DLC
+버프,item-drawstring-poison-grease,Drawstring Poison Grease,끈 달린 독기름,본편
+버프,item-drawstring-rot-grease,Drawstring Rot Grease,끈 달린 부패기름,본편
+버프,item-drawstring-royal-magic-grease,Drawstring Royal Magic Grease,끈 달린 왕가의 마력 기름,DLC
+버프,item-drawstring-soporific-grease,Drawstring Soporific Grease,끈 달린 수면기름,본편
+버프,item-eternal-sleep-grease,Eternal Sleep Grease,영면기름,DLC
+버프,item-exalted-flesh,Exalted Flesh,용사의 고깃덩어리,본편
+버프,item-faith-knot-crystal-tear,Faith-knot Crystal Tear,신앙의 혹 결정 물방울,본편
+버프,item-festive-grease,Festive Grease,축제기름,DLC
+버프,item-fingerprint-nostrum,Fingerprint Nostrum,지문의 비약,DLC
+버프,item-fire-grease,Fire Grease,불기름,본편
+버프,item-fireproof-dried-liver,Fireproof Dried Liver,항염의 말린 간,본편
+버프,item-fireproof-pickled-liver,Fireproof Pickled Liver,항염의 간 절임,DLC
+버프,item-flame-shrouding-cracked-tear,Flame-Shrouding Cracked Tear,불꽃 두른 깨진 물방울,본편
+버프,item-freezing-grease,Freezing Grease,빙결기름,본편
+버프,item-frenzyflame-stone,Frenzyflame Stone,미친 불의 돌,본편
+버프,item-godricks-great-rune,Godrick's Great Rune,고드릭의 거대한 룬,본편
+버프,item-gold-pickled-fowl-foot,Gold-Pickled Fowl Foot,새 다리 황금 절임,본편
+버프,item-golden-grease,Golden Grease,황금기름,DLC
+버프,item-golden-horn-tender,Golden Horn Tender,황금 뿔 화폐,DLC
+버프,item-golden-vow,Golden Vow,황금 나무에 맹세코,DLC
+버프,item-gourmet-scorpion-stew,Gourmet Scorpion Stew,호화로운 전갈조림,DLC
+버프,item-greenburst-crystal-tear,Greenburst Crystal Tear,샘솟는 초록 결정 물방울,본편
+버프,item-greenspill-crystal-tear,Greenspill Crystal Tear,넘친 초록 결정 물방울,본편
+버프,item-hefty-oil-pot,Hefty Oil Pot,큰 기름 항아리,DLC
+버프,item-holy-grease,Holy Grease,신성기름,본편
+버프,item-holy-shrouding-cracked-tear,Holy-Shrouding Cracked Tear,신성 두른 깨진 물방울,본편
+버프,item-holyproof-dried-liver,Holyproof Dried Liver,항성의 말린 간,본편
+버프,item-holyproof-pickled-liver,Holyproof Pickled Liver,항성의 간 절임,DLC
+버프,item-immunizing-cured-meat,Immunizing Cured Meat,면역의 육포,본편
+버프,item-immunizing-white-cured-meat,Immunizing White Cured Meat,면역의 흰 육포,본편
+버프,item-intelligence-knot-crystal-tear,Intelligence-knot Crystal Tear,지력의 혹 결정 물방울,본편
+버프,item-invigorating-cured-meat,Invigorating Cured Meat,강건의 육포,본편
+버프,item-invigorating-white-cured-meat,Invigorating White Cured Meat,강건의 흰 육포,본편
+버프,item-ironjar-aromatic,Ironjar Aromatic,철 항아리 향약,본편
+버프,item-lamenters-mask,Lamenter's Mask,한탄하는 사람의 가면,DLC
+버프,item-lightning-grease,Lightning Grease,벼락기름,본편
+버프,item-lightning-shrouding-cracked-tear,Lightning-Shrouding Cracked Tear,벼락 두른 깨진 물방울,본편
+버프,item-lightningproof-dried-liver,Lightningproof Dried Liver,항뢰의 말린 간,본편
+버프,item-lightningproof-pickled-liver,Lightningproof Pickled Liver,항뢰의 간 절임,DLC
+버프,item-lulling-branch,Lulling Branch,선잠의 가지,DLC
+버프,item-magic-grease,Magic Grease,마력기름,본편
+버프,item-magic-shrouding-cracked-tear,Magic-Shrouding Cracked Tear,마력 두른 깨진 물방울,본편
+버프,item-malenias-great-rune,Malenia's Great Rune,말레니아의 거대한 룬,본편
+버프,item-messmerfire-grease,Messmerfire Grease,메스메르의 불기름,DLC
+버프,item-mohgs-great-rune,Mohg's Great Rune,모그의 거대한 룬,본편
+버프,item-morgotts-great-rune,Morgott's Great Rune,모르고트의 거대한 룬,본편
+버프,item-oil-pot,Oil Pot,기름 항아리,본편
+버프,item-oil-soaked-tear,Oil-Soaked Tear,기름진 물방울,DLC
+버프,item-opaline-bubbletear,Opaline Bubbletear,진주색 거품 물방울,본편
+버프,item-opaline-hardtear,Opaline Hardtear,진주색 굳은 물방울,본편
+버프,item-opaline-pickled-liver,Opaline Pickled Liver,진주색의 간 절임,DLC
+버프,item-pickled-turtle-neck,Pickled Turtle Neck,거북 목 절임,본편
+버프,item-poison-grease,Poison Grease,독기름,본편
+버프,item-priestess-heart,Priestess Heart,무녀의 심장,DLC
+버프,item-radahns-great-rune,Radahn's Great Rune,라단의 거대한 룬,본편
+버프,item-radiant-baldachins-blessing,Radiant Baldachin's Blessing,빛 비치는 휘장의 은총,본편
+버프,item-raw-meat-dumpling,Raw Meat Dumpling,날고기경단,본편
+버프,item-rock-heart,Rock Heart,바위 심장,DLC
+버프,item-roped-oil-pot,Roped Oil Pot,끈 달린 기름 항아리,본편
+버프,item-rot-grease,Rot Grease,부패기름,본편
+버프,item-royal-magic-grease,Royal Magic Grease,왕가의 마력기름,DLC
+버프,item-rykards-great-rune,Rykard's Great Rune,라이커드의 거대한 룬,본편
+버프,item-sacred-bloody-flesh,Sacred Bloody Flesh,성스러운 피와 살,DLC
+버프,item-scorpion-stew,Scorpion Stew,전갈조림,DLC
+버프,item-shield-grease,Shield Grease,방패기름,본편
+버프,item-silver-horn-tender,Silver Horn Tender,백은 뿔 화폐,DLC
+버프,item-silver-pickled-fowl-foot,Silver-Pickled Fowl Foot,새 다리 백은 절임,본편
+버프,item-soap,Soap,비누,본편
+버프,item-soft-cotton,Soft Cotton,폭신한 면,본편
+버프,item-soporific-grease,Soporific Grease,수면기름,본편
+버프,item-speckled-hardtear,Speckled Hardtear,얼룩색 굳은 물방울,본편
+버프,item-spellproof-dried-liver,Spellproof Dried Liver,항마의 말린 간,본편
+버프,item-spellproof-pickled-liver,Spellproof Pickled Liver,항마의 간 절임,DLC
+버프,item-spiked-cracked-tear,Spiked Cracked Tear,큰 가시 깨진 물방울,본편
+버프,item-spritestone,Spritestone,정령석,DLC
+버프,item-starlight-shards,Starlight Shards,별빛 조각,본편
+버프,item-stonebarb-cracked-tear,Stonebarb Cracked Tear,바위 가시 깨진 물방울,본편
+버프,item-strength-knot-crystal-tear,Strength-knot Crystal Tear,근력의 혹 결정 물방울,본편
+버프,item-sunwarmth-stone,Sunwarmth Stone,양지석,DLC
+버프,item-thorny-cracked-tear,Thorny Cracked Tear,가시 깨진 물방울,본편
+버프,item-uplifting-aromatic,Uplifting Aromatic,고양의 향기,본편
+버프,item-viridian-hidden-tear,Viridian Hidden Tear,녹색 숨겨진 물방울,DLC
+버프,item-warming-stone,Warming Stone,따스함의 돌,본편
+버프,item-well-pickled-turtle-neck,Well-Pickled Turtle Neck,거북 목 묵은 절임,DLC
+버프,item-windy-crystal-tear,Windy Crystal Tear,바람 결정 물방울,본편
+버프,item-winged-crystal-tear,Winged Crystal Tear,날개 결정 물방울,본편
+버프,spell-adulas-moonblade,Adula's Moonblade,아듀라의 달의 검,본편
+버프,spell-assassins-approach,Assassin's Approach,암부의 보법,본편
+버프,spell-barrier-of-gold,Barrier of Gold,황금의 마력 방호,본편
+버프,spell-bestial-constitution,Bestial Constitution,짐승의 강건,본편
+버프,spell-bestial-vitality,Bestial Vitality,짐승의 생명,본편
+버프,spell-black-blade,Black Blade,흑검,본편
+버프,spell-black-flame,Black Flame,흑염,본편
+버프,spell-black-flame-blade,Black Flame Blade,흑염의 칼날,본편
+버프,spell-black-flame-ritual,Black Flame Ritual,흑염의 의식,본편
+버프,spell-black-flames-protection,Black Flame's Protection,흑염의 수호,본편
+버프,spell-blessing-of-the-erdtree,Blessing of the Erdtree,황금 나무의 은혜,본편
+버프,spell-blessings-boon,Blessing's Boon,은혜의 축복,본편
+버프,spell-bloodflame-blade,Bloodflame Blade,혈염의 칼날,본편
+버프,spell-briars-of-punishment,Briars of Punishment,벌의 가시,본편
+버프,spell-briars-of-sin,Briars of Sin,죄의 가시,본편
+버프,spell-collapsing-stars,Collapsing Stars,별 부수기,본편
+버프,spell-cure-poison,Cure Poison,독의 치유,본편
+버프,spell-darkness,Darkness,어둠,본편
+버프,spell-death-lightning,Death Lightning,죽음의 뇌격,본편
+버프,spell-divine-fortification,Divine Fortification,신성 방호,본편
+버프,spell-dragonbolt-blessing,Dragonbolt Blessing,용뢰의 가호,본편
+버프,spell-dragonbolt-of-florissax,Dragonbolt of Florissax,플로삭스의 용뢰,DLC
+버프,spell-elden-stars,Elden Stars,엘데의 유성,본편
+버프,spell-electrify-armament,Electrify Armament,벼락의 무기,본편
+버프,spell-erdtree-heal,Erdtree Heal,황금 나무의 회복,본편
+버프,spell-fias-mist,Fia's Mist,피아의 안개,본편
+버프,spell-fires-deadly-sin,Fire's Deadly Sin,불의 대죄,본편
+버프,spell-flame-fortification,Flame Fortification,화염 방호,본편
+버프,spell-flame-cleanse-me,"Flame, Cleanse Me",불의 치유여,본편
+버프,spell-flame-grant-me-strength,"Flame, Grant Me Strength","불이여, 힘을!",본편
+버프,spell-flame-protect-me,"Flame, Protect Me",불의 수호여,본편
+버프,spell-freezing-mist,Freezing Mist,얼음의 안개,본편
+버프,spell-frozen-armament,Frozen Armament,빙결의 무기,본편
+버프,spell-glintstone-icecrag,Glintstone Icecrag,휘석의 얼음덩어리,본편
+버프,spell-golden-lightning-fortification,Golden Lightning Fortification,황금의 벼락 방호,본편
+버프,spell-golden-vow,Golden Vow,황금 나무에 맹세코,본편
+버프,spell-gravity-well,Gravity Well,중력탄,본편
+버프,spell-great-heal,Great Heal,대 회복,본편
+버프,spell-greyolls-roar,Greyoll's Roar,그레이오르의 포효,본편
+버프,spell-heal,Heal,회복,본편
+버프,spell-heal-from-afar,Heal from Afar,저편에서 온 회복,DLC
+버프,spell-howl-of-shabriri,Howl of Shabriri,샤브리리의 외침,본편
+버프,spell-immutable-shield,Immutable Shield,불역의 방패,본편
+버프,spell-impenetrable-thorns,Impenetrable Thorns,거절의 가시,DLC
+버프,spell-lightning-fortification,Lightning Fortification,벼락 방호,본편
+버프,spell-lords-aid,Lord's Aid,왕의 치유,본편
+버프,spell-lords-divine-fortification,Lord's Divine Fortification,왕의 신성 방호,본편
+버프,spell-lords-heal,Lord's Heal,왕의 회복,본편
+버프,spell-lucidity,Lucidity,냉정,본편
+버프,spell-magic-fortification,Magic Fortification,마력 방호,본편
+버프,spell-mantle-of-thorns,Mantle of Thorns,가시 두르기,DLC
+버프,spell-minor-erdtree,Minor Erdtree,작은 황금 나무,DLC
+버프,spell-night-maidens-mist,Night Maiden's Mist,밤 무녀의 안개,본편
+버프,spell-order-healing,Order Healing,성률의 치료,본편
+버프,spell-orders-blade,Order's Blade,성률의 검,본편
+버프,spell-poison-armament,Poison Armament,독 칼날,본편
+버프,spell-protection-of-the-erdtree,Protection of the Erdtree,황금 나무의 수호,본편
+버프,spell-rannis-dark-moon,Ranni's Dark Moon,라니의 암월,본편
+버프,spell-rennalas-full-moon,Rennala's Full Moon,레날라의 만월,본편
+버프,spell-scholars-armament,Scholar's Armament,마력의 무기,본편
+버프,spell-scholars-shield,Scholar's Shield,마력의 방패,본편
+버프,spell-scouring-black-flame,Scouring Black Flame,쓸어버리는 흑염,본편
+버프,spell-starlight,Starlight,별 등불,본편
+버프,spell-terra-magica,Terra Magica,마술의 땅,본편
+버프,spell-unseen-blade,Unseen Blade,보이지 않는 칼날,본편
+버프,spell-unseen-form,Unseen Form,보이지 않는 모습,본편
+버프,spell-urgent-heal,Urgent Heal,성급한 회복,본편
+버프,spell-vykes-dragonbolt,Vyke's Dragonbolt,바이크의 용뢰,본편
+버프,spell-zamor-ice-storm,Zamor Ice Storm,자미엘의 얼음 폭풍,본편
+무기군,Axe,Axe,도끼,
+무기군,Backhand Blade,Backhand Blade,역수검,
+무기군,Ballista,Ballista,발리스타,
+무기군,Beast Claw,Beast Claw,짐승 발톱,
+무기군,Bow,Bow,활,
+무기군,Claw,Claw,손톱,
+무기군,Colossal Sword,Colossal Sword,특대검,
+무기군,Colossal Weapon,Colossal Weapon,특대형 무기,
+무기군,Crossbow,Crossbow,석궁,
+무기군,Curved Greatsword,Curved Greatsword,대곡검,
+무기군,Curved Sword,Curved Sword,곡검,
+무기군,Dagger,Dagger,단검,
+무기군,Fist,Fist,주먹,
+무기군,Flail,Flail,철퇴,
+무기군,Glintstone Staff,Glintstone Staff,지팡이,
+무기군,Great Hammer,Great Hammer,대형 망치,
+무기군,Great Katana,Great Katana,대형 도,
+무기군,Great Spear,Great Spear,대형 창,
+무기군,Greataxe,Greataxe,대형 도끼,
+무기군,Greatbow,Greatbow,대궁,
+무기군,Greatshield,Greatshield,대형 방패,
+무기군,Greatsword,Greatsword,대검,
+무기군,Halberd,Halberd,도끼창,
+무기군,Hammer,Hammer,망치,
+무기군,Hand-to-Hand,Hand-to-Hand,격투,
+무기군,Heavy Thrusting Sword,Heavy Thrusting Sword,대자검,
+무기군,Katana,Katana,도,
+무기군,Light Bow,Light Bow,소형 활,
+무기군,Light Greatsword,Light Greatsword,경대검,
+무기군,Medium Shield,Medium Shield,중형 방패,
+무기군,Perfume Bottle,Perfume Bottle,조향병,
+무기군,Reaper,Reaper,낫,
+무기군,Sacred Seal,Sacred Seal,성인,
+무기군,Small Shield,Small Shield,소형 방패,
+무기군,Spear,Spear,창,
+무기군,Straight Sword,Straight Sword,직검,
+무기군,Throwing Blade,Throwing Blade,투척검,
+무기군,Thrusting Shield,Thrusting Shield,관통 방패,
+무기군,Thrusting Sword,Thrusting Sword,자검,
+무기군,Torch,Torch,횃불,
+무기군,Twinblade,Twinblade,쌍날검,
+무기군,Whip,Whip,채찍,

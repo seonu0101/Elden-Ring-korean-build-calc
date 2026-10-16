@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { itemName } from '@/data/names'
 import { computed, ref, watch } from 'vue'
 import { ITEMS_BY_ID, LEGACY_ITEM_IDS, STARTER_PROTECTOR_IDS, STARTER_TALISMAN_IDS, STARTER_WEAPON_IDS } from '@/data/items'
 import { PROTECTOR_TYPES } from '@/types'
@@ -160,7 +161,7 @@ export const useCharacterStore = defineStore('character', () => {
       const other = itemOf(slot)
       if (!other || other.kind !== 'talisman') continue
       if (other.id === item.id || item.conflicts.includes(other.id) || other.conflicts.includes(item.id)) {
-        return other.name
+        return itemName(other)
       }
     }
     return null

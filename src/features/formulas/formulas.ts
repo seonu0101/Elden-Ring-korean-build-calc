@@ -8,6 +8,7 @@ import type { EffectSummary, MultiplierLine } from '@/data/effects'
 import { percentText } from '@/data/effects'
 import { AFFINITY_LABELS, DAMAGE_LABELS, NEGATION_LABELS, STAT_LABELS, STATUS_LABELS } from '@/data/labels'
 import { effectText } from '@/data/talismanEffects'
+import { itemName } from '@/data/names'
 import { ATTRIBUTE_KEYS, ATTRIBUTE_LABELS } from '@/stores/stats'
 import type { Attributes } from '@/stores/stats'
 import { DAMAGE_TYPES, NEGATION_TYPES, STATUS_TYPES } from '@/types'
@@ -160,7 +161,7 @@ function negationSection(input: FormulaInput): FormulaSection {
     })
   }
   const groups: FormulaGroup[] = [{ title: '경감률', lines }]
-  const order: FormulaLine[] = input.protectors.map((p, i) => ({ label: `${i + 1}`, expr: p.name, note: true }))
+  const order: FormulaLine[] = input.protectors.map((p, i) => ({ label: `${i + 1}`, expr: itemName(p), note: true }))
   const buffLines: FormulaLine[] = []
   for (const t of NEGATION_TYPES) {
     const taken = input.summary.damageTaken[t]
@@ -189,14 +190,14 @@ function weightSection(input: FormulaInput): FormulaSection {
     {
       title: '무게',
       lines: [
-        ...items.map((i) => ({ label: i.name, expr: num(i.weight, 2), indent: 1 })),
+        ...items.map((i) => ({ label: itemName(i), expr: num(i.weight, 2), indent: 1 })),
         { label: '합', expr: items.map((i) => num(i.weight, 2)).join(' + ') || '0', result: weight.toFixed(1) },
       ],
     },
     {
       title: '강인도',
       lines: [
-        ...input.protectors.map((p) => ({ label: p.name, expr: num(p.poise, 2), indent: 1 })),
+        ...input.protectors.map((p) => ({ label: itemName(p), expr: num(p.poise, 2), indent: 1 })),
         {
           label: '합',
           expr: `⌊${input.protectors.map((p) => num(p.poise, 2)).join(' + ') || '0'}⌋`,
@@ -287,7 +288,7 @@ function attackGroup(w: EquippedWeapon, attack: AttackResult, input: FormulaInpu
   }
   if (!sum) lines.push({ expr: '공격력이 없는 무기', note: true })
   return {
-    title: `${w.label} ${w.item.name}`,
+    title: `${w.label} ${itemName(w.item)}`,
     subtitle: `${AFFINITY_LABELS[w.affinity]} +${w.level} · ${input.twoHanded ? '양손' : '한손'}`,
     lines,
   }
@@ -325,7 +326,7 @@ function statusGroup(w: EquippedWeapon, attack: AttackResult): FormulaGroup | nu
       indent: 1,
     })
   }
-  return lines.length ? { title: `${w.label} ${w.item.name}`, lines } : null
+  return lines.length ? { title: `${w.label} ${itemName(w.item)}`, lines } : null
 }
 
 function effectsSection(input: FormulaInput): FormulaSection {

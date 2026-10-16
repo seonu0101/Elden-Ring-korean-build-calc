@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import EquipmentSummary from '@/components/EquipmentSummary.vue'
+import { nameLanguage } from '@/data/names'
 import BuffPanel from '@/features/buffs/BuffPanel.vue'
 import DamageCalculator from '@/features/damage/DamageCalculator.vue'
 import FormulaReference from '@/features/formulas/FormulaReference.vue'
@@ -73,6 +74,26 @@ watch(view, (v) => {
           계산식
         </button>
       </nav>
+      <div class="app__lang" role="group" aria-label="아이템 이름 언어" title="아이템·무기군 이름 언어 (공식 한국어 이름이 없는 아이템은 영어로 보입니다)">
+        <button
+          type="button"
+          :class="{ 'is-active': nameLanguage === 'ko' }"
+          :aria-pressed="nameLanguage === 'ko'"
+          data-testid="lang-ko"
+          @click="nameLanguage = 'ko'"
+        >
+          한국어
+        </button>
+        <button
+          type="button"
+          :class="{ 'is-active': nameLanguage === 'en' }"
+          :aria-pressed="nameLanguage === 'en'"
+          data-testid="lang-en"
+          @click="nameLanguage = 'en'"
+        >
+          English
+        </button>
+      </div>
     </header>
 
     <!-- 시뮬레이터는 장비 화면에서만 마운트해서, 표를 볼 때는 키 입력을 가로채지 않게 한다 -->
@@ -146,6 +167,29 @@ watch(view, (v) => {
   color: var(--text);
 }
 .app__nav button.is-active {
+  color: var(--accent-text);
+  background: var(--accent);
+}
+.app__lang {
+  display: inline-flex;
+  margin-left: auto;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.app__lang button {
+  padding: 3px 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.app__lang button + button {
+  border-left: 1px solid var(--border);
+}
+.app__lang button.is-active {
   color: var(--accent-text);
   background: var(--accent);
 }

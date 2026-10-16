@@ -72,7 +72,7 @@ export interface WeaponItem extends WeaponStats {
   name: string
   weaponType: string
   weight: number
-  /** 0: 본편, 1: Shadow of the Erdtree, 2: 그 밖의 추가 무기 */
+  /** 0: 본편, 1: Shadow of the Erdtree, 2: 타니쉬드 에디션(Tarnished Pack) */
   content: number
   requirements: Partial<Record<StatKey, number>>
   attackTypes: string[]

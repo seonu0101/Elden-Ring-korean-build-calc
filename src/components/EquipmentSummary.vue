@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { calculateAttack, partTotal } from '@/data/attackPower'
 import { characterDefense, damageNegation } from '@/data/defense'
 import { NEGATION_LABELS, STATUS_LABELS } from '@/data/labels'
+import { itemName } from '@/data/names'
 import { levelFor } from '@/data/upgrade'
 import FormulaPanel from '@/features/formulas/FormulaPanel.vue'
 import { EQUIPMENT_GRID } from '@/features/gameMenu/layout'
@@ -45,13 +46,14 @@ const statusRows = computed(() =>
     const status = Object.fromEntries(
       STATUS_TYPES.map((t) => [t, attack ? Math.max(0, partTotal(attack.status[t])) : 0]),
     ) as Record<StatusType, number>
-    return [{ label: cell.label, name: item.name, status }]
+    return [{ label: cell.label, name: itemName(item), status }]
   }),
 )
 
 function equippedName(target: SlotTarget) {
   const slot = store.equippedIn(target)
-  return slot ? (store.itemOf(slot)?.name ?? '?') : null
+  const item = slot ? store.itemOf(slot) : null
+  return slot ? (item ? itemName(item) : '?') : null
 }
 
 /**

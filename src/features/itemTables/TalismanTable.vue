@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import { ITEMS_BY_ID, TALISMANS } from '@/data/items'
+import { itemName } from '@/data/names'
 import { TALISMAN_CATEGORY_LABELS, talismanEffectText } from '@/data/talismanEffects'
 import type { TalismanItem } from '@/types'
 import ItemDataTable from './ItemDataTable.vue'
 import type { TableColumn, TypeFilter } from './itemTable'
 
 const categoryText = (t: TalismanItem) => t.categories.map((c) => TALISMAN_CATEGORY_LABELS[c] ?? c).join(', ')
-const conflictText = (t: TalismanItem) => t.conflicts.map((id) => ITEMS_BY_ID.get(id)?.name ?? id).join(', ')
+const conflictText = (t: TalismanItem) =>
+  t.conflicts
+    .map((id) => {
+      const other = ITEMS_BY_ID.get(id)
+      return other ? itemName(other) : id
+    })
+    .join(', ')
 
 const columns: TableColumn<TalismanItem>[] = [
   { key: 'category', label: '분류', value: categoryText },

@@ -60,6 +60,16 @@ Pull Request에서는 검사와 빌드만 하고 공개 사이트는 바꾸지 �
 GitHub 저장소를 Netlify 사이트에 연결하면 `netlify.toml` 설정대로 `/calc/` 경로로 빌드된다.
 er-sin.com 사이트에서는 `/calc/*`를 배포한 사이트로 프록시한다 (status 200).
 
+## 이름 언어 (한국어 / English)
+
+머리글 오른쪽 버튼으로 아이템·무기군 이름을 한국어(게임 한국어판 공식 이름)와 영어로 바꾼다. 기본은 한국어이고 브라우저에 기억한다.
+
+- 이름 함수: `src/data/names.ts` (`itemName`, `weaponTypeName`). 검색은 두 언어 모두로 되고, 이름 정렬·CSV는 화면 언어를 따른다.
+- 계산 규칙(중첩 묶음, 양손 예외 무기 등)은 언어와 관계없이 영어 원문 이름으로 판단한다.
+- 한국어 이름은 게임 파일에서 읽는다: UXM Selective Unpack으로 `GamemsgkorKR`·`engUS`의 `item_dlc02.msgbnd.dcx`, `menu_dlc02.msgbnd.dcx`를 꺼내 WitchyBND로 푼 뒤 `npm run import:korean-names` (다른 위치면 `-- "경로Gamemsg"`). `.fmg`는 `scripts/fmg.mjs`가 읽는다.
+- 한국어 이름이 없는 아이템은 한국어 모드에서도 영어로 보인다 (지금은 없음).
+- 이름 목록: `docs/names.md`, `docs/names.csv` (`npm run names`)
+
 ## 출처
 
 앱 화면에는 출처를 쓰지 않고 여기에만 모아 둔다.
@@ -68,6 +78,7 @@ er-sin.com 사이트에서는 `/calc/*`를 배포한 사이트로 프록시한�
 | --- | --- | --- |
 | 무기·방어구·탈리스만·버프 수치, 강화 배율, 보정·능력치 곡선, 공격력·방어력 계산식 | [ER Build Planner](https://er-build-planner.nyasu.business/) (이용약관에 따라 **비상업적 용도로만**) | `src/data/*.generated.json`, `scripts/import-weapons.mjs` |
 | 아이템 이미지 | Elden Ring Tourney Manager v1.1.0 (`public/img`) | `public/img/` |
+| 한국어 이름 (게임 한국어판 공식, 아이템 1,557개·무기군 42개, 본편·DLC·타니쉬드 에디션) | 게임 파일 `GamemsgkorKR`, `engUS` (UXM Selective Unpack으로 추출, WitchyBND로 푼 `.fmg`) | `src/data/names-ko.generated.json`, `scripts/import-korean-names.mjs`, `scripts/fmg.mjs`, `docs/names.md` |
 | 버프 지속 시간 26개 (원본에 값이 없는 것만) | Fextralife Elden Ring Wiki — [Buffs and Debuffs](https://eldenring.wiki.fextralife.com/Buffs_and_Debuffs) 18개, [Crystal Tears](https://eldenring.wiki.fextralife.com/Crystal_Tears) 영약 8개 (2026-10-16 확인) | `src/data/buff-durations.wiki.json` |
 | 게임 이름·아이콘 | ELDEN RING © Bandai Namco Entertainment Inc. / © FromSoftware, Inc. | — |
 

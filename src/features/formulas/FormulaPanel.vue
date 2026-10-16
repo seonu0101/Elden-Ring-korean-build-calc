@@ -2,6 +2,7 @@
 // 장비 화면 "계산식" 창: 지금 장비·스탯·버프로 나온 모든 수치의 계산 과정을 보여준다.
 import { computed, nextTick, onMounted, ref } from 'vue'
 import { BUFFS_BY_ID } from '@/data/items'
+import { itemName } from '@/data/names'
 import { levelFor } from '@/data/upgrade'
 import { EQUIPMENT_GRID } from '@/features/gameMenu/layout'
 import { weaponStats } from '@/features/weaponTable/weaponTable'
@@ -43,8 +44,8 @@ const sections = computed(() =>
     weapons: weapons.value,
     summary: buffs.summary,
     overridden: [...buffs.stacking.overridden].map(([id, o]) => ({
-      name: BUFFS_BY_ID.get(id)?.name ?? id,
-      by: o.by.name,
+      name: BUFFS_BY_ID.has(id) ? itemName(BUFFS_BY_ID.get(id)!) : id,
+      by: itemName(o.by),
       group: o.group,
     })),
     pvp: buffs.pvp,

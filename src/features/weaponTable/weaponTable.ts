@@ -11,6 +11,7 @@ import {
 import { calculateAttack, partTotal } from '@/data/attackPower'
 import type { AttackResult } from '@/data/attackPower'
 import { levelFor, upgradeStats } from '@/data/upgrade'
+import { compareNames, itemName, nameMatches, weaponTypeName } from '@/data/names'
 import type { UpgradeSetting } from '@/data/upgrade'
 import { AFFINITIES, DAMAGE_TYPES, STAT_KEYS, STATUS_TYPES } from '@/types'
 import type { AffinityName, CharacterStats, DamageType, StatKey, WeaponItem, WeaponStats } from '@/types'
@@ -167,7 +168,7 @@ export function filterWeapons(list: readonly WeaponItem[], filter: WeaponFilter)
   const query = filter.query.trim().toLowerCase()
   const affinities = selectedAffinities(filter.affinity ?? 'Standard')
   return list.filter((w) => {
-    if (query && !w.name.toLowerCase().includes(query)) return false
+    if (!nameMatches(w, query)) return false
     if (filter.weaponType && w.weaponType !== filter.weaponType) return false
     if (filter.content === 'base' && w.content !== 0) return false
     if (filter.content === 'dlc' && w.content === 0) return false
@@ -206,9 +207,9 @@ export function sortValue(row: TableRow, key: SortKey): number | string {
   const { w, st } = row
   switch (key) {
     case 'name':
-      return w.name
+      return itemName(w)
     case 'weaponType':
-      return w.weaponType
+      return weaponTypeName(w.weaponType)
     case 'weight':
       return w.weight
     case 'affinity':
@@ -243,7 +244,7 @@ export function sortRows(rows: readonly TableRow[], key: SortKey, direction: Sor
   return [...rows].sort(
     (a, b) =>
       compare(sortValue(a, key), sortValue(b, key)) * sign ||
-      a.w.name.localeCompare(b.w.name) ||
+      compareNames(a.w, b.w) ||
       AFFINITIES.indexOf(a.affinity) - AFFINITIES.indexOf(b.affinity),
   )
 }
@@ -278,10 +279,10 @@ export function rowsToCsv(rows: readonly TableRow[]): string {
     '변질 가능',
   ]
   const lines = rows.map(({ w, affinity, level, st, attack }) => [
-    w.name,
+    itemName(w),
     AFFINITY_LABELS[affinity],
     `+${level}`,
-    w.weaponType,
+    weaponTypeName(w.weaponType),
     CONTENT_LABELS[w.content] ?? '',
     w.weight,
     ...STAT_KEYS.map((k) => w.requirements[k] ?? 0),

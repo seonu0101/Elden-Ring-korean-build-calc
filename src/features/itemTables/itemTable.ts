@@ -1,4 +1,5 @@
 // 방어구 표·탈리스만 표·버프 표가 함께 쓰는 검색·정렬·CSV. 화면과 무관한 순수 함수만 둔다.
+import { compareNames, itemName, nameMatches } from '@/data/names'
 
 /** 표에 넣을 수 있는 항목: 이름과 id, 본편/DLC 구분 */
 export interface TableItem {
@@ -47,7 +48,7 @@ export interface ItemFilter {
 export function filterItems<T extends TableItem>(items: readonly T[], filter: ItemFilter, typeFilter?: TypeFilter<T>): T[] {
   const query = filter.query.trim().toLowerCase()
   return items.filter((item) => {
-    if (query && !item.name.toLowerCase().includes(query)) return false
+    if (!nameMatches(item, query)) return false
     if (filter.type && typeFilter && !typeFilter.values(item).includes(filter.type)) return false
     const content = item.content ?? 0
     if (filter.content === 'base' && content !== 0) return false
@@ -60,7 +61,7 @@ function compare(a: number | string, b: number | string): number {
   return typeof a === 'number' && typeof b === 'number' ? a - b : String(a).localeCompare(String(b))
 }
 
-/** 정렬한 새 배열. 'name'은 이름순, 그 밖은 열의 값으로. 값이 같으면 이름순. */
+/** 정렬한 새 배열. 'name'은 화면에 보이는 이름순, 그 밖은 열의 값으로. 값이 같으면 이름순. */
 export function sortItems<T extends TableItem>(
   items: readonly T[],
   columns: readonly TableColumn<T>[],
@@ -69,8 +70,8 @@ export function sortItems<T extends TableItem>(
 ): T[] {
   const sign = direction === 'asc' ? 1 : -1
   const column = columns.find((c) => c.key === key)
-  const valueOf = (item: T) => (column ? column.value(item) : item.name)
-  return [...items].sort((a, b) => compare(valueOf(a), valueOf(b)) * sign || a.name.localeCompare(b.name))
+  const valueOf = (item: T) => (column ? column.value(item) : itemName(item))
+  return [...items].sort((a, b) => compare(valueOf(a), valueOf(b)) * sign || compareNames(a, b))
 }
 
 /** 숫자 열은 큰 값부터, 글자 열은 가나다순이 기본 */
@@ -83,10 +84,10 @@ function csvCell(value: string | number): string {
   return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text
 }
 
-/** 엑셀에서 바로 열 수 있는 CSV (UTF-8 BOM 포함). 화면에 보이는 글자 그대로 */
+/** 엑셀에서 바로 열 수 있는 CSV (UTF-8 BOM 포함). 화면에 보이는 글자 그대로 (이름도 지금 언어) */
 export function itemsToCsv<T extends TableItem>(items: readonly T[], columns: readonly TableColumn<T>[]): string {
   const header = ['이름', ...columns.map((c) => (c.group ? `${c.group} ${c.label}` : c.label))]
-  const rows = items.map((item) => [item.name, ...columns.map((c) => (c.display ? c.display(item) : c.value(item)))])
+  const rows = items.map((item) => [itemName(item), ...columns.map((c) => (c.display ? c.display(item) : c.value(item)))])
   return '﻿' + [header, ...rows].map((row) => row.map(csvCell).join(',')).join('\r\n') + '\r\n'
 }
 

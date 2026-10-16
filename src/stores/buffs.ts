@@ -4,6 +4,7 @@ import { resolveStacking } from '@/data/buffStacking'
 import { combineEffects } from '@/data/effects'
 import type { EffectSource } from '@/data/effects'
 import { BUFFS_BY_ID } from '@/data/items'
+import { itemName } from '@/data/names'
 import { useCharacterStore } from '@/stores/character'
 import type { BuffItem, TalismanItem } from '@/types'
 
@@ -61,8 +62,8 @@ export const useBuffsStore = defineStore('buffs', () => {
 
   /** 합칠 효과: 장착한 탈리스만 + 켠 버프 중 실제로 적용되는 것 */
   const sources = computed<EffectSource[]>(() => [
-    ...equippedTalismans.value.map((t) => ({ id: t.id, name: t.name, type: 'talisman' as const, effects: t.effects })),
-    ...stacking.value.active.map((b) => ({ id: b.id, name: b.name, type: b.kind, effects: b.effects })),
+    ...equippedTalismans.value.map((t) => ({ id: t.id, name: itemName(t), type: 'talisman' as const, effects: t.effects })),
+    ...stacking.value.active.map((b) => ({ id: b.id, name: itemName(b), type: b.kind, effects: b.effects })),
   ])
 
   const summary = computed(() => combineEffects(sources.value, pvp.value))

@@ -6,6 +6,7 @@ import { percentText } from '@/data/effects'
 import type { MultiplierLine } from '@/data/effects'
 import { conflictsWith } from '@/data/buffStacking'
 import { BUFFS, BUFFS_BY_ID } from '@/data/items'
+import { compareNames, itemName } from '@/data/names'
 import { BUFF_CATEGORY_LABELS, DAMAGE_LABELS, NEGATION_LABELS } from '@/data/labels'
 import { effectText } from '@/data/talismanEffects'
 import { levelFor } from '@/data/upgrade'
@@ -31,19 +32,24 @@ const groups = computed(() => {
     .sort(([a], [b]) => order.indexOf(a) - order.indexOf(b))
     .map(([category, list]) => ({
       label: CATEGORY_LABELS[category] ?? category,
-      buffs: list.filter((b) => !buffs.selected.includes(b.id)).sort((a, b) => a.name.localeCompare(b.name)),
+      buffs: list.filter((b) => !buffs.selected.includes(b.id)).sort(compareNames),
     }))
 })
 
 /** 고르기 목록: 이미 켠 버프와 겹치지 않는 버프면 표시 */
 function optionLabel(b: BuffItem) {
   const other = conflictsWith(b, buffs.selectedBuffs)
-  return other ? `${b.name} (중첩 불가: ${other.name})` : b.name
+  return other ? `${itemName(b)} (중첩 불가: ${itemName(other)})` : itemName(b)
+}
+
+function buffName(id: string) {
+  const b = BUFFS_BY_ID.get(id)
+  return b ? itemName(b) : id
 }
 
 function overriddenTitle(id: string) {
   const o = buffs.stacking.overridden.get(id)
-  return o ? `중첩 불가: ${o.by.name}가 덮어써서 적용되지 않습니다 (${o.group})` : undefined
+  return o ? `중첩 불가: ${itemName(o.by)}가 덮어써서 적용되지 않습니다 (${o.group})` : undefined
 }
 
 const picked = ref('')
@@ -104,7 +110,7 @@ const weaponRows = computed(() =>
         0,
       ),
     )
-    return [{ label: cell.label, name: item.name, before: attack.total, after: buffed }]
+    return [{ label: cell.label, name: itemName(item), before: attack.total, after: buffed }]
   }),
 )
 
@@ -143,7 +149,7 @@ const hasAnyEffect = computed(
         title="장착한 탈리스만 (장비 칸에서 바꿉니다)"
         data-testid="talisman-chip"
       >
-        <span class="bp__chip-kind">탈리스만</span>{{ t.name }}
+        <span class="bp__chip-kind">탈리스만</span>{{ itemName(t) }}
       </li>
       <li
         v-for="b in buffs.selectedBuffs"
@@ -154,9 +160,9 @@ const hasAnyEffect = computed(
         data-testid="buff-chip"
       >
         <span class="bp__chip-kind">{{ CATEGORY_LABELS[b.category] ?? b.category }}</span>
-        <span class="bp__chip-name">{{ b.name }}</span>
+        <span class="bp__chip-name">{{ itemName(b) }}</span>
         <span v-if="buffs.stacking.overridden.has(b.id)" class="bp__chip-stack" data-testid="stack-badge">중첩 불가</span>
-        <button type="button" class="bp__chip-remove" :aria-label="`${b.name} 끄기`" @click="buffs.remove(b.id)">×</button>
+        <button type="button" class="bp__chip-remove" :aria-label="`${itemName(b)} 끄기`" @click="buffs.remove(b.id)">×</button>
       </li>
       <li v-if="!buffs.equippedTalismans.length && !buffs.selectedBuffs.length" class="bp__empty">
         장착한 탈리스만과 켠 버프가 없습니다
@@ -165,7 +171,7 @@ const hasAnyEffect = computed(
 
     <ul v-if="buffs.stacking.overridden.size" class="bp__stack-notes" data-testid="stack-notes">
       <li v-for="[id, o] in buffs.stacking.overridden" :key="id">
-        <strong>중첩 불가</strong> · {{ BUFFS_BY_ID.get(id)?.name }} → {{ o.by.name }}가 덮어씀 ({{ o.group }}). 계산에서
+        <strong>중첩 불가</strong> · {{ buffName(id) }} → {{ itemName(o.by) }}가 덮어씀 ({{ o.group }}). 계산에서
         뺍니다.
       </li>
     </ul>
