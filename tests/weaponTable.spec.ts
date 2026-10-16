@@ -156,7 +156,7 @@ describe('정렬', () => {
 })
 
 describe('변질(인퓨전)', () => {
-  it('일반은 무기 자체 수치, 다른 변질은 affinities에서 가져온다', () => {
+  it('표준은 무기 자체 수치, 다른 변질은 affinities에서 가져온다', () => {
     const u = weapon('uchigatana')
     expect(weaponStats(u, 'Standard')).toBe(u)
     const quality = weaponStats(u, 'Quality')!
@@ -165,7 +165,7 @@ describe('변질(인퓨전)', () => {
     expect(blood.status.bleed).toBeGreaterThan(u.status.bleed ?? 0)
   })
 
-  it('변질할 수 없는 무기는 일반만 있다', () => {
+  it('변질할 수 없는 무기는 표준만 있다', () => {
     const rob = weapon('rivers-of-blood')
     expect(rob.canChangeAffinity).toBe(false)
     expect(weaponStats(rob, 'Heavy')).toBeNull()
@@ -219,7 +219,7 @@ describe('CSV', () => {
     expect(lines).toHaveLength(3)
     expect(lines[0]).toContain('공격력 합계')
     expect(lines[0]).toContain('가드 경감률 화염')
-    expect(lines[1]).toMatch(/^Uchigatana,일반,\+0,Katana,본편,5\.5,11,15,/)
+    expect(lines[1]).toMatch(/^Uchigatana,표준,\+0,Katana,본편,5\.5,11,15,/)
     expect(lines[1]).toContain(',D,D,,,,36,55,0,0,0,')
     expect(lines[1]).toContain(',출혈 45,45,30,30,30,30,30,')
     expect(csv.startsWith('﻿')).toBe(true)
@@ -269,7 +269,7 @@ describe('WeaponTable 화면', () => {
     await wrapper.find('[data-testid="scaling-mode-value"]').trigger('click')
     expect(scaling().slice(0, 2)).toEqual(['36', '55'])
 
-    // 상질을 누르면 일반과 함께 고르고, 일반을 다시 누르면 상질만 남는다
+    // 상질을 누르면 표준과 함께 고르고, 표준을 다시 누르면 상질만 남는다
     await wrapper.find('[data-testid="affinity-Quality"]').trigger('click')
     await wrapper.find('[data-testid="affinity-Standard"]').trigger('click')
     expect(scaling().slice(0, 2)).toEqual(['59', '59'])
@@ -296,7 +296,7 @@ describe('WeaponTable 화면', () => {
     await wrapper.find('[data-testid="affinity-Heavy"]').trigger('click')
     expect(pressed()).toEqual(['affinity-Standard', 'affinity-Heavy', 'affinity-Keen'])
     const cells = () => rowsOf(wrapper).map((r) => r.find('[data-testid="affinity-cell"]').text())
-    expect(cells()).toEqual(['일반', '중후', '예리'])
+    expect(cells()).toEqual(['표준', '중후', '예리'])
     expect(wrapper.find('[data-testid="row-count"]').text()).toContain('3행')
     expect(wrapper.find('[data-testid="affinity-multi-note"]').exists()).toBe(true)
 
@@ -335,7 +335,7 @@ describe('WeaponTable 화면', () => {
     await wrapper.find('[data-testid="affinity-all"]').trigger('click')
     const rows = rowsOf(wrapper)
     expect(rows).toHaveLength(13)
-    expect(rows.map((r) => r.find('[data-testid="affinity-cell"]').text()).slice(0, 3)).toEqual(['일반', '중후', '예리'])
+    expect(rows.map((r) => r.find('[data-testid="affinity-cell"]').text()).slice(0, 3)).toEqual(['표준', '중후', '예리'])
     // + 버튼은 무기당 하나 (첫 행에만)
     expect(wrapper.findAll('[data-testid="add-weapon"]')).toHaveLength(1)
     expect(wrapper.find('[data-testid="row-count"]').text()).toContain('13행')

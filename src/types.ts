@@ -63,7 +63,7 @@ export interface WeaponStats {
 /** 캐릭터 능력치 (계산에 쓰는 5개) */
 export type CharacterStats = Record<StatKey, number>
 
-/** 무기 스펙. 무기 자체의 수치는 일반(Standard) 변질 +0 기준이다. */
+/** 무기 스펙. 무기 자체의 수치는 표준(Standard) 변질 +0 기준이다. */
 export interface WeaponItem extends WeaponStats {
   kind: 'weapon'
   id: string
@@ -77,7 +77,7 @@ export interface WeaponItem extends WeaponStats {
   requirements: Partial<Record<StatKey, number>>
   attackTypes: string[]
   canChangeAffinity: boolean
-  /** 일반 이외의 변질별 수치. 변질할 수 없는 무기(전설 무기 등)에는 없다. */
+  /** 표준 이외의 변질별 수치. 변질할 수 없는 무기(전설 무기 등)에는 없다. */
   affinities?: Partial<Record<Exclude<AffinityName, 'Standard'>, WeaponStats>>
   buffable: boolean
   upgradeMaterial: string
@@ -109,7 +109,7 @@ export interface ProtectorItem {
   poise: number
   /** 속성별 피해 경감률(%) */
   absorptions: Record<NegationType, number>
-  /** 상태이상 내성 (면역·강건·집중력·항사) */
+  /** 상태이상 내성 (면역·강건·이성·항사) */
   resistances: Record<ResistanceType, number>
   /** 0: 본편, 1: Shadow of the Erdtree */
   content: number

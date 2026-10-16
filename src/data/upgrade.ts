@@ -56,7 +56,7 @@ export function levelFor(st: Pick<WeaponStats, 'reinforcement'>, setting: Upgrad
  * 보정은 계수 그대로 두고(표시할 때 × 100), 가드 경감률은 소수 첫째 자리까지(최대 100).
  *
  * 데이터의 공격력은 강화 배율을 곱하기 전 값이라 +0에도 배율을 곱한다.
- * 일반 변질은 +0 배율이 1이지만, 다른 변질은 0.75~0.95라서 +0 공격력이 데이터 값보다 낮다.
+ * 표준 변질은 +0 배율이 1이지만, 다른 변질은 0.75~0.95라서 +0 공격력이 데이터 값보다 낮다.
  * (중후 우치가타나 +0: 110 × 0.95 = 104) 원본 사이트도 같은 방식으로 계산한다.
  */
 export function upgradeStats<T extends WeaponStats>(st: T, level: number): T {

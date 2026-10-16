@@ -105,7 +105,7 @@ describe('모바일 무기 카드 목록', () => {
     await wrapper.find('[data-testid="search"]').setValue('Uchigatana')
     await wrapper.find('[data-testid="affinity-Heavy"]').trigger('click')
     const affinities = wrapper.findAll('[data-testid="card-affinity"]').map((c) => c.text())
-    expect(affinities).toEqual(['일반', '중후'])
+    expect(affinities).toEqual(['표준', '중후'])
     wrapper.unmount()
   })
 })

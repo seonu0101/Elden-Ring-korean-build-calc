@@ -14,7 +14,7 @@ export const NEGATION_LABELS: Readonly<Record<NegationType, string>> = {
 
 /** 변질 이름. 한국어판 표기와 다를 수 있으니 필요하면 여기만 고치면 된다. */
 export const AFFINITY_LABELS: Readonly<Record<AffinityName, string>> = {
-  Standard: '일반',
+  Standard: '표준',
   Heavy: '중후',
   Keen: '예리',
   Quality: '상질',

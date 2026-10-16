@@ -1,14 +1,17 @@
 <script setup lang="ts">
 // 계산식 탭: 앱이 쓰는 모든 계산식을 정리한 페이지. 장비·스탯 설정과 무관하게 항상 같은 내용이다.
 // 예시 숫자는 고정된 입력으로 실제 계산 함수를 불러서 만든다 (식과 결과가 어긋나지 않게).
-import { calculateAttack, correctionGraphValue, CORRECTION_GRAPH_IDS } from '@/data/attackPower'
+import { computed } from 'vue'
+import { calculateAttack, correctionGraphValue, CORRECTION_GRAPH_IDS, NO_TWO_HAND_BONUS_NAMES, NO_TWO_HAND_BONUS_TYPES } from '@/data/attackPower'
 import { damageNegation, defenseBreakdown, GRAPH, statGraphParams, statGraphValue } from '@/data/defense'
 import type { DefenseAttributes } from '@/data/defense'
 import { curveAt, curvePieces, curveShape } from '@/data/curves'
 import { calculateDamage } from '@/data/damage'
 import { combineEffects } from '@/data/effects'
-import { BUFFS_BY_ID, ITEMS_BY_ID } from '@/data/items'
-import { itemName } from '@/data/names'
+import { BUFFS_BY_ID, ITEMS_BY_ID, WEAPONS } from '@/data/items'
+import { AFFINITY_LABELS } from '@/data/labels'
+import { itemName, nameLanguage, weaponTypeName } from '@/data/names'
+import { TALISMAN_ATTRIBUTE_LABELS } from '@/data/talismanEffects'
 import { reinforcementRates } from '@/data/upgrade'
 import { STACK_GROUPS } from '@/data/buffStacking'
 import type { BuffItem, WeaponItem } from '@/types'
@@ -80,10 +83,38 @@ const DEFENSE_CURVES = [
   { id: GRAPH.arcane, title: '신성 = 기본 + ⌊곡선 #135(신비)⌋', variable: '신비' },
 ].map((c) => ({ ...c, pieces: curvePieces(c.id, 1, c.variable) }))
 
+/** 양손 근력 보너스가 없는 무기군·무기 (이름 언어 설정을 따른다) */
+const noTwoHandTypes = computed(() => NO_TWO_HAND_BONUS_TYPES.map(weaponTypeName).join('·'))
+const noTwoHandWeapons = computed(() =>
+  NO_TWO_HAND_BONUS_NAMES.map((n) => {
+    const w = WEAPONS.find((x) => x.name === n)
+    return w ? itemName(w) : n
+  }).join(', '),
+)
+
+/** 효과 항목 이름: 화면 용어(한국어) */
+const attr = (a: string) => TALISMAN_ATTRIBUTE_LABELS[a] ?? a
+
+/** 곡선 데이터의 영어 이름을 한국어로: "Default" → 표준, "Catalyst - (무기)" → 촉매 - (무기 이름) */
+const CURVE_WORDS: Readonly<Record<string, string>> = { Default: '표준', Magic: '마력', Fire: '화염', Lightning: '벼락', Holy: '신성' }
+function curveName(raw: string): string {
+  const name = raw.trim()
+  if (!name || nameLanguage.value === 'en') return name
+  const catalyst = name.match(/^Catalyst\s*-\s*(.*)$/)
+  if (catalyst) {
+    const w = WEAPONS.find((x) => x.name === catalyst[1])
+    return catalyst[1] ? `촉매 - ${w ? itemName(w) : catalyst[1]}` : '촉매'
+  }
+  return name
+    .split(' / ')
+    .map((p) => CURVE_WORDS[p] ?? AFFINITY_LABELS[p as keyof typeof AFFINITY_LABELS] ?? p)
+    .join(' / ')
+}
+
 /** 무기 보정 곡선 #0~#16: 정확한 구간 식 (÷ 100 한 값이 보정 곡선값) */
 const WEAPON_CURVES = CORRECTION_GRAPH_IDS.map((id) => ({
   id,
-  name: curveShape(id)?.name.trim() || '',
+  name: curveShape(id)?.name ?? '',
   pieces: curvePieces(id, 100),
 }))
 
@@ -146,8 +177,7 @@ const SECTIONS = [
       <ul class="fr__notes">
         <li>조건이 붙은 효과와 "중첩 불가"로 빠진 버프의 능력치는 더하지 않습니다.</li>
         <li>
-          양손 1.5배는 주먹·갈고리·역수검·격투술·향수병·짐승 발톱과 일부 무기(Ornamental Straight Sword, Rellana's Twin Blades,
-          Greatsword of Radahn, Starscourge Greatsword, Falx, Dancing Blade of Ranah)에는 적용되지 않습니다.
+          양손 1.5배는 {{ noTwoHandTypes }}과 일부 무기({{ noTwoHandWeapons }})에는 적용되지 않습니다.
         </li>
       </ul>
       <div class="fr__example">
@@ -164,7 +194,7 @@ const SECTIONS = [
       <div class="fr__formula">가드 강도 = ⌊데이터 강도 × 강도 강화 배율⌋</div>
       <div class="fr__formula">보정 수치 = ⌊보정 계수 × 100⌋, 등급 S 175+ · A 140+ · B 90+ · C 60+ · D 25+ · E 1+</div>
       <ul class="fr__notes">
-        <li>배율은 +0에도 곱합니다. 일반 변질의 +0 배율은 1이지만 다른 변질은 0.75~0.95라 +0 공격력이 데이터보다 낮습니다.</li>
+        <li>배율은 +0에도 곱합니다. 표준 변질의 +0 배율은 1이지만 다른 변질은 0.75~0.95라 +0 공격력이 데이터보다 낮습니다.</li>
         <li>
           일반 무기(단석, +25)와 특수 무기(색 잃은 단석, +10)는 단계를 따로 정합니다. 연동하면 특수 = ⌊일반 × 10 / 25⌋, 일반 =
           반올림(특수 × 25 / 10).
@@ -194,10 +224,10 @@ const SECTIONS = [
         <li>비율은 대부분 1이라 줄이 "계수 × 강화 보정 × 곡선"이 됩니다. 일부 무기만 비율과 덮어쓰는 계수가 있습니다.</li>
         <li><b>요구 능력치 미달:</b> 그 속성을 보정하는 능력치 중 하나라도 요구치보다 낮으면 보정 배율 = −0.4 (40% 감소).</li>
         <li><b>음수 규칙:</b> 줄 중에 음수가 있으면 합 대신 가장 작은 값 하나만 보정 배율로 씁니다.</li>
-        <li>곡선 번호는 무기·변질마다 데이터에 정해져 있습니다 (일반 #0, 중후 #1, 예리 #2, 상질 #8, 마력·화염·벼락·신성 #4 등). 능력치는 소수점 버림.</li>
+        <li>곡선 번호는 무기·변질마다 데이터에 정해져 있습니다 (표준 #0, 중후 #1, 예리 #2, 상질 #8, 마력·화염·벼락·신성 #4 등). 능력치는 소수점 버림.</li>
       </ul>
       <div class="fr__example" data-testid="fr-attack-example">
-        <div class="fr__example-title">예: {{ itemName(LONGSWORD) }} 일반 +25, 근력 20 · 기량 20 (물리)</div>
+        <div class="fr__example-title">예: {{ itemName(LONGSWORD) }} 표준 +25, 근력 20 · 기량 20 (물리)</div>
         <div>기본값 = {{ num(exPhys.raw) }} × {{ num(exPhys.rate) }} = {{ num(exAttack.damage.physical.base) }}</div>
         <div v-for="t in exPhys.terms" :key="t.stat">
           {{ t.stat === 'strength' ? '근력' : '기량' }} 줄 = {{ num(t.coefficient) }} × {{ num(t.scalingRate) }} × {{ num(t.graph) }} =
@@ -301,7 +331,7 @@ const SECTIONS = [
       <div class="fr__curve-grid" data-testid="fr-weapon-curves">
         <div v-for="c in WEAPON_CURVES" :key="c.id" class="fr__curve">
           <div class="fr__curve-title">
-            #{{ c.id }}<span v-if="c.name" class="fr__curve-name">{{ c.name }}</span>
+            #{{ c.id }}<span v-if="curveName(c.name)" class="fr__curve-name">{{ curveName(c.name) }}</span>
           </div>
           <div v-for="(piece, i) in c.pieces" :key="i" class="fr__piece">
             <span class="fr__piece-range">{{ piece.range }}</span>
@@ -374,10 +404,11 @@ const SECTIONS = [
       <div class="fr__formula">더하기 효과 (능력치 등) = Σ 효과</div>
       <div class="fr__formula">버프 후 공격력 = ⌊Σ 속성 (기본값 + 보정값) × 그 속성 공격력 배율⌋</div>
       <ul class="fr__notes">
-        <li>"Attack Power"는 모든 속성에, "Physical Attack Power" 등은 그 속성에만 곱합니다.</li>
+        <li>"{{ attr('Attack Power') }}"은 모든 속성에, "{{ attr('Physical Attack Power') }}" 등은 그 속성에만 곱합니다.</li>
         <li>
-          경감 효과가 붙는 속성: 물리·타격·참격 = Absorption + Physical Absorption, 관통 = 여기에 Pierce Absorption, 마력·화염·벼락·신성 =
-          Absorption + 그 속성 Absorption + Elemental Absorption.
+          경감 효과가 붙는 속성: 물리·타격·참격 = {{ attr('Absorption') }} + {{ attr('Physical Absorption') }}, 관통 = 여기에
+          {{ attr('Pierce Absorption') }}, 마력·화염·벼락·신성 = {{ attr('Absorption') }} + 그 속성 {{ attr('Absorption') }} +
+          {{ attr('Elemental Absorption') }}.
         </li>
         <li>PvP를 고르면 PvP 수치가 있는 효과는 그 값을 씁니다.</li>
         <li>조건이 붙은 효과(점프 공격 시, HP가 낮을 때 등)는 항상 켜져 있지 않아 합계에서 뺍니다.</li>

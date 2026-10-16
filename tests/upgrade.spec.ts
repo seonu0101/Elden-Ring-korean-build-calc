@@ -84,7 +84,7 @@ describe('강화 수치 (게임 값과 비교)', () => {
     expect(upgradeStats(blood, 25).status.bleed).toBe(82)
   })
 
-  it('일반 변질 +0은 데이터 값 그대로, 원본 객체는 바뀌지 않는다', () => {
+  it('표준 변질 +0은 데이터 값 그대로, 원본 객체는 바뀌지 않는다', () => {
     const u = weapon('uchigatana')
     const zero = upgradeStats(u, 0)
     expect(zero.damage).toEqual(u.damage)

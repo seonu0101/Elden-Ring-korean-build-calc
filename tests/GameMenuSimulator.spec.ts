@@ -136,7 +136,7 @@ describe('GameMenuSimulator', () => {
 
 describe('무기 상세 정보: 스탯 화면 설정으로 계산', () => {
   // 원본 사이트 계산기 값 (tests/fixtures/attackReference.json)
-  //   우치가타나 일반 +25, 근30 기50 지10 신10 비30 → 공격력 498, 출혈 45
+  //   우치가타나 표준 +25, 근30 기50 지10 신10 비30 → 공격력 498, 출혈 45
   //   우치가타나 피 +25, 같은 능력치 → 공격력 484, 출혈 82 + 9.36 = 91
   function setStats(extra: Record<string, unknown> = {}) {
     localStorage.setItem(

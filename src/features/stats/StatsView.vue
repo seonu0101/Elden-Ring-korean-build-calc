@@ -17,7 +17,7 @@ const character = useCharacterStore()
 /** 무기 장착 칸 (오른손 1~3, 왼손 1~3) */
 const WEAPON_CELLS = EQUIPMENT_GRID.flat().filter((cell) => cell.target.kind === 'weapon')
 
-/** 그 무기에서 쓸 수 있는 변질만 (장착 무기가 바뀌어 고른 변질이 없으면 일반) */
+/** 그 무기에서 쓸 수 있는 변질만 (장착 무기가 바뀌어 고른 변질이 없으면 표준) */
 function usableAffinity(w: WeaponItem, wanted: AffinityName): AffinityName {
   return weaponStats(w, wanted) ? wanted : 'Standard'
 }
@@ -135,7 +135,7 @@ function numberFrom(event: Event) {
       <div class="sv__group">
         <span class="sv__label">강화</span>
         <label class="sv__upgrade">
-          일반
+          표준
           <input
             type="number"
             class="sv__input"

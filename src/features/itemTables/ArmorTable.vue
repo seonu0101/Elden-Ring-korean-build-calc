@@ -10,7 +10,7 @@ const PART_LABELS: Record<ProtectorType, string> = { Head: '머리', Body: '몸�
 const RESISTANCE_LABELS: Record<ResistanceType, string> = {
   immunity: '면역',
   robustness: '강건',
-  focus: '집중력',
+  focus: '이성',
   vitality: '항사',
 }
 const RESISTANCE_TYPES: ResistanceType[] = ['immunity', 'robustness', 'focus', 'vitality']
@@ -60,6 +60,6 @@ const typeFilter: TypeFilter<ProtectorItem> = {
     :columns="columns"
     :type-filter="typeFilter"
     csv-name="armor"
-    note="경감률은 방어구 한 개의 값입니다. 여러 개를 입으면 곱해서 합칩니다 (장비 화면 요약에서 합친 값을 볼 수 있습니다). 면역은 독·부패, 강건은 출혈·동상, 집중력은 수면·발광, 항사는 즉사에 대한 내성입니다."
+    note="경감률은 방어구 한 개의 값입니다. 여러 개를 입으면 곱해서 합칩니다 (장비 화면 요약에서 합친 값을 볼 수 있습니다). 면역은 독·부패, 강건은 출혈·동상, 이성은 수면·발광, 항사는 즉사에 대한 내성입니다."
   />
 </template>

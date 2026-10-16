@@ -5,7 +5,7 @@
 //   보정값 = 기본값 × Σ(능력치마다: 보정 계수 × 강화 보정 배율 × 보정 곡선[능력치] × 비율 + 비율 − 1)
 //   요구 능력치가 모자라면 그 속성은 보정 대신 기본값 × −0.4 (40% 감소)
 //   상태이상(출혈·독·수면·발광)은 신비로만 보정된다. 동상·부패는 보정 없음.
-//   양손으로 들면 근력 × 1.5 (최대 150). 주먹·갈고리 등 일부 무기는 제외.
+//   양손으로 들면 근력 × 1.5 (최대 150). 주먹·손톱 등 일부 무기는 제외.
 import { DAMAGE_TYPES, STAT_KEYS, STATUS_TYPES } from '@/types'
 import type { AffinityName, CharacterStats, DamageType, StatKey, StatusType, WeaponItem } from '@/types'
 import correctionData from './correction.generated.json'
@@ -27,8 +27,8 @@ const CORRECTION_ATTACK = correctionData.attack as Record<string, CorrectionAtta
 const SCALING_STATUS: readonly StatusType[] = ['bleed', 'poison', 'sleep', 'madness']
 
 /** 양손 근력 보너스를 받지 못하는 무기군과 무기 (원본 사이트 기준) */
-const NO_TWO_HAND_BONUS_TYPES = ['Fist', 'Claw', 'Backhand Blade', 'Hand-to-Hand', 'Perfume Bottle', 'Beast Claw']
-const NO_TWO_HAND_BONUS_NAMES = [
+export const NO_TWO_HAND_BONUS_TYPES: readonly string[] = ['Fist', 'Claw', 'Backhand Blade', 'Hand-to-Hand', 'Perfume Bottle', 'Beast Claw']
+export const NO_TWO_HAND_BONUS_NAMES: readonly string[] = [
   'Ornamental Straight Sword',
   "Rellana's Twin Blades",
   'Greatsword of Radahn (Light)',

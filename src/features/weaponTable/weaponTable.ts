@@ -48,7 +48,7 @@ export interface WeaponFilter {
   /** null이면 모든 종류 */
   weaponType: string | null
   content: ContentFilter
-  /** 고른 변질 중 하나라도 할 수 있는 무기만 남긴다. 일반과 'all'은 모든 무기가 해당된다. */
+  /** 고른 변질 중 하나라도 할 수 있는 무기만 남긴다. 표준과 'all'은 모든 무기가 해당된다. */
   affinity?: AffinityMode
 }
 
@@ -139,7 +139,7 @@ export function weaponStats(w: WeaponItem, affinity: AffinityName = 'Standard'):
   return w.affinities?.[affinity] ?? null
 }
 
-/** 무기가 할 수 있는 변질 목록 (일반 포함, 게임의 변질 순서) */
+/** 무기가 할 수 있는 변질 목록 (표준 포함, 게임의 변질 순서) */
 export function availableAffinities(w: WeaponItem): AffinityName[] {
   return AFFINITIES.filter((a) => weaponStats(w, a) !== null)
 }

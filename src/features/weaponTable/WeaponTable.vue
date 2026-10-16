@@ -427,11 +427,11 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
     </p>
     <p v-else-if="expanded" class="wt__affinity-note" data-testid="affinity-multi-note">
       고른 변질 {{ chosen.length }}개({{ affinityTitle }})를 무기마다 펼쳐서 보여줍니다. 변질 버튼을 다시 누르면 빠집니다.
-      <template v-if="!chosen.includes('Standard')">전설 무기처럼 변질할 수 없는 무기는 일반에서만 보입니다.</template>
+      <template v-if="!chosen.includes('Standard')">전설 무기처럼 변질할 수 없는 무기는 표준에서만 보입니다.</template>
     </p>
     <p v-else-if="single && single !== 'Standard'" class="wt__affinity-note">
       {{ AFFINITY_LABELS[single] }}({{ single }}) 변질이 가능한 무기 {{ affinityCounts[single] }}개만 보여줍니다.
-      전설 무기처럼 변질할 수 없는 무기는 일반에서만 보입니다. 다른 변질 버튼을 누르면 함께 볼 수 있습니다.
+      전설 무기처럼 변질할 수 없는 무기는 표준에서만 보입니다. 다른 변질 버튼을 누르면 함께 볼 수 있습니다.
     </p>
 
     <!-- 모바일은 표 대신 카드 목록 (정렬·필터·강화 설정은 같다) -->
