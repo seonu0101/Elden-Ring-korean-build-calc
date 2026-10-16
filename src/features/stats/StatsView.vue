@@ -209,7 +209,7 @@ function numberFrom(event: Event) {
       <p v-else-if="pickQuery.trim()" class="sv__empty">일치하는 무기가 없습니다. 목록에서 골라 주세요.</p>
 
       <p class="sv__note">
-        원본 사이트(ER Build Planner)와 같은 계산식입니다. 요구 능력치가 모자란 속성은 공격력이 40% 줄고, 출혈·독·수면·발광
+        요구 능력치가 모자란 속성은 공격력이 40% 줄고, 출혈·독·수면·발광
         축적치는 신비로만 오릅니다. 버프·탈리스만·적 방어력은 아직 반영하지 않습니다.
       </p>
     </section>

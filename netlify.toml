@@ -1,6 +1,6 @@
-# 빌드 플래너 전용 Netlify 사이트 설정
-# 결과물은 dist/buildplanner/ 에 생기므로 이 사이트에서는 /buildplanner/ 주소로 열린다.
-# er-sin.com 사이트에서 /buildplanner/* 를 이 사이트로 프록시하면 er-sin.com/buildplanner 로 보인다.
+# Build Calc 전용 Netlify 사이트 설정
+# 결과물은 dist/calc/ 에 생기므로 이 사이트에서는 /calc/ 주소로 열린다.
+# er-sin.com 사이트에서 /calc/* 를 이 사이트로 프록시하면 er-sin.com/calc 로 보인다.
 
 [build]
   command = "npm run build"
@@ -9,19 +9,19 @@
 [build.environment]
   NODE_VERSION = "24"
 
-# 이 사이트 주소(…netlify.app)로 바로 들어와도 빌드 플래너가 열리게
+# 이 사이트 주소(…netlify.app)로 바로 들어와도 Build Calc가 열리게
 [[redirects]]
   from = "/"
-  to = "/buildplanner/"
+  to = "/calc/"
   status = 301
 
 # 이미지·JS는 파일 이름이 바뀌지 않는 이미지만 오래 캐시
 [[headers]]
-  for = "/buildplanner/img/*"
+  for = "/calc/img/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
 
 [[headers]]
-  for = "/buildplanner/assets/*"
+  for = "/calc/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"

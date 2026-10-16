@@ -1,4 +1,4 @@
-# ER Build Planner
+# ER Build Calc
 
 엘든 링 빌드 플래너. 화면은 세 가지입니다.
 
@@ -30,16 +30,16 @@
 npm install            # 처음 한 번
 npm run dev            # 개발 서버 (http://localhost:5173)
 npm test               # 테스트
-npm run build          # 타입 검사 + 배포용 빌드 (dist/buildplanner/)
-npm run preview        # 빌드 결과 확인 (http://localhost:4173/buildplanner/)
+npm run build          # 타입 검사 + 배포용 빌드 (dist/calc/)
+npm run preview        # 빌드 결과 확인 (http://localhost:4173/calc/)
 npm run import:weapons # 무기 데이터 다시 가져오기
 ```
 
-## 배포 (er-sin.com/buildplanner)
+## 배포 (er-sin.com/calc)
 
-빌드하면 모든 경로 앞에 `/buildplanner/`가 붙는다 (`vite.config.ts`의 `base`).
+빌드하면 모든 경로 앞에 `/calc/`가 붙는다 (`vite.config.ts`의 `base`).
 GitHub 저장소를 Netlify 사이트에 연결하면 `netlify.toml` 설정대로 빌드된다.
-er-sin.com 사이트에서는 `/buildplanner/*`를 이 사이트로 프록시한다 (status 200).
+er-sin.com 사이트에서는 `/calc/*`를 이 사이트로 프록시한다 (status 200).
 
 ## 아이템 이미지
 

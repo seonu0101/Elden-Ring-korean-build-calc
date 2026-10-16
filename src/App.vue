@@ -42,7 +42,7 @@ watch(view, (v) => {
     }"
   >
     <header class="app__header">
-      <h1 class="app__title">Build Planner</h1>
+      <h1 class="app__title">Build Calc</h1>
       <nav class="app__nav" aria-label="화면">
         <button type="button" :class="{ 'is-active': view === 'equipment' }" @click="view = 'equipment'">장비</button>
         <button type="button" :class="{ 'is-active': view === 'weapons' }" @click="view = 'weapons'">무기 표</button>

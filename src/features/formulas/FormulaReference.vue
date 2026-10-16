@@ -126,7 +126,7 @@ const SECTIONS = [
     <header class="fr__header">
       <h2 class="fr__title">계산식</h2>
       <p class="fr__lead">
-        이 앱이 쓰는 계산식 전부입니다. 원본 사이트(er-build-planner)의 계산을 그대로 옮겼습니다. 예시는 고정된 값으로 실제
+        이 앱이 쓰는 계산식 전부입니다. 예시는 고정된 값으로 실제
         계산 함수를 돌린 결과라 장비나 스탯 설정에 따라 바뀌지 않습니다. ⌊x⌋는 소수점 버림입니다.
       </p>
       <nav class="fr__toc" aria-label="목차">
