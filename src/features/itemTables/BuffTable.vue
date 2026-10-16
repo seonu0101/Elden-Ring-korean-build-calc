@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // 버프 표: 주문(기도·마술)과 소비 아이템 버프의 수치를 모두 보여준다.
 // 공격력·받는 피해 칸은 장비 화면과 같은 합산 방식(combineEffects, PvE 수치)으로 계산한다.
+import { buffDuration } from '@/data/buffDurations'
 import { STACK_GROUPS } from '@/data/buffStacking'
 import { combineEffects, percentText } from '@/data/effects'
 import type { EffectSummary, MultiplierLine } from '@/data/effects'
@@ -36,8 +37,9 @@ const attackValue = (b: BuffItem) =>
   Math.round((Math.max(...DAMAGE_TYPES.map((d) => SUMMARY.get(b.id)!.attack[d].multiplier)) - 1) * 10000) / 100
 const takenValue = (b: BuffItem) =>
   Math.round((1 - Math.min(...NEGATION_TYPES.map((t) => SUMMARY.get(b.id)!.damageTaken[t].multiplier))) * 10000) / 100
-/** 지속 시간(초): 아이템 전체 값(일부 영약)이 있으면 그것, 없으면 효과 중 가장 긴 값 */
-const duration = (b: BuffItem) => b.duration ?? Math.max(0, ...b.effects.map((e) => e.duration ?? 0))
+/** 지속 시간(초): 원본 사이트 값이 우선, 없으면 위키 값 (출처는 README에만 적는다) */
+const duration = (b: BuffItem) => buffDuration(b)?.seconds ?? 0
+const durationText = (b: BuffItem) => (duration(b) ? String(duration(b)) : '–')
 const stackText = (b: BuffItem) =>
   STACK_GROUPS.filter((g) => g.matches(b))
     .map((g) => g.label)
@@ -68,7 +70,7 @@ const columns: TableColumn<BuffItem>[] = [
     label: '지속(초)',
     numeric: true,
     value: duration,
-    display: (b) => (duration(b) ? String(duration(b)) : '–'),
+    display: durationText,
     faint: (b) => !duration(b),
   },
   { key: 'effect', label: '효과 (PvP 수치·조건 포함)', wide: true, value: (b) => talismanEffectText(b) || '–' },

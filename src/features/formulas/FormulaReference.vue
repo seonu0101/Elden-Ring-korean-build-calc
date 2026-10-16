@@ -296,7 +296,7 @@ const SECTIONS = [
         </div>
       </div>
       <h4 class="fr__subtitle">무기 보정 곡선 (#0~#16, 보정 곡선값 = 아래 식)</h4>
-      <p class="fr__text">같은 구간 식에 원본 데이터의 숫자를 넣은 것입니다 (보정 곡선 표와 오차 10⁻⁹ 이하). x = 능력치.</p>
+      <p class="fr__text">같은 구간 식에 곡선 데이터의 숫자를 넣은 것입니다 (보정 곡선 표와 오차 10⁻⁹ 이하). x = 능력치.</p>
       <div class="fr__curve-grid" data-testid="fr-weapon-curves">
         <div v-for="c in WEAPON_CURVES" :key="c.id" class="fr__curve">
           <div class="fr__curve-title">

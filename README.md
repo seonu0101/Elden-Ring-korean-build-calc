@@ -60,6 +60,22 @@ Pull Request에서는 검사와 빌드만 하고 공개 사이트는 바꾸지 �
 GitHub 저장소를 Netlify 사이트에 연결하면 `netlify.toml` 설정대로 `/calc/` 경로로 빌드된다.
 er-sin.com 사이트에서는 `/calc/*`를 배포한 사이트로 프록시한다 (status 200).
 
+## 출처
+
+앱 화면에는 출처를 쓰지 않고 여기에만 모아 둔다.
+
+| 자료 | 출처 | 파일 |
+| --- | --- | --- |
+| 무기·방어구·탈리스만·버프 수치, 강화 배율, 보정·능력치 곡선, 공격력·방어력 계산식 | [ER Build Planner](https://er-build-planner.nyasu.business/) (이용약관에 따라 **비상업적 용도로만**) | `src/data/*.generated.json`, `scripts/import-weapons.mjs` |
+| 아이템 이미지 | Elden Ring Tourney Manager v1.1.0 (`public/img`) | `public/img/` |
+| 버프 지속 시간 18개 (원본에 값이 없는 것만) | [Fextralife Elden Ring Wiki — Buffs and Debuffs](https://eldenring.wiki.fextralife.com/Buffs_and_Debuffs) (2026-10-16 확인) | `src/data/buff-durations.wiki.json` |
+| 게임 이름·아이콘 | ELDEN RING © Bandai Namco Entertainment Inc. / © FromSoftware, Inc. | — |
+
+버프 지속 시간은 원본 사이트 값이 우선이다. 원본에 없을 때만 위키 값을 쓴다 (`src/data/buffDurations.ts`).
+원본과 위키가 다른 17개는 원본 값을 쓴다: 경화 고기류(원본 120초, 위키 35초), 흰 경화 고기류(120 / 105),
+상태이상 당김줄 기름 4종(10 / 15), 금·은 절인 새발(120 / 180), 고양의 향(45 / 40), 검은 불꽃 칼날(60 / 7),
+불의 대죄(30 / 40).
+
 ## 아이템 이미지
 
 장비 화면의 장비 칸과 아이템 목록은 무기·방어구·탈리스만을 이미지로 보여줍니다(이름은 마우스를 올리거나 아래 상세 정보에서). 무기 표에는 이미지가 없습니다.

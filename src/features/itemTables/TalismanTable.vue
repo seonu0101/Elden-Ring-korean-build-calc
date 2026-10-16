@@ -38,6 +38,6 @@ const typeFilter: TypeFilter<TalismanItem> = {
     :columns="columns"
     :type-filter="typeFilter"
     csv-name="talismans"
-    note="효과는 원본 데이터의 수치로 만든 설명입니다(배율 1.1 → +10%). 효과·조건 이름은 직접 옮긴 것이라 한국어판 표기와 다를 수 있습니다."
+    note="효과는 데이터의 수치로 만든 설명입니다(배율 1.1 → +10%). 효과·조건 이름은 직접 옮긴 것이라 한국어판 표기와 다를 수 있습니다."
   />
 </template>

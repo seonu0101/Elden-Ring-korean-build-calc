@@ -1,0 +1,25 @@
+{
+ "source": "https://eldenring.wiki.fextralife.com/Buffs_and_Debuffs",
+ "retrievedAt": "2026-10-16",
+ "note": "원본 사이트(er-build-planner)에 지속 시간이 없는 버프만 위키 값으로 채운다. 원본에 값이 있으면 원본을 쓴다.",
+ "durations": {
+  "item-ancient-dragons-blessing": 70,
+  "item-baldachins-blessing": 15,
+  "item-boiled-crab": 60,
+  "item-boiled-prawn": 60,
+  "item-crimsonburst-crystal-tear": 180,
+  "item-exalted-flesh": 30,
+  "item-fireproof-pickled-liver": 120,
+  "item-golden-horn-tender": 180,
+  "item-gourmet-scorpion-stew": 60,
+  "item-holyproof-pickled-liver": 120,
+  "item-lightningproof-pickled-liver": 120,
+  "item-opaline-pickled-liver": 120,
+  "item-priestess-heart": 60,
+  "item-radiant-baldachins-blessing": 70,
+  "item-rock-heart": 60,
+  "item-scorpion-stew": 60,
+  "item-silver-horn-tender": 180,
+  "item-spellproof-pickled-liver": 120
+ }
+}

@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createPinia, setActivePinia } from 'pinia'
 import App from '@/App.vue'
+import { buffDuration } from '@/data/buffDurations'
 import { BUFFS } from '@/data/items'
 import BuffTable from '@/features/itemTables/BuffTable.vue'
 import { useBuffsStore } from '@/stores/buffs'
@@ -60,6 +61,25 @@ describe('버프 표', () => {
       'Viridian Hidden Tear:15',
     ])
     wrapper.unmount()
+  })
+
+  it('원본에 지속 시간이 없을 때만 위키 값을 쓰고, 화면에는 출처를 쓰지 않는다', async () => {
+    const wrapper = mountTable()
+    await wrapper.find('[data-testid="search"]').setValue('Exalted Flesh')
+    expect(rows(wrapper)[0]!.find('[data-testid="cell-duration"]').text()).toBe('30')
+    expect(wrapper.text()).not.toMatch(/위키|Fextralife|원본 사이트/)
+    // 원본에 값이 있으면 원본 (위키는 35초지만 원본 120초)
+    await wrapper.find('[data-testid="search"]').setValue('Dappled Cured Meat')
+    expect(rows(wrapper)[0]!.find('[data-testid="cell-duration"]').text()).toBe('120')
+    wrapper.unmount()
+  })
+
+  it('위키 값은 원본에 지속 시간이 없는 버프에만 들어 있다', () => {
+    for (const b of BUFFS) {
+      const d = buffDuration(b)
+      if (d?.source === 'wiki') expect(b.duration ?? Math.max(0, ...b.effects.map((e) => e.duration ?? 0))).toBe(0)
+    }
+    expect(BUFFS.filter((b) => buffDuration(b)?.source === 'wiki')).toHaveLength(18)
   })
 
   it('공격력 칸으로 정렬하면 큰 값부터', async () => {
