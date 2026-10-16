@@ -173,6 +173,7 @@ watch(view, () => nextTick(showActiveTab))
   max-width: 1160px;
 }
 .app__header {
+  container: app-header / inline-size;
   display: flex;
   align-items: center;
   gap: 24px;
@@ -220,6 +221,19 @@ watch(view, () => nextTick(showActiveTab))
 }
 .app__hint + .app__lang {
   margin-left: 0;
+}
+/* 헤더에 메뉴 7개·키 안내·언어 버튼이 한 줄로 들어갈 만큼 넓을 때만 키 안내를 보여준다.
+   화면마다 본문 폭이 달라서(장비 960px, 표 1400px) 창 크기가 아니라 헤더 폭으로 판단한다. */
+@container app-header (max-width: 1080px) {
+  .app__hint {
+    display: none;
+  }
+  .app__hint + .app__lang {
+    margin-left: auto;
+  }
+}
+.app__nav button {
+  white-space: nowrap;
 }
 .app__lang button {
   padding: 3px 10px;
