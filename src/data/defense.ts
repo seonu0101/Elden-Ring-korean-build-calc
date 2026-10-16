@@ -67,25 +67,53 @@ export function statGraphValue(id: number, x: number): number {
   return g0
 }
 
-function graphInt(id: number, x: number): number {
-  return Math.floor(statGraphValue(id, x))
+/** 속성마다 기본 방어력에 더하는 능력치 보너스 (벼락은 없음) */
+const DEFENSE_BONUS_STAT: Record<NegationType, keyof typeof GRAPH | null> = {
+  physical: 'strength',
+  strike: 'strength',
+  slash: 'strength',
+  pierce: 'strength',
+  magic: 'intelligence',
+  fire: 'vigor',
+  lightning: null,
+  holy: 'arcane',
+}
+
+export interface DefenseBreakdown {
+  /** 8개 능력치 합 */
+  total: number
+  graphId: number
+  /** 곡선 값 (버리기 전) */
+  baseRaw: number
+  base: number
+  bonus: Record<NegationType, { stat: Exclude<keyof typeof GRAPH, 'levelDefense'>; value: number; graphId: number; raw: number; bonus: number } | null>
+  defense: Record<NegationType, number>
+}
+
+/** 방어력 계산 과정 */
+export function defenseBreakdown(a: DefenseAttributes): DefenseBreakdown {
+  const total = a.vigor + a.mind + a.endurance + a.strength + a.dexterity + a.intelligence + a.faith + a.arcane
+  const baseRaw = statGraphValue(GRAPH.levelDefense, total)
+  const base = Math.floor(baseRaw)
+  const bonus = {} as DefenseBreakdown['bonus']
+  const defense = {} as Record<NegationType, number>
+  for (const t of NEGATION_TYPES) {
+    const stat = DEFENSE_BONUS_STAT[t] as Exclude<keyof typeof GRAPH, 'levelDefense'> | null
+    if (!stat) {
+      bonus[t] = null
+      defense[t] = base
+      continue
+    }
+    const raw = statGraphValue(GRAPH[stat], a[stat])
+    bonus[t] = { stat, value: a[stat], graphId: GRAPH[stat], raw, bonus: Math.floor(raw) }
+    defense[t] = base + Math.floor(raw)
+  }
+  return { total, graphId: GRAPH.levelDefense, baseRaw, base, bonus, defense }
 }
 
 /** 캐릭터 방어력 (능력치만으로 정해진다) */
 export function characterDefense(a: DefenseAttributes): Record<NegationType, number> {
-  const total = a.vigor + a.mind + a.endurance + a.strength + a.dexterity + a.intelligence + a.faith + a.arcane
-  const base = graphInt(GRAPH.levelDefense, total)
-  const physical = base + graphInt(GRAPH.strength, a.strength)
-  return {
-    physical,
-    strike: physical,
-    slash: physical,
-    pierce: physical,
-    magic: base + graphInt(GRAPH.intelligence, a.intelligence),
-    fire: base + graphInt(GRAPH.vigor, a.vigor),
-    lightning: base,
-    holy: base + graphInt(GRAPH.arcane, a.arcane),
-  }
+  return defenseBreakdown(a).defense
 }
 
 /**

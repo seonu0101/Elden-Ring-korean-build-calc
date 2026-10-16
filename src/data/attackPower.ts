@@ -70,6 +70,45 @@ export function partTotal(p: ValuePart): number {
   return Math.floor(p.base + p.scaling)
 }
 
+/** 보정 한 줄: 계수 × 강화 보정 배율 × 보정 곡선[능력치] × 비율 + 비율 − 1 */
+export interface ScalingTerm {
+  stat: StatKey
+  /** 계산에 쓴 능력치 (양손 근력 반영) */
+  value: number
+  coefficient: number
+  scalingRate: number
+  graphId: number | undefined
+  graph: number
+  ratio: number
+  term: number
+}
+
+/** 속성 공격력 계산 과정 */
+export interface DamageDetail {
+  /** 데이터 값 (강화 전) */
+  raw: number
+  /** 강화 배율 */
+  rate: number
+  /** 이 속성을 보정하는 능력치 중 요구치가 모자란 것 */
+  missing: StatKey[]
+  terms: ScalingTerm[]
+  /** 보정 배율 (모자라면 −0.4, 음수인 줄이 있으면 그 값, 아니면 합) */
+  multiplier: number
+  rule: 'sum' | 'negative' | 'unmet'
+}
+
+/** 상태이상 축적치 계산 과정 */
+export interface StatusDetail {
+  /** 신비 보정을 받는지 */
+  scales: boolean
+  unmet: boolean
+  coefficient: number
+  scalingRate: number
+  graphId: number | undefined
+  graph: number
+  multiplier: number
+}
+
 export interface AttackResult {
   affinity: AffinityName
   level: number
@@ -82,6 +121,9 @@ export interface AttackResult {
   status: Record<StatusType, ValuePart>
   /** 모자란 요구 능력치 */
   unmet: StatKey[]
+  /** 계산식 보기용 과정 */
+  details: Record<DamageType, DamageDetail>
+  statusDetails: Record<StatusType, StatusDetail>
 }
 
 export function calculateAttack(
@@ -100,46 +142,69 @@ export function calculateAttack(
   const unmet = STAT_KEYS.filter((s) => eff[s] < (w.requirements[s] ?? 0))
 
   const damage = {} as Record<DamageType, ValuePart>
+  const details = {} as Record<DamageType, DamageDetail>
   for (const d of DAMAGE_TYPES) {
-    const base = (raw.damage[d] ?? 0) * rates.damage[d]
+    const rawValue = raw.damage[d] ?? 0
+    const base = rawValue * rates.damage[d]
+    const detail: DamageDetail = { raw: rawValue, rate: rates.damage[d], missing: [], terms: [], multiplier: 0, rule: 'sum' }
+    details[d] = detail
     if (!base) {
       damage[d] = { base: 0, scaling: 0 }
       continue
     }
     const scalingStats = correction?.correction[d] ?? []
-    const missing = scalingStats.some((s) => eff[s] < (w.requirements[s] ?? 0))
-    let multiplier: number
-    if (missing) {
-      multiplier = -0.4
+    detail.missing = scalingStats.filter((s) => eff[s] < (w.requirements[s] ?? 0))
+    detail.terms = STAT_KEYS.filter((s) => scalingStats.includes(s)).map((s) => {
+      const ratio = correction?.ratio[d]?.[s] ?? 1
+      const coefficient = correction?.override[d]?.[s] ?? raw.scaling[s] ?? 0
+      const graphId = raw.correctionCalc[d]
+      const graph = graphValue(graphId, eff[s])
+      const scalingRate = rates.scaling[s]
+      const term = ratio - 1 + coefficient * scalingRate * graph * ratio
+      return { stat: s, value: eff[s], coefficient, scalingRate, graphId, graph, ratio, term }
+    })
+    if (detail.missing.length) {
+      detail.multiplier = -0.4
+      detail.rule = 'unmet'
     } else {
-      const perStat = STAT_KEYS.map((s) => {
-        if (!scalingStats.includes(s)) return 0
-        const ratio = correction?.ratio[d]?.[s] ?? 1
-        const coefficient = correction?.override[d]?.[s] ?? raw.scaling[s] ?? 0
-        return ratio - 1 + coefficient * rates.scaling[s] * graphValue(raw.correctionCalc[d], eff[s]) * ratio
-      })
-      const lowest = Math.min(...perStat)
-      multiplier = lowest < 0 ? lowest : perStat.reduce((a, b) => a + b, 0)
+      // 보정 받지 않는 능력치는 0으로 친다 (원본 사이트와 같다)
+      const perStat = detail.terms.map((t) => t.term)
+      const lowest = Math.min(0, ...perStat)
+      detail.rule = lowest < 0 ? 'negative' : 'sum'
+      detail.multiplier = lowest < 0 ? lowest : perStat.reduce((a, b) => a + b, 0)
     }
-    damage[d] = { base, scaling: base * multiplier }
+    damage[d] = { base, scaling: base * detail.multiplier }
   }
 
   // 상태이상 기본값은 강화 단계별 값(피 변질 등)을 쓴다.
   const upgradedStatus = upgradeStats(raw, level).status
   const status = {} as Record<StatusType, ValuePart>
+  const statusDetails = {} as Record<StatusType, StatusDetail>
   for (const t of STATUS_TYPES) {
     const base = upgradedStatus[t] ?? 0
     const graphId = SCALING_STATUS.includes(t) ? raw.correctionCalc[t as 'bleed'] : undefined
+    const detail: StatusDetail = {
+      scales: false,
+      unmet: false,
+      coefficient: raw.scaling.arcane ?? 0,
+      scalingRate: rates.scaling.arcane,
+      graphId,
+      graph: graphValue(graphId, eff.arcane),
+      multiplier: 0,
+    }
+    statusDetails[t] = detail
     if (!base || graphId === undefined) {
       status[t] = { base, scaling: 0 }
     } else if (eff.arcane < (w.requirements.arcane ?? 0)) {
+      Object.assign(detail, { scales: true, unmet: true, multiplier: -0.4 })
       status[t] = { base, scaling: base * -0.4 }
     } else {
-      const arcane = (raw.scaling.arcane ?? 0) * rates.scaling.arcane
-      status[t] = { base, scaling: base * arcane * graphValue(graphId, eff.arcane) }
+      const arcane = detail.coefficient * detail.scalingRate
+      Object.assign(detail, { scales: true, multiplier: arcane * detail.graph })
+      status[t] = { base, scaling: base * arcane * detail.graph }
     }
   }
 
   const total = Math.floor(DAMAGE_TYPES.reduce((sum, d) => sum + damage[d].base + damage[d].scaling, 0))
-  return { affinity, level, twoHanded, stats: eff, damage, total, status, unmet }
+  return { affinity, level, twoHanded, stats: eff, damage, total, status, unmet, details, statusDetails }
 }

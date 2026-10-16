@@ -4,6 +4,7 @@ import { calculateAttack, partTotal } from '@/data/attackPower'
 import { characterDefense, damageNegation } from '@/data/defense'
 import { NEGATION_LABELS, STATUS_LABELS } from '@/data/labels'
 import { levelFor } from '@/data/upgrade'
+import FormulaPanel from '@/features/formulas/FormulaPanel.vue'
 import { EQUIPMENT_GRID } from '@/features/gameMenu/layout'
 import { weaponStats } from '@/features/weaponTable/weaponTable'
 import { useBuffsStore } from '@/stores/buffs'
@@ -59,6 +60,9 @@ function equippedName(target: SlotTarget) {
  */
 const confirmingReset = ref(false)
 
+/** 계산식 창 */
+const showFormulas = ref(false)
+
 function confirmReset() {
   store.clearInventory()
   confirmingReset.value = false
@@ -73,6 +77,15 @@ function confirmReset() {
         <button
           type="button"
           class="btn"
+          title="경감률·방어력·공격력·상태이상·탈리스만과 버프 효과의 계산 과정 보기"
+          data-testid="open-formulas"
+          @click="showFormulas = true"
+        >
+          계산식
+        </button>
+        <button
+          type="button"
+          class="btn"
           :disabled="store.inventoryCount === 0 || confirmingReset"
           title="장착한 장비와 인벤토리의 모든 아이템 지우기"
           data-testid="reset-equipment"
@@ -83,7 +96,9 @@ function confirmReset() {
       </div>
     </header>
 
-    <div v-if="confirmingReset" class="summary__confirm" role="alertdialog" aria-label="초기화 확인" data-testid="reset-confirm">
+    <FormulaPanel v-if="showFormulas" @close="showFormulas = false" />
+
+    <div v-if="confirmingReset"class="summary__confirm" role="alertdialog" aria-label="초기화 확인" data-testid="reset-confirm">
       <p class="summary__confirm-text">
         장착한 장비와 인벤토리의 모든 아이템({{ store.inventoryCount }}개)을 지울까요?
         <span class="summary__confirm-sub">지운 아이템은 무기·방어구·탈리스만 표의 + 버튼으로 다시 넣을 수 있습니다.</span>
