@@ -1,0 +1,14 @@
+{
+  "source": "https://er-build-planner.nyasu.business character.defenses / getTotalAbsorption (2026-10-16). 원본 사이트의 vit은 지구력",
+  "defense": [
+    { "stats": { "vigor": 40, "mind": 20, "endurance": 20, "strength": 30, "dexterity": 50, "intelligence": 10, "faith": 10, "arcane": 30 }, "def": { "physical": 138, "strike": 138, "slash": 138, "pierce": 138, "magic": 148, "fire": 168, "lightning": 128, "holy": 174 } },
+    { "stats": { "vigor": 10, "mind": 10, "endurance": 10, "strength": 10, "dexterity": 10, "intelligence": 10, "faith": 10, "arcane": 10 }, "def": { "physical": 74, "strike": 74, "slash": 74, "pierce": 74, "magic": 91, "fire": 77, "lightning": 71, "holy": 91 } },
+    { "stats": { "vigor": 60, "mind": 25, "endurance": 40, "strength": 80, "dexterity": 20, "intelligence": 9, "faith": 9, "arcane": 7 }, "def": { "physical": 170, "strike": 170, "slash": 170, "pierce": 170, "magic": 153, "fire": 195, "lightning": 135, "holy": 149 } },
+    { "stats": { "vigor": 99, "mind": 99, "endurance": 99, "strength": 99, "dexterity": 99, "intelligence": 99, "faith": 99, "arcane": 99 }, "def": { "physical": 195, "strike": 195, "slash": 195, "pierce": 195, "magic": 225, "fire": 225, "lightning": 155, "holy": 225 } },
+    { "stats": { "vigor": 50, "mind": 30, "endurance": 30, "strength": 12, "dexterity": 15, "intelligence": 60, "faith": 20, "arcane": 45 }, "def": { "physical": 139, "strike": 139, "slash": 139, "pierce": 139, "magic": 195, "fire": 185, "lightning": 135, "holy": 189 } }
+  ],
+  "negation": {
+    "armor": ["vagabond-knight-helm", "banished-knight-armor", "black-knife-gauntlets", "vagabond-knight-greaves"],
+    "values": { "physical": 30.190235665600017, "strike": 24.89658196000002, "slash": 30.09366090880001, "pierce": 28.243612000000006, "magic": 22.044604075000006, "fire": 23.257029076000013, "lightning": 20.533517920000012, "holy": 21.773301976000013 }
+  }
+}

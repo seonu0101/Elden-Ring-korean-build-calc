@@ -35,11 +35,27 @@ npm run preview        # 빌드 결과 확인 (http://localhost:4173/buildplanne
 npm run import:weapons # 무기 데이터 다시 가져오기
 ```
 
-## 배포 (er-sin.com/calc)
+## GitHub Pages 배포
 
-빌드하면 모든 경로 앞에 `/calc/`가 붙는다 (`vite.config.ts`의 `base`).
-GitHub 저장소를 Netlify 사이트에 연결하면 `netlify.toml` 설정대로 빌드된다.
-er-sin.com 사이트에서는 `/calc/*`를 이 사이트로 프록시한다 (status 200).
+공개 주소: https://seonu0101.github.io/Elden-Ring-korean-build-calc/
+
+`.github/workflows/pages.yml`은 `main`에 변경을 올리면 아래 순서로 검사하고 배포합니다.
+
+1. Node.js 24에서 `npm ci`로 잠금 파일에 맞춰 의존성을 설치합니다.
+2. `npm test`로 기존 테스트를 실행합니다.
+3. `npm run build -- --base "/Elden-Ring-korean-build-calc/"`로 타입 검사와 배포용 빌드를 실행합니다.
+4. 모든 검사가 통과하면 `dist/buildplanner/`의 내용을 GitHub Pages에 배포합니다.
+
+Pull Request에서는 검사와 빌드만 수행하며 공개 사이트는 갱신하지 않습니다.
+GitHub의 Settings → Pages → Source는 **GitHub Actions**로 설정합니다.
+실패한 검사는 Actions에서 확인할 수 있고, 직전 성공 배포는 유지됩니다.
+
+무기·방어구·탈리스만 데이터와 이미지도 저장소에 포함된 스냅샷을 사용합니다.
+CI에서 외부 원본 사이트를 다시 수집하거나 별도의 로컬 프로젝트에서 이미지를 복사하지 않습니다.
+수집 스크립트 실행은 데이터 갱신 작업으로 별도 수행합니다.
+
+기존 `vite.config.ts`와 `netlify.toml`의 Netlify용 `/buildplanner/` 설정은 유지합니다.
+GitHub Pages 경로는 위 빌드 명령에서만 지정합니다.
 
 ## 아이템 이미지
 

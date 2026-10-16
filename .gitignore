@@ -147,3 +147,11 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Local editor and deployment preparation files
+.DS_Store
+*.local
+*.bak*
+*.fixbak*
+*.before_*
+.npm-cache/
