@@ -12,6 +12,7 @@ import GameMenuSimulator from '@/features/gameMenu/GameMenuSimulator.vue'
 import ArmorTable from '@/features/itemTables/ArmorTable.vue'
 import BuffTable from '@/features/itemTables/BuffTable.vue'
 import TalismanTable from '@/features/itemTables/TalismanTable.vue'
+import StartingClassPanel from '@/features/stats/StartingClassPanel.vue'
 import StatsView from '@/features/stats/StatsView.vue'
 import WeaponTable from '@/features/weaponTable/WeaponTable.vue'
 
@@ -153,6 +154,7 @@ watch(view, () => nextTick(showActiveTab))
       <FormulaReference />
     </main>
     <main v-if="visited.has('stats')" v-show="view === 'stats'">
+      <StartingClassPanel />
       <StatsView />
     </main>
   </div>

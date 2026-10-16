@@ -1,0 +1,166 @@
+{
+  "source": "regulation.bin CharaInitParam (rows 3000-3009)",
+  "importedAt": "2026-10-16T08:47:29.536Z",
+  "classes": [
+    {
+      "id": 3000,
+      "key": "vagabond",
+      "en": "Vagabond",
+      "level": 9,
+      "attributes": {
+        "vigor": 15,
+        "mind": 10,
+        "endurance": 11,
+        "strength": 14,
+        "dexterity": 13,
+        "intelligence": 9,
+        "faith": 9,
+        "arcane": 7
+      }
+    },
+    {
+      "id": 3001,
+      "key": "warrior",
+      "en": "Warrior",
+      "level": 8,
+      "attributes": {
+        "vigor": 11,
+        "mind": 12,
+        "endurance": 11,
+        "strength": 10,
+        "dexterity": 16,
+        "intelligence": 10,
+        "faith": 8,
+        "arcane": 9
+      }
+    },
+    {
+      "id": 3002,
+      "key": "hero",
+      "en": "Hero",
+      "level": 7,
+      "attributes": {
+        "vigor": 14,
+        "mind": 9,
+        "endurance": 12,
+        "strength": 16,
+        "dexterity": 9,
+        "intelligence": 7,
+        "faith": 8,
+        "arcane": 11
+      }
+    },
+    {
+      "id": 3003,
+      "key": "bandit",
+      "en": "Bandit",
+      "level": 5,
+      "attributes": {
+        "vigor": 10,
+        "mind": 11,
+        "endurance": 10,
+        "strength": 9,
+        "dexterity": 13,
+        "intelligence": 9,
+        "faith": 8,
+        "arcane": 14
+      }
+    },
+    {
+      "id": 3004,
+      "key": "astrologer",
+      "en": "Astrologer",
+      "level": 6,
+      "attributes": {
+        "vigor": 9,
+        "mind": 15,
+        "endurance": 9,
+        "strength": 8,
+        "dexterity": 12,
+        "intelligence": 16,
+        "faith": 7,
+        "arcane": 9
+      }
+    },
+    {
+      "id": 3005,
+      "key": "prophet",
+      "en": "Prophet",
+      "level": 7,
+      "attributes": {
+        "vigor": 10,
+        "mind": 14,
+        "endurance": 8,
+        "strength": 11,
+        "dexterity": 10,
+        "intelligence": 7,
+        "faith": 16,
+        "arcane": 10
+      }
+    },
+    {
+      "id": 3006,
+      "key": "confessor",
+      "en": "Confessor",
+      "level": 10,
+      "attributes": {
+        "vigor": 10,
+        "mind": 13,
+        "endurance": 10,
+        "strength": 12,
+        "dexterity": 12,
+        "intelligence": 9,
+        "faith": 14,
+        "arcane": 9
+      }
+    },
+    {
+      "id": 3007,
+      "key": "samurai",
+      "en": "Samurai",
+      "level": 9,
+      "attributes": {
+        "vigor": 12,
+        "mind": 11,
+        "endurance": 13,
+        "strength": 12,
+        "dexterity": 15,
+        "intelligence": 9,
+        "faith": 8,
+        "arcane": 8
+      }
+    },
+    {
+      "id": 3008,
+      "key": "prisoner",
+      "en": "Prisoner",
+      "level": 9,
+      "attributes": {
+        "vigor": 11,
+        "mind": 12,
+        "endurance": 11,
+        "strength": 11,
+        "dexterity": 14,
+        "intelligence": 14,
+        "faith": 6,
+        "arcane": 9
+      }
+    },
+    {
+      "id": 3009,
+      "key": "wretch",
+      "en": "Wretch",
+      "level": 1,
+      "attributes": {
+        "vigor": 10,
+        "mind": 10,
+        "endurance": 10,
+        "strength": 10,
+        "dexterity": 10,
+        "intelligence": 10,
+        "faith": 10,
+        "arcane": 10
+      }
+    }
+  ]
+}
