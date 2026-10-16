@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { nextTick, onMounted, ref, watch } from 'vue'
 import EquipmentSummary from '@/components/EquipmentSummary.vue'
 import { nameLanguage } from '@/data/names'
 import BuffPanel from '@/features/buffs/BuffPanel.vue'
@@ -33,6 +33,20 @@ watch(view, (v) => {
     // 저장소를 쓸 수 없으면 기억하지 않는다
   }
 })
+
+/**
+ * 모바일에서는 메뉴가 옆으로 밀리는 한 줄이라, 고른 탭이 보이도록 메뉴만 옆으로 굴린다.
+ * PC처럼 메뉴가 모두 보이면 아무 일도 하지 않는다.
+ */
+const nav = ref<HTMLElement | null>(null)
+function showActiveTab() {
+  const el = nav.value
+  const active = el?.querySelector<HTMLElement>('.is-active')
+  if (!el || !active || el.scrollWidth <= el.clientWidth) return
+  el.scrollLeft = active.offsetLeft - (el.clientWidth - active.offsetWidth) / 2
+}
+onMounted(showActiveTab)
+watch(view, () => nextTick(showActiveTab))
 </script>
 
 <template>
@@ -45,7 +59,7 @@ watch(view, (v) => {
   >
     <header class="app__header">
       <h1 class="app__title">Build Calc</h1>
-      <nav class="app__nav" aria-label="화면">
+      <nav ref="nav" class="app__nav" aria-label="화면">
         <button type="button" :class="{ 'is-active': view === 'equipment' }" @click="view = 'equipment'">장비</button>
         <button type="button" :class="{ 'is-active': view === 'weapons' }" @click="view = 'weapons'">무기 표</button>
         <button type="button" :class="{ 'is-active': view === 'armor' }" data-testid="nav-armor" @click="view = 'armor'">
@@ -209,6 +223,30 @@ watch(view, (v) => {
   .app__layout {
     grid-template-columns: minmax(0, 1fr);
     gap: 40px;
+  }
+  /* 모바일: 제목·언어 버튼을 첫 줄에, 메뉴는 아래 줄에서 옆으로 밀어 보기 (PC는 그대로) */
+  .app {
+    padding: 20px 16px 32px;
+  }
+  .app__header {
+    flex-wrap: wrap;
+    gap: 10px 12px;
+    margin-bottom: 20px;
+  }
+  .app__nav {
+    position: relative;
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .app__nav::-webkit-scrollbar {
+    display: none;
+  }
+  .app__nav button {
+    flex-shrink: 0;
+    white-space: nowrap;
   }
 }
 </style>

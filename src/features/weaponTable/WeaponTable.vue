@@ -966,4 +966,24 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
   font-size: 12px;
   color: var(--text-faint);
 }
+/* 모바일: 고정된 이름 칸을 좁히고 긴 이름은 줄바꿈 (PC는 그대로) */
+@media (max-width: 720px) {
+  .wt__name-col {
+    min-width: 0;
+    width: 120px;
+    max-width: 120px;
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+  .wt__search {
+    width: 100%;
+  }
+  .wt__level input[type='range'] {
+    width: 100px;
+  }
+  .wt__scroll {
+    max-height: 65vh;
+  }
+}
 </style>

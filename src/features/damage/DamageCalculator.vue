@@ -415,4 +415,21 @@ function setNumber(target: Record<string, number>, key: string, event: Event) {
   font-size: 11px;
   color: var(--text-faint);
 }
+/* 모바일: 표 글자를 줄이고 머리글이 꺾이지 않게 (PC는 그대로) */
+@media (max-width: 720px) {
+  .dc__table {
+    font-size: 11.5px;
+  }
+  .dc__table th,
+  .dc__table td {
+    padding: 4px 2px;
+  }
+  .dc__table thead th {
+    font-size: 10.5px;
+    white-space: nowrap;
+  }
+  .dc__cell .dc__num {
+    width: 56px;
+  }
+}
 </style>
