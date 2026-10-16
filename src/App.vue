@@ -6,6 +6,7 @@ import { nameLanguage } from '@/data/names'
 import { useViewHotkeys } from '@/features/appNav/appNavigation'
 import BuffPanel from '@/features/buffs/BuffPanel.vue'
 import DamageCalculator from '@/features/damage/DamageCalculator.vue'
+import CurveGraphPanel from '@/features/formulas/CurveGraphPanel.vue'
 import FormulaReference from '@/features/formulas/FormulaReference.vue'
 import GameMenuSimulator from '@/features/gameMenu/GameMenuSimulator.vue'
 import ArmorTable from '@/features/itemTables/ArmorTable.vue'
@@ -148,6 +149,7 @@ watch(view, () => nextTick(showActiveTab))
       <BuffTable />
     </main>
     <main v-if="visited.has('formulas')" v-show="view === 'formulas'">
+      <CurveGraphPanel />
       <FormulaReference />
     </main>
     <main v-if="visited.has('stats')" v-show="view === 'stats'">
