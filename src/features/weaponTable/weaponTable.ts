@@ -17,15 +17,37 @@ import type { AffinityName, CharacterStats, DamageType, StatKey, WeaponItem, Wea
 
 export type ContentFilter = 'all' | 'base' | 'dlc'
 
-/** 특정 변질 하나, 또는 'all'이면 무기마다 가능한 변질을 모두 펼쳐서 보여준다. */
-export type AffinityMode = AffinityName | 'all'
+/**
+ * 고른 변질 (하나 또는 여러 개), 또는 'all'이면 무기마다 가능한 변질을 모두 펼쳐서 보여준다.
+ * 여러 개를 고르면 무기마다 고른 변질 중 가능한 것만큼 행이 생긴다.
+ */
+export type AffinityMode = AffinityName | readonly AffinityName[] | 'all'
+
+/** 고른 변질 목록 (게임의 변질 순서). 'all'이면 null */
+export function selectedAffinities(mode: AffinityMode): AffinityName[] | null {
+  if (mode === 'all') return null
+  const list: readonly AffinityName[] = typeof mode === 'string' ? [mode] : mode
+  return AFFINITIES.filter((a) => list.includes(a))
+}
+
+/**
+ * 변질 버튼을 눌렀을 때의 새 선택.
+ * 변질 버튼끼리는 여러 개를 고를 수 있고, 다시 누르면 빠진다 (마지막 하나는 빠지지 않는다).
+ * "모든 변질"이 켜져 있으면 그것을 끄고 누른 변질 하나만 고른다.
+ */
+export function toggleAffinity(mode: AffinityMode, affinity: AffinityName): AffinityName[] {
+  const list = selectedAffinities(mode)
+  if (!list) return [affinity]
+  if (list.includes(affinity)) return list.length > 1 ? list.filter((a) => a !== affinity) : list
+  return AFFINITIES.filter((a) => a === affinity || list.includes(a))
+}
 
 export interface WeaponFilter {
   query: string
   /** null이면 모든 종류 */
   weaponType: string | null
   content: ContentFilter
-  /** 특정 변질이면 그 변질을 할 수 있는 무기만 남긴다. 일반과 'all'은 모든 무기가 해당된다. */
+  /** 고른 변질 중 하나라도 할 수 있는 무기만 남긴다. 일반과 'all'은 모든 무기가 해당된다. */
   affinity?: AffinityMode
 }
 
@@ -143,19 +165,20 @@ export function statusText(s: WeaponStats): string {
 
 export function filterWeapons(list: readonly WeaponItem[], filter: WeaponFilter): WeaponItem[] {
   const query = filter.query.trim().toLowerCase()
-  const affinity = filter.affinity ?? 'Standard'
+  const affinities = selectedAffinities(filter.affinity ?? 'Standard')
   return list.filter((w) => {
     if (query && !w.name.toLowerCase().includes(query)) return false
     if (filter.weaponType && w.weaponType !== filter.weaponType) return false
     if (filter.content === 'base' && w.content !== 0) return false
     if (filter.content === 'dlc' && w.content === 0) return false
-    if (affinity !== 'all' && !weaponStats(w, affinity)) return false
+    if (affinities && !affinities.some((a) => weaponStats(w, a))) return false
     return true
   })
 }
 
 /**
- * 무기 목록을 표의 행으로 펼친다. 'all'이면 무기마다 가능한 변질 수만큼 행이 생긴다.
+ * 무기 목록을 표의 행으로 펼친다. 'all'이면 무기마다 가능한 변질 수만큼,
+ * 여러 변질을 고르면 그중 가능한 변질 수만큼 행이 생긴다.
  * upgrade를 주면 무기마다 강화 단계(일반 무기 / 특수 무기)를 적용한다.
  * character를 주면 공격력·상태이상을 그 능력치(한손/양손 포함)로 계산한다.
  */
@@ -165,8 +188,9 @@ export function buildRows(
   upgrade: UpgradeSetting = { regular: 0, somber: 0 },
   character: CharacterSetting | null = null,
 ): TableRow[] {
+  const selected = selectedAffinities(mode)
   return list.flatMap((w) => {
-    const affinities = mode === 'all' ? availableAffinities(w) : [mode]
+    const affinities = selected ?? availableAffinities(w)
     return affinities.flatMap((affinity) => {
       const base = weaponStats(w, affinity)
       if (!base) return []

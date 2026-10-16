@@ -27,7 +27,9 @@ import {
   rowsToCsv,
   sortRows,
   rowAttackTotal,
+  selectedAffinities,
   statusText,
+  toggleAffinity,
   weaponTypes,
 } from './weaponTable'
 import type { AffinityMode, ContentFilter, SortDirection, SortKey } from './weaponTable'
@@ -44,8 +46,11 @@ const sortKey = ref<SortKey>('name')
 const sortDirection = ref<SortDirection>('asc')
 /** 보정 열 표시 방식: 등급과 수치 함께 / 등급만 / 수치만 */
 const scalingMode = ref<'both' | 'grade' | 'value'>('both')
-/** 변질(인퓨전). 'all'이면 무기마다 가능한 변질을 모두 펼친다. */
-const affinity = ref<AffinityMode>('Standard')
+/**
+ * 변질(인퓨전). 변질 버튼은 여러 개를 함께 고를 수 있다.
+ * 'all'(모든 변질 한번에 보기)은 다른 버튼과 함께 고를 수 없고, 누르면 다른 선택이 풀린다.
+ */
+const affinity = ref<AffinityMode>(['Standard'])
 const visibleCount = ref(PAGE_SIZE)
 
 /**
@@ -99,6 +104,20 @@ const sortGroups = [...new Set(SORT_OPTIONS.map((o) => o.group))].map((group) =>
 }))
 
 const showAll = computed(() => affinity.value === 'all')
+/** 고른 변질 목록 ('all'이면 빈 배열) */
+const chosen = computed(() => selectedAffinities(affinity.value) ?? [])
+/** 한 무기가 여러 행으로 펼쳐지는지 (모든 변질, 또는 변질을 여러 개 골랐을 때). 변질 열을 보여준다 */
+const expanded = computed(() => showAll.value || chosen.value.length > 1)
+/** 하나만 고른 변질 (여러 개거나 'all'이면 null) */
+const single = computed(() => (chosen.value.length === 1 ? chosen.value[0]! : null))
+
+function isAffinityActive(a: AffinityName) {
+  return chosen.value.includes(a)
+}
+
+function onAffinityClick(a: AffinityName) {
+  affinity.value = toggleAffinity(affinity.value, a)
+}
 
 const filteredWeapons = computed(() =>
   filterWeapons(WEAPONS, {
@@ -168,7 +187,8 @@ function downloadCsv() {
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
   a.href = url
-  a.download = `weapons-${affinity.value.toLowerCase().replace(/\s+/g, '-')}.csv`
+  const name = showAll.value ? 'all' : chosen.value.join('-')
+  a.download = `weapons-${name.toLowerCase().replace(/\s+/g, '-')}.csv`
   a.click()
   URL.revokeObjectURL(url)
 }
@@ -177,13 +197,15 @@ function resetFilters() {
   query.value = ''
   weaponType.value = null
   content.value = 'all'
-  affinity.value = 'Standard'
+  affinity.value = ['Standard']
   sortKey.value = 'name'
   sortDirection.value = 'asc'
 }
 
-const affinityTitle = computed(() => (affinity.value === 'all' ? '모든 변질' : AFFINITY_LABELS[affinity.value]))
-const columnCount = computed(() => 4 + (showAll.value ? 1 : 0) + STAT_KEYS.length * 2 + DAMAGE_TYPES.length * 2 + 3)
+const affinityTitle = computed(() =>
+  showAll.value ? '모든 변질' : chosen.value.map((a) => AFFINITY_LABELS[a]).join('·'),
+)
+const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.length * 2 + DAMAGE_TYPES.length * 2 + 3)
 </script>
 
 <template>
@@ -191,7 +213,7 @@ const columnCount = computed(() => 4 + (showAll.value ? 1 : 0) + STAT_KEYS.lengt
     <header class="wt__header">
       <h2 class="wt__title">무기</h2>
       <span class="wt__count" data-testid="row-count">
-        <template v-if="showAll">무기 {{ filteredWeapons.length }}개 · {{ rows.length }}행</template>
+        <template v-if="expanded">무기 {{ filteredWeapons.length }}개 · {{ rows.length }}행</template>
         <template v-else>{{ rows.length }} / {{ WEAPONS.length }}</template>
       </span>
     </header>
@@ -371,11 +393,11 @@ const columnCount = computed(() => 4 + (showAll.value ? 1 : 0) + STAT_KEYS.lengt
         :key="a"
         type="button"
         class="wt__affinity"
-        :class="{ 'is-active': affinity === a }"
-        :aria-pressed="affinity === a"
-        :title="`${a} · 변질 가능한 무기 ${affinityCounts[a]}개`"
+        :class="{ 'is-active': isAffinityActive(a) }"
+        :aria-pressed="isAffinityActive(a)"
+        :title="`${a} · 변질 가능한 무기 ${affinityCounts[a]}개 · 여러 개를 함께 고를 수 있습니다`"
         :data-testid="`affinity-${a}`"
-        @click="affinity = a"
+        @click="onAffinityClick(a)"
       >
         {{ AFFINITY_LABELS[a] }}
         <span class="wt__affinity-en">{{ a }}</span>
@@ -385,7 +407,7 @@ const columnCount = computed(() => 4 + (showAll.value ? 1 : 0) + STAT_KEYS.lengt
         class="wt__affinity wt__affinity--all"
         :class="{ 'is-active': showAll }"
         :aria-pressed="showAll"
-        title="무기마다 가능한 변질을 모두 펼쳐서 한 번에 보기"
+        title="무기마다 가능한 변질을 모두 펼쳐서 한 번에 보기 (다른 변질 선택은 풀립니다)"
         data-testid="affinity-all"
         @click="affinity = 'all'"
       >
@@ -395,16 +417,20 @@ const columnCount = computed(() => 4 + (showAll.value ? 1 : 0) + STAT_KEYS.lengt
     <p v-if="showAll" class="wt__affinity-note">
       무기마다 가능한 변질을 모두 펼쳐서 보여줍니다. 정렬하면 변질끼리도 비교됩니다 (예: 기량 보정이 가장 높은 무기+변질 조합).
     </p>
-    <p v-else-if="affinity !== 'Standard' && affinity !== 'all'" class="wt__affinity-note">
-      {{ AFFINITY_LABELS[affinity] }}({{ affinity }}) 변질이 가능한 무기 {{ affinityCounts[affinity] }}개만 보여줍니다.
-      전설 무기처럼 변질할 수 없는 무기는 일반에서만 보입니다.
+    <p v-else-if="expanded" class="wt__affinity-note" data-testid="affinity-multi-note">
+      고른 변질 {{ chosen.length }}개({{ affinityTitle }})를 무기마다 펼쳐서 보여줍니다. 변질 버튼을 다시 누르면 빠집니다.
+      <template v-if="!chosen.includes('Standard')">전설 무기처럼 변질할 수 없는 무기는 일반에서만 보입니다.</template>
+    </p>
+    <p v-else-if="single && single !== 'Standard'" class="wt__affinity-note">
+      {{ AFFINITY_LABELS[single] }}({{ single }}) 변질이 가능한 무기 {{ affinityCounts[single] }}개만 보여줍니다.
+      전설 무기처럼 변질할 수 없는 무기는 일반에서만 보입니다. 다른 변질 버튼을 누르면 함께 볼 수 있습니다.
     </p>
 
     <div class="wt__scroll">
       <table class="wt__table">
         <thead>
           <tr class="wt__group-row">
-            <th :colspan="showAll ? 4 : 3" class="wt__sticky"></th>
+            <th :colspan="expanded ? 4 : 3" class="wt__sticky"></th>
             <th :colspan="STAT_KEYS.length" class="wt__group">요구 능력치</th>
             <th :colspan="DAMAGE_TYPES.length + 1" class="wt__group" data-testid="attack-group">
               공격력 · {{ affinityTitle }} {{ upgradeLabel }}{{ applyStats ? ` · 내 스탯${twoHanded ? ' 양손' : ''}` : '' }}
@@ -420,7 +446,7 @@ const columnCount = computed(() => 4 + (showAll.value ? 1 : 0) + STAT_KEYS.lengt
                 이름<span class="wt__arrow">{{ arrow('name') }}</span>
               </button>
             </th>
-            <th v-if="showAll" :aria-sort="ariaSort('affinity')">
+            <th v-if="expanded" :aria-sort="ariaSort('affinity')">
               <button type="button" class="wt__sort" @click="sortBy('affinity')">
                 변질<span class="wt__arrow">{{ arrow('affinity') }}</span>
               </button>
@@ -503,7 +529,7 @@ const columnCount = computed(() => 4 + (showAll.value ? 1 : 0) + STAT_KEYS.lengt
               <span class="wt__level-tag" data-testid="level-tag">+{{ level }}</span>
               <span v-if="w.content !== 0" class="wt__tag">{{ CONTENT_LABELS[w.content] }}</span>
             </th>
-            <td v-if="showAll" class="nowrap" data-testid="affinity-cell">{{ AFFINITY_LABELS[a] }}</td>
+            <td v-if="expanded" class="nowrap" data-testid="affinity-cell">{{ AFFINITY_LABELS[a] }}</td>
             <td class="muted">{{ w.weaponType }}</td>
             <td class="num">{{ w.weight.toFixed(1) }}</td>
             <td

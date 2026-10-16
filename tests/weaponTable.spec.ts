@@ -14,6 +14,7 @@ import {
   sortRows,
   sortValue,
   statusText,
+  toggleAffinity,
   totalAttack,
   weaponStats,
 } from '@/features/weaponTable/weaponTable'
@@ -268,10 +269,13 @@ describe('WeaponTable 화면', () => {
     await wrapper.find('[data-testid="scaling-mode-value"]').trigger('click')
     expect(scaling().slice(0, 2)).toEqual(['36', '55'])
 
+    // 상질을 누르면 일반과 함께 고르고, 일반을 다시 누르면 상질만 남는다
     await wrapper.find('[data-testid="affinity-Quality"]').trigger('click')
+    await wrapper.find('[data-testid="affinity-Standard"]').trigger('click')
     expect(scaling().slice(0, 2)).toEqual(['59', '59'])
     expect(wrapper.text()).toContain('보정 · 상질')
     await wrapper.find('[data-testid="affinity-Standard"]').trigger('click')
+    await wrapper.find('[data-testid="affinity-Quality"]').trigger('click')
 
     const guard = rowsOf(wrapper)[0]!.findAll('[data-testid="guard-cell"]').map((c) => c.text())
     expect(guard).toEqual(['45', '30', '30', '30', '30'])
@@ -281,6 +285,48 @@ describe('WeaponTable 화면', () => {
     await wrapper.find('[data-testid="add-weapon"]').trigger('click')
     expect(store.weapons.filter((s) => s.itemId === 'uchigatana').length).toBe(before + 1)
     wrapper.unmount()
+  })
+
+  it('변질 여러 개 고르기: 고른 변질만큼 행이 생기고, 모든 변질 버튼과는 함께 고를 수 없다', async () => {
+    const wrapper = mountTable()
+    const pressed = () =>
+      wrapper.findAll('.wt__affinities button').filter((b) => b.attributes('aria-pressed') === 'true').map((b) => b.attributes('data-testid'))
+    await wrapper.find('[data-testid="search"]').setValue('Uchigatana')
+    await wrapper.find('[data-testid="affinity-Keen"]').trigger('click')
+    await wrapper.find('[data-testid="affinity-Heavy"]').trigger('click')
+    expect(pressed()).toEqual(['affinity-Standard', 'affinity-Heavy', 'affinity-Keen'])
+    const cells = () => rowsOf(wrapper).map((r) => r.find('[data-testid="affinity-cell"]').text())
+    expect(cells()).toEqual(['일반', '중후', '예리'])
+    expect(wrapper.find('[data-testid="row-count"]').text()).toContain('3행')
+    expect(wrapper.find('[data-testid="affinity-multi-note"]').exists()).toBe(true)
+
+    // 모든 변질을 누르면 다른 선택이 풀린다
+    await wrapper.find('[data-testid="affinity-all"]').trigger('click')
+    expect(pressed()).toEqual(['affinity-all'])
+    expect(rowsOf(wrapper)).toHaveLength(13)
+
+    // 모든 변질이 켜진 상태에서 변질 하나를 누르면 그 변질만
+    await wrapper.find('[data-testid="affinity-Fire"]').trigger('click')
+    expect(pressed()).toEqual(['affinity-Fire'])
+    expect(rowsOf(wrapper)).toHaveLength(1)
+    expect(wrapper.find('[data-testid="affinity-cell"]').exists()).toBe(false)
+
+    // 마지막 하나는 다시 눌러도 빠지지 않는다
+    await wrapper.find('[data-testid="affinity-Fire"]').trigger('click')
+    expect(pressed()).toEqual(['affinity-Fire'])
+    wrapper.unmount()
+  })
+
+  it('toggleAffinity / 여러 변질 필터', () => {
+    expect(toggleAffinity(['Standard'], 'Heavy')).toEqual(['Standard', 'Heavy'])
+    expect(toggleAffinity(['Keen', 'Standard'], 'Standard')).toEqual(['Keen'])
+    expect(toggleAffinity(['Keen'], 'Keen')).toEqual(['Keen'])
+    expect(toggleAffinity('all', 'Blood')).toEqual(['Blood'])
+    // 중후나 마력 중 하나라도 되는 무기만, 행은 가능한 변질만큼
+    const list = filterWeapons(WEAPONS, { query: '', weaponType: null, content: 'all', affinity: ['Heavy', 'Magic'] })
+    expect(list.length).toBe(WEAPONS.filter((w) => weaponStats(w, 'Heavy') || weaponStats(w, 'Magic')).length)
+    const rows = buildRows([weapon('uchigatana'), weapon('moonveil')], ['Heavy', 'Magic'])
+    expect(rows.map((r) => `${r.w.id}:${r.affinity}`)).toEqual(['uchigatana:Heavy', 'uchigatana:Magic'])
   })
 
   it('모든 변질 한번에 보기: 한 무기가 변질 수만큼 행으로 펼쳐진다', async () => {
