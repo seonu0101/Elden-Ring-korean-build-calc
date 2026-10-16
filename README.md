@@ -68,13 +68,13 @@ er-sin.com 사이트에서는 `/calc/*`를 배포한 사이트로 프록시한�
 | --- | --- | --- |
 | 무기·방어구·탈리스만·버프 수치, 강화 배율, 보정·능력치 곡선, 공격력·방어력 계산식 | [ER Build Planner](https://er-build-planner.nyasu.business/) (이용약관에 따라 **비상업적 용도로만**) | `src/data/*.generated.json`, `scripts/import-weapons.mjs` |
 | 아이템 이미지 | Elden Ring Tourney Manager v1.1.0 (`public/img`) | `public/img/` |
-| 버프 지속 시간 18개 (원본에 값이 없는 것만) | [Fextralife Elden Ring Wiki — Buffs and Debuffs](https://eldenring.wiki.fextralife.com/Buffs_and_Debuffs) (2026-10-16 확인) | `src/data/buff-durations.wiki.json` |
+| 버프 지속 시간 26개 (원본에 값이 없는 것만) | Fextralife Elden Ring Wiki — [Buffs and Debuffs](https://eldenring.wiki.fextralife.com/Buffs_and_Debuffs) 18개, [Crystal Tears](https://eldenring.wiki.fextralife.com/Crystal_Tears) 영약 8개 (2026-10-16 확인) | `src/data/buff-durations.wiki.json` |
 | 게임 이름·아이콘 | ELDEN RING © Bandai Namco Entertainment Inc. / © FromSoftware, Inc. | — |
 
 버프 지속 시간은 원본 사이트 값이 우선이다. 원본에 없을 때만 위키 값을 쓴다 (`src/data/buffDurations.ts`).
-원본과 위키가 다른 17개는 원본 값을 쓴다: 경화 고기류(원본 120초, 위키 35초), 흰 경화 고기류(120 / 105),
+원본과 위키가 다른 18개는 원본 값을 쓴다: 경화 고기류(원본 120초, 위키 35초), 흰 경화 고기류(120 / 105),
 상태이상 당김줄 기름 4종(10 / 15), 금·은 절인 새발(120 / 180), 고양의 향(45 / 40), 검은 불꽃 칼날(60 / 7),
-불의 대죄(30 / 40).
+불의 대죄(30 / 40), 기름 적신 영약(60 / 30).
 
 ## 아이템 이미지
 

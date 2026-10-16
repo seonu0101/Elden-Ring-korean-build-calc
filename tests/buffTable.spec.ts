@@ -79,7 +79,7 @@ describe('버프 표', () => {
       const d = buffDuration(b)
       if (d?.source === 'wiki') expect(b.duration ?? Math.max(0, ...b.effects.map((e) => e.duration ?? 0))).toBe(0)
     }
-    expect(BUFFS.filter((b) => buffDuration(b)?.source === 'wiki')).toHaveLength(18)
+    expect(BUFFS.filter((b) => buffDuration(b)?.source === 'wiki')).toHaveLength(26)
   })
 
   it('공격력 칸으로 정렬하면 큰 값부터', async () => {
