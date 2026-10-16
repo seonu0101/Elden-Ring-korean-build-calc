@@ -28,7 +28,7 @@ export type MenuAction =
   | 'right'
   | 'confirm'
   | 'back'
-  /** 지금 칸 장착 해제 (키보드 R만) */
+  /** 지금 칸 장착 해제 (키보드 R / 게임패드 X) */
   | 'unequip'
   | 'toggleMenu'
   | 'prevSlot'

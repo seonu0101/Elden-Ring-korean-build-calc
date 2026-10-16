@@ -6,6 +6,7 @@ import type { MenuAction } from './useGameMenu'
 export const GAMEPAD_BUTTON_ACTIONS: readonly (readonly [number, MenuAction])[] = [
   [0, 'confirm'], // A
   [1, 'back'], // B
+  [2, 'unequip'], // X (키보드 R과 같다)
   [4, 'prevSlot'], // L1 / LB
   [5, 'nextSlot'], // R1 / RB
   [6, 'pageUp'], // L2 / LT

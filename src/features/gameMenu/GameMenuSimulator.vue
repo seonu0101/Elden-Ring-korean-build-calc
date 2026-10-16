@@ -82,7 +82,7 @@ function equippedItem(target: SlotTarget) {
   return slot ? store.itemOf(slot) : null
 }
 
-/** 화면 아래 키 안내: 키보드 키 / 게임패드 버튼 (Xbox 배치 기준). 장착 해제는 키보드 R만 있다. */
+/** 화면 아래 키 안내: 키보드 키 / 게임패드 버튼 (Xbox 배치 기준). 장착 해제는 키보드 R / 게임패드 X. */
 interface KeyHint {
   keys: string[]
   pad: string[] | null
@@ -102,7 +102,7 @@ const keyGuide = computed<KeyHint[]>(() => {
       return [
         { keys: ['↑↓←→'], pad: ['십자키'], label: '이동' },
         { keys: ['E'], pad: ['A'], label: '열기' },
-        { keys: ['R'], pad: null, label: '장착 해제' },
+        { keys: ['R'], pad: ['X'], label: '장착 해제' },
         { keys: ['Q'], pad: ['B'], label: '뒤로' },
         { keys: ['Esc'], pad: ['Start'], label: '닫기' },
       ]
@@ -110,7 +110,7 @@ const keyGuide = computed<KeyHint[]>(() => {
       return [
         { keys: ['↑↓←→'], pad: ['십자키'], label: '고르기' },
         { keys: ['E'], pad: ['A'], label: '장착' },
-        { keys: ['R'], pad: null, label: '장착 해제' },
+        { keys: ['R'], pad: ['X'], label: '장착 해제' },
         { keys: ['Q'], pad: ['B'], label: '목록 닫기' },
         ...(slotGroup.value.length > 1 ? [{ keys: ['C', 'V'], pad: ['LB', 'RB'], label: '칸 전환' }] : []),
         { keys: ['PgUp', 'PgDn'], pad: ['LT', 'RT'], label: '페이지' },

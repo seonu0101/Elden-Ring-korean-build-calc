@@ -40,8 +40,8 @@ describe('readGamepadActions', () => {
   it('버튼을 동작으로 바꾼다', () => {
     expect([...readGamepadActions(pad([0, 12]))].sort()).toEqual(['confirm', 'up'])
     expect([...readGamepadActions(pad([9]))]).toEqual(['toggleMenu'])
-    // X·Y 버튼은 쓰지 않는다 (장착 해제는 키보드 R만)
-    expect([...readGamepadActions(pad([2]))]).toEqual([])
+    // X 버튼은 장착 해제 (키보드 R과 같다), Y는 쓰지 않는다
+    expect([...readGamepadActions(pad([2]))]).toEqual(['unequip'])
     expect([...readGamepadActions(pad([3]))]).toEqual([])
   })
 

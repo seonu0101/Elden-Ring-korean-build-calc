@@ -91,7 +91,7 @@ describe('GameMenuSimulator', () => {
     const guide = () => simulator.find('[data-testid="key-guide"]').text().replace(/\s+/g, '')
     expect(guide()).toContain('E/A열기')
     expect(guide()).toContain('↑↓←→/십자키이동')
-    expect(guide()).toContain('R장착해제')
+    expect(guide()).toContain('R/X장착해제')
     expect(guide()).toContain('Esc/Start닫기')
     await press('e')
     expect(guide()).toContain('E/A장착')
