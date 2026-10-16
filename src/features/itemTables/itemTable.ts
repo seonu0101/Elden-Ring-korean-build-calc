@@ -29,6 +29,11 @@ export interface TableColumn<T> {
   faint?: (item: T) => boolean
   /** 긴 글자 열 (줄바꿈 허용) */
   wide?: boolean
+  /**
+   * 모바일 카드에서 보일 자리. meta: 이름 아래 한 줄 ("무게 2.3"), text: 긴 글 한 단락,
+   * 없으면 숫자 칸 묶음 (group이 같은 열끼리 함께)
+   */
+  card?: 'meta' | 'text'
 }
 
 /** 종류 필터 (방어구 부위, 탈리스만 분류). 아이템 하나가 여러 값을 가질 수 있다. */

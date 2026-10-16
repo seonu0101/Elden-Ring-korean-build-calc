@@ -1,7 +1,9 @@
 <script setup lang="ts" generic="T extends TableItem">
 // 방어구 표·탈리스만 표·버프 표가 함께 쓰는 표 화면: 검색, 종류·본편/DLC 필터, 열 정렬, CSV, 인벤토리 추가
 // 마지막 칸은 기본으로 "보유 / +"(인벤토리 추가)이고, action 슬롯으로 바꿀 수 있다 (버프 표는 켜기 버튼).
+// 모바일에서는 표 대신 아이템마다 카드 한 장 (열의 card 설정에 따라 요약 줄·글·숫자 칸으로 나눈다).
 import { computed, ref, watch } from 'vue'
+import { useIsMobile } from '@/composables/useIsMobile'
 import { CONTENT_LABELS } from '@/data/labels'
 import { itemName } from '@/data/names'
 import { useCharacterStore } from '@/stores/character'
@@ -26,6 +28,7 @@ defineSlots<{ action?: (props: { item: T }) => unknown }>()
 const PAGE_SIZE = 300
 
 const store = useCharacterStore()
+const isMobile = useIsMobile()
 
 const query = ref('')
 const type = ref<string | null>(null)
@@ -78,6 +81,28 @@ function arrow(key: string) {
 function cellText(column: TableColumn<T>, item: T) {
   return column.display ? column.display(item) : String(column.value(item))
 }
+
+/* ---------- 모바일 카드 ---------- */
+const metaColumns = computed(() => props.columns.filter((c) => c.card === 'meta'))
+const textColumns = computed(() => props.columns.filter((c) => c.card === 'text'))
+/** 숫자 칸 묶음: group이 같은 열끼리 (group 없는 열은 제목 없는 묶음) */
+const gridGroups = computed(() => {
+  const out: { label: string; columns: TableColumn<T>[] }[] = []
+  for (const c of props.columns.filter((x) => !x.card)) {
+    const label = c.group ?? ''
+    const last = out[out.length - 1]
+    if (last && last.label === label) last.columns.push(c)
+    else out.push({ label, columns: [c] })
+  }
+  return out
+})
+/** 요약 줄 한 칸: 숫자는 "무게 2.3", 글자는 값만 */
+function metaText(c: TableColumn<T>, item: T) {
+  return c.numeric ? `${c.label} ${cellText(c, item)}` : cellText(c, item)
+}
+const isBlank = (text: string) => text === '' || text === '–'
+/** 값이 있는 칸만 ("–" 칸은 카드에서 뺀다) */
+const filledColumns = (columns: readonly TableColumn<T>[], item: T) => columns.filter((c) => !isBlank(cellText(c, item)))
 
 /** 인벤토리에 가진 개수 */
 const ownedCounts = computed(() => {
@@ -165,10 +190,62 @@ function resetFilters() {
       >
         {{ sortDirection === 'asc' ? '↑ 오름차순' : '↓ 내림차순' }}
       </button>
-      <span class="it__hint">열 제목을 눌러도 정렬됩니다</span>
+      <span v-if="!isMobile" class="it__hint">열 제목을 눌러도 정렬됩니다</span>
     </div>
 
-    <div class="it__scroll">
+    <ul v-if="isMobile" class="ic" data-testid="item-cards">
+      <li v-for="item in visibleRows" :key="item.id" class="ic__card" data-testid="item-card">
+        <div class="ic__head">
+          <div class="ic__title">
+            <span class="ic__name">{{ itemName(item) }}</span>
+            <span v-if="item.content" class="it__tag">{{ CONTENT_LABELS[item.content] }}</span>
+          </div>
+          <div class="ic__action">
+            <slot name="action" :item="item">
+              <span v-if="ownedCounts.get(item.id)" class="it__owned">보유 {{ ownedCounts.get(item.id) }}</span>
+              <button
+                type="button"
+                class="it__add"
+                :aria-label="`${itemName(item)} 인벤토리에 추가`"
+                title="인벤토리에 추가"
+                data-testid="add-item"
+                @click="store.addItem(item.id)"
+              >
+                +
+              </button>
+            </slot>
+          </div>
+        </div>
+        <div v-if="metaColumns.length" class="ic__meta">
+          <template v-for="c in metaColumns" :key="c.key">
+            <span v-if="!isBlank(cellText(c, item))" :data-testid="`card-${c.key}`">{{ metaText(c, item) }}</span>
+          </template>
+        </div>
+        <template v-for="g in gridGroups" :key="g.label">
+          <div v-if="g.label && filledColumns(g.columns, item).length" class="ic__sub">{{ g.label }}</div>
+          <dl v-if="filledColumns(g.columns, item).length" class="ic__grid">
+            <div v-for="c in filledColumns(g.columns, item)" :key="c.key" :class="{ faint: c.faint?.(item) }" :data-testid="`card-${c.key}`">
+              <dt>{{ c.label }}</dt>
+              <dd>{{ cellText(c, item) }}</dd>
+            </div>
+          </dl>
+        </template>
+        <template v-for="c in textColumns" :key="c.key">
+          <p
+            v-if="!isBlank(cellText(c, item))"
+            class="ic__text"
+            :class="{ faint: c.faint?.(item) }"
+            :data-testid="`card-${c.key}`"
+          >
+            <span class="ic__text-label">{{ c.label }}</span>
+            {{ cellText(c, item) }}
+          </p>
+        </template>
+      </li>
+      <li v-if="rows.length === 0" class="it__empty">조건에 맞는 항목이 없습니다</li>
+    </ul>
+
+    <div v-else class="it__scroll">
       <table class="it__table">
         <thead>
           <tr v-if="hasGroups" class="it__group-row">
@@ -480,6 +557,109 @@ function resetFilters() {
   margin: 0;
   font-size: 12px;
   color: var(--text-faint);
+}
+/* 모바일 카드 */
+.ic {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ic__card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.ic__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+.ic__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 6px;
+  min-width: 0;
+}
+.ic__name {
+  font-size: 14px;
+  font-weight: 600;
+}
+.ic__action {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 4px;
+}
+.ic__action .it__add {
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+}
+.ic__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.ic__sub {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+.ic__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2px 10px;
+  margin: 0;
+}
+.ic__grid div {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 2px 0;
+  font-size: 12px;
+  border-bottom: 1px dashed var(--border);
+}
+.ic__grid dt {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.ic__grid dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.ic__grid div.faint dt,
+.ic__grid div.faint dd {
+  color: var(--text-faint);
+}
+.ic__text {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.ic__text.faint {
+  color: var(--text-faint);
+}
+.ic__text-label {
+  margin-right: 4px;
+  font-size: 11px;
+  color: var(--text-faint);
+}
+@media (max-width: 420px) {
+  .ic__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 /* 모바일: 고정된 이름 칸을 좁히고 긴 이름은 줄바꿈 (PC는 그대로) */
 @media (max-width: 720px) {

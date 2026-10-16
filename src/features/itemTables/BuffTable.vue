@@ -52,7 +52,7 @@ const stackText = (b: BuffItem) =>
     .join(', ')
 
 const columns: TableColumn<BuffItem>[] = [
-  { key: 'category', label: '분류', value: (b) => categoryText(b) },
+  { key: 'category', label: '분류', value: (b) => categoryText(b), card: 'meta' },
   {
     key: 'attack',
     label: '공격력',
@@ -61,6 +61,7 @@ const columns: TableColumn<BuffItem>[] = [
     value: attackValue,
     display: (b) => attackText(b) || '–',
     faint: (b) => !attackText(b),
+    card: 'text',
   },
   {
     key: 'taken',
@@ -70,6 +71,7 @@ const columns: TableColumn<BuffItem>[] = [
     value: takenValue,
     display: (b) => takenText(b) || '–',
     faint: (b) => !takenText(b),
+    card: 'text',
   },
   {
     key: 'duration',
@@ -78,8 +80,9 @@ const columns: TableColumn<BuffItem>[] = [
     value: duration,
     display: durationText,
     faint: (b) => !duration(b),
+    card: 'meta',
   },
-  { key: 'effect', label: '효과 (PvP 수치·조건 포함)', wide: true, value: (b) => talismanEffectText(b) || '–' },
+  { key: 'effect', label: '효과 (PvP 수치·조건 포함)', wide: true, value: (b) => talismanEffectText(b) || '–', card: 'text' },
   {
     key: 'stack',
     label: '중첩 불가 묶음',
@@ -87,6 +90,7 @@ const columns: TableColumn<BuffItem>[] = [
     value: stackText,
     display: (b) => stackText(b) || '–',
     faint: () => true,
+    card: 'text',
   },
 ]
 

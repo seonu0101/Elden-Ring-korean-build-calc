@@ -16,9 +16,9 @@ const conflictText = (t: TalismanItem) =>
     .join(', ')
 
 const columns: TableColumn<TalismanItem>[] = [
-  { key: 'category', label: '분류', value: categoryText },
-  { key: 'weight', label: '무게', numeric: true, value: (t) => t.weight, display: (t) => t.weight.toFixed(1) },
-  { key: 'effect', label: '효과', wide: true, value: talismanEffectText },
+  { key: 'category', label: '분류', value: categoryText, card: 'meta' },
+  { key: 'weight', label: '무게', numeric: true, value: (t) => t.weight, display: (t) => t.weight.toFixed(1), card: 'meta' },
+  { key: 'effect', label: '효과', wide: true, value: talismanEffectText, card: 'text' },
   {
     key: 'conflicts',
     label: '함께 낄 수 없음',
@@ -26,6 +26,7 @@ const columns: TableColumn<TalismanItem>[] = [
     wide: true,
     value: conflictText,
     faint: () => true,
+    card: 'text',
   },
 ]
 
