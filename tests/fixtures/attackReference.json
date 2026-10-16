@@ -1,0 +1,20 @@
+{
+  "source": "https://er-build-planner.nyasu.business ar-calculator.calculateForSlot (2026-10-16)",
+  "cases": [
+    {"name":"Uchigatana","inf":"Standard","level":25,"two":false,"stats":{"str":30,"dex":50,"int":10,"fth":10,"arc":30},"total":498,"dmg":{"physical":[281.75,216.872638]},"st":{"bleed":[45,0]}},
+    {"name":"Uchigatana","inf":"Standard","level":0,"two":false,"stats":{"str":30,"dex":50,"int":10,"fth":10,"arc":30},"total":174,"dmg":{"physical":[115,59.012963]},"st":{"bleed":[45,0]}},
+    {"name":"Uchigatana","inf":"Blood","level":25,"two":false,"stats":{"str":30,"dex":50,"int":10,"fth":10,"arc":30},"total":484,"dmg":{"physical":[236.5,248.103171]},"st":{"bleed":[82,9.363375]}},
+    {"name":"Uchigatana","inf":"Quality","level":12,"two":false,"stats":{"str":40,"dex":40,"int":40,"fth":40,"arc":40},"total":327,"dmg":{"physical":[159.72,167.327542]},"st":{"bleed":[45,0]}},
+    {"name":"Rivers of Blood","inf":"Standard","level":10,"two":false,"stats":{"str":30,"dex":50,"int":10,"fth":10,"arc":30},"total":611,"dmg":{"physical":[186.2,180.255683],"fire":[186.2,58.98816]},"st":{"bleed":[50,7.79625]}},
+    {"name":"Smithscript Greathammer","inf":"Flame Art","level":25,"two":false,"stats":{"str":40,"dex":40,"int":40,"fth":40,"arc":40},"total":766,"dmg":{"physical":[266,100.126261],"fire":[266,134.596]},"st":{}},
+    {"name":"Caestus","inf":"Standard","level":25,"two":true,"stats":{"str":40,"dex":20,"int":10,"fth":10,"arc":10},"total":346,"dmg":{"physical":[220.5,126.082257]},"st":{}},
+    {"name":"Greatsword","inf":"Standard","level":25,"two":true,"stats":{"str":20,"dex":12,"int":10,"fth":10,"arc":10},"total":241,"dmg":{"physical":[401.8,-160.72]},"st":{}},
+    {"name":"Greatsword","inf":"Standard","level":25,"two":false,"stats":{"str":20,"dex":12,"int":10,"fth":10,"arc":10},"total":241,"dmg":{"physical":[401.8,-160.72]},"st":{}},
+    {"name":"Serpentbone Blade","inf":"Standard","level":10,"two":false,"stats":{"str":15,"dex":40,"int":10,"fth":10,"arc":60},"total":287,"dmg":{"physical":[189.6,97.460057]},"st":{"poison":[66,0]}},
+    {"name":"Sword of St. Trina","inf":"Standard","level":10,"two":false,"stats":{"str":15,"dex":30,"int":30,"fth":10,"arc":45},"total":460,"dmg":{"physical":[262.15,104.703931],"magic":[78.4,15.0528]},"st":{"sleep":[66,0]}},
+    {"name":"Vyke's War Spear","inf":"Standard","level":10,"two":false,"stats":{"str":25,"dex":30,"int":10,"fth":30,"arc":10},"total":621,"dmg":{"physical":[252.35,145.040477],"fire":[161.7,62.0928]},"st":{"madness":[65,0]}},
+    {"name":"Moonveil","inf":"Standard","level":7,"two":false,"stats":{"str":12,"dex":20,"int":30,"fth":10,"arc":10},"total":445,"dmg":{"physical":[147.095,36.0288],"magic":[175.305,87.512256]},"st":{"bleed":[50,0]}},
+    {"name":"Longsword","inf":"Fire","level":25,"two":false,"stats":{"str":50,"dex":10,"int":10,"fth":20,"arc":10},"total":550,"dmg":{"physical":[178.5,88.673377],"fire":[178.5,104.958]},"st":{}},
+    {"name":"Uchigatana","inf":"Occult","level":25,"two":false,"stats":{"str":15,"dex":20,"int":10,"fth":10,"arc":80},"total":597,"dmg":{"physical":[247.5,349.927656]},"st":{"bleed":[38,50.102123]}}
+  ]
+}

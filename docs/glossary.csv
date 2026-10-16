@@ -1,0 +1,285 @@
+﻿분류,원문,번역,쓰는 곳,코드 위치
+화면 공통 용어,Weight,무게,"요약 패널, 무기·방어구·탈리스만 표, 상세 정보",여러 화면 (직접 정리)
+화면 공통 용어,Poise,강인도,"요약 패널, 방어구 표",여러 화면 (직접 정리)
+화면 공통 용어,Defense,방어력,요약 패널 방어력/경감률 표,여러 화면 (직접 정리)
+화면 공통 용어,Damage Negation,경감률 / 피해 경감률,"요약 패널, 방어구 표",여러 화면 (직접 정리)
+화면 공통 용어,Attack Power (AR),공격력,"무기 표, 스탯 화면, 상세 정보, 버프 패널",여러 화면 (직접 정리)
+화면 공통 용어,Attribute Scaling,보정 / 능력 보정,"무기 표, 상세 정보",여러 화면 (직접 정리)
+화면 공통 용어,Attributes Required,요구 능력치,"무기 표, 상세 정보, 스탯 화면",여러 화면 (직접 정리)
+화면 공통 용어,Guarded Damage Negation,가드 경감률,무기 표,여러 화면 (직접 정리)
+화면 공통 용어,Guard Boost,가드 강도,무기 표,여러 화면 (직접 정리)
+화면 공통 용어,Status Effect Buildup,상태이상 축적치,"요약 패널, 무기 표, 스탯 화면",여러 화면 (직접 정리)
+화면 공통 용어,Resistance,상태이상 내성,방어구 표,여러 화면 (직접 정리)
+화면 공통 용어,Affinity,변질,"무기 표, 스탯 화면",여러 화면 (직접 정리)
+화면 공통 용어,Ash of War / Skill,전회,탈리스만 효과 설명,여러 화면 (직접 정리)
+화면 공통 용어,Reinforcement / Upgrade,강화,"무기 표, 스탯 화면",여러 화면 (직접 정리)
+화면 공통 용어,Smithing Stone,단석,"무기 표 안내 (일반 무기 강화 재료, 최대 +25)",여러 화면 (직접 정리)
+화면 공통 용어,Somber Smithing Stone,색 잃은 단석,"무기 표 안내 (특수 무기 강화 재료, 최대 +10)",여러 화면 (직접 정리)
+화면 공통 용어,Regular weapon (Smithing Stone),일반 무기,강화 설정,여러 화면 (직접 정리)
+화면 공통 용어,Somber weapon (Somber Smithing Stone),특수 무기,강화 설정,여러 화면 (직접 정리)
+화면 공통 용어,Weapon Type,무기군,무기 표,여러 화면 (직접 정리)
+화면 공통 용어,Armament,무기,"장비 칸 이름, 상세 정보",여러 화면 (직접 정리)
+화면 공통 용어,Right Hand Armament,오른손 무기,장비 칸 (RH1~3),여러 화면 (직접 정리)
+화면 공통 용어,Left Hand Armament,왼손 무기,장비 칸 (LH1~3),여러 화면 (직접 정리)
+화면 공통 용어,Armor,방어구,"방어구 표, 상세 정보",여러 화면 (직접 정리)
+화면 공통 용어,Talisman,탈리스만,"탈리스만 표, 장비 칸",여러 화면 (직접 정리)
+화면 공통 용어,Equipment,장비,장비 화면,여러 화면 (직접 정리)
+화면 공통 용어,Inventory,인벤토리,"장비 화면 안내, 초기화",여러 화면 (직접 정리)
+화면 공통 용어,Equip / Unequip,장착 / 장착 해제,장비 화면,여러 화면 (직접 정리)
+화면 공통 용어,Rune Level,레벨,스탯 화면,여러 화면 (직접 정리)
+화면 공통 용어,One-Handed / Two-Handed,한손 / 양손,"스탯 화면, 무기 표",여러 화면 (직접 정리)
+화면 공통 용어,Incantation,기도,버프 패널,여러 화면 (직접 정리)
+화면 공통 용어,Sorcery,마술,버프 패널,여러 화면 (직접 정리)
+화면 공통 용어,Great Rune,거대한 룬,버프 패널,여러 화면 (직접 정리)
+화면 공통 용어,Flask of Wondrous Physick,성배병,탈리스만 효과 설명,여러 화면 (직접 정리)
+화면 공통 용어,Crystal Tear,영약,버프 패널,여러 화면 (직접 정리)
+화면 공통 용어,Spirit Ash,소환 영체,탈리스만·버프 효과 설명,여러 화면 (직접 정리)
+화면 공통 용어,Weapon buff (enchantment),무기 버프,버프 중첩 규칙,여러 화면 (직접 정리)
+화면 공통 용어,Body buff,바디 버프,버프 중첩 규칙,여러 화면 (직접 정리)
+화면 공통 용어,Does not stack,중첩 불가,버프 패널,여러 화면 (직접 정리)
+화면 공통 용어,Base game,본편,표의 구분 필터,여러 화면 (직접 정리)
+화면 공통 용어,Shadow of the Erdtree (DLC),DLC,표의 구분 필터,여러 화면 (직접 정리)
+능력치,Vigor,생명력,스탯 화면,src/stores/stats.ts › ATTRIBUTE_LABELS
+능력치,Mind,정신력,스탯 화면,src/stores/stats.ts › ATTRIBUTE_LABELS
+능력치,Endurance,지구력,스탯 화면,src/stores/stats.ts › ATTRIBUTE_LABELS
+능력치,Strength,근력,스탯 화면,src/stores/stats.ts › ATTRIBUTE_LABELS
+능력치,Dexterity,기량,스탯 화면,src/stores/stats.ts › ATTRIBUTE_LABELS
+능력치,Intelligence,지력,스탯 화면,src/stores/stats.ts › ATTRIBUTE_LABELS
+능력치,Faith,신앙,스탯 화면,src/stores/stats.ts › ATTRIBUTE_LABELS
+능력치,Arcane,신비,스탯 화면,src/stores/stats.ts › ATTRIBUTE_LABELS
+능력치 (줄임),Strength,근,무기 표의 요구 능력치·보정 열 제목,src/data/labels.ts › STAT_SHORT_LABELS
+능력치 (줄임),Dexterity,기,무기 표의 요구 능력치·보정 열 제목,src/data/labels.ts › STAT_SHORT_LABELS
+능력치 (줄임),Intelligence,지,무기 표의 요구 능력치·보정 열 제목,src/data/labels.ts › STAT_SHORT_LABELS
+능력치 (줄임),Faith,신,무기 표의 요구 능력치·보정 열 제목,src/data/labels.ts › STAT_SHORT_LABELS
+능력치 (줄임),Arcane,비,무기 표의 요구 능력치·보정 열 제목,src/data/labels.ts › STAT_SHORT_LABELS
+공격 속성,Physical,물리,"공격력 열, 버프 패널",src/data/labels.ts › DAMAGE_LABELS
+공격 속성,Magic,마력,"공격력 열, 버프 패널",src/data/labels.ts › DAMAGE_LABELS
+공격 속성,Fire,화염,"공격력 열, 버프 패널",src/data/labels.ts › DAMAGE_LABELS
+공격 속성,Lightning,벼락,"공격력 열, 버프 패널",src/data/labels.ts › DAMAGE_LABELS
+공격 속성,Holy,신성,"공격력 열, 버프 패널",src/data/labels.ts › DAMAGE_LABELS
+방어력·경감률 항목,Physical,물리,"요약 패널, 방어구 표",src/data/labels.ts › NEGATION_LABELS
+방어력·경감률 항목,Strike,타격,"요약 패널, 방어구 표",src/data/labels.ts › NEGATION_LABELS
+방어력·경감률 항목,Slash,참격,"요약 패널, 방어구 표",src/data/labels.ts › NEGATION_LABELS
+방어력·경감률 항목,Pierce,관통,"요약 패널, 방어구 표",src/data/labels.ts › NEGATION_LABELS
+방어력·경감률 항목,Magic,마력,"요약 패널, 방어구 표",src/data/labels.ts › NEGATION_LABELS
+방어력·경감률 항목,Fire,화염,"요약 패널, 방어구 표",src/data/labels.ts › NEGATION_LABELS
+방어력·경감률 항목,Lightning,벼락,"요약 패널, 방어구 표",src/data/labels.ts › NEGATION_LABELS
+방어력·경감률 항목,Holy,신성,"요약 패널, 방어구 표",src/data/labels.ts › NEGATION_LABELS
+상태이상,Hemorrhage (Blood Loss),출혈,"축적치 표, 무기 표",src/data/labels.ts › STATUS_LABELS
+상태이상,Frostbite,동상,"축적치 표, 무기 표",src/data/labels.ts › STATUS_LABELS
+상태이상,Poison,독,"축적치 표, 무기 표",src/data/labels.ts › STATUS_LABELS
+상태이상,Scarlet Rot,부패,"축적치 표, 무기 표",src/data/labels.ts › STATUS_LABELS
+상태이상,Sleep,수면,"축적치 표, 무기 표",src/data/labels.ts › STATUS_LABELS
+상태이상,Madness,발광,"축적치 표, 무기 표",src/data/labels.ts › STATUS_LABELS
+상태이상 내성,Immunity,면역,방어구 표,src/features/itemTables/ArmorTable.vue › RESISTANCE_LABELS
+상태이상 내성,Robustness,강건,방어구 표,src/features/itemTables/ArmorTable.vue › RESISTANCE_LABELS
+상태이상 내성,Focus,집중력,방어구 표,src/features/itemTables/ArmorTable.vue › RESISTANCE_LABELS
+상태이상 내성,Vitality,항사,방어구 표,src/features/itemTables/ArmorTable.vue › RESISTANCE_LABELS
+변질 (Affinity),Standard,일반,"무기 표, 스탯 화면",src/data/labels.ts › AFFINITY_LABELS
+변질 (Affinity),Heavy,중후,"무기 표, 스탯 화면",src/data/labels.ts › AFFINITY_LABELS
+변질 (Affinity),Keen,예리,"무기 표, 스탯 화면",src/data/labels.ts › AFFINITY_LABELS
+변질 (Affinity),Quality,상질,"무기 표, 스탯 화면",src/data/labels.ts › AFFINITY_LABELS
+변질 (Affinity),Fire,화염,"무기 표, 스탯 화면",src/data/labels.ts › AFFINITY_LABELS
+변질 (Affinity),Flame Art,화염술,"무기 표, 스탯 화면",src/data/labels.ts › AFFINITY_LABELS
+변질 (Affinity),Lightning,벼락,"무기 표, 스탯 화면",src/data/labels.ts › AFFINITY_LABELS
+변질 (Affinity),Sacred,신성,"무기 표, 스탯 화면",src/data/labels.ts › AFFINITY_LABELS
+변질 (Affinity),Magic,마력,"무기 표, 스탯 화면",src/data/labels.ts › AFFINITY_LABELS
+변질 (Affinity),Cold,냉기,"무기 표, 스탯 화면",src/data/labels.ts › AFFINITY_LABELS
+변질 (Affinity),Poison,독,"무기 표, 스탯 화면",src/data/labels.ts › AFFINITY_LABELS
+변질 (Affinity),Blood,피,"무기 표, 스탯 화면",src/data/labels.ts › AFFINITY_LABELS
+변질 (Affinity),Occult,신비,"무기 표, 스탯 화면",src/data/labels.ts › AFFINITY_LABELS
+방어구 부위,Head,머리,방어구 표,src/features/itemTables/ArmorTable.vue › PART_LABELS
+방어구 부위,Chest (Body),몸통,방어구 표,src/features/itemTables/ArmorTable.vue › PART_LABELS
+방어구 부위,Arms,팔,방어구 표,src/features/itemTables/ArmorTable.vue › PART_LABELS
+방어구 부위,Legs,다리,방어구 표,src/features/itemTables/ArmorTable.vue › PART_LABELS
+구분 (본편/DLC),Base game,본편,표의 이름 옆 태그,src/data/labels.ts › CONTENT_LABELS
+구분 (본편/DLC),Shadow of the Erdtree (DLC),DLC,표의 이름 옆 태그,src/data/labels.ts › CONTENT_LABELS
+구분 (본편/DLC),Other,기타,표의 이름 옆 태그,src/data/labels.ts › CONTENT_LABELS
+버프 분류,Incantation,기도,버프 패널 고르기 목록,src/features/buffs/BuffPanel.vue › CATEGORY_LABELS
+버프 분류,Sorcery,마술,버프 패널 고르기 목록,src/features/buffs/BuffPanel.vue › CATEGORY_LABELS
+버프 분류,Edible,소모품,버프 패널 고르기 목록,src/features/buffs/BuffPanel.vue › CATEGORY_LABELS
+버프 분류,Grease,기름,버프 패널 고르기 목록,src/features/buffs/BuffPanel.vue › CATEGORY_LABELS
+버프 분류,Crystal Tear,영약,버프 패널 고르기 목록,src/features/buffs/BuffPanel.vue › CATEGORY_LABELS
+버프 분류,Aromatic,조향병,버프 패널 고르기 목록,src/features/buffs/BuffPanel.vue › CATEGORY_LABELS
+버프 분류,Pot,항아리,버프 패널 고르기 목록,src/features/buffs/BuffPanel.vue › CATEGORY_LABELS
+버프 분류,Offensive,공격 아이템,버프 패널 고르기 목록,src/features/buffs/BuffPanel.vue › CATEGORY_LABELS
+버프 분류,Throwable,투척 아이템,버프 패널 고르기 목록,src/features/buffs/BuffPanel.vue › CATEGORY_LABELS
+버프 분류,Great Rune,거대한 룬,버프 패널 고르기 목록,src/features/buffs/BuffPanel.vue › CATEGORY_LABELS
+버프 분류,Utility,유틸 아이템,버프 패널 고르기 목록,src/features/buffs/BuffPanel.vue › CATEGORY_LABELS
+버프 분류,Essential,기본 아이템,버프 패널 고르기 목록,src/features/buffs/BuffPanel.vue › CATEGORY_LABELS
+탈리스만 분류,Stat,능력치,탈리스만 표,src/data/talismanEffects.ts › TALISMAN_CATEGORY_LABELS
+탈리스만 분류,Attack,공격,탈리스만 표,src/data/talismanEffects.ts › TALISMAN_CATEGORY_LABELS
+탈리스만 분류,Absorption,피해 경감,탈리스만 표,src/data/talismanEffects.ts › TALISMAN_CATEGORY_LABELS
+탈리스만 분류,Resistances,내성,탈리스만 표,src/data/talismanEffects.ts › TALISMAN_CATEGORY_LABELS
+탈리스만 분류,Spell,주문,탈리스만 표,src/data/talismanEffects.ts › TALISMAN_CATEGORY_LABELS
+탈리스만 분류,Healing,회복,탈리스만 표,src/data/talismanEffects.ts › TALISMAN_CATEGORY_LABELS
+탈리스만 분류,Utility,유틸,탈리스만 표,src/data/talismanEffects.ts › TALISMAN_CATEGORY_LABELS
+탈리스만 분류,PvP,PvP,탈리스만 표,src/data/talismanEffects.ts › TALISMAN_CATEGORY_LABELS
+효과 항목,Attack Power,공격력,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Physical Attack Power,물리 공격력,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Magic Attack Power,마력 공격력,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Fire Attack Power,화염 공격력,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Lightning Attack Power,벼락 공격력,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Holy Attack Power,신성 공격력,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Stamina Attack Rate,스태미나 공격력,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Scale Physical Attack Power with Equip Load,장비 중량에 따라 물리 공격력 증가,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Absorption,피해 경감,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Physical Absorption,물리 피해 경감,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Elemental Absorption,속성 피해 경감,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Magic Absorption,마력 피해 경감,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Fire Absorption,화염 피해 경감,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Lightning Absorption,벼락 피해 경감,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Holy Absorption,신성 피해 경감,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Maximum Health,최대 HP,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Maximum Focus,최대 FP,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Maximum Stamina,최대 스태미나,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Maximum Equip Load,최대 장비 중량,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Health Points,HP 회복,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Focus Points,FP 회복,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Stamina Recovery Speed,스태미나 회복 속도,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Vigor,생명력,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Mind,정신력,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Endurance,지구력,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Strength,근력,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Dexterity,기량,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Intelligence,지력,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Faith,신앙,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Arcane,신비,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Immunity,면역,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Robustness,강건,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Focus,집중력,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Vitality,항사,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Poise,강인도,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Item Discovery,아이템 발견력,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Rune Acquisition,룬 획득량,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Memory Slots,기억 슬롯,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Bow Distance,활 사거리,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Casting Speed,주문 시전 속도,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Spell Duration,주문 지속 시간,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Spell Focus Consumption,주문 FP 소모,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Skill Focus Consumption,전회 FP 소모,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Extended Roll Iframes Enabled,구르기 무적 시간 증가,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Backstep Iframes Enabled,백스텝 무적 시간 증가,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Reduce Headshot Impact,헤드샷 피해 감소,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Flask Health Restoration,성배병 HP 회복량,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Flask Focus Restoration,성배병 FP 회복량,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Incoming Stamina Damage,받는 스태미나 피해,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Enemy Hearing,적이 듣는 소리,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Invisible at Distance,멀리서 보이지 않음,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Fall Damage,낙하 피해,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Attract Enemy Aggression,적의 표적이 되기 쉬움,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Destroy Item on Death,죽으면 탈리스만이 깨짐,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Preserve Runes on Death,죽어도 룬을 잃지 않음,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Appear as Host,호스트의 모습으로 보임,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Appear as Cooperator,협력자로 보임,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Bleed Buildup,출혈 축적,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Poison Buildup,독 축적,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Scarlet Rot Buildup,부패 축적,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Frost Buildup,동상 축적,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Sleep Buildup,수면 축적,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Madness Buildup,발광 축적,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Deathblight Buildup,죽음 축적,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Death Buildup,즉사 축적,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Frost,동상,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Physical Guard Absorption,가드 물리 경감,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Magic Guard Absorption,가드 마력 경감,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Fire Guard Absorption,가드 화염 경감,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Lightning Guard Absorption,가드 벼락 경감,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Holy Guard Absorption,가드 신성 경감,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Deflection,공격 튕겨내기,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Ignore Damage Level,경직 무시,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Change Damage Level,경직 변화,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Restore HP on Attack,공격 시 HP 회복,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Spirit Ash Health Points,소환 영체 HP,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Spirit Ash Attack Power,소환 영체 공격력,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Grant Phantom Great Rune,침입자 거대한 룬 효과,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Apply Oil Effect To Nearby Enemies,주변 적에게 기름 효과(화염 데미지 증가),탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Summon Donut Buddy,소환,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Stamina Consumption,스태미나 소모,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Framerate,프레임 레이트,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Physical Damage on Roll,구르기 시 물리 피해,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Hide User,모습 숨김,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 항목,Hide Weapon,무기 숨김,탈리스만·버프 효과 설명,src/data/talismanEffects.ts › TALISMAN_ATTRIBUTE_LABELS
+효과 조건,Charged Skill Attack,전회 차지,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Skill Attack,전회,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Charge Attack,강공격,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Charged Attack,차지 공격,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Successive 3 Hits,3회 연속 공격,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Successive 6 Hits,6회 연속 공격,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Successive 9 Hits,9회 연속 공격,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Successive Hits,연속 공격,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,HP below 20%,HP 20% 이하,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,HP above 100%,HP 최대,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Enhance Thrusting Counter Attacks,관통 카운터,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Enhance Critical Attacks,치명타,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Trigger during Critical Hit,치명타,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Trigger after Critical Hit,치명타 뒤,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Trigger on Critical Hit (HP),치명타 (HP),"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Trigger on Critical Hit (FP),치명타 (FP),"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Final Chain Attack,연속 공격 마지막 타,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Horseback Attack,말 위 공격,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Ammunition Attack,화살·볼트,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Ammunition OnHit Attack,화살·볼트 명중,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Ranged Skill Attack,원거리 전회,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Trigger in Presence of Blood Loss,주변에서 출혈 발생,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Trigger in Presence of Rot,주변에서 부패 발생,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Trigger in Presence of Madness,주변에서 발광 발생,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Trigger in Presence of Sleep,주변에서 수면 발생,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Jump Attack,점프 공격,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Omen Bairn,흉조 아이,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Roar Attack,포효·브레스 공격,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Guard Counter Attack,가드 카운터,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Pot Item Attack,항아리 투척,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Perfume Item Attack,조향병,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Affects Sorceries,마술,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Affects Incantations,기도,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Spell Power Boost,주문 위력,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Apply Kill Effect,적 처치,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,On Spirit Ash Killed,소환 영체가 쓰러짐,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Trigger on Crouch,웅크리기,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Kicking/Stomping Skill Attack,발차기·밟기 전회,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Two-Handed,양손,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Guarding,가드,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Weapon-Throwing Attack,무기 투척,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,On Poison,독,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,On Scarlet Rot,부패,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,On Frostbite,동상,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,On Blood Loss,출혈,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,On Sleep,수면,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,On Madness,발광,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Rolling or Backstep,구르기·백스텝,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Running Attack,달리기 공격,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Precision Aiming,정밀 조준,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Magma Incantation/Weapon Skill Attack,용암 기도·전회,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Storm Attack,폭풍 공격,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Using Flask,성배병 사용,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Heavy Load,무거움,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Overloaded,중량 초과,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Hold Stance,자세 유지,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Unknown #497,알 수 없는 조건,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Unknown #500,알 수 없는 조건,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Body Buff VFX,바디 버프 연출,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Left-hand Buff VFX,왼손 버프 연출,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Dragon Change VFX,용 변신 연출,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Damage Level Change before Poise Break,강인도가 깨지기 전 경직 변화,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,On Hit,피격,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,HP below 21%,HP 21% 미만,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,vs Ancient Dragon Enemies,고룡 상대,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,vs Dragon Enemies,용 상대,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,vs Undead Enemies,언데드 상대,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Not a Chaos Follower,미친불을 받지 않았을 때,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Damage Received,피해를 받음,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Invading,침입 중,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Nearby Ally,근처 아군,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Inside Affected Area,효과 범위 안,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Damage Level 0,경직 0단계,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Damage Level 1,경직 1단계,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Damage Level 2,경직 2단계,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Damage Level 3,경직 3단계,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Damage Level 4,경직 4단계,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Damage Level 5,경직 5단계,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Damage Level 6,경직 6단계,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Damage Level 7,경직 7단계,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Damage Level 8,경직 8단계,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Damage Level 9,경직 9단계,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
+효과 조건,Damage Level 10,경직 10단계,"탈리스만·버프 효과 설명 (""… 시:"")",src/data/talismanEffects.ts › TALISMAN_CONDITION_LABELS
