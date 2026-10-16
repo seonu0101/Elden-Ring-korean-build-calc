@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { WEAPONS } from '@/data/items'
+import { useIsMobile } from '@/composables/useIsMobile'
+import WeaponCardList from './WeaponCardList.vue'
 import { itemName, nameLanguage, weaponTypeName } from '@/data/names'
 import {
   AFFINITY_LABELS,
@@ -39,6 +41,8 @@ import type { AffinityMode, ContentFilter, SortDirection, SortKey } from './weap
 const PAGE_SIZE = 300
 
 const store = useCharacterStore()
+/** 모바일이면 표 대신 카드 목록 */
+const isMobile = useIsMobile()
 
 const query = ref('')
 const weaponType = ref<string | null>(null)
@@ -294,7 +298,7 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
       >
         {{ sortDirection === 'asc' ? '↑ 오름차순' : '↓ 내림차순' }}
       </button>
-      <span class="wt__hint">열 제목을 눌러도 정렬됩니다</span>
+      <span v-if="!isMobile" class="wt__hint">열 제목을 눌러도 정렬됩니다</span>
     </div>
 
     <div class="wt__filters wt__upgrade" role="group" aria-label="강화">
@@ -430,7 +434,15 @@ const columnCount = computed(() => 4 + (expanded.value ? 1 : 0) + STAT_KEYS.leng
       전설 무기처럼 변질할 수 없는 무기는 일반에서만 보입니다. 다른 변질 버튼을 누르면 함께 볼 수 있습니다.
     </p>
 
-    <div class="wt__scroll">
+    <!-- 모바일은 표 대신 카드 목록 (정렬·필터·강화 설정은 같다) -->
+    <WeaponCardList
+      v-if="isMobile"
+      :rows="visibleRows"
+      :show-affinity="expanded"
+      :owned-counts="ownedCounts"
+      @add="addToInventory"
+    />
+    <div v-else class="wt__scroll">
       <table class="wt__table">
         <thead>
           <tr class="wt__group-row">
