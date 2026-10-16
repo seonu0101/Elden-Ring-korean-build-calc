@@ -483,8 +483,8 @@ function resetFilters() {
 }
 /* 모바일: 고정된 이름 칸을 좁히고 긴 이름은 줄바꿈 (PC는 그대로) */
 @media (max-width: 720px) {
-  .it__name-col {
-    min-width: 0;
+  .it__table .it__name-col {
+    min-width: 120px;
     width: 120px;
     max-width: 120px;
     white-space: normal;
