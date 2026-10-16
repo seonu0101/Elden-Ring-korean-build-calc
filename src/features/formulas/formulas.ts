@@ -2,7 +2,7 @@
 // 숫자는 실제 계산 함수(calculateAttack, defenseBreakdown, combineEffects)가 쓴 값을 그대로 옮긴다.
 import { calculateAttack, canTwoHandBonus, MAX_STAT } from '@/data/attackPower'
 import type { AttackResult } from '@/data/attackPower'
-import { damageNegation, defenseBreakdown } from '@/data/defense'
+import { damageNegation, defenseBreakdown, statGraphParams } from '@/data/defense'
 import type { EffectSummary, MultiplierLine } from '@/data/effects'
 import { percentText } from '@/data/effects'
 import { AFFINITY_LABELS, DAMAGE_LABELS, NEGATION_LABELS, STAT_LABELS, STATUS_LABELS } from '@/data/labels'
@@ -385,4 +385,25 @@ export function buildFormulas(input: FormulaInput): FormulaSection[] {
     },
     weightSection(input),
   ]
+}
+
+/** 능력치 곡선 계산 과정 (statGraphValue와 같은 식을 단계별로). 계산식 페이지의 예시에 쓴다 */
+export function statGraphSteps(id: number, x: number) {
+  const g = statGraphParams(id)!
+  let i = g.stage.length - 2
+  while (i > 0 && x < g.stage[i]!) i--
+  if (x >= g.stage[g.stage.length - 1]!) {
+    return { start: g.stage[4]!, end: g.stage[4]!, from: g.grow[4]!, to: g.grow[4]!, adj: 0, t: 0, curved: 0, value: g.grow[4]! }
+  }
+  if (x < g.stage[0]!) {
+    return { start: g.stage[0]!, end: g.stage[1]!, from: g.grow[0]!, to: g.grow[0]!, adj: 0, t: 0, curved: 0, value: g.grow[0]! }
+  }
+  const start = g.stage[i]!
+  const end = g.stage[i + 1]!
+  const from = g.grow[i]!
+  const to = g.grow[i + 1]!
+  const adj = g.adj[i]!
+  const t = (x - start) / (end - start)
+  const curved = adj < 0 ? 1 - (1 - t) ** -adj : t ** adj
+  return { start, end, from, to, adj, t, curved, value: from + (to - from) * curved }
 }

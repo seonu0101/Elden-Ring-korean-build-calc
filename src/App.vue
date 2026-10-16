@@ -2,14 +2,15 @@
 import { ref, watch } from 'vue'
 import EquipmentSummary from '@/components/EquipmentSummary.vue'
 import BuffPanel from '@/features/buffs/BuffPanel.vue'
+import FormulaReference from '@/features/formulas/FormulaReference.vue'
 import GameMenuSimulator from '@/features/gameMenu/GameMenuSimulator.vue'
 import ArmorTable from '@/features/itemTables/ArmorTable.vue'
 import TalismanTable from '@/features/itemTables/TalismanTable.vue'
 import StatsView from '@/features/stats/StatsView.vue'
 import WeaponTable from '@/features/weaponTable/WeaponTable.vue'
 
-type View = 'equipment' | 'weapons' | 'armor' | 'talismans' | 'stats'
-const VIEWS: readonly View[] = ['equipment', 'weapons', 'armor', 'talismans', 'stats']
+type View = 'equipment' | 'weapons' | 'armor' | 'talismans' | 'stats' | 'formulas'
+const VIEWS: readonly View[] = ['equipment', 'weapons', 'armor', 'talismans', 'stats', 'formulas']
 const VIEW_KEY = 'er-planner/view'
 
 function loadView(): View {
@@ -36,7 +37,7 @@ watch(view, (v) => {
     class="app"
     :class="{
       'app--wide': view === 'weapons' || view === 'armor' || view === 'talismans',
-      'app--medium': view === 'stats',
+      'app--medium': view === 'stats' || view === 'formulas',
     }"
   >
     <header class="app__header">
@@ -58,6 +59,14 @@ watch(view, (v) => {
         <button type="button" :class="{ 'is-active': view === 'stats' }" data-testid="nav-stats" @click="view = 'stats'">
           스탯
         </button>
+        <button
+          type="button"
+          :class="{ 'is-active': view === 'formulas' }"
+          data-testid="nav-formulas"
+          @click="view = 'formulas'"
+        >
+          계산식
+        </button>
       </nav>
     </header>
 
@@ -77,6 +86,9 @@ watch(view, (v) => {
     </main>
     <main v-else-if="view === 'talismans'">
       <TalismanTable />
+    </main>
+    <main v-else-if="view === 'formulas'">
+      <FormulaReference />
     </main>
     <main v-else>
       <StatsView />

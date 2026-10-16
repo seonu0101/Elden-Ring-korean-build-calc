@@ -60,6 +60,14 @@ function graphValue(graphId: number | undefined, stat: number): number {
   return graph[Math.min(Math.max(0, Math.floor(stat)), graph.length - 1)] ?? 0
 }
 
+/** 보정 곡선 번호 목록 (계산식 페이지의 곡선 표) */
+export const CORRECTION_GRAPH_IDS: readonly number[] = Object.keys(GRAPHS).map(Number).sort((a, b) => a - b)
+
+/** 보정 곡선 값 (능력치는 0~150, 소수점 버림) */
+export function correctionGraphValue(graphId: number, stat: number): number {
+  return graphValue(graphId, stat)
+}
+
 /** 기본값과 보정값. 화면에는 소수점을 버려서 보여준다. */
 export interface ValuePart {
   base: number

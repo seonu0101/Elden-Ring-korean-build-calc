@@ -9,7 +9,7 @@ import { NEGATION_TYPES } from '@/types'
 import type { NegationType, ProtectorItem } from '@/types'
 import statGraphData from './stat-graphs.generated.json'
 
-interface StatGraph {
+export interface StatGraph {
   name: string
   /** 구간 경계 능력치 5개 */
   stage: number[]
@@ -21,8 +21,13 @@ interface StatGraph {
 
 const STAT_GRAPHS = statGraphData.graphs as Record<string, StatGraph>
 
+/** 능력치 곡선의 구간 값 (계산식 페이지의 표) */
+export function statGraphParams(id: number): StatGraph | null {
+  return STAT_GRAPHS[id] ?? null
+}
+
 /** 방어력 계산에 쓰는 곡선 번호 */
-const GRAPH = {
+export const GRAPH = {
   levelDefense: 102,
   strength: 130,
   intelligence: 132,
