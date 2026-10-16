@@ -6,12 +6,13 @@ import DamageCalculator from '@/features/damage/DamageCalculator.vue'
 import FormulaReference from '@/features/formulas/FormulaReference.vue'
 import GameMenuSimulator from '@/features/gameMenu/GameMenuSimulator.vue'
 import ArmorTable from '@/features/itemTables/ArmorTable.vue'
+import BuffTable from '@/features/itemTables/BuffTable.vue'
 import TalismanTable from '@/features/itemTables/TalismanTable.vue'
 import StatsView from '@/features/stats/StatsView.vue'
 import WeaponTable from '@/features/weaponTable/WeaponTable.vue'
 
-type View = 'equipment' | 'weapons' | 'armor' | 'talismans' | 'stats' | 'formulas'
-const VIEWS: readonly View[] = ['equipment', 'weapons', 'armor', 'talismans', 'stats', 'formulas']
+type View = 'equipment' | 'weapons' | 'armor' | 'talismans' | 'buffs' | 'stats' | 'formulas'
+const VIEWS: readonly View[] = ['equipment', 'weapons', 'armor', 'talismans', 'buffs', 'stats', 'formulas']
 const VIEW_KEY = 'er-planner/view'
 
 function loadView(): View {
@@ -37,7 +38,7 @@ watch(view, (v) => {
   <div
     class="app"
     :class="{
-      'app--wide': view === 'weapons' || view === 'armor' || view === 'talismans',
+      'app--wide': view === 'weapons' || view === 'armor' || view === 'talismans' || view === 'buffs',
       'app--medium': view === 'stats' || view === 'formulas',
     }"
   >
@@ -56,6 +57,9 @@ watch(view, (v) => {
           @click="view = 'talismans'"
         >
           탈리스만 표
+        </button>
+        <button type="button" :class="{ 'is-active': view === 'buffs' }" data-testid="nav-buffs" @click="view = 'buffs'">
+          버프 표
         </button>
         <button type="button" :class="{ 'is-active': view === 'stats' }" data-testid="nav-stats" @click="view = 'stats'">
           스탯
@@ -88,6 +92,9 @@ watch(view, (v) => {
     </main>
     <main v-else-if="view === 'talismans'">
       <TalismanTable />
+    </main>
+    <main v-else-if="view === 'buffs'">
+      <BuffTable />
     </main>
     <main v-else-if="view === 'formulas'">
       <FormulaReference />

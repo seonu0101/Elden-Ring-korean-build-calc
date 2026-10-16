@@ -1,5 +1,11 @@
-// 방어구 표·탈리스만 표가 함께 쓰는 검색·정렬·CSV. 화면과 무관한 순수 함수만 둔다.
-import type { Item } from '@/types'
+// 방어구 표·탈리스만 표·버프 표가 함께 쓰는 검색·정렬·CSV. 화면과 무관한 순수 함수만 둔다.
+
+/** 표에 넣을 수 있는 항목: 이름과 id, 본편/DLC 구분 */
+export interface TableItem {
+  id: string
+  name: string
+  content?: number
+}
 
 export type ContentFilter = 'all' | 'base' | 'dlc'
 export type SortDirection = 'asc' | 'desc'
@@ -38,9 +44,7 @@ export interface ItemFilter {
   content: ContentFilter
 }
 
-type WithContent = Item & { content?: number }
-
-export function filterItems<T extends WithContent>(items: readonly T[], filter: ItemFilter, typeFilter?: TypeFilter<T>): T[] {
+export function filterItems<T extends TableItem>(items: readonly T[], filter: ItemFilter, typeFilter?: TypeFilter<T>): T[] {
   const query = filter.query.trim().toLowerCase()
   return items.filter((item) => {
     if (query && !item.name.toLowerCase().includes(query)) return false
@@ -57,7 +61,7 @@ function compare(a: number | string, b: number | string): number {
 }
 
 /** 정렬한 새 배열. 'name'은 이름순, 그 밖은 열의 값으로. 값이 같으면 이름순. */
-export function sortItems<T extends Item>(
+export function sortItems<T extends TableItem>(
   items: readonly T[],
   columns: readonly TableColumn<T>[],
   key: string,
@@ -80,7 +84,7 @@ function csvCell(value: string | number): string {
 }
 
 /** 엑셀에서 바로 열 수 있는 CSV (UTF-8 BOM 포함). 화면에 보이는 글자 그대로 */
-export function itemsToCsv<T extends Item>(items: readonly T[], columns: readonly TableColumn<T>[]): string {
+export function itemsToCsv<T extends TableItem>(items: readonly T[], columns: readonly TableColumn<T>[]): string {
   const header = ['이름', ...columns.map((c) => (c.group ? `${c.group} ${c.label}` : c.label))]
   const rows = items.map((item) => [item.name, ...columns.map((c) => (c.display ? c.display(item) : c.value(item)))])
   return '﻿' + [header, ...rows].map((row) => row.map(csvCell).join(',')).join('\r\n') + '\r\n'

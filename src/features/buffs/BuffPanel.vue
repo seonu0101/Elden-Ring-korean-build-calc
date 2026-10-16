@@ -6,7 +6,7 @@ import { percentText } from '@/data/effects'
 import type { MultiplierLine } from '@/data/effects'
 import { conflictsWith } from '@/data/buffStacking'
 import { BUFFS, BUFFS_BY_ID } from '@/data/items'
-import { DAMAGE_LABELS, NEGATION_LABELS } from '@/data/labels'
+import { BUFF_CATEGORY_LABELS, DAMAGE_LABELS, NEGATION_LABELS } from '@/data/labels'
 import { effectText } from '@/data/talismanEffects'
 import { levelFor } from '@/data/upgrade'
 import { EQUIPMENT_GRID } from '@/features/gameMenu/layout'
@@ -22,20 +22,7 @@ const character = useCharacterStore()
 const stats = useStatsStore()
 
 /** 버프 고르기 목록: 기도, 마술, 소비 아이템 분류별 */
-const CATEGORY_LABELS: Record<string, string> = {
-  Incantation: '기도',
-  Sorcery: '마술',
-  Edible: '소모품',
-  Grease: '기름',
-  'Crystal Tear': '영약',
-  Aromatic: '조향병',
-  Pot: '항아리',
-  Offensive: '공격 아이템',
-  Throwable: '투척 아이템',
-  'Great Rune': '거대한 룬',
-  Utility: '유틸 아이템',
-  Essential: '기본 아이템',
-}
+const CATEGORY_LABELS = BUFF_CATEGORY_LABELS
 const groups = computed(() => {
   const order = Object.keys(CATEGORY_LABELS)
   const byCategory = new Map<string, BuffItem[]>()

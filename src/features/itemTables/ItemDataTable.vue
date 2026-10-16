@@ -1,11 +1,11 @@
-<script setup lang="ts" generic="T extends ProtectorItem | TalismanItem">
-// 방어구 표·탈리스만 표가 함께 쓰는 표 화면: 검색, 종류·본편/DLC 필터, 열 정렬, CSV, 인벤토리 추가
+<script setup lang="ts" generic="T extends TableItem">
+// 방어구 표·탈리스만 표·버프 표가 함께 쓰는 표 화면: 검색, 종류·본편/DLC 필터, 열 정렬, CSV, 인벤토리 추가
+// 마지막 칸은 기본으로 "보유 / +"(인벤토리 추가)이고, action 슬롯으로 바꿀 수 있다 (버프 표는 켜기 버튼).
 import { computed, ref, watch } from 'vue'
 import { CONTENT_LABELS } from '@/data/labels'
 import { useCharacterStore } from '@/stores/character'
-import type { ProtectorItem, TalismanItem } from '@/types'
 import { columnGroups, defaultDirection, filterItems, itemsToCsv, sortItems } from './itemTable'
-import type { ContentFilter, SortDirection, TableColumn, TypeFilter } from './itemTable'
+import type { ContentFilter, SortDirection, TableColumn, TableItem, TypeFilter } from './itemTable'
 
 const props = defineProps<{
   title: string
@@ -15,7 +15,11 @@ const props = defineProps<{
   /** CSV 파일 이름 (확장자 제외) */
   csvName: string
   note?: string
+  /** 마지막 칸 제목 (기본 "보유") */
+  actionLabel?: string
 }>()
+
+defineSlots<{ action?: (props: { item: T }) => unknown }>()
 
 /** 한 번에 그리는 행 수 */
 const PAGE_SIZE = 300
@@ -188,7 +192,7 @@ function resetFilters() {
                 {{ c.label }}<span class="it__arrow">{{ arrow(c.key) }}</span>
               </button>
             </th>
-            <th class="ctr">보유</th>
+            <th class="ctr">{{ actionLabel ?? '보유' }}</th>
           </tr>
         </thead>
         <tbody>
@@ -206,6 +210,7 @@ function resetFilters() {
               {{ cellText(c, item) }}
             </td>
             <td class="ctr nowrap">
+              <slot name="action" :item="item">
               <span v-if="ownedCounts.get(item.id)" class="it__owned">{{ ownedCounts.get(item.id) }}</span>
               <button
                 type="button"
@@ -217,6 +222,7 @@ function resetFilters() {
               >
                 +
               </button>
+              </slot>
             </td>
           </tr>
           <tr v-if="rows.length === 0">

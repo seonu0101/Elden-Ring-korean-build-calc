@@ -90,3 +90,19 @@ export function scalingGrade(value: number | undefined): string {
   if (v >= 25) return 'D'
   return 'E'
 }
+
+/** 버프 분류 (원본 데이터의 category) */
+export const BUFF_CATEGORY_LABELS: Readonly<Record<string, string>> = {
+  Incantation: '기도',
+  Sorcery: '마술',
+  Edible: '소모품',
+  Grease: '기름',
+  'Crystal Tear': '영약',
+  Aromatic: '조향병',
+  Pot: '항아리',
+  Offensive: '공격 아이템',
+  Throwable: '투척 아이템',
+  'Great Rune': '거대한 룬',
+  Utility: '유틸 아이템',
+  Essential: '기본 아이템',
+}
