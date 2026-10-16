@@ -234,6 +234,19 @@ export function effectText(e: TalismanEffect): string {
   return text
 }
 
+/** 효과 하나를 짧게: 지속 시간·PvP 수치 없이 "점프 공격 시: 공격력 +15%" */
+export function effectBriefText(e: TalismanEffect): string {
+  const name = label(TALISMAN_ATTRIBUTE_LABELS, e.attribute)
+  const amount = valueText(e.model, e.value)
+  const text = amount ? `${name} ${amount}` : name
+  return e.conditions?.length ? `${e.conditions.map((c) => label(TALISMAN_CONDITION_LABELS, c)).join('·')} 시: ${text}` : text
+}
+
+/** 효과 전체를 짧게 한 줄로 (같은 문구는 한 번만) */
+export function effectsBriefText(effects: readonly TalismanEffect[]): string {
+  return [...new Set(effects.map(effectBriefText))].join(', ')
+}
+
 /** 탈리스만 효과 전체를 한 줄로 */
 export function talismanEffectText(t: Pick<TalismanItem, 'effects'>): string {
   return t.effects.map(effectText).join(', ')

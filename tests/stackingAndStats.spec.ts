@@ -71,6 +71,10 @@ describe('버프 중첩 규칙', () => {
     expect(wrapper.find('[data-testid="stack-notes"]').text()).toContain('Exalted Flesh가 덮어씀')
     const options = wrapper.findAll('[data-testid="buff-select"] option').map((o) => o.text())
     expect(options.some((t) => t.startsWith('Drawstring Fire Grease'))).toBe(true)
+    // 이름 옆에 효과를 짧게 (지속 시간·PvP 수치 없이)
+    const vow = options.find((t) => t.startsWith('Golden Vow —'))!
+    expect(vow).toContain('+15%')
+    expect(vow).not.toMatch(/초\)|PvP/)
     wrapper.unmount()
   })
 })

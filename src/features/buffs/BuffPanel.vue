@@ -8,7 +8,7 @@ import { conflictsWith } from '@/data/buffStacking'
 import { BUFFS, BUFFS_BY_ID } from '@/data/items'
 import { compareNames, itemName } from '@/data/names'
 import { BUFF_CATEGORY_LABELS, DAMAGE_LABELS, NEGATION_LABELS } from '@/data/labels'
-import { effectText } from '@/data/talismanEffects'
+import { effectsBriefText, effectText } from '@/data/talismanEffects'
 import { levelFor } from '@/data/upgrade'
 import { EQUIPMENT_GRID } from '@/features/gameMenu/layout'
 import { weaponStats } from '@/features/weaponTable/weaponTable'
@@ -37,9 +37,12 @@ const groups = computed(() => {
 })
 
 /** 고르기 목록: 이미 켠 버프와 겹치지 않는 버프면 표시 */
+/** 고르기 목록 한 줄: "이름 — 효과" (지속 시간·PvP 수치는 빼고 짧게) */
 function optionLabel(b: BuffItem) {
+  const effects = effectsBriefText(b.effects)
+  const name = effects ? `${itemName(b)} — ${effects}` : itemName(b)
   const other = conflictsWith(b, buffs.selectedBuffs)
-  return other ? `${itemName(b)} (중첩 불가: ${itemName(other)})` : itemName(b)
+  return other ? `${name} (중첩 불가: ${itemName(other)})` : name
 }
 
 function buffName(id: string) {
