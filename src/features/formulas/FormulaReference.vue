@@ -4,6 +4,8 @@
 import { calculateAttack, correctionGraphValue, CORRECTION_GRAPH_IDS } from '@/data/attackPower'
 import { damageNegation, defenseBreakdown, GRAPH, statGraphParams, statGraphValue } from '@/data/defense'
 import type { DefenseAttributes } from '@/data/defense'
+import { curveAt, curvePieces, curveShape } from '@/data/curves'
+import { calculateDamage } from '@/data/damage'
 import { combineEffects } from '@/data/effects'
 import { BUFFS_BY_ID, ITEMS_BY_ID } from '@/data/items'
 import { reinforcementRates } from '@/data/upgrade'
@@ -21,6 +23,9 @@ const exTwoHand = calculateAttack(LONGSWORD, 'Standard', 25, EX_STATS, true)!
 const exUnmet = calculateAttack(LONGSWORD, 'Standard', 25, { ...EX_STATS, strength: 8 })!
 const exBleed = calculateAttack(UCHIGATANA, 'Blood', 25, { ...EX_STATS, arcane: 30 })!
 const exBleedDetail = exBleed.statusDetails.bleed
+/** 예시에서 쓴 보정 곡선 값을 숫자 식으로 */
+const exPhysCurves = exPhys.terms.map((t) => curveAt(t.graphId!, t.value, 100))
+const exBleedCurve = curveAt(exBleedDetail.graphId!, 30, 100)
 
 const EX_ATTRIBUTES: DefenseAttributes = {
   vigor: 40,
@@ -53,6 +58,34 @@ const exBuffedAttack = Math.floor(
   (exAttack.damage.physical.base + exAttack.damage.physical.scaling) * exEffects.attack.physical.multiplier,
 )
 
+/** 실제 데미지 예시: Longsword 예시 공격력으로 방어력 120 · 경감률 20%인 상대를 때린다 */
+const exPhysAttack = exAttack.damage.physical.base + exAttack.damage.physical.scaling
+const exDamage = calculateDamage({
+  attack: { physical: exPhysAttack, magic: 0, fire: 0, lightning: 0, holy: 0 },
+  motionValue: 100,
+  defense: { physical: 120, magic: 0, fire: 0, lightning: 0, holy: 0 },
+  negation: { physical: 20, strike: 0, slash: 0, pierce: 0, magic: 0, fire: 0, lightning: 0, holy: 0 },
+  physicalType: 'Standard',
+})
+const exDamagePart = exDamage.parts[0]!
+
+/* ---------- 곡선 식 ---------- */
+/** 방어력 곡선: 정확한 구간 식 */
+const DEFENSE_CURVES = [
+  { id: GRAPH.levelDefense, title: '기본 방어력 = ⌊곡선 #102(x)⌋, x = 8개 능력치 합', variable: 'x' },
+  { id: GRAPH.strength, title: '물리·타격·참격·관통 = 기본 + ⌊곡선 #130(근력)⌋', variable: '근력' },
+  { id: GRAPH.intelligence, title: '마력 = 기본 + ⌊곡선 #132(지력)⌋', variable: '지력' },
+  { id: GRAPH.vigor, title: '화염 = 기본 + ⌊곡선 #133(생명력)⌋', variable: '생명력' },
+  { id: GRAPH.arcane, title: '신성 = 기본 + ⌊곡선 #135(신비)⌋', variable: '신비' },
+].map((c) => ({ ...c, pieces: curvePieces(c.id, 1, c.variable) }))
+
+/** 무기 보정 곡선 #0~#16: 정확한 구간 식 (÷ 100 한 값이 보정 곡선값) */
+const WEAPON_CURVES = CORRECTION_GRAPH_IDS.map((id) => ({
+  id,
+  name: curveShape(id)?.name.trim() || '',
+  pieces: curvePieces(id, 100),
+}))
+
 /* ---------- 표 ---------- */
 const GRAPH_STATS = [1, 10, 20, 30, 40, 50, 60, 70, 80, 99, 150]
 const correctionRows = CORRECTION_GRAPH_IDS.map((id) => ({
@@ -81,6 +114,7 @@ const SECTIONS = [
   ['defense', '방어력'],
   ['curve', '능력치 곡선'],
   ['negation', '경감률'],
+  ['damage', '실제 데미지'],
   ['effects', '탈리스만·버프'],
   ['weight', '무게·강인도'],
   ['tables', '참고 표'],
@@ -144,8 +178,9 @@ const SECTIONS = [
       <p class="fr__text">물리·마력·화염·벼락·신성 속성마다 따로 계산해서 더합니다.</p>
       <div class="fr__formula">기본값 = 데이터 공격력 × 공격력 강화 배율</div>
       <div class="fr__formula">
-        능력치 한 줄 = 보정 계수 × 보정 강화 배율 × 보정 곡선[곡선 번호](능력치) × 비율 + (비율 − 1)
+        능력치 한 줄 = 보정 계수 × 보정 강화 배율 × 보정 곡선값 × 비율 + (비율 − 1)
       </div>
+      <div class="fr__formula">보정 곡선값 = 곡선 #번호(능력치) ÷ 100 — 곡선마다의 정확한 식은 6번</div>
       <div class="fr__formula">보정 배율 = Σ 능력치 줄 (그 속성을 보정하는 능력치만)</div>
       <div class="fr__formula">보정값 = 기본값 × 보정 배율</div>
       <div class="fr__formula">속성 공격력 = 기본값 + 보정값 (화면에는 ⌊⌋)</div>
@@ -158,15 +193,17 @@ const SECTIONS = [
         <li>비율은 대부분 1이라 줄이 "계수 × 강화 보정 × 곡선"이 됩니다. 일부 무기만 비율과 덮어쓰는 계수가 있습니다.</li>
         <li><b>요구 능력치 미달:</b> 그 속성을 보정하는 능력치 중 하나라도 요구치보다 낮으면 보정 배율 = −0.4 (40% 감소).</li>
         <li><b>음수 규칙:</b> 줄 중에 음수가 있으면 합 대신 가장 작은 값 하나만 보정 배율로 씁니다.</li>
-        <li>보정 곡선은 능력치 0~150의 표입니다 (능력치는 소수점 버림). 아래 참고 표에 주요 값이 있습니다.</li>
+        <li>곡선 번호는 무기·변질마다 데이터에 정해져 있습니다 (일반 #0, 중후 #1, 예리 #2, 상질 #8, 마력·화염·벼락·신성 #4 등). 능력치는 소수점 버림.</li>
       </ul>
       <div class="fr__example" data-testid="fr-attack-example">
         <div class="fr__example-title">예: Longsword 일반 +25, 근력 20 · 기량 20 (물리)</div>
         <div>기본값 = {{ num(exPhys.raw) }} × {{ num(exPhys.rate) }} = {{ num(exAttack.damage.physical.base) }}</div>
         <div v-for="t in exPhys.terms" :key="t.stat">
-          {{ t.stat === 'strength' ? '근력' : '기량' }} 줄 = {{ num(t.coefficient) }} × {{ num(t.scalingRate) }} × 곡선 #{{ t.graphId }}({{
-            t.value
-          }}) {{ num(t.graph) }} = {{ num(t.term) }}
+          {{ t.stat === 'strength' ? '근력' : '기량' }} 줄 = {{ num(t.coefficient) }} × {{ num(t.scalingRate) }} × {{ num(t.graph) }} =
+          {{ num(t.term) }}
+          <div class="fr__example-curve">
+            곡선 #{{ t.graphId }}({{ t.value }}) = {{ exPhysCurves[exPhys.terms.indexOf(t)]!.expr }} = {{ num(t.graph) }}
+          </div>
         </div>
         <div>보정 배율 = {{ exPhys.terms.map((t) => num(t.term)).join(' + ') }} = {{ num(exPhys.multiplier) }}</div>
         <div>보정값 = {{ num(exAttack.damage.physical.base) }} × {{ num(exPhys.multiplier) }} = {{ num(exAttack.damage.physical.scaling) }}</div>
@@ -185,7 +222,7 @@ const SECTIONS = [
       <h3>4. 상태이상 축적치</h3>
       <div class="fr__formula">기본값 = 강화 단계의 상태이상 값 (피 변질처럼 단계마다 정해진 값)</div>
       <div class="fr__formula">
-        출혈·독·수면·발광 = ⌊기본값 + 기본값 × 신비 계수 × 보정 강화 배율 × 보정 곡선(신비)⌋
+        출혈·독·수면·발광 = ⌊기본값 + 기본값 × 신비 계수 × 보정 강화 배율 × 보정 곡선값(신비)⌋
       </div>
       <div class="fr__formula">동상·부패·죽음 등 = 기본값 (보정 없음)</div>
       <ul class="fr__notes">
@@ -195,8 +232,11 @@ const SECTIONS = [
       <div class="fr__example" data-testid="fr-status-example">
         <div class="fr__example-title">예: Uchigatana 피 +25, 신비 30 (출혈)</div>
         <div>
-          보정 배율 = {{ num(exBleedDetail.coefficient) }} × {{ num(exBleedDetail.scalingRate) }} × 곡선 #{{ exBleedDetail.graphId }}(30)
-          {{ num(exBleedDetail.graph) }} = {{ num(exBleedDetail.multiplier) }}
+          보정 배율 = {{ num(exBleedDetail.coefficient) }} × {{ num(exBleedDetail.scalingRate) }} × {{ num(exBleedDetail.graph) }} =
+          {{ num(exBleedDetail.multiplier) }}
+          <div class="fr__example-curve">
+            곡선 #{{ exBleedDetail.graphId }}(30) = {{ exBleedCurve.expr }} = {{ num(exBleedCurve.value) }}
+          </div>
         </div>
         <div>
           출혈 = ⌊{{ num(exBleed.status.bleed.base) }} + {{ num(exBleed.status.bleed.base) }} × {{ num(exBleedDetail.multiplier) }}⌋ =
@@ -208,20 +248,26 @@ const SECTIONS = [
     <!-- 방어력 -->
     <section id="fr-defense" class="fr__section" data-testid="fr-defense">
       <h3>5. 방어력</h3>
-      <div class="fr__formula">기본 방어력 = ⌊곡선 #102(8개 능력치 합)⌋</div>
-      <div class="fr__formula">물리·타격·참격·관통 = 기본 + ⌊곡선 #130(근력)⌋</div>
-      <div class="fr__formula">마력 = 기본 + ⌊곡선 #132(지력)⌋</div>
-      <div class="fr__formula">화염 = 기본 + ⌊곡선 #133(생명력)⌋</div>
+      <div v-for="c in DEFENSE_CURVES" :key="c.id" class="fr__curve" :data-testid="`fr-defense-curve-${c.id}`">
+        <div class="fr__formula">{{ c.title }}</div>
+        <div v-for="(piece, i) in c.pieces" :key="i" class="fr__piece">
+          <span class="fr__piece-range">{{ piece.range }}</span>
+          <span class="fr__piece-expr">{{ piece.expr }}</span>
+        </div>
+      </div>
       <div class="fr__formula">벼락 = 기본</div>
-      <div class="fr__formula">신성 = 기본 + ⌊곡선 #135(신비)⌋</div>
       <ul class="fr__notes">
         <li>방어력용 능력치(탈리스만·버프 포함, 99 상한 없음)를 씁니다.</li>
       </ul>
       <div class="fr__example" data-testid="fr-defense-example">
         <div class="fr__example-title">예: 생명력 40 · 정신력 20 · 지구력 25 · 근력 20 · 기량 20 · 지력 10 · 신앙 10 · 신비 10</div>
-        <div>능력치 합 = {{ exDefense.total }} → 기본 = ⌊{{ num(exDefense.baseRaw) }}⌋ = {{ exDefense.base }}</div>
         <div>
-          물리 = {{ exDefense.base }} + ⌊{{ num(exDefense.bonus.physical!.raw) }}⌋ = <b>{{ exDefense.defense.physical }}</b> · 마력 =
+          능력치 합 = {{ exDefense.total }} → 기본 = ⌊{{ curveAt(GRAPH.levelDefense, exDefense.total).expr }} = {{
+            num(exDefense.baseRaw)
+          }}⌋ = {{ exDefense.base }}
+        </div>
+        <div>
+          물리 = {{ exDefense.base }} + ⌊{{ curveAt(GRAPH.strength, 20).expr }} = {{ num(exDefense.bonus.physical!.raw) }}⌋ = <b>{{ exDefense.defense.physical }}</b> · 마력 =
           {{ exDefense.base }} + ⌊{{ num(exDefense.bonus.magic!.raw) }}⌋ = <b>{{ exDefense.defense.magic }}</b> · 화염 =
           {{ exDefense.base }} + ⌊{{ num(exDefense.bonus.fire!.raw) }}⌋ = <b>{{ exDefense.defense.fire }}</b> · 벼락 =
           <b>{{ exDefense.defense.lightning }}</b>
@@ -231,7 +277,7 @@ const SECTIONS = [
 
     <!-- 곡선 -->
     <section id="fr-curve" class="fr__section" data-testid="fr-curve">
-      <h3>6. 능력치 곡선 (방어력 곡선)</h3>
+      <h3>6. 능력치 곡선</h3>
       <p class="fr__text">곡선마다 구간 경계 stage 5개, 경계에서의 값 grow 5개, 구간 곡률 adj가 있습니다.</p>
       <div class="fr__formula">x가 들어가는 구간 [stageᵢ, stageᵢ₊₁)을 찾는다 (마지막 stage 이상이면 growₘₐₓ)</div>
       <div class="fr__formula">t = (x − stageᵢ) / (stageᵢ₊₁ − stageᵢ)</div>
@@ -249,7 +295,19 @@ const SECTIONS = [
           <b>{{ num(exGraphCheck) }}</b>
         </div>
       </div>
-      <p class="fr__text">무기 보정 곡선(#0 등)은 능력치마다 값이 정해진 표를 그대로 씁니다 (참고 표).</p>
+      <h4 class="fr__subtitle">무기 보정 곡선 (#0~#16, 보정 곡선값 = 아래 식)</h4>
+      <p class="fr__text">같은 구간 식에 원본 데이터의 숫자를 넣은 것입니다 (보정 곡선 표와 오차 10⁻⁹ 이하). x = 능력치.</p>
+      <div class="fr__curve-grid" data-testid="fr-weapon-curves">
+        <div v-for="c in WEAPON_CURVES" :key="c.id" class="fr__curve">
+          <div class="fr__curve-title">
+            #{{ c.id }}<span v-if="c.name" class="fr__curve-name">{{ c.name }}</span>
+          </div>
+          <div v-for="(piece, i) in c.pieces" :key="i" class="fr__piece">
+            <span class="fr__piece-range">{{ piece.range }}</span>
+            <span class="fr__piece-expr">{{ piece.expr }}</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- 경감률 -->
@@ -258,7 +316,7 @@ const SECTIONS = [
       <div class="fr__formula">경감률(%) = 100 × (1 − Π(1 − 방어구 경감률 / 100) × 받는 피해 배율)</div>
       <ul class="fr__notes">
         <li>방어구끼리는 더하지 않고 "남는 피해"를 곱합니다. 같은 10%라도 많이 낄수록 효과가 줄어듭니다.</li>
-        <li>받는 피해 배율은 탈리스만·버프의 경감 효과로 정해집니다 (아래 8번). 피해가 늘면 경감률이 음수가 될 수 있습니다.</li>
+        <li>받는 피해 배율은 탈리스만·버프의 경감 효과로 정해집니다 (아래 9번). 피해가 늘면 경감률이 음수가 될 수 있습니다.</li>
       </ul>
       <div class="fr__example" data-testid="fr-negation-example">
         <div class="fr__example-title">예: 물리 경감 10%와 20% 방어구, 황금 맹세(받는 피해 ×0.9)</div>
@@ -270,9 +328,46 @@ const SECTIONS = [
       </div>
     </section>
 
+    <!-- 실제 데미지 -->
+    <section id="fr-damage" class="fr__section" data-testid="fr-damage">
+      <h3>8. 실제 데미지</h3>
+      <p class="fr__text">장비 화면 "실제 데미지"에서 상대 방어력·경감률을 넣어 계산합니다. 속성마다 따로 계산해서 더합니다.</p>
+      <div class="fr__formula">공격 = 속성 공격력 × 모션 값 / 100 × 버프 공격력 배율</div>
+      <div class="fr__formula">r = 공격 / 상대 방어력</div>
+      <div class="fr__curve">
+        <div class="fr__formula">방어 배율 f(r)</div>
+        <div class="fr__piece"><span class="fr__piece-range">r ≥ 8</span><span class="fr__piece-expr">0.9</span></div>
+        <div class="fr__piece">
+          <span class="fr__piece-range">2.5 ≤ r &lt; 8</span><span class="fr__piece-expr">0.9 − 0.2 × ((8 − r) / 5.5)²</span>
+        </div>
+        <div class="fr__piece">
+          <span class="fr__piece-range">1 ≤ r &lt; 2.5</span><span class="fr__piece-expr">0.7 − 0.3 × ((2.5 − r) / 1.5)²</span>
+        </div>
+        <div class="fr__piece">
+          <span class="fr__piece-range">0.125 ≤ r &lt; 1</span><span class="fr__piece-expr">0.1 + 0.3 × ((r − 0.125) / 0.875)²</span>
+        </div>
+        <div class="fr__piece"><span class="fr__piece-range">r &lt; 0.125</span><span class="fr__piece-expr">0.1</span></div>
+      </div>
+      <div class="fr__formula">속성 피해 = 공격 × f(r) × (1 − 상대 경감률 / 100)</div>
+      <div class="fr__formula">피해 = ⌊Σ 속성 피해⌋</div>
+      <ul class="fr__notes">
+        <li>물리 피해는 공격 종류(기본·타격·참격·관통)에 맞는 경감률을 씁니다. 방어력은 물리 하나입니다.</li>
+        <li>모션 값은 공격 동작마다의 배율입니다 (약공격 100% 등). 반격·약점 부위·패리 치명타 배율은 넣지 않았습니다.</li>
+      </ul>
+      <div class="fr__example" data-testid="fr-damage-example">
+        <div class="fr__example-title">예: 위 Longsword 물리 공격 {{ num(exPhysAttack) }}, 상대 방어력 120 · 경감률 20%</div>
+        <div>r = {{ num(exPhysAttack) }} / 120 = {{ num(exDamagePart.ratio) }} ({{ exDamagePart.step.range }})</div>
+        <div>f = {{ exDamagePart.step.expr }} = {{ num(exDamagePart.multiplier) }}</div>
+        <div>
+          피해 = ⌊{{ num(exPhysAttack) }} × {{ num(exDamagePart.multiplier) }} × (1 − 20/100)⌋ = ⌊{{ num(exDamagePart.damage) }}⌋ =
+          <b>{{ exDamage.total }}</b>
+        </div>
+      </div>
+    </section>
+
     <!-- 효과 -->
     <section id="fr-effects" class="fr__section" data-testid="fr-effects">
-      <h3>8. 탈리스만·버프 효과</h3>
+      <h3>9. 탈리스만·버프 효과</h3>
       <div class="fr__formula">공격력 배율 = Π 공격력 효과 (곱연산)</div>
       <div class="fr__formula">받는 피해 배율 = Π (2 − 경감 효과)</div>
       <div class="fr__formula">더하기 효과 (능력치 등) = Σ 효과</div>
@@ -311,14 +406,14 @@ const SECTIONS = [
 
     <!-- 무게 -->
     <section id="fr-weight" class="fr__section" data-testid="fr-weight">
-      <h3>9. 무게·강인도</h3>
+      <h3>10. 무게·강인도</h3>
       <div class="fr__formula">무게 = Σ 장착한 무기·방어구·탈리스만 무게 (소수 첫째 자리까지 표시)</div>
       <div class="fr__formula">강인도 = ⌊Σ 장착한 방어구 강인도⌋</div>
     </section>
 
     <!-- 표 -->
     <section id="fr-tables" class="fr__section" data-testid="fr-tables">
-      <h3>10. 참고 표</h3>
+      <h3>11. 참고 표</h3>
 
       <details class="fr__details" open>
         <summary>강화 배율 (일반 무기 강화 표 0)</summary>
@@ -484,6 +579,52 @@ const SECTIONS = [
   font-size: 12.5px;
   background: var(--muted-surface);
   border-radius: 6px;
+  overflow-wrap: anywhere;
+}
+.fr__subtitle {
+  margin: 10px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+.fr__curve {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.fr__curve-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+  gap: 10px 16px;
+}
+.fr__curve-title {
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.fr__curve-name {
+  margin-left: 6px;
+  font-weight: normal;
+  color: var(--text-faint);
+}
+.fr__piece {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 10px;
+  padding: 1px 10px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 12px;
+}
+.fr__piece-range {
+  min-width: 128px;
+  color: var(--text-muted);
+}
+.fr__piece-expr {
+  overflow-wrap: anywhere;
+}
+.fr__example-curve {
+  padding-left: 14px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 11.5px;
+  color: var(--text-muted);
   overflow-wrap: anywhere;
 }
 .fr__notes {

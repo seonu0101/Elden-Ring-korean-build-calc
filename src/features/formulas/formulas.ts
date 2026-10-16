@@ -2,6 +2,7 @@
 // 숫자는 실제 계산 함수(calculateAttack, defenseBreakdown, combineEffects)가 쓴 값을 그대로 옮긴다.
 import { calculateAttack, canTwoHandBonus, MAX_STAT } from '@/data/attackPower'
 import type { AttackResult } from '@/data/attackPower'
+import { curveAt } from '@/data/curves'
 import { damageNegation, defenseBreakdown, statGraphParams } from '@/data/defense'
 import type { EffectSummary, MultiplierLine } from '@/data/effects'
 import { percentText } from '@/data/effects'
@@ -116,7 +117,11 @@ function defenseSection(input: FormulaInput): FormulaSection {
   const sumExpr = ATTRIBUTE_KEYS.map((k) => a[k]).join(' + ')
   const lines: FormulaLine[] = [
     { label: '능력치 합', expr: sumExpr, result: `${b.total}` },
-    { label: '기본 방어력', expr: `⌊곡선 #${b.graphId}(${b.total}) = ${num(b.baseRaw)}⌋`, result: `${b.base}` },
+    {
+      label: '기본 방어력',
+      expr: `⌊곡선 #${b.graphId}(${b.total}) = ${curveAt(b.graphId, b.total).expr} = ${num(b.baseRaw)}⌋`,
+      result: `${b.base}`,
+    },
   ]
   for (const t of NEGATION_TYPES) {
     const bonus = b.bonus[t]
@@ -124,7 +129,7 @@ function defenseSection(input: FormulaInput): FormulaSection {
       bonus
         ? {
             label: NEGATION_LABELS[t],
-            expr: `${b.base} + ⌊곡선 #${bonus.graphId}(${ATTRIBUTE_LABELS[bonus.stat]} ${bonus.value}) = ${num(bonus.raw)}⌋ = ${b.base} + ${bonus.bonus}`,
+            expr: `${b.base} + ⌊곡선 #${bonus.graphId}(${ATTRIBUTE_LABELS[bonus.stat]} ${bonus.value}) = ${curveAt(bonus.graphId, bonus.value).expr} = ${num(bonus.raw)}⌋ = ${b.base} + ${bonus.bonus}`,
             result: `${b.defense[t]}`,
           }
         : { label: NEGATION_LABELS[t], expr: `${b.base} (능력치 보너스 없음)`, result: `${b.defense[t]}` },
@@ -238,6 +243,13 @@ function attackGroup(w: EquippedWeapon, attack: AttackResult, input: FormulaInpu
         result: num(t.term),
         indent: 1,
       })
+      lines.push({
+        label: `곡선 #${t.graphId ?? '-'}(${t.value})`,
+        expr: t.graphId === undefined ? '보정 곡선 없음' : curveAt(t.graphId, t.value, 100).expr,
+        result: num(t.graph),
+        indent: 1,
+        note: true,
+      })
     }
     const missingText = detail.missing.map((s) => `${STAT_LABELS[s]} ${attack.stats[s]}/${w.item.requirements[s]}`).join(', ')
     const multiplierExpr =
@@ -297,6 +309,15 @@ function statusGroup(w: EquippedWeapon, attack: AttackResult): FormulaGroup | nu
       : `신비 ${attack.stats.arcane}: 계수 ${num(d.coefficient)} × 강화 보정 ${num(d.scalingRate)} × 곡선 #${d.graphId}(${attack.stats.arcane}) ${num(d.graph)} = ${num(d.multiplier)}`
     lines.push({ label: STATUS_LABELS[t], expr: `기본 ${num(part.base)}`, result: num(part.base) })
     lines.push({ label: '보정 배율', expr: multiplierExpr, result: num(d.multiplier), indent: 1 })
+    if (!d.unmet && d.graphId !== undefined) {
+      lines.push({
+        label: `곡선 #${d.graphId}(${attack.stats.arcane})`,
+        expr: curveAt(d.graphId, attack.stats.arcane, 100).expr,
+        result: num(d.graph),
+        indent: 1,
+        note: true,
+      })
+    }
     lines.push({
       label: '합',
       expr: `⌊${num(part.base)} + ${num(part.base)} × ${num(d.multiplier)}⌋ = ⌊${num(part.base + part.scaling)}⌋`,

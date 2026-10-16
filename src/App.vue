@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue'
 import EquipmentSummary from '@/components/EquipmentSummary.vue'
 import BuffPanel from '@/features/buffs/BuffPanel.vue'
+import DamageCalculator from '@/features/damage/DamageCalculator.vue'
 import FormulaReference from '@/features/formulas/FormulaReference.vue'
 import GameMenuSimulator from '@/features/gameMenu/GameMenuSimulator.vue'
 import ArmorTable from '@/features/itemTables/ArmorTable.vue'
@@ -75,6 +76,7 @@ watch(view, (v) => {
       <div class="app__column">
         <GameMenuSimulator />
         <BuffPanel />
+        <DamageCalculator />
       </div>
       <EquipmentSummary />
     </main>
