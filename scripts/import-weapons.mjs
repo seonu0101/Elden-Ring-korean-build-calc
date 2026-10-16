@@ -367,12 +367,14 @@ async function importProtectors(ast, url) {
  * 탈리스만: 무게, 분류, 효과(속성·수치·계산 방식·조건), 함께 낄 수 없는 탈리스만.
  * 설명문은 저장하지 않고, 효과 수치로 화면에서 한국어 설명을 만든다.
  */
-/** 효과 하나 (탈리스만·버프 공통): 속성, 수치, 계산 방식, PvP 수치, 조건, 지속 시간 */
+/** 효과 하나 (탈리스만·버프 공통): 속성, 수치, 계산 방식, PvP 수치, 조건, 지속 시간, 대상 */
 function toEffect(e) {
   const effect = { attribute: e.attribute, value: e.value, model: e.model }
   if (typeof e.value_pvp === 'number' && e.value_pvp !== e.value) effect.valuePvp = e.value_pvp
   if (e.conditions?.length) effect.conditions = [].concat(e.conditions)
   if (typeof e.duration === 'number') effect.duration = e.duration
+  // 효과를 받는 대상: 적(opponent), 주변 적(aoe), 주변 아군(ally-aoe), 나와 주변 아군(self-ally-aoe). 나 자신(self)이면 적지 않는다
+  if (e.target && e.target !== 'self') effect.target = e.target
   return effect
 }
 

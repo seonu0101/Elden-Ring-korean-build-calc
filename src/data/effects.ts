@@ -11,7 +11,7 @@
 //   게임의 "같은 종류 버프는 겹치지 않음" 규칙은 원본 사이트처럼 반영하지 않는다.
 import { DAMAGE_TYPES, NEGATION_TYPES } from '@/types'
 import type { DamageType, NegationType, TalismanEffect } from '@/types'
-import { TALISMAN_ATTRIBUTE_LABELS } from './talismanEffects'
+import { TALISMAN_ATTRIBUTE_LABELS, isEnemyEffect } from './talismanEffects'
 
 export interface EffectSource {
   id: string
@@ -89,6 +89,8 @@ export function combineEffects(sources: readonly EffectSource[], pvp = false): E
 
   for (const source of sources) {
     for (const e of source.effects) {
+      // 적에게 거는 효과(디버프)는 내 합계에 넣지 않는다
+      if (isEnemyEffect(e)) continue
       if (e.conditions?.length) {
         conditional.push({ source: source.name, effect: e })
         continue

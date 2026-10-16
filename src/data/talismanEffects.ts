@@ -221,6 +221,16 @@ function valueText(model: string, value: number): string {
   }
 }
 
+/** 적에게 거는 효과인지 (맞은 적, 주변 적). 내 능력치·공격력 합계에는 넣지 않는다 */
+export function isEnemyEffect(e: Pick<TalismanEffect, 'target'>): boolean {
+  return e.target === 'opponent' || e.target === 'aoe'
+}
+
+/** 적에게 거는 효과면 앞에 붙일 말 */
+function targetPrefix(e: TalismanEffect): string {
+  return e.target === 'opponent' ? '적: ' : e.target === 'aoe' ? '주변 적: ' : ''
+}
+
 /** 효과 하나를 한국어로: "점프 공격 시: 공격력 +15% (PvP +7.5%)" */
 export function effectText(e: TalismanEffect): string {
   const name = label(TALISMAN_ATTRIBUTE_LABELS, e.attribute)
@@ -231,7 +241,7 @@ export function effectText(e: TalismanEffect): string {
   }
   if (e.duration) text += ` (${trim(e.duration)}초)`
   if (e.valuePvp !== undefined) text += ` (PvP ${valueText(e.model, e.valuePvp)})`
-  return text
+  return targetPrefix(e) + text
 }
 
 /** 효과 하나를 짧게: 지속 시간·PvP 수치 없이 "점프 공격 시: 공격력 +15%" */
@@ -239,7 +249,7 @@ export function effectBriefText(e: TalismanEffect): string {
   const name = label(TALISMAN_ATTRIBUTE_LABELS, e.attribute)
   const amount = valueText(e.model, e.value)
   const text = amount ? `${name} ${amount}` : name
-  return e.conditions?.length ? `${e.conditions.map((c) => label(TALISMAN_CONDITION_LABELS, c)).join('·')} 시: ${text}` : text
+  return targetPrefix(e) + (e.conditions?.length ? `${e.conditions.map((c) => label(TALISMAN_CONDITION_LABELS, c)).join('·')} 시: ${text}` : text)
 }
 
 /** 효과 전체를 짧게 한 줄로 (같은 문구는 한 번만) */

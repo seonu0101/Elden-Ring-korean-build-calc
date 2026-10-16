@@ -3,6 +3,7 @@ import buffData from './buffs.generated.json'
 import protectorData from './protectors.generated.json'
 import talismanData from './talismans.generated.json'
 import weaponData from './weapons.generated.json'
+import { isEnemyEffect } from './talismanEffects'
 
 // 무기·방어구·탈리스만: 원본 사이트에서 가져온 실제 데이터 (npm run import:weapons 로 갱신, 비상업적 용도로만 사용)
 
@@ -69,8 +70,13 @@ export const LEGACY_ITEM_IDS: Readonly<Record<string, string>> = {
   'crimson-amber': 'crimson-amber-medallion',
 }
 
+/** 디버프: 효과가 모두 적에게 가는 주문·아이템 (원본 사이트의 효과 대상이 opponent·aoe) */
+export function isDebuff(b: Pick<BuffItem, 'effects'>): boolean {
+  return b.effects.length > 0 && b.effects.every(isEnemyEffect)
+}
+
 /** 버프로 켤 수 있는 주문·소비 아이템 (인벤토리 아이템과 따로 관리) */
-export const BUFFS: BuffItem[] = buffData.buffs as BuffItem[]
+export const BUFFS: BuffItem[] = (buffData.buffs as BuffItem[]).map((b) => (isDebuff(b) ? { ...b, category: 'Debuff', sourceCategory: b.category } : b))
 export const BUFFS_BY_ID: ReadonlyMap<string, BuffItem> = new Map(BUFFS.map((b) => [b.id, b]))
 
 export const ALL_ITEMS: Item[] =[...WEAPONS, ...PROTECTORS, ...TALISMANS]

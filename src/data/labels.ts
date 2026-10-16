@@ -105,4 +105,5 @@ export const BUFF_CATEGORY_LABELS: Readonly<Record<string, string>> = {
   'Great Rune': '거대한 룬',
   Utility: '유틸 아이템',
   Essential: '기본 아이템',
+  Debuff: '디버프',
 }

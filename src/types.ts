@@ -128,6 +128,8 @@ export interface TalismanEffect {
   conditions?: string[]
   /** 지속 시간(초) */
   duration?: number
+  /** 효과를 받는 대상. 없으면 나 자신. opponent: 맞은 적, aoe: 주변 적, ally-aoe: 주변 아군, self-ally-aoe: 나와 주변 아군 */
+  target?: 'opponent' | 'aoe' | 'ally-aoe' | 'self-ally-aoe'
 }
 
 /** 버프: 효과가 있는 주문(기도·마술)이나 소비 아이템. 인벤토리 아이템이 아니라 장비 화면에서 골라 켠다. */
@@ -137,8 +139,10 @@ export interface BuffItem {
   id: string
   gameId: number
   name: string
-  /** 원본 분류 (Incantation, Sorcery, Edible, Grease, Crystal Tear 등) */
+  /** 원본 분류 (Incantation, Sorcery, Edible, Grease, Crystal Tear 등). 효과가 모두 적에게 가면 Debuff */
   category: string
+  /** Debuff로 바꾸기 전의 원본 분류 (디버프만) */
+  sourceCategory?: string
   /** 무기에 거는 버프인지 (인챈트 등) */
   weaponBuff: boolean
   effects: TalismanEffect[]

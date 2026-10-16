@@ -14,6 +14,12 @@ import type { BuffItem } from '@/types'
 import ItemDataTable from './ItemDataTable.vue'
 import type { TableColumn, TypeFilter } from './itemTable'
 
+/** 디버프는 원래 분류도 함께: "디버프 (마술)" */
+function categoryText(b: BuffItem): string {
+  const main = BUFF_CATEGORY_LABELS[b.category] ?? b.category
+  return b.sourceCategory ? `${main} (${BUFF_CATEGORY_LABELS[b.sourceCategory] ?? b.sourceCategory})` : main
+}
+
 const buffs = useBuffsStore()
 
 /** 버프 하나만 켰을 때의 합산 결과 (조건 붙은 효과는 빠진다) */
@@ -46,7 +52,7 @@ const stackText = (b: BuffItem) =>
     .join(', ')
 
 const columns: TableColumn<BuffItem>[] = [
-  { key: 'category', label: '분류', value: (b) => BUFF_CATEGORY_LABELS[b.category] ?? b.category },
+  { key: 'category', label: '분류', value: (b) => categoryText(b) },
   {
     key: 'attack',
     label: '공격력',
