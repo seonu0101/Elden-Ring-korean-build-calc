@@ -38,8 +38,13 @@ npm run import:weapons # 무기 데이터 다시 가져오기
 ## 배포 (er-sin.com/calc)
 
 빌드하면 모든 경로 앞에 `/calc/`가 붙는다 (`vite.config.ts`의 `base`).
-GitHub 저장소를 Netlify 사이트에 연결하면 `netlify.toml` 설정대로 빌드된다.
-er-sin.com 사이트에서는 `/calc/*`를 이 사이트로 프록시한다 (status 200).
+
+- **GitHub Pages**: 저장소 이름을 `calc`로 하면 `https://<아이디>.github.io/calc/`에서 열린다.
+  `main`에 push하면 `.github/workflows/deploy.yml`이 테스트 → 빌드 → 배포한다.
+  처음 한 번 저장소 Settings → Pages → Source를 "GitHub Actions"로 바꾼다.
+- **Netlify**: GitHub 저장소를 Netlify 사이트에 연결하면 `netlify.toml` 설정대로 빌드된다.
+
+er-sin.com 사이트에서는 `/calc/*`를 배포한 사이트로 프록시한다 (status 200).
 
 ## 아이템 이미지
 

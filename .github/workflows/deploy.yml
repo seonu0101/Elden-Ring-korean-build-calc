@@ -1,0 +1,47 @@
+# GitHub Pages 배포: main에 push하면 테스트 → 빌드 → https://<아이디>.github.io/calc/ 에 올린다.
+# 저장소 이름이 calc라서 Pages 주소의 /calc/ 가 vite.config.ts의 base('/calc/')와 같다.
+# 처음 한 번: 저장소 Settings → Pages → Source를 "GitHub Actions"로 바꾼다.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 배포가 겹치면 앞의 것은 취소하지 않고 끝까지 둔다
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      # 빌드 결과는 dist/calc/ 에 생긴다. 이 폴더가 Pages의 /calc/ 가 된다.
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/calc
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
