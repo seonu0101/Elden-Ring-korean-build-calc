@@ -1,4 +1,4 @@
-# ER Build Planner
+# ER Build Calc
 
 엘든 링 빌드 플래너. 화면은 세 가지입니다.
 
