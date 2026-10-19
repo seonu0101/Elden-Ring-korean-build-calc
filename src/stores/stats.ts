@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { computed, ref, watch } from 'vue'
 import { MAX_STAT } from '@/data/attackPower'
+import { STARTING_CLASSES_BY_ID } from '@/data/startingClasses'
 import { MAX_REGULAR_LEVEL, MAX_SOMBER_LEVEL, regularFromSomber, somberFromRegular } from '@/data/upgrade'
 import { useBuffsStore } from '@/stores/buffs'
 import { AFFINITIES } from '@/types'
@@ -74,10 +75,18 @@ interface StatsSnapshot {
   upgradeLinked: boolean
   /** 장착 칸(무기 equipIndex)마다 고른 변질 */
   affinityBySlot: Record<string, AffinityName>
+  /** 고른 태생 id (없으면 null: 최소 능력치 1) */
+  startingClass: string | null
 }
 
-export function clampStat(value: number): number {
-  return Number.isFinite(value) ? Math.min(MAX_STAT, Math.max(1, Math.round(value))) : 1
+export function clampStat(value: number, min = 1): number {
+  return Number.isFinite(value) ? Math.min(MAX_STAT, Math.max(min, Math.round(value))) : min
+}
+
+/** 태생의 초기 능력치 = 내릴 수 있는 최소 능력치. 태생을 고르지 않으면 모두 1 */
+export function minimumAttributes(startingClass: string | null): Attributes {
+  const c = startingClass ? STARTING_CLASSES_BY_ID.get(startingClass) : undefined
+  return c ? { ...c.stats } : (Object.fromEntries(ATTRIBUTE_KEYS.map((k) => [k, 1])) as Attributes)
 }
 
 function clampLevel(value: number, max: number): number {
@@ -93,6 +102,13 @@ export function parseStatsSnapshot(raw: unknown): Partial<StatsSnapshot> {
     const a = r.attributes as Record<string, unknown>
     out.attributes = { ...DEFAULT_ATTRIBUTES }
     for (const key of ATTRIBUTE_KEYS) if (typeof a[key] === 'number') out.attributes[key] = clampStat(a[key])
+  }
+  if (r.startingClass === null || (typeof r.startingClass === 'string' && STARTING_CLASSES_BY_ID.has(r.startingClass))) {
+    out.startingClass = r.startingClass as string | null
+  }
+  if (out.attributes) {
+    const min = minimumAttributes(out.startingClass ?? null)
+    for (const key of ATTRIBUTE_KEYS) out.attributes[key] = Math.max(min[key], out.attributes[key])
   }
   if (typeof r.twoHanded === 'boolean') out.twoHanded = r.twoHanded
   if (typeof r.upgradeRegular === 'number') out.upgradeRegular = clampLevel(r.upgradeRegular, MAX_REGULAR_LEVEL)
@@ -125,9 +141,13 @@ export const useStatsStore = defineStore('stats', () => {
   const upgradeSomber = ref(saved.upgradeSomber ?? MAX_SOMBER_LEVEL)
   const upgradeLinked = ref(saved.upgradeLinked ?? true)
   const affinityBySlot = ref<Record<string, AffinityName>>(saved.affinityBySlot ?? {})
+  const startingClass = ref<string | null>(saved.startingClass ?? null)
+
+  /** 태생의 초기 능력치 (이보다 낮게 내릴 수 없다) */
+  const minimums = computed(() => minimumAttributes(startingClass.value))
 
   watch(
-    [attributes, twoHanded, upgradeRegular, upgradeSomber, upgradeLinked, affinityBySlot],
+    [attributes, twoHanded, upgradeRegular, upgradeSomber, upgradeLinked, affinityBySlot, startingClass],
     () => {
       const snapshot: StatsSnapshot = {
         attributes: attributes.value,
@@ -136,6 +156,7 @@ export const useStatsStore = defineStore('stats', () => {
         upgradeSomber: upgradeSomber.value,
         upgradeLinked: upgradeLinked.value,
         affinityBySlot: affinityBySlot.value,
+        startingClass: startingClass.value,
       }
       try {
         localStorage.setItem(STATS_STORAGE_KEY, JSON.stringify(snapshot))
@@ -188,7 +209,13 @@ export const useStatsStore = defineStore('stats', () => {
   const upgrade = computed(() => ({ regular: upgradeRegular.value, somber: upgradeSomber.value }))
 
   function setAttribute(key: AttributeKey, value: number) {
-    attributes.value[key] = clampStat(value)
+    attributes.value[key] = clampStat(value, minimums.value[key])
+  }
+
+  /** 태생을 고르면 초기 능력치보다 낮은 능력치를 초기 능력치로 올린다 */
+  function setStartingClass(id: string | null) {
+    startingClass.value = id && STARTING_CLASSES_BY_ID.has(id) ? id : null
+    for (const key of ATTRIBUTE_KEYS) attributes.value[key] = Math.max(minimums.value[key], attributes.value[key])
   }
 
   function setRegular(value: number) {
@@ -209,8 +236,9 @@ export const useStatsStore = defineStore('stats', () => {
     affinityBySlot.value[slot] = affinity
   }
 
+  /** 태생을 골랐으면 그 초기 능력치로, 아니면 기본값으로 */
   function resetAttributes() {
-    attributes.value = { ...DEFAULT_ATTRIBUTES }
+    attributes.value = startingClass.value ? { ...minimums.value } : { ...DEFAULT_ATTRIBUTES }
   }
 
   return {
@@ -220,6 +248,8 @@ export const useStatsStore = defineStore('stats', () => {
     upgradeSomber,
     upgradeLinked,
     affinityBySlot,
+    startingClass,
+    minimums,
     runeLevel,
     bonusAttributes,
     defenseAttributes,
@@ -227,6 +257,7 @@ export const useStatsStore = defineStore('stats', () => {
     combatStats,
     upgrade,
     setAttribute,
+    setStartingClass,
     setRegular,
     setSomber,
     affinityFor,

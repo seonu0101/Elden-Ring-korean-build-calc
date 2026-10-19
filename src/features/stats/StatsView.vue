@@ -2,6 +2,8 @@
 import { computed, ref } from 'vue'
 import { MAX_STAT, calculateAttack } from '@/data/attackPower'
 import { WEAPONS } from '@/data/items'
+import { STARTING_CLASSES, STARTING_CLASSES_BY_ID } from '@/data/startingClasses'
+import type { StartingClass } from '@/data/startingClasses'
 import { itemName, koreanName, nameLanguage } from '@/data/names'
 import { MAX_REGULAR_LEVEL, MAX_SOMBER_LEVEL, levelFor } from '@/data/upgrade'
 import { EQUIPMENT_GRID } from '@/features/gameMenu/layout'
@@ -57,6 +59,10 @@ const pickedCard = computed(() => {
   return result ? { weapon: w, affinity, result } : null
 })
 
+/** 태생 이름 (이름 언어 설정을 따른다) */
+const className = (c: StartingClass) => (nameLanguage.value === 'en' ? c.name : c.nameKo)
+const chosenClass = computed(() => (stats.startingClass ? STARTING_CLASSES_BY_ID.get(stats.startingClass) : undefined))
+
 function numberFrom(event: Event) {
   return Number((event.target as HTMLInputElement).value)
 }
@@ -67,15 +73,39 @@ function numberFrom(event: Event) {
     <section class="sv__panel" aria-label="능력치">
       <header class="sv__header">
         <h2 class="sv__title">능력치</h2>
-        <span class="sv__level" data-testid="rune-level">레벨 {{ stats.runeLevel }}</span>
+        <span class="sv__level" data-testid="rune-level">
+          레벨 {{ stats.runeLevel }}
+          <small v-if="chosenClass" class="sv__level-from" data-testid="level-from-class">
+            (태생 {{ chosenClass.level }} + {{ stats.runeLevel - chosenClass.level }})
+          </small>
+        </span>
       </header>
+
+      <div class="sv__group">
+        <label class="sv__label" for="sv-class">태생</label>
+        <select
+          id="sv-class"
+          class="sv__input sv__class"
+          data-testid="starting-class"
+          :value="stats.startingClass ?? ''"
+          @change="stats.setStartingClass(($event.target as HTMLSelectElement).value || null)"
+        >
+          <option value="">선택 안 함 (최소 1)</option>
+          <option v-for="c in STARTING_CLASSES" :key="c.id" :value="c.id">
+            {{ className(c) }} · 레벨 {{ c.level }}{{ c.content === 2 ? ' · 타니쉬드 에디션' : '' }}
+          </option>
+        </select>
+      </div>
 
       <div class="sv__stats">
         <label v-for="key in ATTRIBUTE_KEYS" :key="key" class="sv__stat">
-          <span class="sv__stat-name">{{ ATTRIBUTE_LABELS[key] }}</span>
+          <span class="sv__stat-name">
+            {{ ATTRIBUTE_LABELS[key] }}
+            <small v-if="chosenClass" class="sv__min" :data-testid="`min-${key}`">최소 {{ stats.minimums[key] }}</small>
+          </span>
           <input
             type="range"
-            min="1"
+            :min="stats.minimums[key]"
             :max="MAX_STAT"
             :value="stats.attributes[key]"
             :aria-label="`${ATTRIBUTE_LABELS[key]} 슬라이더`"
@@ -84,7 +114,7 @@ function numberFrom(event: Event) {
           <input
             type="number"
             class="sv__input"
-            min="1"
+            :min="stats.minimums[key]"
             :max="MAX_STAT"
             :value="stats.attributes[key]"
             :aria-label="ATTRIBUTE_LABELS[key]"
@@ -135,7 +165,7 @@ function numberFrom(event: Event) {
       <div class="sv__group">
         <span class="sv__label">강화</span>
         <label class="sv__upgrade">
-          표준
+          일반
           <input
             type="number"
             class="sv__input"
@@ -166,7 +196,9 @@ function numberFrom(event: Event) {
         </label>
       </div>
 
-      <button type="button" class="btn" @click="stats.resetAttributes()">능력치 초기화</button>
+      <button type="button" class="btn" @click="stats.resetAttributes()">
+        {{ chosenClass ? '태생 초기 능력치로' : '능력치 초기화' }}
+      </button>
     </section>
 
     <section class="sv__results" aria-label="공격력">
@@ -276,7 +308,25 @@ function numberFrom(event: Event) {
   font-size: 13px;
 }
 .sv__stat-name {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
   color: var(--text-muted);
+}
+.sv__min {
+  font-size: 10px;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+.sv__level-from {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-faint);
+}
+.sv__class {
+  flex: 1;
+  min-width: 0;
+  max-width: 260px;
 }
 .sv__final {
   font-size: 12px;
