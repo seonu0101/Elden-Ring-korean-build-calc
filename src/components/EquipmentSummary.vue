@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 import { calculateAttack, partTotal } from '@/data/attackPower'
 import { characterDefense, damageNegation } from '@/data/defense'
+import { calculateEquipLoad, EQUIP_LOAD_ROLL_LABELS } from '@/data/equipLoad'
 import { NEGATION_LABELS, STATUS_LABELS } from '@/data/labels'
 import { itemName } from '@/data/names'
 import { levelFor } from '@/data/upgrade'
@@ -22,6 +23,14 @@ const statsStore = useStatsStore()
 const defense = computed(() => characterDefense(statsStore.defenseAttributes))
 // 경감률에는 장착 탈리스만·켠 버프의 경감 효과도 넣는다 (예: 황금 맹세 받는 피해 ×0.9)
 const buffs = useBuffsStore()
+
+/** 장비 중량: 스탯 화면의 지구력(탈리스만·버프 포함)으로 최대 중량, 장착 무게가 그 몇 %인지 */
+const equipLoad = computed(() => {
+  const multiplier = buffs.summary.others
+    .filter((o) => o.attribute === 'Maximum Equip Load' && o.model === 'multiplicative')
+    .reduce((m, o) => m * o.total, 1)
+  return calculateEquipLoad(statsStore.finalAttributes.endurance, store.totalWeight, multiplier)
+})
 const negation = computed(() =>
   damageNegation(
     store.equippedProtectors,
@@ -116,7 +125,18 @@ function confirmReset() {
     <dl class="summary__totals">
       <div>
         <dt>무게</dt>
-        <dd data-testid="total-weight">{{ store.totalWeight.toFixed(1) }}</dd>
+        <dd>
+          <span data-testid="total-weight">{{ store.totalWeight.toFixed(1) }}</span>
+          <span
+            class="summary__load"
+            :title="`지구력 ${statsStore.finalAttributes.endurance} 기준 최대 장비 중량${equipLoad.max !== equipLoad.base ? ` (탈리스만·버프 전 ${equipLoad.base.toFixed(1)})` : ''}`"
+          >
+            / <span data-testid="max-equip-load">{{ equipLoad.max.toFixed(1) }}</span>
+          </span>
+        </dd>
+        <dd class="summary__roll" :class="`is-${equipLoad.roll}`" data-testid="equip-load">
+          {{ equipLoad.percent.toFixed(1) }}% · {{ EQUIP_LOAD_ROLL_LABELS[equipLoad.roll] }}
+        </dd>
       </div>
       <div>
         <dt>강인도</dt>
@@ -221,6 +241,25 @@ function confirmReset() {
   font-size: 22px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
+}
+.summary__load {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+.summary__totals .summary__roll {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.summary__totals .summary__roll.is-light {
+  color: var(--success);
+}
+.summary__totals .summary__roll.is-heavy {
+  color: var(--warning);
+}
+.summary__totals .summary__roll.is-overloaded {
+  color: var(--danger);
 }
 .summary__list {
   list-style: none;

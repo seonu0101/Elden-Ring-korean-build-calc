@@ -10,6 +10,8 @@
   --accent: #18181b;
   --accent-text: #ffffff;
   --danger: #dc2626;
+  --success: #15803d;
+  --warning: #b45309;
   --radius: 8px;
   color-scheme: light;
 }
@@ -27,6 +29,8 @@
     --accent: #f4f4f5;
     --accent-text: #18181b;
     --danger: #f87171;
+    --success: #4ade80;
+    --warning: #fbbf24;
     color-scheme: dark;
   }
 }
