@@ -2,8 +2,8 @@
 //
 //   node scripts/restyle-ledger.mjs "C:\...\Tarnished Ledger — ELDEN RING 수집 분석기.html"
 //
-// 바꾸는 것은 첫 번째 <style> … </style> 블록(디자인)과 아래쪽 유튜브 링크(FOOTER_LINK)를 빼는 것뿐이다.
-// 그 밖의 HTML 구조와 <script>(기능)는 한 글자도 건드리지 않는다.
+// 바꾸는 것은 첫 번째 <style> … </style> 블록(디자인), 아래쪽 유튜브 링크(FOOTER_LINK) 빼기,
+// 그리고 세이브 파일 이름 제한 풀기(FILE_PATCHES)뿐이다. 그 밖의 HTML 구조와 <script>(기능)는 그대로 둔다.
 // 색은 속성(배경·글자·테두리)과 색 종류(어두운 면, 금색 강조, 초록, 빨강 등)에 따라 Build Calc의 색 변수로 바꾸고,
 // 선택 상태·버튼·진행 막대처럼 강조가 필요한 곳은 맨 뒤의 덮어쓰기 규칙으로 Build Calc와 같게 맞춘다.
 
@@ -18,9 +18,28 @@ const OUTPUT = fileURLToPath(new URL('../public/ledger/index.html', import.meta.
 /** 아래쪽 안내 줄의 유튜브 링크 (앞의 · 구분 기호와 함께 뺀다) */
 const FOOTER_LINK = /<span>·<\/span><a href="https:\/\/youtube\.com\/@elden_load[^"]*"[^>]*>YouTube @elden_load<\/a>/
 
+/**
+ * 세이브 파일 이름 제한 풀기: 원본은 이름이 .sl2/.co2로 끝나야만 연다.
+ * Seamless Co-op(.co2), 백업(ER0000.sl2.bak 등), 이름을 바꾼 파일도 열 수 있게 이름 검사를 빼고,
+ * 파일 고르기 창에서도 모든 파일이 보이게 한다. 내용 검사(PC 세이브 BND4 / 암호화 BND4가 아니면
+ * "PC용 ELDEN RING 세이브 파일로 확인되지 않습니다")는 원본 그대로라 다른 파일은 여전히 거른다.
+ */
+const FILE_PATCHES = [
+  [`<input id="saveInput" type="file" accept=".sl2" hidden="">`, `<input id="saveInput" type="file" hidden="">`],
+  [`if(!/\\.(sl2|co2)$/i.test(file.name)){toast('ER0000.sl2 파일을 선택해주세요.','warn');return}`, ``],
+  [
+    `<span>클릭하거나 세이브 파일을 여기에 놓으세요</span>`,
+    `<span>클릭하거나 세이브 파일을 여기에 놓으세요 (.sl2 · .co2 · 백업 .bak 등)</span>`,
+  ],
+]
+
 const original = await readFile(SOURCE, 'utf8')
 if (!FOOTER_LINK.test(original)) throw new Error('유튜브 링크를 찾지 못했습니다')
-const html = original.replace(FOOTER_LINK, '')
+let html = original.replace(FOOTER_LINK, '')
+for (const [from, to] of FILE_PATCHES) {
+  if (!html.includes(from)) throw new Error(`바꿀 곳을 찾지 못했습니다: ${from}`)
+  html = html.replace(from, to)
+}
 const MARK = '<style>*[hidden]{display:none!important}'
 const start = html.indexOf(MARK)
 const end = html.indexOf('</style>', start)

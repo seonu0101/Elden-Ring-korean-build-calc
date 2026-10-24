@@ -103,9 +103,9 @@ footer{color:var(--text-faint)}
 <div id="activity" class="activity" hidden=""><span class="mini-spinner"></span><span id="activityText">준비 중…</span></div>
 <main class="shell">
   <section id="dropzone" class="dropzone">
-    <input id="saveInput" type="file" accept=".sl2" hidden="">
+    <input id="saveInput" type="file" hidden="">
     <div class="drop-icon">↓</div>
-    <div class="drop-copy"><strong>ER0000.sl2 열기</strong><span>클릭하거나 세이브 파일을 여기에 놓으세요</span></div>
+    <div class="drop-copy"><strong>ER0000.sl2 열기</strong><span>클릭하거나 세이브 파일을 여기에 놓으세요 (.sl2 · .co2 · 백업 .bak 등)</span></div>
     <div class="privacy"><span class="dot"></span>읽기 전용 · 세이브 전송 없음</div>
   </section>
   <section class="save-help" aria-label="세이브 파일 위치 안내">
@@ -1227,7 +1227,7 @@ function renderPanels(){const boss=state.tab==='bosses';$('#itemsPanel').hidden=
 function renderAll(){if(!state.parsed)return;renderSlots();renderHeader();renderDbNotice();renderSummary();renderCategories();renderFilters();setActiveTab();renderPanels();$('#workspace').hidden=false;$('#emptyState').hidden=true}
 
 async function handleFile(file){
-  if(!file)return;if(!/\.(sl2|co2)$/i.test(file.name)){toast('ER0000.sl2 파일을 선택해주세요.','warn');return}
+  if(!file)return;
   state.lastFileName=file.name;setActivity(true,'세이브 읽는 중…');
   try{
     const prepared=await preparePcSave(await file.arrayBuffer()),parsed=parseSave(prepared.bytes);state.parsed=parsed;state.dbPhase=state.reference?(state.reference.usable?'ready':'partial'):'idle';if(state.reference)applyReference();
