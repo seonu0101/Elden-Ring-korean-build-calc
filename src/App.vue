@@ -6,14 +6,15 @@ import BuffPanel from '@/features/buffs/BuffPanel.vue'
 import DamageCalculator from '@/features/damage/DamageCalculator.vue'
 import FormulaReference from '@/features/formulas/FormulaReference.vue'
 import GameMenuSimulator from '@/features/gameMenu/GameMenuSimulator.vue'
+import LedgerView from '@/features/ledger/LedgerView.vue'
 import ArmorTable from '@/features/itemTables/ArmorTable.vue'
 import BuffTable from '@/features/itemTables/BuffTable.vue'
 import TalismanTable from '@/features/itemTables/TalismanTable.vue'
 import StatsView from '@/features/stats/StatsView.vue'
 import WeaponTable from '@/features/weaponTable/WeaponTable.vue'
 
-type View = 'equipment' | 'weapons' | 'armor' | 'talismans' | 'buffs' | 'stats' | 'formulas'
-const VIEWS: readonly View[] = ['equipment', 'weapons', 'armor', 'talismans', 'buffs', 'stats', 'formulas']
+type View = 'equipment' | 'weapons' | 'armor' | 'talismans' | 'buffs' | 'stats' | 'formulas' | 'ledger'
+const VIEWS: readonly View[] = ['equipment', 'weapons', 'armor', 'talismans', 'buffs', 'stats', 'formulas', 'ledger']
 const VIEW_KEY = 'er-planner/view'
 
 function loadView(): View {
@@ -53,7 +54,7 @@ watch(view, () => nextTick(showActiveTab))
   <div
     class="app"
     :class="{
-      'app--wide': view === 'weapons' || view === 'armor' || view === 'talismans' || view === 'buffs',
+      'app--wide': view === 'weapons' || view === 'armor' || view === 'talismans' || view === 'buffs' || view === 'ledger',
       'app--medium': view === 'stats' || view === 'formulas',
     }"
   >
@@ -86,6 +87,14 @@ watch(view, () => nextTick(showActiveTab))
           @click="view = 'formulas'"
         >
           계산식
+        </button>
+        <button
+          type="button"
+          :class="{ 'is-active': view === 'ledger' }"
+          data-testid="nav-ledger"
+          @click="view = 'ledger'"
+        >
+          수집 분석기
         </button>
       </nav>
       <div class="app__lang" role="group" aria-label="아이템 이름 언어" title="아이템·무기군 이름 언어 (공식 한국어 이름이 없는 아이템은 영어로 보입니다)">
@@ -133,6 +142,9 @@ watch(view, () => nextTick(showActiveTab))
     </main>
     <main v-else-if="view === 'formulas'">
       <FormulaReference />
+    </main>
+    <main v-else-if="view === 'ledger'">
+      <LedgerView />
     </main>
     <main v-else>
       <StatsView />

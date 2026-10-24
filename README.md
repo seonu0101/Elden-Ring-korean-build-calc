@@ -80,12 +80,25 @@ er-sin.com 사이트에서는 `/calc/*`를 배포한 사이트로 프록시한�
 | 아이템 이미지 | Elden Ring Tourney Manager v1.1.0 (`public/img`) | `public/img/` |
 | 한국어 이름 (게임 한국어판 공식, 아이템 1,557개·무기군 42개, 본편·DLC·타니쉬드 에디션) | 게임 파일 `GamemsgkorKR`, `engUS` (UXM Selective Unpack으로 추출, WitchyBND로 푼 `.fmg`) | `src/data/names-ko.generated.json`, `scripts/import-korean-names.mjs`, `scripts/fmg.mjs`, `docs/names.md` |
 | 버프 지속 시간 26개 (원본에 값이 없는 것만) | Fextralife Elden Ring Wiki — [Buffs and Debuffs](https://eldenring.wiki.fextralife.com/Buffs_and_Debuffs) 18개, [Crystal Tears](https://eldenring.wiki.fextralife.com/Crystal_Tears) 영약 8개 (2026-10-16 확인) | `src/data/buff-durations.wiki.json` |
+| 수집 분석기 탭 (세이브 파일로 수집 현황 분석) | Tarnished Ledger v2.5.0 — [ngj7730-bit.github.io](https://ngj7730-bit.github.io/) (만든 사람의 허락을 받아 사용, 디자인만 바꿈). 실행 중에 [CyberGiant7/Elden-Ring-Automatic-Checklist](https://github.com/CyberGiant7/Elden-Ring-Automatic-Checklist)의 체크리스트 데이터와 [ELDEN RING Wiki (wiki.gg)](https://eldenring.wiki.gg/)를 불러온다 | `public/ledger/index.html`, `scripts/restyle-ledger.mjs` |
 | 게임 이름·아이콘 | ELDEN RING © Bandai Namco Entertainment Inc. / © FromSoftware, Inc. | — |
 
 버프 지속 시간은 원본 사이트 값이 우선이다. 원본에 없을 때만 위키 값을 쓴다 (`src/data/buffDurations.ts`).
 원본과 위키가 다른 18개는 원본 값을 쓴다: 경화 고기류(원본 120초, 위키 35초), 흰 경화 고기류(120 / 105),
 상태이상 당김줄 기름 4종(10 / 15), 금·은 절인 새발(120 / 180), 고양의 향(45 / 40), 검은 불꽃 칼날(60 / 7),
 불의 대죄(30 / 40), 기름 적신 영약(60 / 30).
+
+## 수집 분석기
+
+상단 "계산식" 오른쪽 탭. Tarnished Ledger 페이지를 iframe으로 띄운다 (`src/features/ledger/LedgerView.vue`).
+세이브 파일(ER0000.sl2)은 브라우저 안에서만 읽고 어디에도 올리지 않는다.
+
+원본 페이지에서 바꾼 것은 디자인(CSS)과 아래쪽 유튜브 링크뿐이고, 기능 스크립트는 그대로다.
+원본 HTML을 받아 다시 만들 때:
+
+```bash
+node scripts/restyle-ledger.mjs "원본 HTML 경로"
+```
 
 ## 아이템 이미지
 
