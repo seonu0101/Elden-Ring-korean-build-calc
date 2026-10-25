@@ -1,6 +1,6 @@
 {
  "source": "https://raw.githubusercontent.com/CyberGiant7/Elden-Ring-Automatic-Checklist/main/assets/json/ 의 영어 이름 + 게임 파일 msg/korKR·engUS (item_dlc02, menu_dlc02)",
- "importedAt": "2026-10-25T10:53:03.696Z",
+ "importedAt": "2026-10-25T11:10:03.396Z",
  "note": "아이템은 번호로, 그 밖에는 영어 이름으로 게임 한국어 이름을 찾았다. 보스의 장소 표시는 나눠서 옮겼다.",
  "names": {
   "Abandoned Cave": "폐기 동굴",
@@ -858,6 +858,7 @@
   "Elden Lord Greaves": "엘데 왕의 각반",
   "Elden Stars": "엘데의 유성",
   "Elden Throne": "엘데의 왕좌",
+  "Elder Dragon Greyoll": "대노룡 그레이오르",
   "Electrify Armament": "벼락의 무기",
   "Electrocharge": "하전",
   "Elemer of the Briar": "철가시 엘레메르",
@@ -2667,7 +2668,5 @@
   "Sorcery": "마술",
   "Incantation": "기도"
  },
- "missing": [
-  "bosses/bosses: Elder Dragon Greyoll"
- ]
+ "missing": []
 }

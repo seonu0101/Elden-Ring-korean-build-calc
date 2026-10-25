@@ -108,6 +108,8 @@ const ALIASES = {
 /** 게임 파일에 그대로 맞는 표기가 없어 직접 옮긴 것 (방향은 게임의 "리에니에 호수 북쪽" 같은 표기를 따름) */
 const MANUAL_KO = {
   'Putrid Crystalian Trio': '부패한 결정인 (3인)',
+  // 게임 이름 파일에 보스 이름으로는 없다 (한국어판 표기)
+  'Elder Dragon Greyoll': '대노룡 그레이오르',
   'Erdtree Avatar (Liurnia Southwest)': '황금 나무의 화신 (리에니에 남서쪽)',
   'Erdtree Avatar (Liurnia Northeast)': '황금 나무의 화신 (리에니에 북동쪽)',
   "Night's Cavalry (Liurnia South)": '밤 기병 (리에니에 남쪽)',
