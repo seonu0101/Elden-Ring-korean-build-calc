@@ -2,8 +2,8 @@
 //
 //   node scripts/restyle-ledger.mjs "C:\...\Tarnished Ledger — ELDEN RING 수집 분석기.html"
 //
-// 바꾸는 것은 첫 번째 <style> … </style> 블록(디자인), 아래쪽 유튜브 링크(FOOTER_LINK) 빼기,
-// 그리고 세이브 파일 이름 제한 풀기(FILE_PATCHES)뿐이다. 그 밖의 HTML 구조와 <script>(기능)는 그대로 둔다.
+// 바꾸는 것은 첫 번째 <style> … </style> 블록(디자인), 아래쪽 유튜브 링크(FOOTER_LINK) 빼기, 용어(TERMS·무기군),
+// 세이브 파일 이름 제한 풀기(FILE_PATCHES), Build Calc 이름표·언어 연결(BRIDGE)뿐이다. 그 밖의 HTML·스크립트는 그대로 둔다.
 // 색은 속성(배경·글자·테두리)과 색 종류(어두운 면, 금색 강조, 초록, 빨강 등)에 따라 Build Calc의 색 변수로 바꾸고,
 // 선택 상태·버튼·진행 막대처럼 강조가 필요한 곳은 맨 뒤의 덮어쓰기 규칙으로 Build Calc와 같게 맞춘다.
 
@@ -40,6 +40,68 @@ for (const [from, to] of FILE_PATCHES) {
   if (!html.includes(from)) throw new Error(`바꿀 곳을 찾지 못했습니다: ${from}`)
   html = html.replace(from, to)
 }
+
+/**
+ * 용어를 Build Calc 표기로 (docs/glossary): 화면에 보이는 글자만 바꾸고, 비교·키로 쓰는 곳은 없다.
+ * 아이템 이름은 아래 BRIDGE가 Build Calc 이름표(게임 파일에서 뽑은 공식 이름)를 먼저 쓰게 한다.
+ */
+const TERMS = [
+  ['빛바랜 자 팩', '타니쉬드 에디션'],
+  ['결정눈물', '영약'],
+  ['영체 뼛가루', '소환 영체'],
+]
+for (const [from, to] of TERMS) {
+  if (!html.includes(from)) throw new Error(`용어를 찾지 못했습니다: ${from}`)
+  html = html.split(from).join(to)
+}
+
+// 무기군 이름(KO_META)은 Build Calc의 무기군 이름표(src/data/names-ko.generated.json)로
+const NAMES_KO = JSON.parse(await readFile(fileURLToPath(new URL('../src/data/names-ko.generated.json', import.meta.url)), 'utf8'))
+const WEAPON_TYPE_ALIASES = { 'Hand-to-Hand Art': 'Hand-to-Hand' }
+const metaStart = html.indexOf('const KO_META=Object.freeze({')
+const metaEnd = html.indexOf('});', metaStart)
+if (metaStart < 0 || metaEnd < 0) throw new Error('KO_META를 찾지 못했습니다')
+const meta = html.slice(metaStart, metaEnd).replace(/'([^']+)':'([^']+)'/g, (whole, en, ko) => {
+  const ours = NAMES_KO.weaponTypes[WEAPON_TYPE_ALIASES[en] ?? en]
+  return ours && ours !== ko ? `'${en}':'${ours}'` : whole
+})
+html = html.slice(0, metaStart) + meta + html.slice(metaEnd)
+
+/**
+ * Build Calc 연결 (스크립트 맨 뒤에 따로 붙인다. 원본 함수는 감싸기만 하고 고치지 않는다).
+ * - 부모 창(Build Calc)이 보내는 이름표 { 영어: 한국어 }를 게임 이름표보다 먼저 쓴다.
+ * - 이름 언어가 English면 목록의 이름·지역·장소를 원래 영어로 보여 준다 (화면 문구는 한국어 그대로, 앱과 같다).
+ * - 언어나 이름표가 바뀌면 이미 분석한 결과를 그 언어로 다시 그린다.
+ */
+const BRIDGE = `<script>
+(()=>{
+  const LANG_KEY='er-planner/name-language';
+  let lang=(()=>{try{return localStorage.getItem(LANG_KEY)==='en'?'en':'ko'}catch(_){return'ko'}})();
+  let names=new Map();
+  const baseTranslate=translateKo,baseApply=applyKoreanNames;
+  translateKo=function(v){return names.get(clean(v))||baseTranslate(v)};
+  applyKoreanNames=function(db){
+    baseApply(db);
+    if(db&&lang==='en'){
+      for(const x of db.list||[]){x.name=x.enName;if(x.enMeta)x.meta=x.enMeta;if(x.enRegion)x.region=x.enRegion;if(x.enPlace)x.place=x.enPlace;if(x.enSubcategory)x.subcategory=x.enSubcategory}
+      for(const a of Object.values(db.byGroup||{}))a.sort((x,y)=>x.name.localeCompare(y.name,'en',{numeric:true,sensitivity:'base'}));
+    }
+    return db;
+  };
+  function refresh(){if(state.reference&&state.parsed){applyReference();renderAll()}}
+  window.addEventListener('message',e=>{
+    if(e.origin!==location.origin||e.data?.type!=='build-calc')return;
+    if(e.data.names)names=new Map(Object.entries(e.data.names));
+    if(e.data.lang==='en'||e.data.lang==='ko')lang=e.data.lang;
+    document.documentElement.lang=lang==='en'?'en':'ko-KR';
+    refresh();
+  });
+  if(window.parent!==window)window.parent.postMessage({type:'build-calc-ledger-ready'},location.origin);
+})();
+</script>
+`
+if (!html.includes('</body>')) throw new Error('</body>를 찾지 못했습니다')
+html = html.replace('</body>', BRIDGE + '</body>')
 const MARK = '<style>*[hidden]{display:none!important}'
 const start = html.indexOf(MARK)
 const end = html.indexOf('</style>', start)
