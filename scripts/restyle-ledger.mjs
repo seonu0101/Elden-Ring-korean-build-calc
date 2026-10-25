@@ -69,7 +69,8 @@ html = html.slice(0, metaStart) + meta + html.slice(metaEnd)
 
 /**
  * Build Calc 연결 (스크립트 맨 뒤에 따로 붙인다. 원본 함수는 감싸기만 하고 고치지 않는다).
- * - 부모 창(Build Calc)이 보내는 이름표 { 영어: 한국어 }를 게임 이름표보다 먼저 쓴다.
+ * - 부모 창(Build Calc)이 보내는 이름표 { 영어: 한국어 }를 게임 이름표보다 먼저 쓰고,
+ *   목록의 작은 글씨(무기군·변질·방어구 부위)는 meta 표로 바꾼다 (같은 영어가 아이템 이름에도 있어서 따로 둔다).
  * - 이름 언어가 English면 목록의 이름·지역·장소를 원래 영어로 보여 준다 (화면 문구는 한국어 그대로, 앱과 같다).
  * - 언어나 이름표가 바뀌면 이미 분석한 결과를 그 언어로 다시 그린다.
  */
@@ -77,11 +78,12 @@ const BRIDGE = `<script>
 (()=>{
   const LANG_KEY='er-planner/name-language';
   let lang=(()=>{try{return localStorage.getItem(LANG_KEY)==='en'?'en':'ko'}catch(_){return'ko'}})();
-  let names=new Map();
+  let names=new Map(),meta=new Map();
   const baseTranslate=translateKo,baseApply=applyKoreanNames;
   translateKo=function(v){return names.get(clean(v))||baseTranslate(v)};
   applyKoreanNames=function(db){
     baseApply(db);
+    if(db&&lang!=='en')for(const x of db.list||[]){const m=x.enMeta&&meta.get(x.enMeta);if(m)x.meta=m}
     if(db&&lang==='en'){
       for(const x of db.list||[]){x.name=x.enName;if(x.enMeta)x.meta=x.enMeta;if(x.enRegion)x.region=x.enRegion;if(x.enPlace)x.place=x.enPlace;if(x.enSubcategory)x.subcategory=x.enSubcategory}
       for(const a of Object.values(db.byGroup||{}))a.sort((x,y)=>x.name.localeCompare(y.name,'en',{numeric:true,sensitivity:'base'}));
@@ -92,6 +94,7 @@ const BRIDGE = `<script>
   window.addEventListener('message',e=>{
     if(e.origin!==location.origin||e.data?.type!=='build-calc')return;
     if(e.data.names)names=new Map(Object.entries(e.data.names));
+    if(e.data.meta)meta=new Map(Object.entries(e.data.meta));
     if(e.data.lang==='en'||e.data.lang==='ko')lang=e.data.lang;
     document.documentElement.lang=lang==='en'?'en':'ko-KR';
     refresh();

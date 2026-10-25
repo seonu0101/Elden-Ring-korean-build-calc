@@ -5,24 +5,32 @@
 // 아이템 이름은 Build Calc 이름표(게임 파일의 공식 이름)를 보내 먼저 쓰게 하고, 이름 언어(한국어/English)도 따라가게 한다.
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { ALL_ITEMS, BUFFS } from '@/data/items'
+import ledgerNames from '@/data/ledger-names-ko.generated.json'
 import { koreanName, nameLanguage } from '@/data/names'
 
 const src = `${import.meta.env.BASE_URL}ledger/index.html`
 const frame = ref<HTMLIFrameElement | null>(null)
 
-/** { 영어 이름: 한국어 이름 } — 무기·방어구·탈리스만·버프(주문·소비 아이템) */
+/**
+ * { 영어 이름: 한국어 이름 } — 체크리스트의 모든 이름(보스·축복·주문 등, scripts/import-ledger-names.mjs)에
+ * 앱의 아이템 이름표(무기·방어구·탈리스만·버프)를 덮어쓴다.
+ */
 function nameTable(): Record<string, string> {
-  const out: Record<string, string> = {}
+  const out: Record<string, string> = { ...ledgerNames.names }
   for (const item of [...ALL_ITEMS, ...BUFFS]) {
     const ko = koreanName(item)
-    if (ko && !(item.name in out)) out[item.name] = ko
+    if (ko) out[item.name] = ko
   }
   return out
 }
 
 function send(withNames: boolean) {
   frame.value?.contentWindow?.postMessage(
-    { type: 'build-calc', lang: nameLanguage.value, ...(withNames ? { names: nameTable() } : {}) },
+    {
+      type: 'build-calc',
+      lang: nameLanguage.value,
+      ...(withNames ? { names: nameTable(), meta: ledgerNames.meta } : {}),
+    },
     location.origin,
   )
 }

@@ -14,6 +14,7 @@
     "copy:item-images": "node scripts/copy-item-images.mjs",
     "glossary": "node scripts/export-glossary.mjs",
     "import:korean-names": "node scripts/import-korean-names.mjs",
+    "import:ledger-names": "node scripts/import-ledger-names.mjs",
     "names": "node scripts/export-names.mjs"
   },
   "dependencies": {
